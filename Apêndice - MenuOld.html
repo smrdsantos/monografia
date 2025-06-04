@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monografia GD-PME 3 Pilares - Menu Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 260px;
+            --sidebar-hidden-transform: translateX(-100%); /* Esconde completamente */
+            --sidebar-visible-transform: translateX(0);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0f1f; 
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(76, 0, 130, 0.3), transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.3), transparent 50%);
+            min-height: 100vh;
+            color: #adb5bd; 
+            padding-bottom: 4rem;
+            transition: padding-left 0.3s ease-in-out; 
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: rgba(13, 20, 41, 0.9); 
+            backdrop-filter: blur(12px) saturate(150%); 
+            border-right: 1px solid rgba(173, 216, 230, 0.1); 
+            padding: 1rem 1.5rem;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(76, 0, 130, 0.2); 
+            transform: var(--sidebar-visible-transform); 
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .sidebar-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001; 
+            background: rgba(20, 30, 70, 0.8);
+            backdrop-filter: blur(5px);
+            color: #80deea;
+            border: 1px solid rgba(173, 216, 230, 0.2);
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: none; 
+            transition: left 0.3s ease-in-out; 
+        }
+        .sidebar-toggle svg { width: 24px; height: 24px; }
+
+        .sidebar-header { margin-bottom: 1.5rem; text-align: center; padding-top: 1rem; }
+        .sidebar-title {
+            font-size: 1.2rem; font-weight: 700; color: #e0e0e0;
+            text-shadow: 0 0 5px #d1c4e9, 0 0 10px #d1c4e9, 0 0 15px #b39ddb; 
+        }
+        .sidebar-subtitle { font-size: 0.8rem; color: #80deea; }
+        .sidebar-nav ul { list-style: none; padding: 0; }
+        .sidebar-nav li a {
+            display: block; padding: 0.7rem 1rem; border-radius: 0.5rem;
+            color: #90a4ae; text-decoration: none; font-weight: 600;
+            transition: all 0.2s ease-in-out; margin-bottom: 0.3rem;
+            position: relative; border-left: 3px solid transparent;
+        }
+        .sidebar-nav li a:hover {
+            background-color: rgba(77, 182, 172, 0.15); color: #b2dfdb;
+            transform: translateX(4px); border-left-color: #4db6ac;
+        }
+        .sidebar-nav li a.active {
+            background-color: rgba(76, 0, 130, 0.2); color: #d1c4e9;
+            font-weight: 700; border-left-color: #9575cd; transform: translateX(2px);
+        }
+        .sidebar-nav li a.active::after {
+            content: '›'; position: absolute; right: 10px; top: 50%;
+            transform: translateY(-50%); color: #9575cd; font-size: 1.2em;
+        }
+        .sidebar-nav ul ul { 
+            margin-left: 0.75rem; margin-top: 0.1rem;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .sidebar-nav li > a.active.has-submenu + ul.sub-menu,
+        .sidebar-nav li > a.has-submenu:hover + ul.sub-menu,
+        .sidebar-nav ul.sub-menu:hover { 
+            max-height: 500px; 
+        }
+        .sidebar-nav ul ul li a { 
+            padding-left: 1.25rem; font-size: 0.85em; color: #78909c; 
+            border-left: none; 
+        }
+        .sidebar-nav ul ul li a:hover { color: #80cbc4; background-color: rgba(77, 182, 172, 0.1); }
+        .sidebar-nav ul ul li a.active { color: #b39ddb; font-weight: 600; background-color: rgba(76, 0, 130, 0.15); }
+        
+        .main-content-area {
+            transition: padding-left 0.3s ease-in-out;
+             padding-left: var(--sidebar-width); 
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-left: 0; 
+            }
+            .sidebar {
+                transform: var(--sidebar-hidden-transform); 
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+            }
+            .sidebar.open {
+                transform: var(--sidebar-visible-transform); 
+            }
+            .sidebar-toggle {
+                display: block; 
+            }
+            .main-content-area {
+                 padding-left: 0; 
+            }
+        }
+        
+        .card {
+            background: rgba(20, 30, 70, 0.6); 
+            backdrop-filter: blur(10px) saturate(120%);
+            border-radius: 1rem; 
+            box-shadow: 0 0 25px rgba(76, 0, 130, 0.2), 0 0 10px rgba(0, 128, 128, 0.15); 
+            padding: 2.5rem; margin-bottom: 2rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            border: 1px solid rgba(173, 216, 230, 0.15); 
+            color: #b0bec5; 
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 0 40px rgba(76, 0, 130, 0.3), 0 0 20px rgba(0, 128, 128, 0.25);
+            border-color: rgba(128, 222, 234, 0.4); 
+        }
+
+        .fade-in-section { animation: fadeInUp 0.8s ease-out both; }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .gradient-title {
+            background: linear-gradient(to right, #ab47bc, #26c6da); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(171, 71, 188, 0.5), 0 0 12px rgba(38, 198, 218, 0.4); 
+            padding-bottom: 6px; position: relative; display: inline-block;
+        }
+         .gradient-title::after { 
+            content: ''; position: absolute; width: 0%; height: 2px; 
+            background: #26c6da; bottom: 0; left: 0; 
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 5px #26c6da;
+        }
+        .card:hover .gradient-title::after { width: 100%; }
+
+        .appendix-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px;
+        }
+        .appendix-item {
+            background: rgba(30, 41, 94, 0.7); 
+            backdrop-filter: blur(8px); border-radius: 0.75rem; padding: 1.5rem;
+            text-align: center; color: #9fa8da; transition: all 0.3s ease-out;
+            cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 160px; text-decoration: none; position: relative; overflow: hidden;
+            border: 1px solid rgba(77, 182, 172, 0.3); 
+            box-shadow: inset 0 0 10px rgba(77, 182, 172, 0.2), 0 0 5px rgba(77, 182, 172, 0.1);
+        }
+        .appendix-item:hover {
+            transform: translateY(-6px);
+            background: rgba(77, 182, 172, 0.1); 
+            border-color: #4db6ac;
+            box-shadow: 0 8px 25px rgba(77, 182, 172, 0.3);
+        }
+         .appendix-item::before, .appendix-item::after { 
+            content: ''; position: absolute;
+            background-color: rgba(77, 182, 172, 0.5); 
+            transition: all 0.4s ease;
+        }
+        .appendix-item::before { top: 0; left: 0; width: 0; height: 2px; } 
+        .appendix-item::after { bottom: 0; right: 0; width: 0; height: 2px; } 
+        .appendix-item:hover::before, .appendix-item:hover::after { width: 100%; }
+
+        .appendix-item .appendix-title {
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: #c5cae9;
+            text-shadow: 0 0 3px rgba(197, 202, 233, 0.5);
+        }
+        .appendix-item .appendix-description {
+            font-size: 0.85rem; font-weight: 400; color: #9e9e9e; line-height: 1.4; 
+        }
+        .appendix-item svg {
+            width: 40px; height: 40px; margin-bottom: 12px; color: #80deea; 
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .appendix-item:hover svg {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px #80deea); 
+        }
+
+        ul.list-disc, ul.list-circle, ul.list-square { list-style-position: inside; padding-left: 0; }
+        ul li { margin-bottom: 0.6rem; color: #90a4ae; }
+        ul.list-alpha { list-style-type: lower-alpha; list-style-position: inside;}
+
+        .references-list { list-style-type: none; padding-left: 0; }
+        .references-list li {
+            margin-bottom: 1.2em; font-size: 0.9rem; color: #90a4ae;
+            border-left: 3px solid #4db6ac; 
+            padding-left: 1em;
+        }
+        .references-list li a {
+            color: #80deea; 
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(128, 222, 234, 0.5);
+            transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        }
+        .references-list li a:hover {
+            color: #e0f7fa; 
+            border-bottom-color: rgba(224, 247, 250, 0.8);
+        }
+
+        .figure-container { text-align: center; margin: 2.5em 0; }
+        .figure-container img {
+            max-width: 100%; height: auto; border-radius: 4px; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(77, 182, 172, 0.3); 
+        }
+        .figure-caption { font-size: 0.85rem; color: #78909c; margin-top: 12px; font-style: italic; }
+
+        .figura-especial-grande {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%; /* Ou um valor fixo como 700px */
+            max-width: 700px; /* Limite máximo, mas permite diminuir */
+            height: auto;
+            /* Mantenha os estilos de borda e sombra */
+            border-radius: 8px;
+            box-shadow: var(--card-shadow); /* Usando a variável de tema que definimos */
+            border: 1px solid var(--figure-border); /* Usando a variável de tema que definimos */
+        }
+
+        .footer { margin-top: 5rem; padding: 2.5rem; text-align: center; }
+        .note-card {
+            background: rgba(13, 20, 41, 0.6);
+            backdrop-filter: blur(8px); border-radius: 0.75rem; padding: 1.8rem;
+            display: inline-block; color: #90a4ae; font-size: 0.9rem;
+            border: 1px solid rgba(77, 182, 172, 0.2);
+            box-shadow: 0 0 10px rgba(77, 182, 172, 0.1);
+        }
+        main section[id] { 
+             scroll-margin-top: 80px; 
+        }
+
+    </style>
+</head>
+<body> 
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+    </button>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="w-16 h-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-3 border-2 border-teal-500 shadow-lg">
+                 <svg class="w-8 h-8 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.972 48.972 0 0 1 12 21.75c2.305 0 4.547-.27 6.733-.849a60.452 60.452 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.45c2.305 0 4.547.27 6.733-.849c.471.146.94.31 1.388.491M12 18.75c-2.305 0-4.547-.27-6.733-.849M12 12.75c2.305 0 4.547-.27 6.733-.849M12 12.75c-2.305 0-4.547-.27-6.733-.849M12 3.45a59.905 59.905 0 0 1 7.153 3.195M9.75 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </div>
+            <h2 class="sidebar-title">GD-PME 3 Pilares</h2>
+            <p class="sidebar-subtitle">Monografia Digital Interativa</p>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#resumo">Resumo</a></li>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#desafio-estrategico">1.1 Desafio Estratégico</a></li>
+            <li><a href="#justificativa-novo-modelo">1.2 Justificativa</a></li>
+            <li><a href="#objetivos">1.3 Objetivos</a></li>
+            <li><a href="#delimitacao-estudo">1.4 Delimitação</a></li>
+            <li>
+                <a href="#desenho-metodologico" class="has-submenu">1.5 Desenho Metodológico</a>
+                <ul class="sub-menu"> 
+                    <li><a href="#revisao-bibliografica">1.5.1 Revisão</a></li>
+                    <li><a href="#estruturacao-modelo">1.5.2 Estruturação</a></li>
+                    <li><a href="#simulacao-estudo-caso">1.5.3 Simulação</a></li>
+                </ul>
+            </li>
+            <li><a href="#estrutura-monografia">1.6 Estrutura</a></li>
+            <li><a href="#barreiras-superacao">1.7 Barreiras</a></li>
+            <li><a href="#diretrizes-futuras">1.8 Diretrizes Futuras</a></li>
+            <li><a href="#appendix-menu-link">Apêndices</a></li> 
+            <li><a href="#referencias-bibliograficas">Referências</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content-area max-w-5xl mx-auto p-6 lg:p-8">
+        
+        <header class="text-center my-12 fade-in-section"> 
+             <div class="w-24 h-24 mx-auto rounded-xl bg-slate-800 flex items-center justify-center mb-5 border-2 border-cyan-500 shadow-cyan-500/30 shadow-xl"> 
+                <svg class="w-12 h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.972 48.972 0 0 1 12 21.75c2.305 0 4.547-.27 6.733-.849a60.452 60.452 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.45c2.305 0 4.547.27 6.733-.849c.471.146.94.31 1.388.491M12 18.75c-2.305 0-4.547-.27-6.733-.849M12 12.75c2.305 0 4.547-.27 6.733-.849M12 12.75c-2.305 0-4.547-.27-6.733-.849M12 3.45a59.905 59.905 0 0 1 7.153 3.195M9.75 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /> 
+                </svg> 
+            </div> 
+            <p class="text-cyan-300 text-center text-lg mb-2">Universidade Federal do Rio de Janeiro</p> 
+            <p class="text-cyan-300 text-center text-md mb-2">Escola Politécnica</p> 
+            <p class="text-cyan-300 text-center text-md mb-6">MBA Big Data, Business Intelligence e Business Analytics (MB3B)</p> 
+            <h1 class="text-4xl lg:text-5xl font-bold gradient-title leading-tight">IMPACTO DA GOVERNANÇA DE DADOS NA TOMADA DE DECISÕES CORPORATIVAS: IMPLANTAÇÃO DE POLÍTICAS DE GOVERNANÇA EM PEQUENAS E MÉDIAS EMPRESAS</h1> 
+            <div class="text-center text-purple-300 mt-10"> 
+                <p class="font-semibold text-lg">Autor: Samuel Martin Rodrigues dos Santos</p> 
+                <p class="font-semibold mt-2">Orientador: Cláudio Luiz Latta de Souza, M.Sc.</p> 
+                <p class="font-semibold mt-2">Coorientador: Manoel Villas Bôas Júnior, M.Sc.</p> 
+            </div> 
+            <p class="text-center text-teal-400 mt-10">Rio de Janeiro</p> 
+            <p class="text-center text-teal-400">Julho / 2025</p> 
+        </header> 
+
+        <section id="resumo" class="card fade-in-section" style="animation-delay: 0.2s;"> 
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">RESUMO</h2> 
+            <p class="text-slate-300 leading-relaxed text-justify"> 
+                Na era digital, os dados emergiram como ativo estratégico central para a competitividade, sustentabilidade e resiliência de Pequenas e Médias Empresas (PMEs). Este estudo explora os desafios estruturais, as barreiras culturais e as oportunidades práticas da implementação da Governança de Dados (GD) em PMEs brasileiras, propondo um modelo original – o “GD-PME 3 Pilares” – concebido para ambientes de baixa maturidade de dados e severas restrições operacionais. O modelo alicerça-se em três diretrizes interdependentes: separação entre dados e sistemas, capacitação contínua e políticas graduais simplificadas. Adota-se uma abordagem qualitativa, exploratória e aplicada, sustentada por revisão sistemática da literatura e por um estudo de caso simulado da empresa fictícia “Varejo Inteligente Ltda.”, para o qual são apresentados artefatos operacionais, procedimentos de implementação e indicadores de desempenho por pilar. A simulação projeta impactos mensuráveis significativos, incluindo melhoria de até 20% na eficiência operacional, aumento de 24% na taxa de recompra de clientes e crescimento de 38% para 65% nas decisões orientadas por dados. Os resultados sugerem que a implementação de estruturas mínimas de GD pode gerar benefícios relevantes em capacidade de governança, mitigação de riscos e desenvolvimento de uma cultura organizacional orientada a dados, mesmo em ambientes informais. O capítulo final delineia um roteiro de pesquisa futura focado na validação empírica, expansão tecnológica e impacto sistêmico, distinguindo as contribuições teóricas (uma nova taxonomia de governança enxuta) das aplicações práticas (um modelo replicável, incremental e de baixo custo). O modelo GD-PME 3 Pilares emerge, assim, como um framework tecnicamente viável e socialmente relevante para a institucionalização da Governança de Dados em PMEs, alinhando simplicidade operacional com valor estratégico. 
+            </p> 
+            <p class="text-teal-300 font-semibold mt-6">Palavras-Chave: <span class="font-normal text-slate-300">Gestão Informacional Estratégica, Organizações de Menor Porte, Maturidade de Dados, Cultura de Dados, Tecnologia Social.</span></p> 
+        </section> 
+
+        <section id="introducao" class="card fade-in-section" style="animation-delay: 0.3s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">Introdução</h2> <p class="text-slate-300 leading-relaxed text-justify">Com o avanço da digitalização, a governança de dados tornou-se fundamental mesmo para empresas de pequeno porte. A proposta do modelo GD-PME 3 Pilares surge como uma alternativa prática e acessível, permitindo que PMEs superem restrições operacionais por meio de uma estrutura leve, adaptativa e tecnicamente viável.</p> </section>
+        <section id="desafio-estrategico" class="card fade-in-section" style="animation-delay: 0.4s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.1 - A Governança de Dados como Desafio Estratégico para Pequenas e Médias Empresas</h2> <p class="text-slate-300 leading-relaxed text-justify">As MPEs enfrentam um dilema informacional: a ausência de governança de dados compromete a qualidade e a confiança nas informações, enfraquecendo decisões baseadas em evidências. Este estudo propõe o modelo GD-PME 3 Pilares como uma solução adaptada para superar esses desafios e fortalecer a resiliência informacional.</p> </section>
+        <section id="justificativa-novo-modelo" class="card fade-in-section" style="animation-delay: 0.5s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.2 - Justificativa para um Novo Modelo de Governança de Dados em Pequenas e Médias Empresas (PMEs)</h2> <p class="text-slate-300 leading-relaxed text-justify">A necessidade de um novo modelo de GD para PMEs é justificada pelas restrições orçamentárias, informalidade e pressão por conformidade (LGPD). O GD-PME 3 Pilares oferece uma abordagem realista e culturalmente sintonizada para democratizar o acesso à governança de dados e impulsionar a maturidade informacional.</p> </section>
+        <section id="objetivos" class="card fade-in-section" style="animation-delay: 0.6s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.3 - Objetivos</h2> <p class="text-slate-300 leading-relaxed mb-3"><strong>Geral:</strong> Investigar desafios e potencialidades da GD em MPEs brasileiras, concebendo e validando o modelo autoral GD-PME 3 Pilares para promover maturidade informacional e conformidade regulatória.</p> <p class="text-slate-300 leading-relaxed mb-3"><strong>Específicos:</strong></p> <ul class="list-disc list-inside text-slate-300"> <li>Revisar criticamente a literatura sobre GD e suas limitações em PMEs.</li> <li>Mapear entraves à adoção da GD em PMEs brasileiras.</li> <li>Estruturar o modelo GD-PME 3 Pilares em seus três fundamentos.</li> <li>Validar conceitualmente o modelo por simulação em estudo de caso hipotético.</li> <li>Comparar efeitos projetados do modelo com abordagens tradicionais.</li> <li>Desenvolver instrumentos de suporte prático ao modelo (Apêndices A, B, C, D, E, BA).</li> </ul> </section>
+        <section id="delimitacao-estudo" class="card fade-in-section" style="animation-delay: 0.7s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.4 - Delimitação do Estudo: Escopo e Foco da Investigação</h2> <p class="text-slate-300 leading-relaxed text-justify">O estudo foca em MPEs brasileiras (2020-2024) com baixa maturidade informacional, utilizando uma empresa fictícia ("Varejo Inteligente Ltda.") para simulação. A pesquisa aborda aspectos internos da GD, excluindo tecnologias emergentes e sem coleta de dados primários, com a LGPD como marco regulatório impulsionador.</p> </section>
+        <section id="desenho-metodologico" class="card fade-in-section" style="animation-delay: 0.8s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5 - Desenho Metodológico da Pesquisa</h2> <p class="text-slate-300 leading-relaxed text-justify">A pesquisa adota uma abordagem qualitativa, exploratória, descritiva e aplicada, estruturada em três fases: revisão bibliográfica sistemática, desenvolvimento do modelo GD-PME 3 Pilares, e simulação projetiva em estudo de caso hipotético. Essa metodologia visa aprofundar a compreensão e a aplicabilidade do modelo em contextos de MPEs.</p> </section>
+        <section id="revisao-bibliografica" class="card fade-in-section" style="animation-delay: 0.9s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.1 - Fase 1 – Revisão Bibliográfica Sistemática</h2> <p class="text-slate-300 leading-relaxed text-justify">A primeira fase da pesquisa envolveu uma revisão sistemática da literatura nacional e internacional sobre governança de dados, com foco em frameworks para MPEs. O objetivo foi identificar elementos estruturantes da GD e os obstáculos enfrentados por pequenas empresas, como informalidade e baixa maturidade analítica, fundamentando a proposta do modelo GD-PME 3 Pilares.</p> </section>
+        <section id="estruturacao-modelo" class="card fade-in-section" style="animation-delay: 1.0s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.2 - Fase 2 – Estruturação do Modelo GD-PME 3 Pilares</h2> <p class="text-slate-300 leading-relaxed mb-4 text-justify">Esta fase concentrou-se na concepção do modelo GD-PME 3 Pilares, baseado em três fundamentos interdependentes: separação entre dados e sistemas, capacitação contínua e políticas graduais simplificadas. A Figura 1.1 ilustra a lógica de implantação progressiva e adaptável, priorizando ações de baixo custo e alta aplicabilidade inicial para MPEs.</p> <div class="figure-container">
+                <img src="figura1.jpg" class="figura-especial-grande" alt="Figura 1.1 – Modelo GD-PME 3 Pilares: ordem adaptável de implantação por viabilidade">
+                <p class="figure-caption">Figura 1.1 – Modelo GD-PME 3 Pilares: ordem adaptável de implantação por viabilidade</p>
+                <p class="figure-caption">Fonte: Elaborado pelo Autor (2025).</p>
+            </div> </section>
+        <section id="simulacao-estudo-caso" class="card fade-in-section" style="animation-delay: 1.1s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.3 - Fase 3 – Simulação em Estudo de Caso Hipotético</h2> <p class="text-slate-300 leading-relaxed text-justify">Nesta fase, o modelo GD-PME 3 Pilares foi aplicado a uma empresa fictícia ("Varejo Inteligente Ltda.") para simular seus impactos em indicadores como eficiência operacional e conformidade com a LGPD. A simulação, baseada em benchmarks realistas, visa validar conceitualmente a aplicabilidade do modelo em ambientes de baixa maturidade informacional.</p> </section>
+        <section id="estrutura-monografia" class="card fade-in-section" style="animation-delay: 1.2s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.6 - Estrutura da Monografia</h2> <p class="text-slate-300 leading-relaxed text-justify">A monografia está organizada em cinco capítulos principais e um conjunto de apêndices, buscando uma progressão lógica desde os fundamentos teóricos até a aplicação prática do modelo GD-PME 3 Pilares. Essa estrutura garante uma análise aprofundada de suas premissas, elementos e impactos esperados em MPEs.</p> <p class="text-slate-300 leading-relaxed mt-4 text-justify">Os apêndices, como o Checklist de diagnóstico inicial (Apêndice A) e o Manual operacional (Apêndice B), são ferramentas práticas que complementam o trabalho, facilitando a implementação do modelo.</p> </section>
+        <section id="barreiras-superacao" class="card fade-in-section" style="animation-delay: 1.3s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.7 - Barreiras Práticas e Estratégias de Superação</h2> <p class="text-slate-300 leading-relaxed text-justify">A implementação da Governança de Dados em MPEs enfrenta barreiras como resistência cultural e escassez de recursos. O modelo GD-PME 3 Pilares foi concebido com estratégias de superação, priorizando a capacitação de lideranças informais e o uso de ferramentas acessíveis para garantir a viabilidade e sustentabilidade das práticas de governança.</p> </section>
+        <section id="diretrizes-futuras" class="card fade-in-section" style="animation-delay: 1.4s;"> <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.8 - Diretrizes Futuras de Pesquisa e Implementação do Modelo GD-PME 3 Pilares</h2> <p class="text-slate-300 leading-relaxed text-justify">Esta monografia propõe um plano de continuidade para o modelo GD-PME 3 Pilares, com marcos temporais de curto, médio e longo prazo. O objetivo é viabilizar a validação empírica, disseminação prática e institucionalização do modelo, transformando-o em uma ferramenta testada e replicável para o desenvolvimento informacional das MPEs brasileiras.</p> </section>
+        
+        <section id="appendix-menu-link" class="card fade-in-section" style="animation-delay: 1.5s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">Menu de Apêndices</h2>
+            <p class="text-slate-300 leading-relaxed mb-8 text-center">
+                Explore os apêndices técnicos e guias práticos que complementam o modelo GD-PME 3 Pilares.
+            </p>
+            <div class="appendix-menu-grid">
+                <a href="Apêndice - A.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice A</span> <span class="appendix-description">Diagnóstico Inicial e Avaliação de Maturidade em GD.</span> </a>
+                <a href="Apêndice - B.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice B</span> <span class="appendix-description">Manual Operacional do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - C.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice C</span> <span class="appendix-description">Glossário de Termos-Chave em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - D.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice D</span> <span class="appendix-description">Guia de Oficina Introdutória: Implantando a Cultura de Dados nas PMEs.</span> </a>
+                <a href="Apêndice - E.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice E</span> <span class="appendix-description">Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - F.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice F</span> <span class="appendix-description">Ficha de Autoavaliação Trimestral Simplificada.</span> </a>
+                <a href="Apêndice - G.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice G</span> <span class="appendix-description">Modelo de Documento Interno de Políticas de Dados (Termo Simplificado).</span> </a>
+                <a href="Apêndice - H.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice H</span> <span class="appendix-description">Exemplo de Caso Aplicado: Simulação do Ciclo Inicial (Empresa Fictícia).</span> </a>
+                <a href="Apêndice - I.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice I</span> <span class="appendix-description">Plano de Comunicação Interna para Implantação da GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - J.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice J</span> <span class="appendix-description">Roteiro de Coleta de Feedbacks Pós-Ciclo.</span> </a>
+                <a href="Apêndice - K.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice K</span> <span class="appendix-description">Ferramentas Digitais Abertas para Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - L.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice L</span> <span class="appendix-description">Cronograma para a Implementação Inicial do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - M.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice M</span> <span class="appendix-description">Miniguia Visual: Passo a Passo do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - N.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice N</span> <span class="appendix-description">Matriz de Riscos Informacionais para PMEs.</span> </a>
+                <a href="Apêndice - O.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice O</span> <span class="appendix-description">Mapa de Stakeholders da Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - P.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice P</span> <span class="appendix-description">Template de Relatório Trimestral de Governança de Dados.</span> </a>
+                <a href="Apêndice - Q.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Q</span> <span class="appendix-description">Comparativo de Evolução da Maturidade Informacional com o Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - R.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice R</span> <span class="appendix-description">Roteiro de Capacitação Setorial por Pilares do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - S.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice S</span> <span class="appendix-description">Banco de Boas Práticas em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - T.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice T</span> <span class="appendix-description">Mecanismo de Feedback Participativo sobre a Governança de Dados.</span> </a>
+                <a href="Apêndice - U.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice U</span> <span class="appendix-description">Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - V.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice V</span> <span class="appendix-description">Indicadores de Impacto Territorial da Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - W.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice W</span> <span class="appendix-description">Modelos de Mensagens para Comunicação da Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - X.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice X</span> <span class="appendix-description">Ferramentas e Modelos de Visualização para Relatórios de Governança de Dados do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - Y.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Y</span> <span class="appendix-description">Modelo de Relatório Trimestral Consolidado de Acompanhamento da Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - Z.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Z</span> <span class="appendix-description">Sugestões de Instrumentos Pedagógicos para Oficinas de Governança de Dados (GD).</span> </a>
+                <a href="Apêndice - AA.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AA</span> <span class="appendix-description">Modelo de Termo de Boas Práticas com Dados.</span> </a>
+                <a href="Apêndice - AB.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AB</span> <span class="appendix-description">Matriz Simplificada de Riscos Informacionais para PMEs.</span> </a>
+                <a href="Apêndice - AC.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AC</span> <span class="appendix-description">Roteiro de Comunicação Interna sobre GD.</span> </a>
+                <a href="Apêndice - AD.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AD</span> <span class="appendix-description">Plano de Multiplicadores Internos por Setor.</span> </a>
+                <a href="Apêndice - AE.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AE</span> <span class="appendix-description">Miniguia Visual para Empresas com Baixa Digitalização.</span> </a>
+                <a href="Apêndice - AF.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AF</span> <span class="appendix-description">Roteiro de Diagnóstico Rápido de Maturidade em GD para Consultores Externos.</span> </a>
+                <a href="Apêndice - AG.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AG</span> <span class="appendix-description">Painel de Indicadores Visuais Simplificados (KPIs por Pilar) do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AH.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AH</span> <span class="appendix-description">Modelo de Termo de Compromisso Institucional com a Governança de Dados.</span> </a>
+                <a href="Apêndice - AI.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AI</span> <span class="appendix-description">Roteiro Estratégico para Implementação Territorial do Modelo GD-PME 3 Pilares em Municípios ou Regiões.</span> </a>
+                <a href="Apêndice - AJ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AJ</span> <span class="appendix-description">Checklist de Evidências para Adesão ao Modelo GD-PME 3 Pilares em Editais Públicos e Programas de Fomento.</span> </a>
+                <a href="Apêndice - AK.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AK</span> <span class="appendix-description">Template para Relatório Trimestral de Avaliação da Maturidade em Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - AL.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AL</span> <span class="appendix-description">Inventário Modelo de Dados Essenciais.</span> </a>
+                <a href="Apêndice - AM.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AM</span> <span class="appendix-description">Agenda Anual Sugerida para Ciclos de Governança de Dados com o Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AN.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AN</span> <span class="appendix-description">Modelo de Comunicado Interno sobre a Implantação da Governança de Dados.</span> </a>
+                <a href="Apêndice - AO.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AO</span> <span class="appendix-description">Painel Visual de Progresso por Pilar do Modelo GD-PME 3 Pilares (Modelo para Impressão ou Mural).</span> </a>
+                <a href="Apêndice - AP.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AP</span> <span class="appendix-description">Modelo de Termo de Adesão Individual à Iniciativa de Governança de Dados.</span> </a>
+                <a href="Apêndice - AQ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AQ</span> <span class="appendix-description">Template de Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AR.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AR</span> <span class="appendix-description">Kit Visual de Boas Práticas em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - AS.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AS</span> <span class="appendix-description">Quadro de Indicadores de Impacto da Implementação do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AT.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AT</span> <span class="appendix-description">Roteiro de Avaliação Pós-Ciclo do Modelo GD-PME 3 Pilares: Reflexão, Métricas e Aprendizado Contínuo.</span> </a>
+                <a href="Apêndice - AU.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AU</span> <span class="appendix-description">Guia para Integração do Modelo GD-PME 3 Pilares a Programas de Fomento e Iniciativas Públicas.</span> </a>
+                <a href="Apêndice - AV.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AV</span> <span class="appendix-description">Matriz de Planejamento da Comunicação Interna sobre Governança de Dados.</span> </a>
+                <a href="Apêndice - AW.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AW</span> <span class="appendix-description">Comunicado Trimestral de Avanços da GD para Equipes e Colaboradores.</span> </a>
+                <a href="Apêndice - AX.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AX</span> <span class="appendix-description">Protocolo de Auditoria Interna em Governança de Dados.</span> </a>
+                <a href="Apêndice - AY.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AY</span> <span class="appendix-description">Lembrete Rápido: Nossas 3 Regras de Ouro com os Dados!</span> </a>
+                <a href="Apêndice - AZ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AZ</span> <span class="appendix-description">Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - BA.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice BA</span> <span class="appendix-description">Guia de Aplicação dos Apêndices.</span> </a>
+                <a href="Apêndice - BB.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice BB</span> <span class="appendix-description">Análise Comparativa Detalhada de Frameworks de Governança de Dados sob a Ótica das MPEs.</span> </a>
+            </div>
+        </section>
+
+        <section id="referencias-bibliograficas" class="card fade-in-section" style="animation-delay: 1.6s;">
+             <h2 class="text-3xl font-semibold text-center gradient-title mb-6">REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+            <ul class="references-list">
+                <li>[1] ABRAHAM, R.; SCHNEIDER, J.; VOM BROCKE, J. Data governance: a conceptual framework, structured review, and research agenda. International Journal of Information Management, v. 49, p. 424–438, 2019. Disponível em: <a href="https://doi.org/10.1016/j.ijinfomgt.2019.07.008" target="_blank">https://doi.org/10.1016/j.ijinfomgt.2019.07.008</a>. Acesso em: 27 mai. 2025.</li>
+                 </ul>
+            <p class="text-center mt-10">
+                <a href="monografia.pdf" target="_blank" class="inline-block px-8 py-3 border-2 border-teal-400 text-teal-300 font-semibold rounded-lg hover:bg-teal-400 hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-teal-400/40">
+                    Acesse a Monografia completa em PDF
+                </a>
+            </p>
+        </section>
+
+        <footer class="footer fade-in-section" style="animation-delay: 1.7s;">
+            <div class="note-card">
+                <p>Este documento interativo apresenta os conceitos chave da monografia e um menu de navegação para os apêndices. Modelo GD-PME 3 Pilares © 2025.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const mainContentArea = document.querySelector('.main-content-area');
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            const scrollOffset = 80; 
+
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
+            }
+            
+            function highlightActiveLink() {
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - scrollOffset) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                if (!currentSectionId && sections.length > 0 && window.pageYOffset < (sections[0].offsetTop - scrollOffset)) {
+                    currentSectionId = 'resumo'; 
+                }
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20) { 
+                    if (sections.length > 0) {
+                        for (let i = sections.length - 1; i >= 0; i--) {
+                            if (sections[i].offsetTop < (window.innerHeight + window.pageYOffset)) {
+                                currentSectionId = sections[i].getAttribute('id');
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active', 'active-parent');
+                    const subMenu = link.nextElementSibling;
+                    let isParentOfActiveSubmenu = false;
+
+                    if (subMenu && subMenu.classList.contains('sub-menu')) {
+                        const subLinks = subMenu.querySelectorAll('a');
+                        subLinks.forEach(subLink => {
+                            subLink.classList.remove('active');
+                            if (subLink.getAttribute('href') === '#' + currentSectionId) {
+                                subLink.classList.add('active');
+                                isParentOfActiveSubmenu = true; 
+                            }
+                        });
+                         // Gerencia a abertura do submenu se um filho estiver ativo
+                        if(isParentOfActiveSubmenu && !subMenu.style.maxHeight) {
+                           // subMenu.style.maxHeight = subMenu.scrollHeight + "px"; // Removido para priorizar CSS :hover
+                        } else if (!isParentOfActiveSubmenu && subMenu.style.maxHeight !== "0px" && !link.matches(':hover') && !subMenu.matches(':hover')) {
+                           // subMenu.style.maxHeight = null; // Removido para priorizar CSS :hover
+                        }
+                    }
+
+                    if ((link.getAttribute('href') === '#' + currentSectionId) || isParentOfActiveSubmenu) {
+                        link.classList.add('active');
+                        if(isParentOfActiveSubmenu) link.classList.add('active-parent');
+
+                        if (sidebar.classList.contains('open') || window.innerWidth > 768) {
+                            const linkTopInSidebar = link.offsetTop - sidebar.offsetTop; 
+                            const linkHeight = link.offsetHeight;
+                            const sidebarScrollTop = sidebar.scrollTop;
+                            const sidebarHeight = sidebar.clientHeight;
+
+                            if (linkTopInSidebar < sidebarScrollTop + 20) { 
+                                sidebar.scrollTop = Math.max(0, linkTopInSidebar - 20); 
+                            } else if (linkTopInSidebar + linkHeight > sidebarScrollTop + sidebarHeight - 20) { 
+                                sidebar.scrollTop = linkTopInSidebar + linkHeight - sidebarHeight + 20; 
+                            }
+                        }
+                    }
+                });
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const targetPosition = targetElement.offsetTop - (scrollOffset - 20); 
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                                sidebar.classList.remove('open');
+                            }
+                        }
+                    }
+                });
+            });
+
+            function handleResizeAndLoad() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('open'); 
+                    document.body.style.paddingLeft = 'var(--sidebar-width)';
+                } else {
+                     document.body.style.paddingLeft = '0';
+                }
+                highlightActiveLink();
+            }
+
+            window.addEventListener('scroll', highlightActiveLink);
+            window.addEventListener('resize', handleResizeAndLoad);
+            handleResizeAndLoad(); 
+        });
+    </script>
+</body>
+</html>
