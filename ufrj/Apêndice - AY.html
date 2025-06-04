@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apêndice AY - Lembrete Rápido: Nossas 3 Regras de Ouro com os Dados!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos gerais do corpo do documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Cor de fundo cinza claro */
+        }
+        /* Estilos para cartões */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Estilos para títulos de seção */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1f2937; /* Cinza escuro para títulos */
+        }
+        /* Estilos para o título principal do cabeçalho */
+        .header-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1f2937; /* Cinza escuro */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        /* Estilos para o subtítulo do cabeçalho */
+        .header-subtitle {
+            font-size: 1.15rem;
+            color: #374151; /* Cinza médio */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Estilos para o rodapé */
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #111827; /* Cinza mais escuro para o rodapé */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        /* Estilos para destaque de texto */
+        .highlight {
+            color: #4b5563; /* Destaque cinza */
+            font-weight: 600;
+        }
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Estilos para o ícone do cabeçalho */
+        .header-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e5e7eb; /* Fundo cinza claro para o ícone */
+        }
+        .header-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #1f2937; /* Cinza escuro */
+        }
+
+        /* Estilo para a célula da nota */
+        .note-card {
+            background-color: #e5e7eb; /* Fundo cinza claro para o cartão de nota */
+            border-left: 4px solid #6b7280; /* Borda cinza médio */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .note-card p {
+            font-size: 0.85rem;
+            color: #111827;
+        }
+        .note-card sup {
+            font-size: 0.7em;
+        }
+
+        /* Estilos específicos para o lembrete de bolso */
+        .reminder-card {
+            background-color: #dbeafe; /* Azul claro para o lembrete */
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .reminder-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af; /* Azul escuro */
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reminder-title svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            color: #1e40af;
+        }
+        .rule-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: left;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        .rule-item strong {
+            font-size: 1.2rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .rule-item strong span {
+            font-size: 1.5em; /* Tamanho maior para o número da regra */
+            margin-right: 8px;
+            color: #4b5563;
+        }
+        .rule-item ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+        .closing-phrase {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl">
+        <!-- Cabeçalho -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon">
+                <!-- Ícone representativo para lembrete/regras -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.38 3.375 2.078 3.375h14.032c1.698 0 2.944-1.875 2.078-3.375l-.75-1.299a1.125 1.125 0 0 0-1.079-.625H5.924c-.573 0-1.059.426-1.079.625l-.75 1.299Z" />
+                </svg>
+            </div>
+            <h1 class="header-title">APÊNDICE - AY<sup style="font-size: 0.7em;">1</sup> Lembrete Rápido: Nossas 3 Regras de Ouro com os Dados!</h1>
+            <p class="header-subtitle">Introdução Simplificada à Responsabilidade Informacional para PMEs.</p>
+        </header>
+
+        <!-- Seção de Introdução -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed">
+                Este apêndice apresenta um modelo de lembrete visual e extremamente simplificado, com três "Regras de Ouro" para o uso de dados, pensado para Pequenas e Médias Empresas (PMEs) em estágio muito inicial de Governança de Dados e com um ambiente de baixa formalidade. O objetivo é introduzir os conceitos mais básicos de responsabilidade informacional de forma leve, memorável e de fácil comunicação interna. Pode ser usado como um cartão, um pequeno cartaz ou um bottom line em comunicados.
+            </p>
+        </section>
+
+        <!-- Seção AY.1 Modelo do Lembrete de Bolso -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title text-center">AY.1 Modelo do Lembrete de Bolso: Nossas 3 Regras de Ouro com os Dados!</h2>
+            <p class="text-gray-600 text-center mb-6 italic">
+                (O conteúdo abaixo é para ser diagramado de forma muito visual e concisa, como um pequeno cartão ou lembrete).
+            </p>
+
+            <div class="reminder-card">
+                <div class="reminder-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3v.75m-9-1.5a3 3 0 0 0-3 3v.75m-3 0-3-3m18 0-3 3m-6.75-9-3 3M12 18v.75m-4.5 4.5h9m-18-4.5h9" />
+                    </svg>
+                    NOSSAS 3 REGRAS DE OURO COM OS DADOS DA EMPRESA!
+                </div>
+                <p class="text-gray-700 mb-6">Para que nosso trabalho flua melhor e nossa empresa cresça com segurança, vamos combinar:</p>
+
+                <div class="rule-item">
+                    <strong><span>1.</span> REGRA 1: DADO CERTO NO LUGAR CERTO!</strong>
+                    <ul class="list-disc ml-6">
+                        <li>Anote a informação completa e correta.</li>
+                        <li>Guarde no local combinado (aquela planilha, pasta ou caderno!).</li>
+                        <li>Achou um erro? Avise o(a) colega ou seu líder!</li>
+                    </ul>
+                    <p class="text-gray-500 text-sm italic mt-2">(Linguagem simples, direta, foco na ação. Conecta-se ao Pilar 1).</p>
+                </div>
+
+                <div class="rule-item">
+                    <strong><span>2.</span> REGRA 2: DADO SENSÍVEL É SEGREDO NOSSO!</strong>
+                    <ul class="list-disc ml-6">
+                        <li>Informação de cliente, colega ou da empresa? Cuidado extra!</li>
+                        <li>Não compartilhe senhas.</li>
+                        <li>Não deixe documentos importantes dando sopa.</li>
+                    </ul>
+                    <p class="text-gray-500 text-sm italic mt-2">(Foco na segurança e confidencialidade. Conecta-se ao Pilar 3 e à LGPD de forma implícita).</p>
+                </div>
+
+                <div class="rule-item">
+                    <strong><span>3.</span> REGRA 3: NA DÚVIDA SOBRE DADOS? PERGUNTE!</strong>
+                    <ul class="list-disc ml-6">
+                        <li>Não entendeu um relatório? Tem dúvida sobre uma regra?</li>
+                        <li>Fale com seu líder ou com o(a) colega que é ponto focal da Governança de Dados.</li>
+                        <li>Aprender juntos deixa a gente mais forte!</li>
+                    </ul>
+                    <p class="text-gray-500 text-sm italic mt-2">(Foco na comunicação e aprendizado contínuo. Conecta-se ao Pilar 2).</p>
+                </div>
+
+                <p class="closing-phrase">Lembre-se: Dados bem cuidados ajudam todo mundo! ✨</p>
+            </div>
+        </section>
+
+        <!-- Seção AY.2 Dicas de Formato e Aplicação do Lembrete -->
+        <section class="card fade-in-section" style="animation-delay: 0.5s;">
+            <h2 class="section-title">AY.2 Dicas de Formato e Aplicação do Lembrete</h2>
+            <ul class="list-disc ml-6 text-gray-700 leading-relaxed">
+                <li class="mb-2"><span class="highlight">Formato:</span> Este lembrete pode ser impresso em formato de cartão de visita, pequeno cartaz para afixar em estações de trabalho, ou como uma imagem para compartilhar em grupos de WhatsApp da empresa;</li>
+                <li class="mb-2"><span class="highlight">Linguagem e Adaptação:</span> A linguagem é intencionalmente informal e direta. Incentive a PME a adaptar as "Regras de Ouro" com exemplos ainda mais específicos da sua realidade e cultura;</li>
+                <li class="mb-2"><span class="highlight">Primeiro Contato:</span> Ideal para ser usado nas primeiras ações de sensibilização sobre Governança de Dados (<span class="highlight">Apêndice D</span>), especialmente em empresas que nunca tiveram contato formal com o tema;</li>
+                <li><span class="highlight">Reforço Contínuo:</span> Pode ser relembrado em reuniões rápidas de equipe ou como parte da integração de novos colaboradores, complementando o Termo de Boas Práticas mais formal (<span class="highlight">Apêndice G/AA</span>), quando a empresa evoluir para esse nível.</li>
+            </ul>
+        </section>
+
+        <!-- Nota de Rodapé -->
+        <footer class="footer fade-in-section" style="animation-delay: 0.6s;">
+            <div class="note-card">
+                <p><sup>1</sup> Nota: Este lembrete rápido introduz conceitos de responsabilidade informacional em PMEs, conectando suas "3 Regras de Ouro" ao Pilar 1 (Dados e Sistemas), Pilar 2 (Capacitação Contínua) e Pilar 3 (Políticas Graduais e Simplificadas) do modelo GD-PME, servindo como apoio didático inicial (<span class="highlight">Apêndice D</span>).</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

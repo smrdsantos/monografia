@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Template de Relatório Trimestral de Governança de Dados - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5; /* Light Gray background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-relatorio {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #404040; /* Dark Gray for titles */
+        }
+        .header-title-relatorio {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #404040; /* Dark Gray */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-relatorio {
+            font-size: 1.15rem;
+            color: #525252; /* Medium Gray */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-relatorio {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #262626; /* Darkest Gray for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-relatorio {
+            color: #737373; /* Gray highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-relatorio {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e5e5e5; /* Light Gray background for icon */
+        }
+        .header-icon-relatorio svg {
+            width: 32px;
+            height: 32px;
+            color: #404040; /* Dark Gray */
+        }
+
+        .table-relatorio {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-relatorio th, .table-relatorio td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #d4d4d4; /* Lighter Gray border */
+            font-size: 0.85rem;
+            vertical-align: top;
+        }
+        .table-relatorio th {
+            background-color: #f5f5f5; /* Very Light Gray for table headers */
+            font-weight: 600;
+            color: #525252; /* Medium Gray */
+        }
+        .table-relatorio td {
+            color: #262626; /* Darkest Gray for table text */
+        }
+        /* Specific column widths */
+        .secao-col { width: 25%; }
+        .conteudo-col { width: 45%; }
+        .instrumentos-col { width: 30%; }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-7xl"> <!-- Max width adjusted for wider table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-relatorio">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                </svg>
+            </div>
+            <h1 class="header-title-relatorio">Template de Relatório Trimestral de Governança de Dados</h1>
+            <p class="header-subtitle-relatorio">APÊNDICE P: Modelo estruturado para acompanhamento e registro das ações de GD em PMEs, facilitando a prestação de contas e a mensuração de avanços.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este template visa facilitar a <span class="highlight-relatorio">prestação de contas à liderança</span>, a consolidação da memória organizacional sobre as iniciativas de GD e a mensuração dos avanços em cada ciclo, conforme os pilares do modelo GD-PME 3 Pilares.
+            </p>
+        </section>
+
+        <!-- Report Structure Table Section (Quadro P.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-relatorio text-center">Quadro P.1 – Estrutura Sugerida para o Relatório Trimestral</h2>
+            <div class="overflow-x-auto">
+                <table class="table-relatorio">
+                    <thead>
+                        <tr>
+                            <th class="secao-col">Seção do Relatório</th>
+                            <th class="conteudo-col">Conteúdo Esperado / Tópicos a Abordar</th>
+                            <th class="instrumentos-col">Instrumentos de Apoio (Apêndices)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Identificação do Ciclo</td>
+                            <td>Trimestre de referência (ex: Q1/2025); Datas de início e fim do ciclo; Responsável(eis) pela elaboração do relatório.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Pilar 1 – Dados e Sistemas</td>
+                            <td>Ações realizadas neste pilar durante o ciclo (ex: atualização do inventário de dados, mapeamento de novos fluxos); Gaps identificados e progresso em relação ao ciclo anterior; Principais desafios e aprendizados.</td>
+                            <td>Apêndice AL (Inventário); Apêndice B (Manual Operacional).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Pilar 2 – Capacitação Contínua</td>
+                            <td>Oficinas ou treinamentos ministrados (temas, datas, nº de participantes); Materiais didáticos utilizados ou criados (ex: cartilhas, glossário); Percepção do engajamento da equipe.</td>
+                            <td>Apêndices C, D, M, R, Z, AR (Materiais de Capacitação e Visuais).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Pilar 3 – Políticas Simplificadas</td>
+                            <td>Políticas de dados implementadas ou revisadas no ciclo (ex: política de backup, termo de boas práticas); Nível de adesão dos setores às políticas; Necessidade de novas políticas ou ajustes.</td>
+                            <td>Apêndices G, AA, AB, AY (Modelos de Políticas, Termos e Ferramentas de Análise de Risco para o Pilar 3).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Avaliação de Maturidade</td>
+                            <td>Pontuação obtida na Ficha de Autoavaliação Trimestral (Apêndice F) ou na Matriz de Maturidade (Quadro B.4); Comparativo com a pontuação do ciclo anterior; Comentários sobre o progresso.</td>
+                            <td>Apêndices A, F, B (Quadro B.4), Q.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Riscos e Desvios Identificados</td>
+                            <td>Principais incidentes informacionais ocorridos (se houver); Dificuldades na implementação das ações planejadas; Medidas corretivas propostas ou implementadas.</td>
+                            <td>Apêndice N (Matriz de Riscos).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Projeções para o Próximo Ciclo</td>
+                            <td>Ações planejadas para cada pilar no próximo trimestre; Metas de maturidade atualizadas; Responsáveis atribuídos para as próximas ações.</td>
+                            <td>Apêndice B (Manual Operacional); Apêndice L ou AM (Cronograma).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Anexos (Opcional)</td>
+                            <td>Fotos de oficinas; Listas de presença; Prints de planilhas de inventário; Exemplos de materiais de comunicação utilizados.</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-3 text-center">Este relatório pode ser editado e adaptado em formato Word, Google Docs ou utilizando formulários online. Sua principal função é ser um instrumento central para a governança adaptativa e para a demonstração de valor das iniciativas de GD.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-relatorio fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos instrumentos e na lógica cíclica do modelo GD-PME 3 Pilares.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este template de relatório trimestral visa consolidar e comunicar os avanços na implementação do modelo GD-PME 3 Pilares, estruturando o acompanhamento das ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), o registro da evolução da maturidade e o planejamento dos ciclos de governança.</p>
+        </footer>
+    </div>
+</body>
+</html>
