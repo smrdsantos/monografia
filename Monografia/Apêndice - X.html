@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Ferramentas e Modelos de Visualização para Relatórios de Governança de Dados - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f5; /* Light Zinc/Gray background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-visualizacao {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #3f3f46; /* Dark Zinc for titles */
+        }
+        .header-title-visualizacao {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #3f3f46; /* Dark Zinc */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-visualizacao {
+            font-size: 1.15rem;
+            color: #52525b; /* Medium Zinc */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-visualizacao {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #27272a; /* Darkest Zinc for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-visualizacao {
+            color: #71717a; /* Zinc highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-visualizacao {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e4e4e7; /* Light Zinc background for icon */
+        }
+        .header-icon-visualizacao svg {
+            width: 32px;
+            height: 32px;
+            color: #3f3f46; /* Dark Zinc */
+        }
+
+        .table-visualizacao {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-visualizacao th, .table-visualizacao td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #d4d4d8; /* Lighter Zinc border */
+            font-size: 0.8rem;
+            vertical-align: top;
+        }
+        .table-visualizacao th {
+            background-color: #f4f4f5; /* Very Light Zinc for table headers */
+            font-weight: 600;
+            color: #52525b; /* Medium Zinc */
+        }
+        .table-visualizacao td {
+            color: #27272a; /* Darkest Zinc for table text */
+        }
+        /* Specific column widths */
+        .finalidade-col { width: 20%; }
+        .ferramenta-col-vis { width: 20%; }
+        .modelo-col { width: 30%; }
+        .recomendacao-col { width: 30%; }
+        
+        .consideracoes-card {
+            background-color: #e4e4e7; /* Light Zinc for considerations */
+            border-left: 4px solid #71717a; /* Zinc border */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .consideracoes-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3f3f46;
+            margin-bottom: 8px;
+        }
+        .consideracoes-card ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #27272a;
+        }
+        .consideracoes-card li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-visualizacao">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+                </svg>
+            </div>
+            <h1 class="header-title-visualizacao">Ferramentas e Modelos de Visualização para Relatórios de Governança de Dados</h1>
+            <p class="header-subtitle-visualizacao">APÊNDICE X: Sugestões para apresentar os progressos dos ciclos trimestrais do GD-PME 3 Pilares, tornando os resultados mais tangíveis e compreensíveis.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                A comunicação eficaz dos avanços em Governança de Dados requer formas de apresentação visual que facilitem a <span class="highlight-visualizacao">leitura, interpretação e engajamento</span> de públicos diversos dentro da PME.
+            </p>
+        </section>
+
+        <!-- Visualization Tools and Models Table Section (Quadro X.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-visualizacao text-center">Quadro X.1 – Sugestões de Ferramentas e Modelos de Visualização</h2>
+            <div class="overflow-x-auto">
+                <table class="table-visualizacao">
+                    <thead>
+                        <tr>
+                            <th class="finalidade-col">Finalidade da Visualização</th>
+                            <th class="ferramenta-col-vis">Ferramenta(s) Digital(is) Indicada(s) (Ver Apêndice K)</th>
+                            <th class="modelo-col">Modelo de Visualização Sugerido</th>
+                            <th class="recomendacao-col">Recomendação de Uso e Aplicação no GD-PME 3 Pilares</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Apresentar a evolução da maturidade informacional por pilar.</td>
+                            <td>Power BI (Desktop); Google Data Studio; Excel/Google Sheets.</td>
+                            <td>Gráfico de Radar (Radar Chart) por Pilar, mostrando a pontuação (0-4) em cada ciclo (conforme Apêndice F ou Q);</td>
+                            <td>Utilizar cores distintas para cada pilar ou para cada ciclo avaliado, facilitando a comparação visual do progresso.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Exibir o desempenho ou nível de maturidade por setor/área.</td>
+                            <td>Excel / Google Sheets; Canva.</td>
+                            <td>Tabela com indicadores de semáforo (verde/amarelo/vermelho) para cada setor em relação aos pilares ou a metas específicas.</td>
+                            <td>Indicar visualmente o nível de maturidade ou o status de implementação das ações do GD-PME 3 Pilares por setor.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Comunicar as ações de GD realizadas no ciclo.</td>
+                            <td>Canva / Google Slides; Murais físicos ou digitais (Padlet).</td>
+                            <td>Linha do tempo ilustrada (infográfico) com as principais ações, datas, responsáveis e resultados breves de cada pilar.</td>
+                            <td>Incluir fotos das oficinas, prints de materiais criados, e nomes dos envolvidos para aumentar o engajamento.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Consolidar e apresentar feedbacks e próximos passos.</td>
+                            <td>Notion / Google Docs; Ferramentas de nuvem de palavras (online).</td>
+                            <td>Tabela resumo dos principais feedbacks (Apêndice J ou T); Nuvem de palavras com os termos mais frequentes das sugestões.</td>
+                            <td>Agrupar sugestões por tema ou pilar; Destacar os principais aprendizados e as ações prioritárias para o próximo ciclo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Visualization Practice Considerations Section -->
+        <section class="card consideracoes-card fade-in-section" style="animation-delay: 0.5s;">
+            <h3>X.1 Considerações para a Prática de Visualização em PMEs:</h3>
+            <ul>
+                <li>Para facilitar a replicação e a sustentabilidade, recomenda-se que cada PME desenvolva um "Painel de Governança" simples, que pode ser físico (mural) ou digital (arquivo compartilhado), atualizado semestral ou anualmente. Este painel deve conter os gráficos chave da evolução da maturidade, legendas claras e utilizar uma linguagem centrada no cotidiano e nos objetivos da empresa;</li>
+                <li>Os visuais devem ser discutidos nas reuniões de avaliação de ciclo (Apêndice AT) e podem ser integrados aos Relatórios Trimestrais (Apêndice P ou AW) ou apresentados em reuniões gerais para toda a equipe;</li>
+                <li>Priorize ferramentas que a equipe já utiliza ou que sejam de fácil aprendizado, conforme sugerido no Apêndice K, para não criar uma barreira tecnológica.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-visualizacao fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Ladley (2020), Bento (2021), Mahanti (2021a) e em práticas de visualização de dados acessível.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Com ferramentas e modelos de visualização, este apêndice visa aprimorar a comunicação e o monitoramento da implementação do modelo GD-PME. A apresentação clara dos resultados dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) busca fomentar o engajamento, a transparência e a melhoria contínua da governança.</p>
+        </footer>
+    </div>
+</body>
+</html>

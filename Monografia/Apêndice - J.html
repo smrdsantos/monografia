@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Roteiro de Coleta de Feedbacks Pós-Ciclo - GD-PME 3 Pilares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light Green background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-feedback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #15803d; /* Dark Green for titles */
+        }
+        .header-title-feedback {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #15803d; /* Dark Green */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-feedback {
+            font-size: 1.15rem;
+            color: #166534; /* Medium Green */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-feedback {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #14532d; /* Darkest Green for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-feedback {
+            color: #22c55e; /* Green highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-feedback {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #dcfce7; /* Light Green background for icon */
+        }
+        .header-icon-feedback svg {
+            width: 32px;
+            height: 32px;
+            color: #15803d; /* Dark Green */
+        }
+
+        .feedback-block {
+            margin-bottom: 24px;
+            padding: 16px;
+            background-color: #f0fdf4; /* Very light green for blocks */
+            border-left: 4px solid #22c55e; /* Green left border */
+            border-radius: 0 8px 8px 0;
+        }
+        .feedback-block h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #166534; /* Medium Green */
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .feedback-block h3 svg {
+            margin-right: 8px;
+            color: #15803d;
+        }
+        .feedback-block ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            color: #14532d; /* Darkest Green for questions */
+        }
+        .feedback-block li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-feedback">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-3.861 8.443-8.444 8.958V12h8.444Zm-1.757 7.902a11.937 11.937 0 0 1-1.622.311 12.035 12.035 0 0 1-5.219 0 11.937 11.937 0 0 1-1.622-.311M3 12c0-4.556 3.861-8.443 8.444-8.958V12H3Zm1.757-7.902a11.937 11.937 0 0 1 1.622-.311 12.035 12.035 0 0 1 5.219 0 11.937 11.937 0 0 1 1.622.311" />
+                </svg>
+            </div>
+            <h1 class="header-title-feedback">Roteiro de Coleta de Feedbacks Pós-Ciclo</h1>
+            <p class="header-subtitle-feedback">APÊNDICE J: Instrumento para avaliar a efetividade e a percepção dos colaboradores sobre as ações dos Pilares do modelo GD-PME 3 Pilares.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este roteiro é <span class="highlight-feedback">essencial ao ciclo de melhoria contínua</span> do modelo GD-PME. Os insights resultantes são cruciais para o planejamento dos ciclos de governança subsequentes.
+            </p>
+        </section>
+
+        <!-- Feedback Questions Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-feedback text-center">Perguntas para Coleta de Feedback</h2>
+
+            <!-- Bloco 1 -->
+            <div class="feedback-block">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                    </svg>
+                    Bloco 1 – Compreensão do Modelo e das Ações
+                </h3>
+                <ol>
+                    <li>As orientações gerais sobre o que é Governança de Dados e os objetivos do modelo GD-PME 3 Pilares foram compreensíveis para você?</li>
+                    <li>Os materiais de apoio utilizados neste ciclo (ex: cartilhas, glossário – Apêndice C, apresentações das oficinas – Apêndice D) foram úteis para o seu entendimento?</li>
+                    <li>Você se sentiu suficientemente informado(a) sobre as ações de governança de dados que foram implementadas no seu setor ou na empresa como um todo neste ciclo?</li>
+                </ol>
+            </div>
+
+            <!-- Bloco 2 -->
+            <div class="feedback-block">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                    </svg>
+                    Bloco 2 – Aplicação Prática e Impactos Percebidos
+                </h3>
+                <ol>
+                    <li>Você conseguiu aplicar em sua rotina de trabalho alguma das práticas ou orientações propostas pelo modelo GD-PME 3 Pilares neste ciclo (ex: uso do inventário de dados, novas formas de registro, políticas de acesso)?</li>
+                    <li>Na sua percepção, as ações de governança de dados implementadas neste ciclo (ex: organização de planilhas, treinamentos, novas regras) trouxeram alguma melhoria visível para o seu trabalho ou para o seu setor?</li>
+                    <li>O inventário de dados (Pilar 1) e os treinamentos/oficinas (Pilar 2) realizados foram relevantes para o seu dia a dia? Por quê?</li>
+                </ol>
+            </div>
+
+            <!-- Bloco 3 -->
+            <div class="feedback-block">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.994 0-3.182-3.182m0 0a8.25 8.25 0 0 0-11.667 0l3.182 3.182M12 12h.01M16.023 9.348a4.5 4.5 0 0 1 .38-1.482A4.5 4.5 0 0 1 19.5 4.5v.001M6.477 9.348a4.5 4.5 0 0 0-.38-1.482A4.5 4.5 0 0 0 2.25 4.5v.001" />
+                    </svg>
+                    Bloco 3 – Dificuldades e Sugestões de Melhoria
+                </h3>
+                <ol>
+                    <li>Quais foram as principais dificuldades que você encontrou para entender ou aplicar as práticas de Governança de Dados neste ciclo?</li>
+                    <li>O que poderia ser melhorado no modelo GD-PME 3 Pilares, nos materiais de apoio ou na forma como a governança de dados está sendo implementada para os próximos ciclos?</li>
+                    <li>Você tem alguma sugestão específica para tornar a Governança de Dados mais fácil, útil ou relevante para a sua realidade na empresa?</li>
+                    <li>Você recomendaria a continuação e a expansão das práticas de Governança de Dados na empresa? Por quê?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-feedback fade-in-section" style="animation-delay: 0.6s;">
+            <p class="mt-1"><strong>Nota [1]:</strong> Essencial ao ciclo de melhoria contínua do modelo GD-PME 3 Pilares, este roteiro de coleta de feedbacks permite avaliar a efetividade e a percepção dos colaboradores quanto às ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas). Os insights resultantes são cruciais para o planejamento dos ciclos de governança subsequentes.</p>
+        </footer>
+    </div>
+</body>
+</html>

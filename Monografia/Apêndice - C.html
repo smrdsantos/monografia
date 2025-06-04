@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Glossário de Termos-Chave em Governança de Dados para PMEs (GD-PME)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #eef2ff; /* Light Lavender background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-glossario {
+            font-size: 1.8rem; /* Slightly larger section title for glossary */
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #4338ca; /* Indigo for titles */
+        }
+        .header-title-glossario {
+            font-size: 2.4rem; /* Slightly larger header title for glossary */
+            font-weight: 700;
+            color: #4338ca; /* Indigo */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-glossario {
+            font-size: 1.15rem; /* Slightly larger subtitle for glossary */
+            color: #4b5563; /* Medium gray */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table-card-glossario {
+            overflow-x: auto;
+        }
+        table.glossary-table {
+            width: 100%;
+            border-collapse: separate; /* Use separate for rounded corners on cells */
+            border-spacing: 0;
+            margin-top: 16px;
+        }
+        .glossary-table th, .glossary-table td {
+            text-align: left;
+            padding: 12px 16px; /* Increased padding */
+            border-bottom: 1px solid #d1d5db; /* Slightly darker border */
+            font-size: 0.95rem; /* Slightly larger font */
+        }
+        .glossary-table th {
+            background-color: #ede9fe; /* Lighter Indigo for table headers */
+            font-weight: 600;
+            color: #5b21b6; /* Darker Indigo */
+            border-top: 1px solid #d1d5db;
+        }
+        .glossary-table tr:last-child td {
+            border-bottom: none; /* Remove bottom border for the last row */
+        }
+        .glossary-table td:first-child {
+            font-weight: 600;
+            color: #4f46e5; /* Indigo for terms */
+            width: 30%; /* Fixed width for term column */
+        }
+        .glossary-table td:last-child {
+            color: #374151; /* Darker gray for definitions */
+        }
+        .glossary-table tr:hover {
+            background-color: #f5f3ff; /* Very light indigo on hover */
+        }
+        .footer-glossario {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-glossario {
+            color: #6d28d9; /* Purple highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-glossario {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #c7d2fe; /* Indigo light background */
+        }
+        .header-icon-glossario svg {
+            width: 32px;
+            height: 32px;
+            color: #4338ca; /* Indigo */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-5xl"> <!-- Max width adjusted for glossary content -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-glossario">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+            </div>
+            <h1 class="header-title-glossario">Glossário de Termos-Chave em Governança de Dados para PMEs</h1>
+            <p class="header-subtitle-glossario">APÊNDICE C: Definições simplificadas para apoiar a compreensão dos principais conceitos da monografia, especialmente em contextos de baixa maturidade informacional.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este glossário visa facilitar o entendimento dos termos essenciais utilizados. Ele serve como suporte direto ao <span class="highlight-glossario">Pilar 2 (Capacitação Contínua)</span> do modelo GD-PME, e também auxilia na compreensão das atividades dos Pilares 1 e 3, estabelecendo um vocabulário comum.
+            </p>
+        </section>
+
+        <!-- Glossary Table Section (Quadro C.1) -->
+        <section class="card table-card-glossario fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-glossario text-center">Quadro C.1 – Termos e Definições</h2>
+            <table class="glossary-table">
+                <thead>
+                    <tr>
+                        <th>Termo</th>
+                        <th>Definição Simplificada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Governança de Dados (GD)</td>
+                        <td>Conjunto de práticas, políticas e responsabilidades que asseguram a qualidade, segurança, uso ético e rastreabilidade das informações organizacionais.</td>
+                    </tr>
+                    <tr>
+                        <td>Maturidade Informacional</td>
+                        <td>Grau de desenvolvimento e sistematização da gestão da informação em uma organização.</td>
+                    </tr>
+                    <tr>
+                        <td>Pilar</td>
+                        <td>Elemento estruturante do modelo GD-PME 3 Pilares (dados/sistemas, capacitação, políticas).</td>
+                    </tr>
+                    <tr>
+                        <td>Ciclo Trimestral</td>
+                        <td>Etapa operacional de três meses para implementação incremental das ações do modelo (ver Apêndice B para detalhamento).</td>
+                    </tr>
+                    <tr>
+                        <td>Inventário de Dados</td>
+                        <td>Levantamento sistemático dos dados existentes, suas fontes, responsáveis e finalidades.</td>
+                    </tr>
+                    <tr>
+                        <td>Rastreamento de Dados</td>
+                        <td>Capacidade de identificar a origem, percurso e destino de uma informação dentro da organização.</td>
+                    </tr>
+                    <tr>
+                        <td>LGPD</td>
+                        <td>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), que regula o tratamento de dados pessoais no Brasil.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-glossario fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Otto (2011), Ladley (2020) e Floridi (2010).</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice oferece um glossário de termos fundamentais para a governança de dados, servindo de suporte direto ao Pilar 2 (Capacitação Contínua) do modelo GD-PME. Ao elucidar conceitos essenciais, também contribui para a melhor compreensão das atividades propostas nos Pilares 1 (Separação entre Dados e Sistemas) e 3 (Políticas Graduais e Simplificadas), estabelecendo um vocabulário comum na organização.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
