@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Sugestões de Instrumentos Pedagógicos para Oficinas de Governança de Dados - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fee7; /* Light Lime background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-pedagogicos {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #4d7c0f; /* Dark Lime for titles */
+        }
+        .header-title-pedagogicos {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #4d7c0f; /* Dark Lime */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-pedagogicos {
+            font-size: 1.15rem;
+            color: #65a30d; /* Medium Lime */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-pedagogicos {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #3f6212; /* Darkest Lime for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-pedagogicos {
+            color: #84cc16; /* Lime highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-pedagogicos {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #ecfccb; /* Light Lime background for icon */
+        }
+        .header-icon-pedagogicos svg {
+            width: 32px;
+            height: 32px;
+            color: #4d7c0f; /* Dark Lime */
+        }
+
+        .table-pedagogicos {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-pedagogicos th, .table-pedagogicos td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #d9f99d; /* Lighter Lime border */
+            font-size: 0.8rem;
+            vertical-align: top;
+        }
+        .table-pedagogicos th {
+            background-color: #f7fee7; /* Very Light Lime for table headers */
+            font-weight: 600;
+            color: #65a30d; /* Medium Lime */
+        }
+        .table-pedagogicos td {
+            color: #3f6212; /* Darkest Lime for table text */
+        }
+        /* Specific column widths */
+        .tipo-col { width: 20%; }
+        .ferramenta-col-ped { width: 20%; }
+        .objetivo-col { width: 25%; }
+        .aplicacao-col { width: 25%; }
+        .referencia-col { width: 10%; }
+        
+        .consideracoes-card-ped {
+            background-color: #ecfccb; /* Light Lime for considerations */
+            border-left: 4px solid #84cc16; /* Lime border */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .consideracoes-card-ped h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4d7c0f;
+            margin-bottom: 8px;
+        }
+        .consideracoes-card-ped ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #3f6212;
+        }
+        .consideracoes-card-ped li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-pedagogicos">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                </svg>
+            </div>
+            <h1 class="header-title-pedagogicos">Sugestões de Instrumentos Pedagógicos para Oficinas de Governança de Dados (GD)</h1>
+            <p class="header-subtitle-pedagogicos">APÊNDICE Z: Materiais e dinâmicas para estimular engajamento, reflexão crítica e compreensão prática do papel dos dados e da governança no cotidiano da PME.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este apêndice oferece sugestões práticas de materiais e dinâmicas para serem utilizados nas oficinas internas sobre Governança de Dados, conforme proposto no <span class="highlight-pedagogicos">Pilar 2 (Capacitação Contínua)</span> do modelo GD-PME 3 Pilares.
+            </p>
+        </section>
+
+        <!-- Pedagogical Instruments Table Section (Quadro Z.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-pedagogicos text-center">Quadro Z.1 – Sugestões de Instrumentos Pedagógicos para Oficinas de GD</h2>
+            <div class="overflow-x-auto">
+                <table class="table-pedagogicos">
+                    <thead>
+                        <tr>
+                            <th class="tipo-col">Tipo de Material/Dinâmica</th>
+                            <th class="ferramenta-col-ped">Ferramenta(s) Sugerida(s) (Ver Apêndice K)</th>
+                            <th class="objetivo-col">Objetivo Pedagógico Principal</th>
+                            <th class="aplicacao-col">Sugestão de Aplicação e Dicas</th>
+                            <th class="referencia-col">Apêndice de Referência Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Cartilha Visual Introdutória</td>
+                            <td>Canva; Google Docs/Slides; PowerPoint.</td>
+                            <td>Introduzir os conceitos básicos do modelo GD-PME 3 Pilares, seus benefícios e a importância da GD de forma simples e visual.</td>
+                            <td>Utilizar na primeira oficina de sensibilização (Apêndice D); Distribuir impressa ou digitalmente para todos os colaboradores; Usar como material de consulta rápida. Ver Apêndice AR para ideias visuais.</td>
+                            <td>D, AR, M</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Glossário Colaborativo de Termos de GD</td>
+                            <td>Google Docs compartilhado; Wiki interna simples; Mural físico com post-its.</td>
+                            <td>Construir uma linguagem comum sobre dados e governança na empresa, adaptada à realidade local.</td>
+                            <td>Iniciar com termos básicos (Apêndice C) e incentivar os setores a adicionarem termos específicos de suas áreas; Revisar e validar coletivamente.</td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Jogo de Decisões Baseadas em Dados</td>
+                            <td>Kahoot!; Quiz físico (perguntas e respostas em cartões); Simulações em planilha.</td>
+                            <td>Simular situações do dia a dia da PME onde decisões precisam ser tomadas com base na qualidade, disponibilidade e interpretação correta dos dados.</td>
+                            <td>Utilizar ao final das oficinas de capacitação para reforçar o aprendizado de forma lúdica; Criar cenários com dados "bons" e "ruins" para mostrar o impacto.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Dinâmica: "O Caminho do Dado na Empresa"</td>
+                            <td>Papel pardo ou lousa branca; Canetas coloridas; Post-its.</td>
+                            <td>Mapear colaborativamente como um dado importante (ex: pedido de cliente, cadastro de fornecedor) nasce, circula, é transformado e utilizado na empresa.</td>
+                            <td>Para oficinas sobre o Pilar 1 (Dados e Sistemas), para identificar gargalos, redundâncias ou pontos de fragilidade nos fluxos (conectar com Apêndice AL).</td>
+                            <td>AL, B</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Estudo de Caso Simplificado (interno ou fictício)</td>
+                            <td>Documento curto com descrição de um problema informacional real ou simulado na PME.</td>
+                            <td>Aplicar os conceitos do GD-PME 3 Pilares para propor soluções para um desafio informacional concreto.</td>
+                            <td>Usar em oficinas mais avançadas ou na formação de multiplicadores (Apêndice U); Dividir em grupos para discussão e apresentação de propostas. Ver Apêndice H.</td>
+                            <td>U, H</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Roteiro de Sugestões de Melhoria Contínua</td>
+                            <td>Formulário Google Forms (Apêndice J ou T); Caixa de sugestões física.</td>
+                            <td>Coletar continuamente ideias e percepções dos colaboradores sobre como aprimorar a GD na empresa.</td>
+                            <td>Divulgar o canal de sugestões; Analisar as contribuições nas reuniões de avaliação de ciclo (Apêndice AT) e dar feedback à equipe.</td>
+                            <td>J, T, AT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Application Considerations Section -->
+        <section class="card consideracoes-card-ped fade-in-section" style="animation-delay: 0.5s;">
+            <h3>Z.1 Considerações para a Aplicação dos Instrumentos Pedagógicos:</h3>
+            <ul>
+                <li>Todos os instrumentos pedagógicos devem ser adaptados ao perfil cultural e ao nível de maturidade informacional dos colaboradores da PME, priorizando sempre a linguagem visual, a contextualização com a realidade da empresa e uma abordagem participativa e informalmente criativa;</li>
+                <li>As oficinas de capacitação, idealmente, não devem exceder 1h30 a 2h de duração para manter o engajamento, e devem ser facilitadas por alguém que compreenda bem o modelo GD-PME 3 Pilares e suas ferramentas (seja um líder interno, um multiplicador formado – conforme Apêndice U – ou um consultor externo);</li>
+                <li>O objetivo não é apenas transmitir conteúdo, mas estimular a reflexão crítica, a troca de experiências e a co-construção de soluções para os desafios informacionais da organização.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-pedagogicos fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Bento (2021), Khatri e Brown (2010) e em práticas de educação organizacional inclusiva e metodologias ativas de aprendizagem.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice oferece instrumentos pedagógicos e dinâmicas para enriquecer o Pilar 2 (Capacitação Contínua) do modelo GD-PME. Com sugestões de materiais (cartilhas, jogos, estudos de caso), conforme Apêndices D e U, busca estimular engajamento, reflexão e aplicação prática dos conceitos dos Pilares 1 (Dados e Sistemas) e 3 (Políticas).</p>
+        </footer>
+    </div>
+</body>
+</html>

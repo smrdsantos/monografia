@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Modelo de Termo de Adesão Individual às Práticas de GD - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefce8; /* Light Yellow-Lime background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-adesao-ap {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #854d0e; /* Dark Yellow-Brown for titles */
+        }
+        .header-title-adesao-ap {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #854d0e; /* Dark Yellow-Brown */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-adesao-ap {
+            font-size: 1.15rem;
+            color: #a16207; /* Medium Yellow-Brown */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-adesao-ap {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #713f12; /* Darkest Yellow-Brown for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-adesao-ap {
+            color: #ca8a04; /* Yellow-Brown highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-adesao-ap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #fef9c3; /* Light Yellow-Lime background for icon */
+        }
+        .header-icon-adesao-ap svg {
+            width: 32px;
+            height: 32px;
+            color: #854d0e; /* Dark Yellow-Brown */
+        }
+
+        .termo-document-ap {
+            border: 1px solid #fde047; /* Yellow-Lime border for the document */
+            border-radius: 8px;
+            padding: 24px; 
+            background-color: #fefce8; /* Very light Yellow-Lime background */
+        }
+        .termo-document-ap h2 {
+            font-size: 1.3rem; 
+            font-weight: 600;
+            color: #a16207; 
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .termo-document-ap h3 {
+            font-size: 1.05rem; 
+            font-weight: 600;
+            color: #854d0e; 
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+        .termo-document-ap p, .termo-document-ap ul {
+            font-size: 0.9rem;
+            color: #713f12; /* Darkest Yellow-Brown for text */
+            line-height: 1.7; 
+            margin-bottom: 12px;
+        }
+        .termo-document-ap ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .termo-document-ap li {
+            margin-bottom: 8px;
+        }
+        .termo-document-ap .input-line-ap {
+            border-bottom: 1px solid #ca8a04; /* Yellow-Brown border for input lines */
+            display: inline-block;
+            min-width: 200px; 
+            margin-left: 8px;
+            font-weight: normal;
+            color: #854d0e;
+        }
+         .termo-document-ap .label-text-ap {
+            font-weight: 600; 
+            color: #854d0e;
+         }
+        .signature-section-ap {
+            margin-top: 30px;
+            color: #713f12;
+        }
+        .signature-block-ap {
+            margin-bottom:20px;
+        }
+        .signature-line-ap {
+            border-bottom: 1px solid #a16207; /* Medium Yellow-Brown border */
+            width: 100%;
+            max-width:300px;
+            display:block;
+            margin-top: 2px;
+            margin-bottom: 4px;
+        }
+        .placeholder-text-ap {
+            color: #a16207;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-adesao-ap">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </div>
+            <h1 class="header-title-adesao-ap">Modelo de Termo de Adesão Individual às Práticas de GD</h1>
+            <p class="header-subtitle-adesao-ap">APÊNDICE AP: Manual prático para PMEs estruturarem políticas básicas de Governança de Dados, com foco em instrumentos acessíveis e incrementalmente executáveis.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este apêndice apresenta um modelo simplificado de termo interno para a formalização das práticas básicas de GD em PMEs. Alinhado ao <span class="highlight-adesao-ap">Pilar 3 (Políticas Graduais e Simplificadas)</span>, visa promover clareza, corresponsabilidade e engajamento com o uso ético, seguro e organizado da informação.
+            </p>
+        </section>
+
+        <!-- Termo de Adesão Document Section (AP.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-adesao-ap text-center">AP.1 Modelo de Termo de Adesão Individual</h2>
+            <div class="termo-document-ap">
+                <h2>TERMO DE ADESÃO INDIVIDUAL ÀS PRÁTICAS DE GOVERNANÇA DE DADOS (MODELO GD-PME 3 PILARES)</h2>
+
+                <h3>Identificação do(a) Colaborador(a):</h3>
+                <p><span class="label-text-ap">Nome Completo:</span><span class="input-line-ap placeholder-text-ap">[Nome Completo do Colaborador]</span></p>
+                <p><span class="label-text-ap">Setor/Área de Atuação:</span><span class="input-line-ap placeholder-text-ap">[Setor do Colaborador]</span></p>
+                <p><span class="label-text-ap">Função/Cargo:</span><span class="input-line-ap placeholder-text-ap">[Cargo do Colaborador]</span></p>
+                <p><span class="label-text-ap">Data de Ingresso na Empresa:</span><span class="input-line-ap placeholder-text-ap">[___/___/_____]</span></p>
+
+                <p class="mt-6">Eu, acima identificado(a), declaro para os devidos fins que:</p>
+                <p>Fui devidamente informado(a) e tomei conhecimento da adoção do modelo de Governança de Dados GD-PME 3 Pilares pela empresa <span class="placeholder-text-ap">[Nome da Empresa]</span>, bem como dos seus objetivos e da importância da minha participação para o sucesso desta iniciativa;</p>
+                <p>Compreendo que este modelo se fundamenta em três pilares principais:</p>
+                <ul>
+                    <li><strong>Pilar 1: Separação entre Dados e Sistemas</strong> (visando a organização, inventário e padronização dos dados);</li>
+                    <li><strong>Pilar 2: Capacitação Contínua</strong> (buscando o desenvolvimento de habilidades e conhecimentos para o uso ético e eficaz dos dados);</li>
+                    <li><strong>Pilar 3: Políticas Graduais e Simplificadas</strong> (estabelecendo diretrizes claras para o tratamento, segurança e qualidade da informação);</li>
+                </ul>
+
+                <h3>Comprometo-me a:</h3>
+                <ul>
+                    <li>Respeitar as diretrizes, políticas e procedimentos de Governança de Dados estabelecidos pela empresa (conforme Apêndices G/AA/AY);</li>
+                    <li>Participar ativamente das capacitações e oficinas oferecidas (conforme Apêndices D, R, Z);</li>
+                    <li>Utilizar os dados e informações da empresa de forma ética, responsável, segura e em conformidade com as normas vigentes, incluindo a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018);</li>
+                    <li>Contribuir com a qualidade e integridade dos dados sob minha responsabilidade e reportar eventuais inconsistências, incidentes ou riscos identificados (conforme Apêndice N ou AB);</li>
+                    <li>Colaborar com as iniciativas de melhoria contínua da Governança de Dados na empresa.</li>
+                </ul>
+                <p>Estou ciente de que minha participação e adesão a estas práticas podem ser consideradas para fins de registro e acompanhamento dos indicadores de governança e engajamento da empresa (conforme Apêndice AS).</p>
+                <p>Assumo, portanto, este compromisso como parte integrante das minhas atribuições profissionais e do meu papel na construção de uma cultura organizacional orientada por dados.</p>
+
+                <div class="signature-section-ap">
+                    <div class="signature-block-ap">
+                        <div class="signature-line-ap"></div>
+                        <p class="label-text-ap">Assinatura do(a) Colaborador(a)</p>
+                        <p class="label-text-ap mt-2">Data: <span class="input-line-ap placeholder-text-ap" style="min-width:100px;">[___/___/_____]</span></p>
+                    </div>
+                    <div class="signature-block-ap mt-6">
+                        <div class="signature-line-ap"></div>
+                        <p class="label-text-ap">Assinatura do(a) Responsável pela Governança de Dados na Empresa / Liderança Imediata</p>
+                        <p class="text-xs">(Com reconhecimento do conteúdo e do compromisso assumido pelo colaborador).</p>
+                        <p class="label-text-ap mt-2">Cargo/Setor da Liderança: <span class="input-line-ap placeholder-text-ap">[Cargo/Setor]</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer-adesao-ap fade-in-section" style="animation-delay: 0.6s;">
+            <p class="mt-1"><strong>Nota [1]:</strong> Este Termo de Adesão Individual formaliza o conhecimento e o comprometimento dos colaboradores com as práticas de Governança de Dados do modelo GD-PME 3 Pilares, reforçando a responsabilidade na aplicação das diretrizes dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), e contribuindo para uma cultura orientada por dados.</p>
+        </footer>
+    </div>
+</body>
+</html>

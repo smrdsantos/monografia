@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Modelo de Termo de Boas Práticas com Dados - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* Light Sky Blue background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-termo-aa {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0284c7; /* Sky Blue for titles */
+        }
+        .header-title-termo-aa {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0284c7; /* Sky Blue */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-termo-aa {
+            font-size: 1.15rem;
+            color: #0369a1; /* Darker Sky Blue */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-termo-aa {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #075985; /* Darkest Sky Blue for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-termo-aa {
+            color: #0ea5e9; /* Bright Sky Blue highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-termo-aa {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e0f2fe; /* Light Sky Blue background for icon */
+        }
+        .header-icon-termo-aa svg {
+            width: 32px;
+            height: 32px;
+            color: #0284c7; /* Sky Blue */
+        }
+
+        .termo-document-aa {
+            border: 1px solid #7dd3fc; /* Light Sky Blue border for the document */
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f0f9ff; /* Very light Sky Blue background */
+        }
+        .termo-document-aa h2 {
+            font-size: 1.4rem; /* Adjusted for document title */
+            font-weight: 600;
+            color: #0369a1;
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .termo-document-aa h3 {
+            font-size: 1.05rem; /* Adjusted for section titles */
+            font-weight: 600;
+            color: #075985;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+        .termo-document-aa ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #0c4a6e; /* Darkest Sky Blue for list items */
+        }
+        .termo-document-aa li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        .termo-document-aa .input-line-aa {
+            border-bottom: 1px solid #0ea5e9;
+            display: inline-block;
+            min-width: 200px;
+            margin-left: 8px;
+        }
+         .termo-document-aa .label-text {
+            font-weight: 500;
+            color: #075985;
+         }
+        .signature-section-aa {
+            margin-top: 32px;
+            color: #0c4a6e;
+        }
+        .signature-block-aa {
+            margin-bottom:20px;
+        }
+        .signature-line-aa {
+            border-bottom: 1px solid #0ea5e9;
+            width: 100%;
+            max-width:300px;
+            display:block;
+            margin-top: 2px;
+            margin-bottom: 4px;
+        }
+        
+        .recomendacoes-card-aa {
+            background-color: #e0f2fe; /* Light Sky Blue for recommendations */
+            border-left: 4px solid #0ea5e9; /* Bright Sky Blue border */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .recomendacoes-card-aa h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 8px;
+        }
+        .recomendacoes-card-aa ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #075985;
+        }
+        .recomendacoes-card-aa li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-termo-aa">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+            </div>
+            <h1 class="header-title-termo-aa">Modelo de Termo de Boas Práticas com Dados</h1>
+            <p class="header-subtitle-termo-aa">APÊNDICE AA: Instrumento para formalização das práticas básicas de GD em PMEs, promovendo clareza, corresponsabilidade e engajamento.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este instrumento está alinhado ao <span class="highlight-termo-aa">Pilar 3 (Políticas Graduais e Simplificadas)</span> e visa promover clareza quanto às expectativas, corresponsabilidade no tratamento dos dados e engajamento institucional com o uso ético, seguro e organizado da informação.
+            </p>
+        </section>
+
+        <!-- Termo de Boas Práticas Document Section (AA.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-termo-aa text-center">AA.1 Termo Interno de Boas Práticas em Governança de Dados</h2>
+            <div class="termo-document-aa">
+                <h2>TERMO INTERNO DE BOAS PRÁTICAS COM DADOS</h2>
+
+                <p class="my-4 text-sm"><span class="label-text">Empresa:</span><span class="input-line-aa"></span></p>
+                <p class="my-4 text-sm"><span class="label-text">Responsável pelo Setor (se aplicável):</span><span class="input-line-aa"></span></p>
+                <p class="my-4 text-sm"><span class="label-text">Data de Emissão/Revisão:</span><span class="input-line-aa"></span></p>
+
+                <p class="mt-6 mb-3 text-sm text-gray-700">Declaro, para os devidos fins, como colaborador(a) da empresa supracitada, que compreendo e me comprometo a seguir as seguintes boas práticas de uso, tratamento e proteção de dados no contexto das minhas atividades organizacionais:</p>
+
+                <h3>Acesso e Uso Responsável:</h3>
+                <ul>
+                    <li>Acessar apenas os dados estritamente necessários para o desempenho da minha função;</li>
+                    <li>Utilizar os dados e informações da empresa exclusivamente para finalidades profissionais e legítimas.</li>
+                </ul>
+
+                <h3>Confidencialidade e Segurança:</h3>
+                <ul>
+                    <li>Manter a confidencialidade das informações sensíveis da empresa, de clientes, de fornecedores e de colegas, não as divulgando a terceiros não autorizados;</li>
+                    <li>Zelar pela segurança das minhas credenciais de acesso (senhas, tokens), não as compartilhando.</li>
+                </ul>
+
+                <h3>Qualidade e Integridade dos Dados:</h3>
+                <ul>
+                    <li>Esforçar-me para manter os dados sob minha responsabilidade atualizados, corretos e consistentes, seguindo os padrões definidos;</li>
+                    <li>Não excluir nem modificar dados de forma indevida, sem autorização ou sem o registro apropriado, quando necessário.</li>
+                </ul>
+                
+                <h3>Rotinas e Procedimentos:</h3>
+                <ul>
+                    <li>Contribuir com as rotinas de backup e validação periódica dos dados, conforme orientado;</li>
+                    <li>Notificar imediatamente a liderança ou o responsável designado em caso de identificação de erro significativo, perda de dados, incidente de segurança ou risco de vazamento de informações.</li>
+                </ul>
+
+                <h3>Capacitação e Conformidade:</h3>
+                <ul>
+                    <li>Participar ativamente das atividades de capacitação sobre Governança de Dados e proteção de dados (incluindo LGPD) promovidas pela empresa;</li>
+                    <li>Buscar esclarecer dúvidas sobre o tratamento correto dos dados sempre que necessário.</li>
+                </ul>
+
+                <p class="mt-6 text-sm text-gray-700">Reconheço que o cumprimento destas boas práticas é fundamental para a qualidade do trabalho, a proteção dos ativos informacionais da empresa, a segurança dos dados pessoais e a sustentabilidade do nosso negócio.</p>
+
+                <div class="signature-section-aa">
+                    <div class="signature-block-aa">
+                        <p class="label-text">Assinatura do(a) Colaborador(a):</p>
+                        <div class="signature-line-aa"></div>
+                        <p class="label-text mt-2">Data: <span class="input-line-aa" style="min-width:100px;"></span></p>
+                    </div>
+                    <div class="signature-block-aa mt-6">
+                        <p class="label-text">Assinatura da Liderança Responsável (ou Representante da Empresa):</p>
+                        <div class="signature-line-aa"></div>
+                        <p class="label-text mt-2">Data: <span class="input-line-aa" style="min-width:100px;"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Recommendations Section (AA.2) -->
+        <section class="card recomendacoes-card-aa fade-in-section" style="animation-delay: 0.5s;">
+            <h3>AA.2 Recomendações de Aplicação:</h3>
+            <ul>
+                <li>Este Termo de Boas Práticas deve ser apresentado, discutido e idealmente assinado por todos os colaboradores que lidam com dados na PME, especialmente durante o processo de integração de novos funcionários e em oficinas de sensibilização sobre GD (conforme Apêndice D);</li>
+                <li>Recomenda-se que seja revisado e renovado periodicamente (ex: anualmente ou a cada ciclo trimestral/semestral de governança), ou sempre que houver atualizações significativas nas políticas internas ou na legislação (como a LGPD);</li>
+                <li>O termo pode ser adaptado pela PME para incluir o logo da empresa, campos específicos de setor ou instruções complementares que reflitam sua realidade operacional e os riscos informacionais prioritários (identificados, por exemplo, com o auxílio do Apêndice N – Matriz de Riscos). A linguagem deve ser mantida clara e acessível.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-termo-aa fade-in-section" style="animation-delay: 0.6s;">
+            <p class="mt-1"><strong>Nota [1]:</strong> Instrumento central para o Pilar 3 (Políticas Graduais e Simplificadas) do modelo GD-PME, este Termo de Boas Práticas formaliza o compromisso dos colaboradores com o uso ético, seguro e organizado da informação, reforçando também o Pilar 2 (Capacitação Contínua) pela conscientização das responsabilidades individuais.</p>
+        </footer>
+    </div>
+</body>
+</html>

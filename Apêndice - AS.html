@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Quadro de Indicadores de Impacto da Implementação do Modelo GD-PME 3 Pilares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light Gray background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-impacto-as {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1f2937; /* Dark Gray for titles */
+        }
+        .header-title-impacto-as {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1f2937; /* Dark Gray */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-impacto-as {
+            font-size: 1.15rem;
+            color: #374151; /* Medium Gray */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-impacto-as {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #111827; /* Darkest Gray for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-impacto-as {
+            color: #4b5563; /* Gray highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-impacto-as {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e5e7eb; /* Light Gray background for icon */
+        }
+        .header-icon-impacto-as svg {
+            width: 32px;
+            height: 32px;
+            color: #1f2937; /* Dark Gray */
+        }
+
+        .table-impacto-as {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-impacto-as th, .table-impacto-as td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db; /* Lighter Gray border */
+            font-size: 0.75rem; 
+            vertical-align: top;
+        }
+        .table-impacto-as th {
+            background-color: #f3f4f6; /* Very Light Gray for table headers */
+            font-weight: 600;
+            color: #374151; /* Medium Gray */
+        }
+        .table-impacto-as td {
+            color: #111827; /* Darkest Gray for table text */
+        }
+        /* Specific column widths */
+        .dimensao-col-as { width: 15%; }
+        .indicador-col-as { width: 20%; }
+        .metodo-col-as { width: 25%; }
+        .periodicidade-col-as { width: 15%; }
+        .meta-col-as { width: 15%; }
+        .ref-col-as { width: 10%; }
+        
+        .interpretacao-card-as {
+            background-color: #e5e7eb; /* Light Gray for interpretation card */
+            border-left: 4px solid #6b7280; /* Medium Gray border */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .interpretacao-card-as h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .interpretacao-card-as ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #111827;
+        }
+        .interpretacao-card-as li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-impacto-as">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0ZM12 9v3.75m0-3.75V6m0 3.75H9m3.75 0h3.75M9 15h6" />
+                </svg>
+            </div>
+            <h1 class="header-title-impacto-as">Quadro de Indicadores de Impacto da Implementação do Modelo GD-PME 3 Pilares</h1>
+            <p class="header-subtitle-impacto-as">APÊNDICE AS: Conjunto de indicadores práticos para apoiar a mensuração do progresso organizacional e dos impactos resultantes da implantação do modelo GD-PME.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Estes indicadores estão alinhados com os objetivos estratégicos de desenvolvimento da <span class="highlight-impacto-as">maturidade informacional, eficiência operacional, conformidade e fortalecimento da cultura de dados</span> em Pequenas e Médias Empresas (PMEs).
+            </p>
+        </section>
+
+        <!-- Impact Indicators Table Section (Quadro AS.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-impacto-as text-center">Quadro AS.1 – Sugestões de Indicadores-Chave de Impacto da Governança de Dados (GD-PME)</h2>
+            <div class="overflow-x-auto">
+                <table class="table-impacto-as">
+                    <thead>
+                        <tr>
+                            <th class="dimensao-col-as">Dimensão de Impacto Avaliada</th>
+                            <th class="indicador-col-as">Indicador de Impacto Sugerido</th>
+                            <th class="metodo-col-as">Método de Coleta / Verificação Sugerido</th>
+                            <th class="periodicidade-col-as">Periodicidade Sugerida de Medição</th>
+                            <th class="meta-col-as">Meta Exemplificativa para o Primeiro Ano</th>
+                            <th class="ref-col-as">Apêndice(s) de Referência / Suporte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Eficiência Operacional</td>
+                            <td>Redução do tempo médio de resposta a solicitações de clientes (ou tempo de ciclo de um processo chave);</td>
+                            <td>Análise de planilhas de controle de tempo; Comparativo antes/depois da implementação de ações do Pilar 1 (ex: inventário, padronização).</td>
+                            <td>Trimestral</td>
+                            <td>Redução de 10% a 15% no tempo médio.</td>
+                            <td>AL, B</td>
+                        </tr>
+                        <tr>
+                            <td>Redução do percentual de retrabalho devido a erros de dados em um processo crítico (ex: faturamento, pedidos).</td>
+                            <td>Análise de registros de erros; Entrevistas com a equipe.</td>
+                            <td>Trimestral</td>
+                            <td>Redução de X% (definir linha de base).</td>
+                            <td>J/T</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Qualidade e Conformidade dos Dados</td>
+                            <td>Percentual de dados essenciais (ex: cadastros de clientes) atualizados e consistentes no repositório central;</td>
+                            <td>Amostragem e checklist de consistência dos dados (conforme padrões definidos no Pilar 1 e 3); Auditoria interna simples (Apêndice AX).</td>
+                            <td>Bimestral / Trimestral</td>
+                            <td>&gt; 80% dos dados essenciais atualizados e consistentes.</td>
+                            <td>A, AX</td>
+                        </tr>
+                        <tr>
+                            <td>Nível de conformidade com as políticas de backup estabelecidas (Pilar 3).</td>
+                            <td>Verificação dos registros de backup; Testes de recuperação (se aplicável).</td>
+                            <td>Mensal / Trimestral</td>
+                            <td>100% de conformidade com a rotina de backup.</td>
+                            <td>AB, G/AA/AY</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Cultura Organizacional e Capacitação (Pilar 2)</td>
+                            <td>Percentual de colaboradores que participaram das oficinas de capacitação em GD no período;</td>
+                            <td>Listas de presença das oficinas (Apêndice D); Registros de participação em trilhas formativas.</td>
+                            <td>Trimestral</td>
+                            <td>70% a 80% dos colaboradores dos setores-alvo capacitados.</td>
+                            <td>D, U/AQ, R</td>
+                        </tr>
+                        <tr>
+                            <td>Nível de adesão ao Termo de Boas Práticas com Dados.</td>
+                            <td>Verificação dos Termos de Boas Práticas/Adesão assinados (Apêndice G/AA/AP/AY).</td>
+                            <td>Semestral / Anual</td>
+                            <td>100% dos colaboradores (novos e antigos) com termo assinado e compreendido.</td>
+                            <td>G/AA/AP/AY</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Tomada de Decisão Baseada em Dados</td>
+                            <td>Percentual de reuniões de gestão ou setoriais que utilizam relatórios ou dados estruturados como base para discussão e decisão;</td>
+                            <td>Observação ou registro em atas de reunião; Entrevistas com gestores.</td>
+                            <td>Mensal</td>
+                            <td>Aumento de X% no uso de dados em reuniões (definir linha de base); 100% das reuniões estratégicas chave.</td>
+                            <td>P/Y/AK/AW, X</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interpretation and Applications Section (AS.1) -->
+        <section class="card interpretacao-card-as fade-in-section" style="animation-delay: 0.5s;">
+            <h3>AS.1 Interpretação e Aplicações dos Indicadores de Impacto:</h3>
+            <ul>
+                <li>Os indicadores apresentados no Quadro AS.1 devem ser selecionados e adaptados pela PME conforme suas prioridades estratégicas, o foco dos ciclos de implementação do GD-PME 3 Pilares e a facilidade de coleta dos dados para cada indicador;</li>
+                <li>É recomendável definir uma linha de base para cada indicador antes de iniciar a implementação do modelo, para permitir uma mensuração clara do progresso e do impacto ao longo do tempo;</li>
+                <li>Estes indicadores podem ser registrados em planilhas simples (conforme Apêndice K para ferramentas) e devem ser integrados ao plano de ação (Apêndice B) e aos relatórios de acompanhamento (Apêndices P/Y/AK/AW). A visualização desses indicadores (conforme Apêndice X e AG) também é importante para a comunicação interna;</li>
+                <li>A aplicação sistemática e a análise crítica desses indicadores permitem não apenas evidenciar os avanços e o valor da Governança de Dados para a PME, mas também identificar áreas que necessitam de mais atenção e ajustar as prioridades operacionais e estratégicas para os próximos ciclos, reforçando assim a efetividade incremental e adaptativa do modelo GD-PME 3 Pilares.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-impacto-as fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos objetivos estratégicos do modelo GD-PME 3 Pilares e em indicadores de desempenho comuns em gestão da informação e projetos de melhoria (LADLEY, 2020; MAHANTI, 2021a).</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este quadro de indicadores de impacto mensura os resultados da implementação integrada do modelo GD-PME 3 Pilares, abrangendo dimensões como eficiência, qualidade dos dados e cultura. Reflete a eficácia das ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), com apoio dos instrumentos dos Apêndices A, B, D, F, G/AA/AP/AY, J/T, K, AL, P/Y/AK/AW, Q, R, U/AQ, X, AG, AB e AX.</p>
+        </footer>
+    </div>
+</body>
+</html>
