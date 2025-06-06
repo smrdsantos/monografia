@@ -198,9 +198,11 @@
 
 
 
-        @media (max-width: 768px) {
-    /* REMOVIDO: body { padding-left: 0; } - Não é mais necessário aqui. */
-    
+/* CORRETO APÓS A REMOÇÃO */
+@media (max-width: 768px) {
+    body {
+        /* Se você tiver a linha "padding-left: 0;" aqui, pode remover também. */
+    }
     .sidebar {
         transform: var(--sidebar-hidden-transform); 
         box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
@@ -211,12 +213,9 @@
     .sidebar-toggle {
         display: block; 
     }
-    
-    /* A GARANTIA DE QUE O CONTEÚDO FIQUE CENTRALIZADO EM TELAS PEQUENAS */
-    .main-content-area {
-         padding-left: 0 !important; /* Usamos !important para garantir que esta regra sempre vença */
-    }
+    /* A linha sobre .main-content-area foi removida daqui. */
 }
+
         
         .card {
             background: rgba(20, 30, 70, 0.6); 
@@ -832,136 +831,91 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebar = document.getElementById('sidebar');
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const mainContentArea = document.querySelector('.main-content-area');
-            const sections = document.querySelectorAll('main section[id]');
-            const navLinks = document.querySelectorAll('.sidebar-nav a');
-            const scrollOffset = 80; 
+document.addEventListener('DOMContentLoaded', () => {
+        // --- Elementos Principais ---
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mainContentArea = document.querySelector('.main-content-area');
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
+        const closeRotateBtn = document.getElementById('closeRotateSuggestion');
+        const scrollOffset = 80;
 
-
-
-// ===== INÍCIO DO CÓDIGO PARA FECHAR A SUGESTÃO DE ROTAÇÃO =====
-const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
-const closeBtn = document.getElementById('closeRotateSuggestion');
-
-if (rotateOverlay && closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        rotateOverlay.style.display = 'none';
-    });
-}
-// ===== FIM DO CÓDIGO PARA FECHAR A SUGESTÃO DE ROTAÇÃO =====
-
-
-
-
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', () => {
-                    sidebar.classList.toggle('open');
-                });
+        // --- LÓGICA CENTRALIZADA PARA AJUSTAR O LAYOUT ---
+        function adjustLayout() {
+            if (window.innerWidth > 768) {
+                // Em telas grandes, o conteúdo principal tem espaço para o menu
+                mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
+            } else {
+                // Em telas pequenas, o conteúdo principal ocupa a tela toda
+                mainContentArea.style.paddingLeft = '0';
             }
-            
-            function highlightActiveLink() {
-                let currentSectionId = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.pageYOffset >= sectionTop - scrollOffset) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
+        }
 
-                if (!currentSectionId && sections.length > 0 && window.pageYOffset < (sections[0].offsetTop - scrollOffset)) {
-                    currentSectionId = 'resumo'; 
+        // --- Lógica de Navegação e Destaque de Links ---
+        function highlightActiveLink() {
+            let currentSectionId = '';
+            const scrollPosition = window.pageYOffset;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollPosition >= sectionTop - scrollOffset) {
+                    currentSectionId = section.getAttribute('id');
                 }
-                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20) { 
-                    if (sections.length > 0) {
-                        for (let i = sections.length - 1; i >= 0; i--) {
-                            if (sections[i].offsetTop < (window.innerHeight + window.pageYOffset)) {
-                                currentSectionId = sections[i].getAttribute('id');
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active', 'active-parent');
-                    const subMenu = link.nextElementSibling;
-                    let isParentOfActiveSubmenu = false;
-
-                    if (subMenu && subMenu.classList.contains('sub-menu')) {
-                        const subLinks = subMenu.querySelectorAll('a');
-                        subLinks.forEach(subLink => {
-                            subLink.classList.remove('active');
-                            if (subLink.getAttribute('href') === '#' + currentSectionId) {
-                                subLink.classList.add('active');
-                                isParentOfActiveSubmenu = true; 
-                            }
-                        });
-                         // Gerencia a abertura do submenu se um filho estiver ativo
-                        if(isParentOfActiveSubmenu && !subMenu.style.maxHeight) {
-                           // subMenu.style.maxHeight = subMenu.scrollHeight + "px"; // Removido para priorizar CSS :hover
-                        } else if (!isParentOfActiveSubmenu && subMenu.style.maxHeight !== "0px" && !link.matches(':hover') && !subMenu.matches(':hover')) {
-                           // subMenu.style.maxHeight = null; // Removido para priorizar CSS :hover
-                        }
-                    }
-
-                    if ((link.getAttribute('href') === '#' + currentSectionId) || isParentOfActiveSubmenu) {
-                        link.classList.add('active');
-                        if(isParentOfActiveSubmenu) link.classList.add('active-parent');
-
-                        if (sidebar.classList.contains('open') || window.innerWidth > 768) {
-                            const linkTopInSidebar = link.offsetTop - sidebar.offsetTop; 
-                            const linkHeight = link.offsetHeight;
-                            const sidebarScrollTop = sidebar.scrollTop;
-                            const sidebarHeight = sidebar.clientHeight;
-
-                            if (linkTopInSidebar < sidebarScrollTop + 20) { 
-                                sidebar.scrollTop = Math.max(0, linkTopInSidebar - 20); 
-                            } else if (linkTopInSidebar + linkHeight > sidebarScrollTop + sidebarHeight - 20) { 
-                                sidebar.scrollTop = linkTopInSidebar + linkHeight - sidebarHeight + 20; 
-                            }
-                        }
-                    }
-                });
-            }
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId.startsWith('#')) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            const targetPosition = targetElement.offsetTop - (scrollOffset - 20); 
-                            
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                                sidebar.classList.remove('open');
-                            }
-                        }
-                    }
-                });
             });
-
-            function handleResizeAndLoad() {
-                if (window.innerWidth > 768) {
-                    sidebar.classList.remove('open'); 
-                    document.body.style.paddingLeft = 'var(--sidebar-width)';
-                } else {
-                     document.body.style.paddingLeft = '0';
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active');
                 }
-                highlightActiveLink();
-            }
+            });
+        }
+        
+        // --- EVENTOS E AÇÕES ---
 
-            window.addEventListener('scroll', highlightActiveLink);
-            window.addEventListener('resize', handleResizeAndLoad);
-            handleResizeAndLoad(); 
+        // 1. Fechar o Aviso de Rotação
+        if (rotateOverlay && closeRotateBtn) {
+            closeRotateBtn.addEventListener('click', () => {
+                rotateOverlay.style.display = 'none';
+            });
+        }
+
+        // 2. Controle do Menu Lateral (Sidebar)
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        }
+
+        // 3. Navegação Suave pelos Links do Menu
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const targetPosition = targetElement.offsetTop - (scrollOffset - 20);
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                        if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                            sidebar.classList.remove('open');
+                        }
+                    }
+                }
+            });
         });
+        
+        // 4. Gatilhos que disparam as funções de ajuste
+        window.addEventListener('scroll', highlightActiveLink);
+        window.addEventListener('resize', adjustLayout);
+        window.addEventListener('orientationchange', () => {
+             setTimeout(adjustLayout, 100); // Delay para garantir que o browser tenha atualizado as dimensões
+        });
+        
+        // Execução inicial no carregamento da página para garantir o estado correto
+        adjustLayout();
+        highlightActiveLink();
+    });
     </script>
 </body>
 </html>
