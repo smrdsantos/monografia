@@ -199,23 +199,24 @@
 
 
         @media (max-width: 768px) {
-            body {
-                padding-left: 0; 
-            }
-            .sidebar {
-                transform: var(--sidebar-hidden-transform); 
-                box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
-            }
-            .sidebar.open {
-                transform: var(--sidebar-visible-transform); 
-            }
-            .sidebar-toggle {
-                display: block; 
-            }
-            .main-content-area {
-                 padding-left: 0; 
-            }
-        }
+    /* REMOVIDO: body { padding-left: 0; } - Não é mais necessário aqui. */
+    
+    .sidebar {
+        transform: var(--sidebar-hidden-transform); 
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+    }
+    .sidebar.open {
+        transform: var(--sidebar-visible-transform); 
+    }
+    .sidebar-toggle {
+        display: block; 
+    }
+    
+    /* A GARANTIA DE QUE O CONTEÚDO FIQUE CENTRALIZADO EM TELAS PEQUENAS */
+    .main-content-area {
+         padding-left: 0 !important; /* Usamos !important para garantir que esta regra sempre vença */
+    }
+}
         
         .card {
             background: rgba(20, 30, 70, 0.6); 
