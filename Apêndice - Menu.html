@@ -107,11 +107,11 @@
             background-color: rgba(0, 128, 128, 0.2); /* Fundo Ciano/Azul-petróleo sutil */
 }
         
-        .main-content-area {
-            transition: padding-left 0.3s ease-in-out;
-             padding-left: var(--sidebar-width); 
-        }
-
+/* VERSÃO CORRIGIDA */
+.main-content-area {
+    transition: padding-left 0.3s ease-in-out;
+    /* A linha de padding-left foi REMOVIDA daqui */
+}
 
 /* ===== INÍCIO DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
 .rotate-suggestion-overlay {
@@ -196,7 +196,13 @@
 }
 /* ===== FIM DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
 
-
+/* ===== INÍCIO DA REGRA MOBILE-FIRST ===== */
+@media (min-width: 769px) {
+    .main-content-area {
+        padding-left: var(--sidebar-width);
+    }
+}
+/* ===== FIM DA REGRA MOBILE-FIRST ===== */
 
 /* CORRETO APÓS A REMOÇÃO */
 @media (max-width: 768px) {
@@ -830,28 +836,16 @@
         </footer>
     </main>
 
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         // --- Elementos Principais ---
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
-        const mainContentArea = document.querySelector('.main-content-area');
         const sections = document.querySelectorAll('main section[id]');
         const navLinks = document.querySelectorAll('.sidebar-nav a');
         const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
         const closeRotateBtn = document.getElementById('closeRotateSuggestion');
         const scrollOffset = 80;
-
-        // --- LÓGICA CENTRALIZADA PARA AJUSTAR O LAYOUT ---
-        function adjustLayout() {
-            if (window.innerWidth > 768) {
-                // Em telas grandes, o conteúdo principal tem espaço para o menu
-                mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
-            } else {
-                // Em telas pequenas, o conteúdo principal ocupa a tela toda
-                mainContentArea.style.paddingLeft = '0';
-            }
-        }
 
         // --- Lógica de Navegação e Destaque de Links ---
         function highlightActiveLink() {
@@ -905,17 +899,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // 4. Gatilhos que disparam as funções de ajuste
+        // 4. Gatilho para o destaque de links ao rolar a página
         window.addEventListener('scroll', highlightActiveLink);
-        window.addEventListener('resize', adjustLayout);
-        window.addEventListener('orientationchange', () => {
-             setTimeout(adjustLayout, 100); // Delay para garantir que o browser tenha atualizado as dimensões
-        });
         
-        // Execução inicial no carregamento da página para garantir o estado correto
-        adjustLayout();
+        // Execução inicial para destacar o link correto ao carregar
         highlightActiveLink();
     });
-    </script>
+</script>
 </body>
 </html>
