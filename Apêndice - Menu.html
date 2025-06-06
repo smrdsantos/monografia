@@ -196,18 +196,12 @@
 }
 /* ===== FIM DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
 
-/* ===== INÍCIO DA REGRA MOBILE-FIRST ===== */
-@media (min-width: 769px) {
-    .main-content-area {
-        padding-left: var(--sidebar-width);
-    }
-}
-/* ===== FIM DA REGRA MOBILE-FIRST ===== */
 
-/* CORRETO APÓS A REMOÇÃO */
+
+/* VERSÃO CORRIGIDA E FINAL DO MEDIA QUERY */
 @media (max-width: 768px) {
-    body {
-        /* Se você tiver a linha "padding-left: 0;" aqui, pode remover também. */
+    .main-content-area {
+        padding-left: 0; /* Garante que em telas pequenas não há espaço */
     }
     .sidebar {
         transform: var(--sidebar-hidden-transform); 
@@ -219,9 +213,7 @@
     .sidebar-toggle {
         display: block; 
     }
-    /* A linha sobre .main-content-area foi removida daqui. */
 }
-
         
         .card {
             background: rgba(20, 30, 70, 0.6); 
@@ -841,11 +833,28 @@
         // --- Elementos Principais ---
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const mainContentArea = document.querySelector('.main-content-area');
         const sections = document.querySelectorAll('main section[id]');
         const navLinks = document.querySelectorAll('.sidebar-nav a');
         const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
         const closeRotateBtn = document.getElementById('closeRotateSuggestion');
         const scrollOffset = 80;
+
+        // --- LÓGICA CENTRALIZADA PARA AJUSTAR O LAYOUT ---
+        function adjustLayoutForScreenSize() {
+            if (window.innerWidth > 768) {
+                // DESKTOP: Garante que o menu lateral está visível e o conteúdo tem espaçamento
+                sidebar.classList.remove('open');
+                mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
+                sidebar.style.transform = 'translateX(0)';
+            } else {
+                // MOBILE: Garante que o conteúdo não tem espaçamento e o menu lateral está oculto (a menos que seja aberto)
+                mainContentArea.style.paddingLeft = '0';
+                if (!sidebar.classList.contains('open')) {
+                    sidebar.style.transform = 'var(--sidebar-hidden-transform)';
+                }
+            }
+        }
 
         // --- Lógica de Navegação e Destaque de Links ---
         function highlightActiveLink() {
@@ -884,27 +893,31 @@
         // 3. Navegação Suave pelos Links do Menu
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
+                e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if (targetId && targetId.startsWith('#')) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const targetPosition = targetElement.offsetTop - (scrollOffset - 20);
-                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                        if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                            sidebar.classList.remove('open');
-                        }
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const targetPosition = targetElement.offsetTop - (scrollOffset - 20);
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
                     }
                 }
             });
         });
         
-        // 4. Gatilho para o destaque de links ao rolar a página
+        // 4. Gatilhos (Listeners de Eventos)
         window.addEventListener('scroll', highlightActiveLink);
+        window.addEventListener('resize', adjustLayoutForScreenSize);
+        window.addEventListener('orientationchange', () => {
+             setTimeout(adjustLayoutForScreenSize, 150); 
+        });
         
-        // Execução inicial para destacar o link correto ao carregar
+        // Execução inicial para garantir o estado correto da página
+        adjustLayoutForScreenSize();
         highlightActiveLink();
     });
 </script>
+
 </body>
 </html>
