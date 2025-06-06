@@ -17,8 +17,8 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0f1f; 
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 70, 70, 0.15), transparent 50%), /* Roxo suavizado para um tom de azul-petróleo escuro e sutil */
-                radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.25), transparent 50%); /* Ciano/azul-petróleo mantido, talvez um pouco mais sutil */
+                radial-gradient(circle at 10% 20%, rgba(76, 0, 130, 0.3), transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.3), transparent 50%);
             min-height: 100vh;
             color: #adb5bd; 
             padding-bottom: 4rem;
@@ -37,7 +37,7 @@
             padding: 1rem 1.5rem;
             overflow-y: auto;
             z-index: 1000;
-            box-shadow: 5px 0 15px rgba(0, 128, 128, 0.15); /* Sombra Ciano/Azul-petróleo sutil */
+            box-shadow: 5px 0 15px rgba(76, 0, 130, 0.2); 
             transform: var(--sidebar-visible-transform); 
             transition: transform 0.3s ease-in-out;
         }
@@ -62,7 +62,8 @@
         .sidebar-header { margin-bottom: 1.5rem; text-align: center; padding-top: 1rem; }
         .sidebar-title {
             font-size: 1.2rem; font-weight: 700; color: #e0e0e0;
-            text-shadow: 0 0 8px rgba(128, 222, 234, 0.5); /* Brilho Ciano suave */        }
+            text-shadow: 0 0 5px #d1c4e9, 0 0 10px #d1c4e9, 0 0 15px #b39ddb; 
+        }
         .sidebar-subtitle { font-size: 0.8rem; color: #80deea; }
         .sidebar-nav ul { list-style: none; padding: 0; }
         .sidebar-nav li a {
@@ -76,15 +77,12 @@
             transform: translateX(4px); border-left-color: #4db6ac;
         }
         .sidebar-nav li a.active {
-            background-color: rgba(0, 128, 128, 0.25); /* Fundo Ciano/Azul-petróleo mais intenso */
-            color: #80deea; /* Texto Ciano claro */
-            font-weight: 700; 
-            border-left-color: #26c6da; /* Borda Ciano brilhante */
-            transform: translateX(2px);
+            background-color: rgba(76, 0, 130, 0.2); color: #d1c4e9;
+            font-weight: 700; border-left-color: #9575cd; transform: translateX(2px);
         }
         .sidebar-nav li a.active::after {
             content: '›'; position: absolute; right: 10px; top: 50%;
-            transform: translateY(-50%); color: #26c6da; font-size: 1.2em;
+            transform: translateY(-50%); color: #9575cd; font-size: 1.2em;
         }
         .sidebar-nav ul ul { 
             margin-left: 0.75rem; margin-top: 0.1rem;
@@ -101,11 +99,7 @@
             border-left: none; 
         }
         .sidebar-nav ul ul li a:hover { color: #80cbc4; background-color: rgba(77, 182, 172, 0.1); }
-        .sidebar-nav ul ul li a.active { 
-            color: #80deea; /* Texto Ciano claro */
-            font-weight: 600; 
-            background-color: rgba(0, 128, 128, 0.2); /* Fundo Ciano/Azul-petróleo sutil */
-}
+        .sidebar-nav ul ul li a.active { color: #b39ddb; font-weight: 600; background-color: rgba(76, 0, 130, 0.15); }
         
         .main-content-area {
             transition: padding-left 0.3s ease-in-out;
@@ -135,7 +129,7 @@
             background: rgba(20, 30, 70, 0.6); 
             backdrop-filter: blur(10px) saturate(120%);
             border-radius: 1rem; 
-            box-shadow: 0 0 20px rgba(0, 128, 128, 0.2); /* Sombra Ciano/Azul-petróleo */
+            box-shadow: 0 0 25px rgba(76, 0, 130, 0.2), 0 0 10px rgba(0, 128, 128, 0.15); 
             padding: 2.5rem; margin-bottom: 2rem;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
             border: 1px solid rgba(173, 216, 230, 0.15); 
@@ -143,7 +137,7 @@
         }
         .card:hover {
             transform: translateY(-8px) scale(1.01); 
-            box-shadow: 0 0 35px rgba(0, 128, 128, 0.3); /* Sombra Ciano/Azul-petróleo mais intensa no hover */
+            box-shadow: 0 0 40px rgba(76, 0, 130, 0.3), 0 0 20px rgba(0, 128, 128, 0.25);
             border-color: rgba(128, 222, 234, 0.4); 
         }
 
@@ -154,9 +148,10 @@
         }
 
         .gradient-title {
-            color: #e0e0e0; /* Cor sólida clara para o texto */
-            /* Removido: background, -webkit-background-clip, -webkit-text-fill-color */
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Sombra escura sutil para contraste */
+            background: linear-gradient(to right, #ab47bc, #26c6da); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(171, 71, 188, 0.5), 0 0 12px rgba(38, 198, 218, 0.4); 
             padding-bottom: 6px; position: relative; display: inline-block;
         }
          .gradient-title::after { 
