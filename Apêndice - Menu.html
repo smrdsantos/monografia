@@ -107,113 +107,29 @@
             background-color: rgba(0, 128, 128, 0.2); /* Fundo Ciano/Azul-petróleo sutil */
 }
         
-/* VERSÃO CORRIGIDA */
-.main-content-area {
-    transition: padding-left 0.3s ease-in-out;
-    /* A linha de padding-left foi REMOVIDA daqui */
-}
+        .main-content-area {
+            transition: padding-left 0.3s ease-in-out;
+             padding-left: var(--sidebar-width); 
+        }
 
-/* ===== INÍCIO DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
-.rotate-suggestion-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 15, 31, 0.95); /* Fundo escuro quase opaco */
-    backdrop-filter: blur(8px);
-    color: #e0e0e0;
-    display: none; /* Por padrão, fica oculto */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 9999; /* Garante que fique acima de todo o conteúdo */
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.rotate-suggestion-content {
-    animation: fadeInUp 0.5s ease-out;
-}
-
-.rotate-suggestion-content svg {
-    width: 64px;
-    height: 64px;
-    color: #26c6da; /* Cor ciano brilhante */
-    margin: 0 auto 1.5rem;
-    animation: spin-and-tilt 2.5s ease-in-out infinite;
-}
-
-.rotate-suggestion-content h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-}
-
-.rotate-suggestion-content p {
-    font-size: 1rem;
-    color: #b0bec5;
-    max-width: 350px;
-    margin: 0 auto;
-}
-
-@keyframes spin-and-tilt {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(90deg) scale(1.1); }
-    50% { transform: rotate(90deg) scale(1); }
-    75% { transform: rotate(0deg) scale(1.1); }
-}
-
-
-
-.rotate-suggestion-close-btn {
-    margin-top: 2rem;
-    padding: 0.6rem 1.2rem;
-    background: transparent;
-    border: 1px solid #4db6ac; /* Borda Ciano/Verde-água */
-    color: #80deea; /* Texto Ciano claro */
-    border-radius: 0.375rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.rotate-suggestion-close-btn:hover {
-    background: rgba(77, 182, 172, 0.2); /* Fundo Ciano/Verde-água sutil no hover */
-    color: #e0f7fa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(77, 182, 172, 0.2);
-}
-
-
-
-/* Media Query que ativa a sugestão */
-@media screen and (max-width: 768px) and (orientation: portrait) {
-    .rotate-suggestion-overlay {
-        display: flex; /* Exibe o overlay apenas nessas condições */
-    }
-}
-/* ===== FIM DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
-
-
-
-/* VERSÃO CORRIGIDA E FINAL DO MEDIA QUERY */
-@media (max-width: 768px) {
-    .main-content-area {
-        padding-left: 0; /* Garante que em telas pequenas não há espaço */
-    }
-    .sidebar {
-        transform: var(--sidebar-hidden-transform); 
-        box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
-    }
-    .sidebar.open {
-        transform: var(--sidebar-visible-transform); 
-    }
-    .sidebar-toggle {
-        display: block; 
-    }
-}
+        @media (max-width: 768px) {
+            body {
+                padding-left: 0; 
+            }
+            .sidebar {
+                transform: var(--sidebar-hidden-transform); 
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+            }
+            .sidebar.open {
+                transform: var(--sidebar-visible-transform); 
+            }
+            .sidebar-toggle {
+                display: block; 
+            }
+            .main-content-area {
+                 padding-left: 0; 
+            }
+        }
         
         .card {
             background: rgba(20, 30, 70, 0.6); 
@@ -353,24 +269,6 @@
     </style>
 </head>
 <body> 
-
-
-
-<div class="rotate-suggestion-overlay">
-    <div class="rotate-suggestion-content">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-        </svg>
-        <h3>Melhor Experiência</h3>
-        <p>Para uma melhor visualização dos apêndices, recomendamos girar seu dispositivo para a posição horizontal.</p>
-        
-        <button id="closeRotateSuggestion" class="rotate-suggestion-close-btn">
-            Continuar mesmo assim
-        </button>
-    </div>
-</div>
-
-
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -828,96 +726,121 @@
         </footer>
     </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Elementos Principais ---
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const mainContentArea = document.querySelector('.main-content-area');
-        const sections = document.querySelectorAll('main section[id]');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
-        const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
-        const closeRotateBtn = document.getElementById('closeRotateSuggestion');
-        const scrollOffset = 80;
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const mainContentArea = document.querySelector('.main-content-area');
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            const scrollOffset = 80; 
 
-        // --- LÓGICA CENTRALIZADA PARA AJUSTAR O LAYOUT ---
-        function adjustLayoutForScreenSize() {
-            if (window.innerWidth > 768) {
-                // DESKTOP: Garante que o menu lateral está visível e o conteúdo tem espaçamento
-                sidebar.classList.remove('open');
-                mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
-                sidebar.style.transform = 'translateX(0)';
-            } else {
-                // MOBILE: Garante que o conteúdo não tem espaçamento e o menu lateral está oculto (a menos que seja aberto)
-                mainContentArea.style.paddingLeft = '0';
-                if (!sidebar.classList.contains('open')) {
-                    sidebar.style.transform = 'var(--sidebar-hidden-transform)';
-                }
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
             }
-        }
+            
+            function highlightActiveLink() {
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - scrollOffset) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
 
-        // --- Lógica de Navegação e Destaque de Links ---
-        function highlightActiveLink() {
-            let currentSectionId = '';
-            const scrollPosition = window.pageYOffset;
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollPosition >= sectionTop - scrollOffset) {
-                    currentSectionId = section.getAttribute('id');
+                if (!currentSectionId && sections.length > 0 && window.pageYOffset < (sections[0].offsetTop - scrollOffset)) {
+                    currentSectionId = 'resumo'; 
                 }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        // --- EVENTOS E AÇÕES ---
-
-        // 1. Fechar o Aviso de Rotação
-        if (rotateOverlay && closeRotateBtn) {
-            closeRotateBtn.addEventListener('click', () => {
-                rotateOverlay.style.display = 'none';
-            });
-        }
-
-        // 2. Controle do Menu Lateral (Sidebar)
-        if (sidebarToggle && sidebar) {
-            sidebarToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('open');
-            });
-        }
-
-        // 3. Navegação Suave pelos Links do Menu
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop - (scrollOffset - 20);
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                    if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                        sidebar.classList.remove('open');
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20) { 
+                    if (sections.length > 0) {
+                        for (let i = sections.length - 1; i >= 0; i--) {
+                            if (sections[i].offsetTop < (window.innerHeight + window.pageYOffset)) {
+                                currentSectionId = sections[i].getAttribute('id');
+                                break;
+                            }
+                        }
                     }
                 }
-            });
-        });
-        
-        // 4. Gatilhos (Listeners de Eventos)
-        window.addEventListener('scroll', highlightActiveLink);
-        window.addEventListener('resize', adjustLayoutForScreenSize);
-        window.addEventListener('orientationchange', () => {
-             setTimeout(adjustLayoutForScreenSize, 150); 
-        });
-        
-        // Execução inicial para garantir o estado correto da página
-        adjustLayoutForScreenSize();
-        highlightActiveLink();
-    });
-</script>
 
+                navLinks.forEach(link => {
+                    link.classList.remove('active', 'active-parent');
+                    const subMenu = link.nextElementSibling;
+                    let isParentOfActiveSubmenu = false;
+
+                    if (subMenu && subMenu.classList.contains('sub-menu')) {
+                        const subLinks = subMenu.querySelectorAll('a');
+                        subLinks.forEach(subLink => {
+                            subLink.classList.remove('active');
+                            if (subLink.getAttribute('href') === '#' + currentSectionId) {
+                                subLink.classList.add('active');
+                                isParentOfActiveSubmenu = true; 
+                            }
+                        });
+                         // Gerencia a abertura do submenu se um filho estiver ativo
+                        if(isParentOfActiveSubmenu && !subMenu.style.maxHeight) {
+                           // subMenu.style.maxHeight = subMenu.scrollHeight + "px"; // Removido para priorizar CSS :hover
+                        } else if (!isParentOfActiveSubmenu && subMenu.style.maxHeight !== "0px" && !link.matches(':hover') && !subMenu.matches(':hover')) {
+                           // subMenu.style.maxHeight = null; // Removido para priorizar CSS :hover
+                        }
+                    }
+
+                    if ((link.getAttribute('href') === '#' + currentSectionId) || isParentOfActiveSubmenu) {
+                        link.classList.add('active');
+                        if(isParentOfActiveSubmenu) link.classList.add('active-parent');
+
+                        if (sidebar.classList.contains('open') || window.innerWidth > 768) {
+                            const linkTopInSidebar = link.offsetTop - sidebar.offsetTop; 
+                            const linkHeight = link.offsetHeight;
+                            const sidebarScrollTop = sidebar.scrollTop;
+                            const sidebarHeight = sidebar.clientHeight;
+
+                            if (linkTopInSidebar < sidebarScrollTop + 20) { 
+                                sidebar.scrollTop = Math.max(0, linkTopInSidebar - 20); 
+                            } else if (linkTopInSidebar + linkHeight > sidebarScrollTop + sidebarHeight - 20) { 
+                                sidebar.scrollTop = linkTopInSidebar + linkHeight - sidebarHeight + 20; 
+                            }
+                        }
+                    }
+                });
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const targetPosition = targetElement.offsetTop - (scrollOffset - 20); 
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                                sidebar.classList.remove('open');
+                            }
+                        }
+                    }
+                });
+            });
+
+            function handleResizeAndLoad() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('open'); 
+                    document.body.style.paddingLeft = 'var(--sidebar-width)';
+                } else {
+                     document.body.style.paddingLeft = '0';
+                }
+                highlightActiveLink();
+            }
+
+            window.addEventListener('scroll', highlightActiveLink);
+            window.addEventListener('resize', handleResizeAndLoad);
+            handleResizeAndLoad(); 
+        });
+    </script>
 </body>
 </html>
