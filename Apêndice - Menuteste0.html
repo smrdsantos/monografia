@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monografia GD-PME 3 Pilares - Menu Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 260px;
+            --sidebar-hidden-transform: translateX(-100%); /* Esconde completamente */
+            --sidebar-visible-transform: translateX(0);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0f1f; 
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 70, 70, 0.15), transparent 50%), /* Roxo suavizado para um tom de azul-petróleo escuro e sutil */
+                radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.25), transparent 50%); /* Ciano/azul-petróleo mantido, talvez um pouco mais sutil */
+            min-height: 100vh;
+            color: #adb5bd; 
+            padding-bottom: 4rem;
+            transition: padding-left 0.3s ease-in-out; 
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: rgba(13, 20, 41, 0.9); 
+            backdrop-filter: blur(12px) saturate(150%); 
+            border-right: 1px solid rgba(173, 216, 230, 0.1); 
+            padding: 1rem 1.5rem;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(0, 128, 128, 0.15); /* Sombra Ciano/Azul-petróleo sutil */
+            transform: var(--sidebar-visible-transform); 
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .sidebar-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001; 
+            background: rgba(20, 30, 70, 0.8);
+            backdrop-filter: blur(5px);
+            color: #80deea;
+            border: 1px solid rgba(173, 216, 230, 0.2);
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: none; 
+            transition: left 0.3s ease-in-out; 
+        }
+        .sidebar-toggle svg { width: 24px; height: 24px; }
+
+        .sidebar-header { margin-bottom: 1.5rem; text-align: center; padding-top: 1rem; }
+        .sidebar-title {
+            font-size: 1.2rem; font-weight: 700; color: #e0e0e0;
+            text-shadow: 0 0 8px rgba(128, 222, 234, 0.5); /* Brilho Ciano suave */        }
+        .sidebar-subtitle { font-size: 0.8rem; color: #80deea; }
+        .sidebar-nav ul { list-style: none; padding: 0; }
+        .sidebar-nav li a {
+            display: block; padding: 0.7rem 1rem; border-radius: 0.5rem;
+            color: #90a4ae; text-decoration: none; font-weight: 600;
+            transition: all 0.2s ease-in-out; margin-bottom: 0.3rem;
+            position: relative; border-left: 3px solid transparent;
+        }
+        .sidebar-nav li a:hover {
+            background-color: rgba(77, 182, 172, 0.15); color: #b2dfdb;
+            transform: translateX(4px); border-left-color: #4db6ac;
+        }
+        .sidebar-nav li a.active {
+            background-color: rgba(0, 128, 128, 0.25); /* Fundo Ciano/Azul-petróleo mais intenso */
+            color: #80deea; /* Texto Ciano claro */
+            font-weight: 700; 
+            border-left-color: #26c6da; /* Borda Ciano brilhante */
+            transform: translateX(2px);
+        }
+        .sidebar-nav li a.active::after {
+            content: '›'; position: absolute; right: 10px; top: 50%;
+            transform: translateY(-50%); color: #26c6da; font-size: 1.2em;
+        }
+        .sidebar-nav ul ul { 
+            margin-left: 0.75rem; margin-top: 0.1rem;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .sidebar-nav li > a.active.has-submenu + ul.sub-menu,
+        .sidebar-nav li > a.has-submenu:hover + ul.sub-menu,
+        .sidebar-nav ul.sub-menu:hover { 
+            max-height: 500px; 
+        }
+        .sidebar-nav ul ul li a { 
+            padding-left: 1.25rem; font-size: 0.85em; color: #78909c; 
+            border-left: none; 
+        }
+        .sidebar-nav ul ul li a:hover { color: #80cbc4; background-color: rgba(77, 182, 172, 0.1); }
+        .sidebar-nav ul ul li a.active { 
+            color: #80deea; /* Texto Ciano claro */
+            font-weight: 600; 
+            background-color: rgba(0, 128, 128, 0.2); /* Fundo Ciano/Azul-petróleo sutil */
+}
+        
+        /* ADICIONE ESTAS NOVAS REGRAS em seu lugar */
+#content-wrapper {
+    transition: padding-left 0.3s ease-in-out;
+    padding-left: var(--sidebar-width); /* Padrão para Desktop: empurra o conteúdo */
+}
+
+@media (max-width: 768px) {
+    #content-wrapper {
+        padding-left: 0; /* No celular: remove o preenchimento */
+    }
+
+    body {
+        padding-left: 0; 
+    }
+    
+    .sidebar {
+        transform: var(--sidebar-hidden-transform); 
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+    }
+    .sidebar.open {
+        transform: var(--sidebar-visible-transform); 
+    }
+    .sidebar-toggle {
+        display: block; 
+    }
+    /* A regra de .main-content-area não é mais necessária aqui */
+}
+
+
+/* ===== INÍCIO DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
+
+
+
+/* Estilo para o botão de fechar a sugestão */
+.rotate-suggestion-close-btn {
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    border: 1px solid #4db6ac; /* Borda Ciano/Verde-água */
+    color: #80deea; /* Texto Ciano claro */
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.rotate-suggestion-close-btn:hover {
+    background: rgba(77, 182, 172, 0.2); /* Fundo Ciano/Verde-água sutil no hover */
+    color: #e0f7fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(77, 182, 172, 0.2);
+}
+
+
+
+
+
+
+
+.rotate-suggestion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 31, 0.95); /* Fundo escuro quase opaco */
+    backdrop-filter: blur(8px);
+    color: #e0e0e0;
+    display: none; /* Por padrão, fica oculto */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 9999; /* Garante que fique acima de todo o conteúdo */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.rotate-suggestion-content {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.rotate-suggestion-content svg {
+    width: 64px;
+    height: 64px;
+    color: #26c6da; /* Cor ciano brilhante */
+    margin: 0 auto 1.5rem;
+    animation: spin-and-tilt 2.5s ease-in-out infinite;
+}
+
+.rotate-suggestion-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.rotate-suggestion-content p {
+    font-size: 1rem;
+    color: #b0bec5;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+@keyframes spin-and-tilt {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(90deg) scale(1); }
+    75% { transform: rotate(0deg) scale(1.1); }
+}
+
+
+/* Media Query que ativa a sugestão */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    .rotate-suggestion-overlay {
+        display: flex; /* Exibe o overlay apenas nessas condições */
+    }
+}
+/* ===== FIM DO CÓDIGO PARA SUGESTÃO DE ROTAÇÃO ===== */
+
+
+
+        @media (max-width: 768px) {
+            body {
+                padding-left: 0; 
+            }
+            .sidebar {
+                transform: var(--sidebar-hidden-transform); 
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+            }
+            .sidebar.open {
+                transform: var(--sidebar-visible-transform); 
+            }
+            .sidebar-toggle {
+                display: block; 
+            }
+            .main-content-area {
+                 padding-left: 0; 
+            }
+        }
+        
+        .card {
+            background: rgba(20, 30, 70, 0.6); 
+            backdrop-filter: blur(10px) saturate(120%);
+            border-radius: 1rem; 
+            box-shadow: 0 0 20px rgba(0, 128, 128, 0.2); /* Sombra Ciano/Azul-petróleo */
+            padding: 2.5rem; margin-bottom: 2rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            border: 1px solid rgba(173, 216, 230, 0.15); 
+            color: #b0bec5; 
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 0 35px rgba(0, 128, 128, 0.3); /* Sombra Ciano/Azul-petróleo mais intensa no hover */
+            border-color: rgba(128, 222, 234, 0.4); 
+        }
+
+        .fade-in-section { animation: fadeInUp 0.8s ease-out both; }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .gradient-title {
+            color: #e0e0e0; /* Cor sólida clara para o texto */
+            /* Removido: background, -webkit-background-clip, -webkit-text-fill-color */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Sombra escura sutil para contraste */
+            padding-bottom: 6px; position: relative; display: inline-block;
+        }
+         .gradient-title::after { 
+            content: ''; position: absolute; width: 0%; height: 2px; 
+            background: #26c6da; bottom: 0; left: 0; 
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 5px #26c6da;
+        }
+        .card:hover .gradient-title::after { width: 100%; }
+
+        .appendix-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px;
+        }
+        .appendix-item {
+            background: rgba(30, 41, 94, 0.7); 
+            backdrop-filter: blur(8px); border-radius: 0.75rem; padding: 1.5rem;
+            text-align: center; color: #9fa8da; transition: all 0.3s ease-out;
+            cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 160px; text-decoration: none; position: relative; overflow: hidden;
+            border: 1px solid rgba(77, 182, 172, 0.3); 
+            box-shadow: inset 0 0 10px rgba(77, 182, 172, 0.2), 0 0 5px rgba(77, 182, 172, 0.1);
+        }
+        .appendix-item:hover {
+            transform: translateY(-6px);
+            background: rgba(77, 182, 172, 0.1); 
+            border-color: #4db6ac;
+            box-shadow: 0 8px 25px rgba(77, 182, 172, 0.3);
+        }
+         .appendix-item::before, .appendix-item::after { 
+            content: ''; position: absolute;
+            background-color: rgba(77, 182, 172, 0.5); 
+            transition: all 0.4s ease;
+        }
+        .appendix-item::before { top: 0; left: 0; width: 0; height: 2px; } 
+        .appendix-item::after { bottom: 0; right: 0; width: 0; height: 2px; } 
+        .appendix-item:hover::before, .appendix-item:hover::after { width: 100%; }
+
+        .appendix-item .appendix-title {
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: #c5cae9;
+            text-shadow: 0 0 3px rgba(197, 202, 233, 0.5);
+        }
+        .appendix-item .appendix-description {
+            font-size: 0.85rem; font-weight: 400; color: #9e9e9e; line-height: 1.4; 
+        }
+        .appendix-item svg {
+            width: 40px; height: 40px; margin-bottom: 12px; color: #80deea; 
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .appendix-item:hover svg {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px #80deea); 
+        }
+
+        ul.list-disc, ul.list-circle, ul.list-square { list-style-position: inside; padding-left: 0; }
+        ul li { margin-bottom: 0.6rem; color: #90a4ae; }
+        ul.list-alpha { list-style-type: lower-alpha; list-style-position: inside;}
+
+        .references-list { list-style-type: none; padding-left: 0; }
+        .references-list li {
+            margin-bottom: 1.2em; font-size: 0.9rem; color: #90a4ae;
+            border-left: 3px solid #4db6ac; 
+            padding-left: 1em;
+        }
+        .references-list li a {
+            color: #80deea; 
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(128, 222, 234, 0.5);
+            transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        }
+        .references-list li a:hover {
+            color: #e0f7fa; 
+            border-bottom-color: rgba(224, 247, 250, 0.8);
+        }
+
+        .figure-container { text-align: center; margin: 2.5em 0; }
+        .figure-container img {
+            max-width: 100%; height: auto; border-radius: 4px; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(77, 182, 172, 0.3); 
+        }
+        .figure-caption { font-size: 0.85rem; color: #78909c; margin-top: 12px; font-style: italic; }
+
+        .figura-especial-grande {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%; /* Ou um valor fixo como 700px */
+            max-width: 700px; /* Limite máximo, mas permite diminuir */
+            height: auto;
+            /* Mantenha os estilos de borda e sombra */
+            border-radius: 8px;
+            box-shadow: var(--card-shadow); /* Usando a variável de tema que definimos */
+            border: 1px solid var(--figure-border); /* Usando a variável de tema que definimos */
+        }
+
+        .footer { margin-top: 5rem; padding: 2.5rem; text-align: center; }
+        .note-card {
+            background: rgba(13, 20, 41, 0.6);
+            backdrop-filter: blur(8px); border-radius: 0.75rem; padding: 1.8rem;
+            display: inline-block; color: #90a4ae; font-size: 0.9rem;
+            border: 1px solid rgba(77, 182, 172, 0.2);
+            box-shadow: 0 0 10px rgba(77, 182, 172, 0.1);
+        }
+        main section[id] { 
+             scroll-margin-top: 80px; 
+        }
+
+    </style>
+</head>
+<body> 
+
+
+
+<div class="rotate-suggestion-overlay">
+    <div class="rotate-suggestion-content">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+        </svg>
+        <h3>Melhor Experiência</h3>
+        <p>Para uma melhor visualização dos apêndices, recomendamos girar seu dispositivo para a posição horizontal.</p>
+        
+        <button id="closeRotateSuggestion" class="rotate-suggestion-close-btn">
+            Continuar mesmo assim
+        </button>
+    </div>
+</div>
+
+
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+    </button>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="w-16 h-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-3 border-2 border-teal-500 shadow-lg">
+                 <svg class="w-8 h-8 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.972 48.972 0 0 1 12 21.75c2.305 0 4.547-.27 6.733-.849a60.452 60.452 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.45c2.305 0 4.547.27 6.733-.849c.471.146.94.31 1.388.491M12 18.75c-2.305 0-4.547-.27-6.733-.849M12 12.75c2.305 0 4.547-.27 6.733-.849M12 12.75c-2.305 0-4.547-.27-6.733-.849M12 3.45a59.905 59.905 0 0 1 7.153 3.195M9.75 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </div>
+            <h2 class="sidebar-title">GD-PME 3 Pilares</h2>
+            <p class="sidebar-subtitle">Monografia Digital Interativa</p>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#resumo">Resumo</a></li>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#desafio-estrategico">1.1 Desafio Estratégico</a></li>
+            <li><a href="#justificativa-novo-modelo">1.2 Justificativa</a></li>
+            <li><a href="#objetivos">1.3 Objetivos</a></li>
+            <li><a href="#delimitacao-estudo">1.4 Delimitação</a></li>
+            <li>
+                <a href="#desenho-metodologico" class="has-submenu">1.5 Desenho Metodológico</a>
+                <ul class="sub-menu"> 
+                    <li><a href="#revisao-bibliografica">1.5.1 Revisão</a></li>
+                    <li><a href="#estruturacao-modelo">1.5.2 Estruturação</a></li>
+                    <li><a href="#simulacao-estudo-caso">1.5.3 Simulação</a></li>
+                </ul>
+            </li>
+            <li><a href="#estrutura-monografia">1.6 Estrutura</a></li>
+            <li><a href="#barreiras-superacao">1.7 Barreiras</a></li>
+            <li><a href="#diretrizes-futuras">1.8 Diretrizes Futuras</a></li>
+            <li><a href="#appendix-menu-link">Apêndices</a></li> 
+            <li><a href="#referencias-bibliograficas">Referências</a></li>
+        </ul>
+    </nav>
+
+    <div id="content-wrapper">
+        <main class="max-w-5xl mx-auto p-6 lg:p-8">
+        
+        <header class="text-center my-12 fade-in-section"> 
+             <div class="w-24 h-24 mx-auto rounded-xl bg-slate-800 flex items-center justify-center mb-5 border-2 border-cyan-500 shadow-cyan-500/30 shadow-xl"> 
+                <svg class="w-12 h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.972 48.972 0 0 1 12 21.75c2.305 0 4.547-.27 6.733-.849a60.452 60.452 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.45c2.305 0 4.547.27 6.733-.849c.471.146.94.31 1.388.491M12 18.75c-2.305 0-4.547-.27-6.733-.849M12 12.75c2.305 0 4.547-.27 6.733-.849M12 12.75c-2.305 0-4.547-.27-6.733-.849M12 3.45a59.905 59.905 0 0 1 7.153 3.195M9.75 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /> 
+                </svg> 
+            </div> 
+            <p class="text-cyan-300 text-center text-lg mb-2">Universidade Federal do Rio de Janeiro</p> 
+            <p class="text-cyan-300 text-center text-md mb-2">Escola Politécnica</p> 
+            <p class="text-cyan-300 text-center text-md mb-6">MBA Big Data, Business Intelligence e Business Analytics (MB3B)</p> 
+            <h1 class="text-4xl lg:text-5xl font-bold gradient-title leading-tight">IMPACTO DA GOVERNANÇA DE DADOS NA TOMADA DE DECISÕES CORPORATIVAS: IMPLANTAÇÃO DE POLÍTICAS DE GOVERNANÇA EM PEQUENAS E MÉDIAS EMPRESAS</h1> 
+            <div class="text-center text-purple-300 mt-10"> 
+                <p class="font-semibold text-lg">Autor: Samuel Martin Rodrigues dos Santos</p> 
+                <p class="font-semibold mt-2">Orientador: Cláudio Luiz Latta de Souza, M.Sc.</p> 
+                <p class="font-semibold mt-2">Coorientador: Manoel Villas Bôas Júnior, M.Sc.</p> 
+            </div> 
+            <p class="text-center text-teal-400 mt-10">Rio de Janeiro</p> 
+            <p class="text-center text-teal-400">Julho / 2025</p> 
+        </header> 
+
+        <section id="resumo" class="card fade-in-section" style="animation-delay: 0.2s;"> 
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">RESUMO</h2> 
+            <p class="text-slate-300 leading-relaxed text-justify"> 
+                Na era digital, os dados emergiram como ativo estratégico central para a competitividade, sustentabilidade e resiliência de Pequenas e Médias Empresas (PMEs). Este estudo explora os desafios estruturais, as barreiras culturais e as oportunidades práticas da implementação da Governança de Dados (GD) em PMEs brasileiras, propondo um modelo original – o “GD-PME 3 Pilares” – concebido para ambientes de baixa maturidade de dados e severas restrições operacionais. O modelo alicerça-se em três diretrizes interdependentes: separação entre dados e sistemas, capacitação contínua e políticas graduais simplificadas. Adota-se uma abordagem qualitativa, exploratória e aplicada, sustentada por revisão sistemática da literatura e por um estudo de caso simulado da empresa fictícia “Varejo Inteligente Ltda.”, para o qual são apresentados artefatos operacionais, procedimentos de implementação e indicadores de desempenho por pilar. A simulação projeta impactos mensuráveis significativos, incluindo melhoria de até 20% na eficiência operacional, aumento de 24% na taxa de recompra de clientes e crescimento de 38% para 65% nas decisões orientadas por dados. Os resultados sugerem que a implementação de estruturas mínimas de GD pode gerar benefícios relevantes em capacidade de governança, mitigação de riscos e desenvolvimento de uma cultura organizacional orientada a dados, mesmo em ambientes informais. O capítulo final delineia um roteiro de pesquisa futura focado na validação empírica, expansão tecnológica e impacto sistêmico, distinguindo as contribuições teóricas (uma nova taxonomia de governança enxuta) das aplicações práticas (um modelo replicável, incremental e de baixo custo). O modelo GD-PME 3 Pilares emerge, assim, como um framework tecnicamente viável e socialmente relevante para a institucionalização da Governança de Dados em PMEs, alinhando simplicidade operacional com valor estratégico. 
+            </p> 
+            <p class="text-teal-300 font-semibold mt-6">Palavras-Chave: <span class="font-normal text-slate-300">Gestão Informacional Estratégica, Organizações de Menor Porte, Maturidade de Dados, Cultura de Dados, Tecnologia Social.</span></p> 
+        </section> 
+
+         <section id="introducao" class="card fade-in-section" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">Introdução</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A revolução digital reconfigurou radicalmente os modos de produção, circulação e apropriação da informação nas organizações contemporâneas. Longe de serem meros insumos periféricos, os dados consolidaram-se como ativos estratégicos, essenciais para a geração de valor e para a sustentação de decisões, processos e estratégias competitivas. Nesse cenário de crescente complexidade, a Governança de Dados (GD) transcendeu seu status de diferencial técnico para se afirmar como uma competência organizacional crítica, sobretudo em ambientes caracterizados por volatilidade, incerteza e intensificação informacional (MAHANTI, 2021a; LADLEY, 2020).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">No contexto brasileiro, esse imperativo adquire contornos particulares. As Micro e Pequenas Empresas (MPEs) constituem mais de 90% dos negócios formais e respondem por uma parcela expressiva do Produto Interno Bruto e da empregabilidade (SEBRAE, 2023; 2024)[2]. Apesar de sua centralidade socioeconômica, essas organizações enfrentam dificuldades persistentes na adoção de políticas formais de gestão e governança de dados. Tais desafios são frequentemente atribuídos à informalidade institucional, à escassez crônica de recursos (financeiros, humanos e tecnológicos), à baixa maturidade digital e à ausência de uma cultura informacional robusta (CARVALHO, 2015; MORAES; ESCRIVÃO FILHO, 2006; BEGG; CAIRA, 2012).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A Governança de Dados, compreendida como o conjunto sistêmico de papéis, práticas, políticas e padrões que asseguram o uso ético, eficaz e estratégico dos ativos informacionais (BEGG; CAIRA, 2012), deve ser encarada como uma competência transversal. Seu escopo ultrapassa a Tecnologia da Informação (TI), articulando-se intrinsecamente com a cultura organizacional, o engajamento da liderança, a definição de uma infraestrutura mínima viável e a institucionalização de processos decisórios fundamentados em evidências (RÊGO, 2013; OTTO, 2011). Autores como Santiago (2024), Santos e Rossi (2023) e Otto (2011) têm criticado a transposição acrítica de frameworks de GD concebidos para grandes corporações à realidade das MPEs, advogando por abordagens contextualmente situadas, incrementais e mediadas. Tal posicionamento alinha-se ao conceito de "governança por mediação", onde a GD é traduzida em linguagem acessível, ancorada nas práticas organizacionais e ativada por mecanismos viáveis e legitimados internamente.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">O fenômeno descrito por Begg e Caira (2012) como “SME Quandary” (o dilema das PMEs) sintetiza com precisão a armadilha informacional enfrentada por muitas dessas empresas: a ausência de governança compromete a qualidade dos dados, o que, por sua vez, mina a confiança na informação e enfraquece a cultura decisória baseada em evidências, retroalimentando a percepção de que os dados são supérfluos e instaurando um ciclo vicioso de negligência informacional.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Reconhecendo este complexo dilema, a presente monografia propõe, estrutura e valida conceitualmente o modelo GD-PME 3 Pilares. Trata-se de uma proposta autoral, incremental e eminentemente pragmática de governança de dados, especificamente desenhada para pequenas organizações. O modelo busca diferenciar-se radicalmente das abordagens tradicionais ao priorizar a transformação a partir da realidade local e das capacidades existentes. Estruturado em três pilares interdependentes – (i) separação entre dados e sistemas, (ii) capacitação contínua e (iii) políticas graduais e simplificadas – o GD-PME 3 Pilares oferece um caminho factível para a institucionalização da governança de dados, mesmo em cenários marcados por severas restrições. Seu desenho é fruto da integração entre uma revisão teórica crítica e uma simulação heurística aplicada, fundamentada no estudo de caso da empresa fictícia “Varejo Inteligente Ltda.”.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Mais do que um exercício conceitual, o modelo GD-PME 3 Pilares foi concebido para ser uma tecnologia social de efetiva aplicação. Para facilitar sua replicação, disseminação e aprofundamento, esta monografia é complementada por um extenso e detalhado conjunto de Apêndices (Apêndices A à AZ (instrumentos técnicos), Apêndice BA (Guia de Aplicação) e Apêndice BB (Análise Comparativa)). Estes apêndices, que incluem desde instrumentos de diagnóstico e manuais operacionais até roteiros de capacitação, modelos de políticas, matrizes de risco, guias de comunicação e protocolos de auditoria, funcionam como extensões operacionais e epistemológicas do modelo. Foram elaborados para traduzir a teoria em práticas concretas, respeitando os limites operacionais e os diversos contextos socioprodutivos das PMEs. O Apêndice BA – Guia de Aplicação dos Apêndices oferece uma cartografia detalhada para orientar o uso estratégico deste robusto acervo de ferramentas.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A monografia organiza-se da seguinte forma: o Capítulo 2 apresenta os fundamentos teóricos que alicerçam a pesquisa; o Capítulo 3 detalha os procedimentos metodológicos adotados para a construção e validação conceitual do modelo; o Capítulo 4 analisa e discute os resultados projetados a partir da simulação da aplicação do GD-PME 3 Pilares; e o Capítulo 5 apresenta as considerações finais, as contribuições do estudo, suas limitações e as proposições para pesquisas futuras, incluindo uma nota explicativa detalhada sobre a estrutura e utilização dos apêndices (Seção 5.27).</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Ao propor uma alternativa tecnicamente consistente, institucionalmente sensível e operacionalmente realista, este trabalho visa consolidar a Governança de Dados como um vetor legítimo de emancipação informacional e desenvolvimento sustentável para as PMEs. O modelo GD-PME 3 Pilares é, nesse sentido, apresentado como uma resposta concreta às limitações dos frameworks tradicionais, oferecendo uma estrutura incremental e acessível, alinhada à maturidade real das pequenas organizações e com potencial para fomentar a inovação institucional, a inclusão informacional e a qualificação empreendedora em larga escala.</p>
+        </section>
+
+        <section id="desafio-estrategico" class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.1 - A Governança de Dados como Desafio Estratégico para Pequenas e Médias Empresas</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A crescente complexidade dos ambientes de negócios contemporâneos — comumente descritos pela sigla VUCA (volátil, incerto, complexo e ambíguo) — elevou a informação ao status de ativo estratégico. Nesse contexto, a governança de dados (GD) deixa de ser um instrumento técnico periférico e passa a exercer papel central na articulação entre operação, tomada de decisão e vantagem competitiva. Em países em desenvolvimento como o Brasil, onde as micro e pequenas empresas (MPEs) sustentam a maior parte da atividade econômica e da geração de empregos, a discussão sobre GD não configura um luxo acadêmico, mas uma urgência organizacional.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A GD consolida-se, assim, como competência crítica em contextos de instabilidade e escassez, nos quais decisões precisam ser fundamentadas em dados rastreáveis, consistentes e auditáveis. Mais do que controle técnico, ela assegura condições mínimas de confiabilidade informacional — premissa essencial para ambientes regulatórios e digitais em constante transformação (KHATRI; BROWN, 2010; LADLEY, 2020). Contudo, observa-se um descompasso estrutural entre sua difusão em grandes corporações e sua presença ainda incipiente nas MPEs, onde persistem desafios como informalidade, baixa cultura informacional e restrições de capital humano e tecnológico (SANTIAGO, 2024; BEGG; CAIRA, 2012).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Modelos consolidados de governança — como o DAMA DMBOK2 (DAMA INTERNATIONAL, 2017), o modelo federado de Otto (2011) e o framework de Khatri e Brown (2010) — foram originalmente concebidos para ambientes corporativos com alta maturidade digital, estruturas especializadas e equipes técnicas robustas. Quando transpostos mecanicamente para PMEs, tendem a fracassar ou a gerar efeitos colaterais operacionais, por exigirem sistemas de controle formais que colidem com o dinamismo, a informalidade e as restrições orçamentárias características desse segmento (BARATA, 2015; OTTO, 2011).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Como reforça Mahanti (2021a), a maturidade informacional é construída progressivamente e depende de fatores como capacitação, clareza de propósito e engajamento prático das equipes. Nesse sentido, práticas como data lineage, metadata management ou governança federada — embora eficazes em grandes empresas — podem tornar-se disfuncionais se aplicadas a pequenas organizações sem capacidade técnica ou cultura organizacional adequada.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">É diante dessa lacuna entre teoria e prática que se insere o presente estudo, ao propor o desenvolvimento e a validação do modelo GD-PME 3 Pilares, especialmente desenhado para o contexto das PMEs brasileiras. A proposta estrutura-se em três fundamentos interdependentes: (i) separação entre dados e sistemas; (ii) capacitação contínua; e (iii) políticas graduais e simplificadas. Tais pilares visam contornar os obstáculos mais recorrentes à implementação da governança em empresas de menor porte, conciliando viabilidade operacional com consistência conceitual.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A hipótese central é a de que modelos tecnicamente robustos, quando adaptados à realidade cotidiana das PMEs, são capazes de produzir ganhos significativos em eficiência, confiabilidade, conformidade e capacidade analítica — mesmo em contextos de forte restrição orçamentária (SANTOS; ROSSI, 2023; RÊGO, 2013). A proposta rompe com o ciclo de subestimação dos dados e introduz práticas mínimas, porém estruturadas, que aumentam a resiliência informacional e qualificam a tomada de decisão.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Além disso, o modelo parte de uma concepção contemporânea de governança como jornada sociotécnica incremental — alinhada à lógica da governança por mediação (SANTIAGO, 2023) — na qual a confiança organizacional, a aprendizagem institucional e a comunicação funcional ocupam lugar central, em substituição a estruturas hierárquicas e tecnicamente intransponíveis.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Ao oferecer um modelo acessível, incremental e replicável, o GD-PME 3 Pilares busca preencher uma lacuna teórico-aplicada, propondo uma alternativa realista para fortalecer a governança informacional nas PMEs brasileiras. Ao colocar a maturidade organizacional como variável crítica, o modelo abre caminho para transformações digitais sustentáveis, políticas públicas orientadas e serviços de consultoria mais alinhados à realidade desse ecossistema empresarial.</p>
+        </section>
+
+        <section id="justificativa-novo-modelo" class="card fade-in-section" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.2 - Justificativa para um Novo Modelo de Governança de Dados em Pequenas e Médias Empresas (PMEs)</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">No cenário digital contemporâneo, a capacidade de transformar dados brutos em informações qualificadas — e, a partir delas, gerar vantagem competitiva — tornou-se um dos principais diferenciais estratégicos para organizações de todos os portes. A governança de dados (GD), nesse contexto, não se restringe à adoção de ferramentas ou sistemas, mas representa a construção de uma infraestrutura organizacional abrangente — cognitiva, cultural e procedimental — voltada à decisão fundamentada, ética e orientada por evidências (MAHANTI, 2021a; OTTO, 2011).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Para as micro e pequenas empresas (MPEs), que representam mais de 90% das empresas brasileiras e concentram parcela expressiva da geração de empregos (SEBRAE, 2023), os desafios se impõem de maneira específica. Em contraste com grandes corporações, que dispõem de recursos financeiros robustos e equipes especializadas, as MPEs operam sob restrições orçamentárias severas, ausência de políticas formais de dados e escassez de profissionais qualificados (LADLEY, 2020; CARVALHO, 2015).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Begg e Caira (2012) descrevem essa desigualdade como um ciclo autossustentável: a ausência de governança compromete a qualidade dos dados, o que reduz a confiança nos indicadores e reforça decisões informais — perpetuando a percepção equivocada de que a GD seria inviável ou irrelevante para pequenas empresas. Esse cenário fragiliza não apenas a performance organizacional, mas a conformidade legal, sobretudo frente à Lei Geral de Proteção de Dados (LGPD).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Estudos de Moraes e Escrivão Filho (2006) e Carvalho (2015) demonstram que a gestão da informação nas MPEs brasileiras tende a ser informal, intuitiva e desestruturada. A ausência de rastreabilidade, padronização e atribuição clara de responsabilidades compromete a eficiência e a sustentabilidade organizacional. Além disso, o custo elevado de ferramentas como BI, ERP e CRM torna sua adoção inviável para a maioria das MPEs, perpetuando práticas reativas em vez de decisões baseadas em dados (SANTIAGO, 2024).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Nesse contexto, destaca Santos, que expressa com precisão o imperativo atual:</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3" style="margin-left: 2em; font-style: italic;">(...) dados como um ativo empresarial têm se tornado um conceito transformador e aceito no mercado, com isso há um aumento da pressão para que se possa relatar uma verdadeira versão do ambiente interno e externo. Com isso, se inicia uma necessidade de manter dados confiáveis e de gerenciá-los de maneira eficaz, para que dessa forma, as empresas conquistem vantagem competitiva. (SANTOS, 2022, p. 13).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A partir de 2023, com a consolidação da Autoridade Nacional de Proteção de Dados (ANPD) como órgão fiscalizador ativo, intensificou-se a pressão para que todas as empresas brasileiras — inclusive as de menor porte — se adequem às exigências da LGPD. Kritika (2024) destaca que a GD passou a ser um critério explícito de risco regulatório e reputacional, impactando diretamente o acesso a crédito, a contratação com o setor público e a viabilidade de parcerias estratégicas. Segundo dados do IBGE (2023b) e SEBRAE (2024), menos de 15% das MPEs brasileiras possuem políticas formais mínimas de governança de dados, o que evidencia a urgência de soluções ajustadas às realidades locais.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Além dos desafios técnicos e regulatórios, há obstáculos culturais importantes. Silveira e Langen (2023) indicam que o principal entrave à adoção da GD em MPEs não está na tecnologia, mas na percepção de que se trata de exigência burocrática desconectada da prática. Superar essa visão exige ressignificar a GD como um instrumento estratégico, acessível e realista. Segundo Santos e Rossi (2023), esse reposicionamento requer abordagens que priorizem a mediação gerencial e a adaptação gradual, em vez de modelagens técnicas rígidas e pouco aderentes à realidade.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Nesse cenário, justifica-se a presente pesquisa pela necessidade de desenvolver um modelo que una robustez conceitual com viabilidade operacional. O GD-PME 3 Pilares busca preencher essa lacuna com três eixos sinérgicos: (i) separação entre dados e sistemas; (ii) capacitação contínua; e (iii) políticas graduais e simplificadas. A proposta fundamenta-se em evidências empíricas e observações de campo, como as de Begg e Caira (2012), que, ao estudarem PMEs, indicam a necessidade de abordagens de governança de dados personalizadas e menos complexas (ou seja, mais "enxutas") para se obter impacto positivo em ambientes comumente de baixa maturidade formal.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Inspirado nos princípios da melhoria contínua e ciclos adaptativos (MAHANTI, 2021a; OTTO, 2011), este estudo propõe um roteiro de implementação iterativo, sustentável e aplicável ao cotidiano das MPEs. Democratizar o acesso à GD torna-se, assim, não apenas uma iniciativa técnica, mas um compromisso estratégico e social. Ao possibilitar decisões mais qualificadas com estruturas mínimas, promove-se o fortalecimento da cultura de dados no ecossistema produtivo nacional.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A justificativa desta pesquisa, portanto, não repousa apenas na escassez de modelos adaptados. Ela parte da convicção de que a transformação informacional é possível mesmo em contextos restritivos, desde que ancorada em soluções realistas e culturalmente sintonizadas. O GD-PME 3 Pilares, ao aliar rigor teórico com aplicabilidade concreta, configura-se como alternativa promissora para elevar a maturidade informacional das MPEs, com efeitos esperados sobre produtividade, conformidade e competitividade.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Por fim, além de seu valor gerencial, a proposta responde a um imperativo de política pública: fomentar a maturidade informacional das MPEs como vetor de desenvolvimento sistêmico. Dados do SEBRAE (2024) indicam que avanços incrementais em governança podem gerar ganhos estruturais de produtividade, justificando ações coordenadas — públicas e privadas — para disseminar modelos acessíveis como o aqui proposto.</p>
+        </section>
+
+        <section id="objetivos" class="card fade-in-section" style="animation-delay: 0.6s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.3 - Objetivos</h2>
+            <p class="text-slate-300 leading-relaxed mb-3"><strong>1.3.1 - Objetivo Geral</strong></p>
+            <p class="text-slate-300 leading-relaxed mb-3 text-justify">Investigar, sob abordagem qualitativa e orientação aplicada, os desafios e potencialidades da Governança de Dados (GD) em micro e pequenas empresas (MPEs) brasileiras, com vistas à concepção, estruturação, simulação e validação de um modelo autoral — o GD-PME 3 Pilares — que una robustez conceitual e viabilidade operacional, promovendo avanços em maturidade informacional, racionalidade decisória e conformidade regulatória.</p>
+            <p class="text-slate-300 leading-relaxed mb-3"><strong>1.3.2 - Objetivos Específicos</strong></p>
+            <p class="text-slate-300 leading-relaxed mb-3 text-justify">Para alcançar o objetivo geral, a presente pesquisa estabelece os seguintes objetivos específicos:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify">
+                <li class="mb-2">Realizar uma revisão crítica e sistemática da literatura nacional e internacional sobre Governança de Dados, com ênfase nos fundamentos conceituais, nos princípios estruturantes, nas classificações de modelos (centralizado, federado, híbrido, top-down, crowdsourced) e nas limitações de aplicabilidade em PMEs, com base em Mahanti (2021a), Otto (2011), Ladley (2020), Khatri e Brown (2010) e DAMA International (2017);</li>
+                <li class="mb-2">Mapear os principais entraves à adoção da GD em PMEs brasileiras, incluindo informalidade informacional, ausência de políticas de dados, escassez de recursos, resistência cultural e percepção de complexidade, à luz de autores como Santiago (2024), Begg e Caira (2012), Silveira e Langen (2023), e Rêgo (2013);</li>
+                <li class="mb-2">Estruturar o modelo GD-PME 3 Pilares com base em seus três fundamentos — separação entre dados e sistemas, capacitação contínua, e políticas graduais e simplificadas —, delineando seus fluxos operacionais, atribuições, artefatos de apoio, instrumentos de monitoramento e critérios de maturidade, conforme os referenciais de Barata (2015), Rêgo (2013), Mahanti (2021a) e Carvalho (2015);</li>
+                <li class="mb-2">Validar conceitualmente e projetivamente a aplicabilidade do modelo GD-PME 3 Pilares por meio de simulação heurística aplicada a um estudo de caso hipotético (empresa fictícia Varejo Inteligente Ltda.), com base em características realistas de baixa maturidade digital, segundo os princípios metodológicos de Yin (2015) e Santos (2022);</li>
+                <li class="mb-2">Comparar os efeitos projetados da aplicação do modelo com os resultados esperados de abordagens tradicionais, estimando impactos sobre:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>eficiência operacional;</li>
+                        <li>redução de retrabalho e inconsistências informacionais;</li>
+                        <li>conformidade com a LGPD;</li>
+                        <li>uso de dados na gestão;</li>
+                        <li>engajamento institucional com a qualidade da informação.</li>
+                    </ul>
+                A análise baseia-se em benchmarks do SEBRAE (2023; 2024), IBGE (2022), Wamba et al. (2015b)  e Rêgo (2013);</li>
+                <li class="mb-2">Desenvolver instrumentos de suporte prático ao modelo, incluindo:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>o checklist de diagnóstico de maturidade (Apêndice A);</li>
+                        <li>o manual operacional baseado em ciclos trimestrais (Apêndice B);</li>
+                        <li>o glossário de termos-chave em Governança de Dados (Apêndice C);</li>
+                        <li>o guia para uma oficina introdutória destinada a lideranças e colaboradores (Apêndice D);</li>
+                        <li>o roteiro de validação piloto para aplicação controlada em PMEs reais (Apêndice E);</li>
+                        <li>e o Quadro BA.1 – Guia de Aplicação dos Apêndices (Apêndice BA), como instrumento complementar de sistematização).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="delimitacao-estudo" class="card fade-in-section" style="animation-delay: 0.7s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.4 - Delimitação do Estudo: Escopo e Foco da Investigação</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Esta monografia delimita-se ao estudo da Governança de Dados (GD) em micro e pequenas empresas (MPEs) brasileiras no período compreendido entre 2020 e 2024. O foco recai sobre organizações de baixa maturidade informacional, marcadas por estruturas gerenciais informais, ausência de políticas institucionais de dados e limitações técnicas e operacionais relevantes — conforme caracterizado por Begg e Caira (2012), Carvalho (2015) e Santiago (2024).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Do ponto de vista metodológico, adota-se como unidade de análise uma empresa fictícia — Varejo Inteligente Ltda. — concebida como arquétipo realista de MPE com fragilidades típicas no uso, controle e confiabilidade dos dados organizacionais. Essa escolha visa garantir controle sobre as variáveis do contexto simulado, possibilitando uma análise projetiva e conceitual com base em heurística, sem intenção de generalização estatística. A abordagem qualitativa permite avaliar a aplicabilidade do modelo GD-PME 3 Pilares em um cenário controlado, porém representativo.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A delimitação temática restringe-se aos aspectos internos da governança de dados no nível organizacional. Estão incluídos os seguintes elementos:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Estruturação de papéis e responsabilidades;</li>
+                <li class="mb-2">Formulação de políticas mínimas;</li>
+                <li class="mb-2">Capacitação de equipes;</li>
+                <li class="mb-2">Desenvolvimento progressivo de fluxos e mecanismos de controle informacional.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Tecnologias emergentes como big data analytics, inteligência artificial, aprendizado de máquina ou blockchain não integram o escopo da pesquisa, por sua limitada aplicabilidade atual nas realidades típicas das MPEs analisadas.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">O marco regulatório adotado é a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018), compreendida não como finalidade isolada, mas como mecanismo propulsor de transformação organizacional. Essa abordagem está alinhada às proposições de Mahanti (2021a) e Ladley (2020), que defendem a integração entre conformidade legal e cultura de dados institucional.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A formulação, estruturação e simulação do modelo GD-PME 3 Pilares constituem o eixo central do estudo. A proposta é validada conceitualmente por meio de análise projetiva de impactos, considerando parâmetros técnico-institucionais e benchmarks secundários oriundos do SEBRAE, IBGE e autores como Rêgo (2013), Otto (2011) e Mahanti (2021a). Os efeitos esperados envolvem melhorias na qualidade da decisão, aumento da eficiência operacional e maior aderência à LGPD.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Importa registrar que a pesquisa não envolve coleta de dados primários, nem aplicação empírica em campo. Tais etapas são indicadas como continuidade possível e recomendadas nas perspectivas de validação futura, conforme discutido nas recomendações finais do Capítulo 5.</p>
+        </section>
+
+        <section id="desenho-metodologico" class="card fade-in-section" style="animation-delay: 0.8s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5 - Desenho Metodológico da Pesquisa</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A presente pesquisa adota uma abordagem qualitativa, exploratória, descritiva e aplicada, estruturada em três fases sequenciais e interdependentes. Essa combinação metodológica visa assegurar profundidade conceitual, alinhamento com os objetivos propostos e aplicabilidade prática em contextos organizacionais com baixa maturidade informacional.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A natureza qualitativa da investigação permite a compreensão aprofundada de fenômenos complexos e pouco estruturados, como a ausência de políticas formais de governança de dados (GD) em micro e pequenas empresas (MPEs). Por sua vez, o caráter exploratório justifica-se pela necessidade de construir e adaptar modelos teóricos a um campo ainda incipiente, em que os referenciais acadêmicos carecem de validação em ambientes organizacionais restritivos. Já a dimensão descritiva contempla a sistematização de evidências e características comuns às MPEs brasileiras, enquanto o viés aplicado orienta a formulação de um modelo operativo de GD com viabilidade realista.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Segundo Yin (2015), abordagens exploratórias qualitativas são particularmente apropriadas quando os constructos teóricos ainda estão em fase de desenvolvimento, os dados primários são escassos e o contexto de aplicação exige simulação controlada. Esse enquadramento metodológico é especialmente relevante para estudos cujo objetivo central não é testar hipóteses empíricas, mas sim propor e avaliar modelos conceituais com potencial de replicação adaptativa.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Dessa forma, a metodologia adotada fundamenta-se em diretrizes teórico-metodológicas reconhecidas, priorizando a construção estruturada do modelo GD-PME 3 Pilares e sua validação projetiva em ambiente simulado, conforme será detalhado no Capítulo 3 deste trabalho.</p>
+        </section>
+
+        <section id="revisao-bibliografica" class="card fade-in-section" style="animation-delay: 0.9s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.1 - Fase 1 – Revisão Bibliográfica Sistemática</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A primeira fase da pesquisa consistiu na realização de uma revisão bibliográfica sistemática da literatura nacional e internacional sobre governança de dados, com ênfase em frameworks aplicáveis a organizações de pequeno e médio porte. Foram considerados autores clássicos e contemporâneos, como Begg e Caira (2012), Rêgo (2013), Ladley (2020), Mahanti (2021a), Otto (2011) e Barata (2015), bem como diretrizes técnico-institucionais de órgãos como o SEBRAE e o IBGE.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A análise permitiu identificar os elementos estruturantes da GD, bem como os principais obstáculos enfrentados pelas MPEs, como ausência de padronização, informalidade informacional, subutilização de dados e baixa maturidade analítica. A seleção das fontes concentrou-se em publicações com foco direto em GD, maturidade informacional ou gestão da informação em MPEs, abrangendo o período de 2006 a 2024. Foram priorizados:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Artigos revisados por pares;</li>
+                <li class="mb-2">Dissertações acadêmicas;</li>
+                <li class="mb-2">Publicações institucionais.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">As fontes foram acessadas por meio de bases como:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Scopus;</li>
+                <li class="mb-2">Google Scholar;</li>
+                <li class="mb-2">Periódicos CAPES.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify">Os descritores utilizados incluíram:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Data governance;</li>
+                <li class="mb-2">Data maturity;</li>
+                <li class="mb-2">Small business information management;</li>
+                <li class="mb-2">PMEs;</li>
+                <li class="mb-2">Governança da informação.</li>
+            </ul>
+        </section>
+
+        <section id="estruturacao-modelo" class="card fade-in-section" style="animation-delay: 1.0s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.2 - Fase 2 – Estruturação do Modelo GD-PME 3 Pilares</h2>
+            <p class="text-slate-300 leading-relaxed mb-4 text-justify">A segunda fase consistiu na concepção e documentação do modelo autoral GD-PME 3 Pilares, desenvolvido a partir de três fundamentos interdependentes: (i) separação entre dados e sistemas; (ii) capacitação contínua; e (iii) políticas graduais e simplificadas.</p>
+            <p class="text-slate-300 leading-relaxed mb-4 text-justify">A estruturação foi guiada por uma lógica de implantação progressiva e adaptável, como será apresentado na Figura 1.1 que propõe uma ordem deliberadamente invertida em relação aos modelos corporativos tradicionais, com o objetivo de priorizar ações de baixo custo e alta aplicabilidade inicial — como boas práticas mínimas e a valorização organizacional dos dados — antes de avançar para etapas de maior complexidade técnica, como a formalização de ativos e o treinamento especializado. Essa estratégia foi desenhada para maximizar a efetividade da implantação em contextos operacionais frágeis, característicos das MPEs brasileiras.</p>
+            <div class="figure-container">
+                <img src="figura1.jpg" class="figura-especial-grande" alt="Figura 1.1 – Modelo GD-PME 3 Pilares: ordem adaptável de implantação por viabilidade">
+                <p class="figure-caption">Figura 1.1 – Modelo GD-PME 3 Pilares: ordem adaptável de implantação por viabilidade</p>
+                <p class="figure-caption">Fonte: Elaborado pelo Autor (2025).</p>
+            </div>
+            <p class="text-slate-300 leading-relaxed mb-4 text-justify mt-4">Conforme ilustrado na Figura 1.1, o modelo prioriza as seguintes etapas:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Separação entre dados e sistemas como etapa inicial;</li>
+                <li class="mb-2">Capacitação interna como segunda fase, focada na construção de cultura informacional;</li>
+                <li class="mb-2">Formalização de políticas graduais, consolidando práticas e rotinas em instrumentos mínimos de governança.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed mb-4 text-justify">A lógica sequencial permite adaptações conforme a realidade organizacional e favorece a curva de aprendizagem interna com foco na viabilidade técnica e orçamentária.</p>
+            <p class="text-slate-300 leading-relaxed mb-4 text-justify">A modelagem do GD-PME 3 Pilares incorporou princípios de design thinking, prototipagem incremental e absorção organizacional (Terra, 2017; Ladley, 2020), sendo fortemente influenciada pela visão de Mahanti (2021b), que propõe uma governança viável com estrutura mínima. Elementos clássicos da gestão da informação foram adaptados à realidade das MPEs, incluindo:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify">
+                <li class="mb-2">Definição simplificada de papéis;</li>
+                <li class="mb-2">Capacitação modular;</li>
+                <li class="mb-2">Uso de ferramentas acessíveis, como:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>Planilhas;</li>
+                        <li>Repositórios básicos.</li>
+                    </ul>
+                </li>
+                <li class="mb-2">Mapeamento de fluxos críticos de dados.</li>
+            </ul>
+        </section>
+
+        <section id="simulacao-estudo-caso" class="card fade-in-section" style="animation-delay: 1.1s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.5.3 - Fase 3 – Simulação em Estudo de Caso Hipotético</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A terceira fase da pesquisa consistiu na realização de uma simulação projetiva, aplicada a uma organização fictícia denominada Varejo Inteligente Ltda., caracterizada por baixa maturidade informacional, informalidade nos fluxos de dados e ausência de estrutura formal de governança. A opção por um estudo de caso hipotético justifica-se pela indisponibilidade de dados primários e pelo objetivo de testar a aplicabilidade conceitual do modelo em ambiente controlado, conforme recomendam Yin (2015; 2023) e Santiago (2024) para campos ainda em fase de consolidação empírica.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A simulação foi construída com base em benchmarks secundários confiáveis, extraídos de fontes como SEBRAE (2023; 2024), IBGE (2022), Mahanti (2021a) e Wamba et al. (2015b). Foram adotados parâmetros conservadores para estimar variações realistas em cinco indicadores centrais:</p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Eficiência operacional;</li>
+                <li class="mb-2">Redução de retrabalho e inconsistências informacionais;</li>
+                <li class="mb-2">Nível de conformidade com a LGPD;</li>
+                <li class="mb-2">Percentual de decisões gerenciais baseadas em dados;</li>
+                <li class="mb-2">Engajamento das equipes com a qualidade da informação.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A caracterização da empresa simulada seguiu padrões médios identificados em levantamentos do SEBRAE (2023): MPEs do setor varejista, com 20 a 30 funcionários, processos internos pouco padronizados, ausência de sistemas integrados e predominância de decisões intuitivas. Este arquétipo permitiu simular, de maneira representativa, os efeitos esperados da adoção progressiva do modelo GD-PME 3 Pilares em ambientes informacionais frágeis.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A robustez da simulação foi assegurada por meio da triangulação metodológica entre revisão teórica, desenvolvimento do framework autoral e teste projetivo estruturado. Essa estratégia está em consonância com o paradigma da pesquisa aplicada, conforme defendido por Yin (2023) e Stake (1995), que reconhecem o valor das simulações heurísticas para avaliação inicial de modelos em domínios emergentes.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Adicionalmente, os instrumentos operacionais de suporte à simulação estão sistematizados no Quadro BA.1, localizado no Apêndice BA, que organiza os apêndices da monografia conforme seus objetivos, pilares relacionados e aplicações técnicas. Tal sistematização contribui para a replicabilidade futura do experimento e para o planejamento de validações empíricas progressiva.</p>
+        </section>
+
+        <section id="estrutura-monografia" class="card fade-in-section" style="animation-delay: 1.2s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.6 - Estrutura da Monografia</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Esta monografia está organizada em cinco capítulos principais, além desta introdução, e conta com um conjunto ampliado de apêndices e um quadro sistematizador de referências operacionais, que orienta o uso prático dos instrumentos desenvolvidos. Essa estrutura visa assegurar uma progressão lógica entre os fundamentos teóricos, os procedimentos metodológicos e a aplicação efetiva do modelo GD-PME 3 Pilares, permitindo uma análise aprofundada de suas premissas, elementos constitutivos e impactos esperados no contexto das micro e pequenas empresas (MPEs) brasileiras.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Capítulo 2 – Fundamentação teórica:</strong> apresenta os principais conceitos relacionados à governança de dados (GD), com foco nos desafios enfrentados pelas MPEs em ambientes informacionais desestruturados. São discutidas a evolução da GD como disciplina, as tipologias clássicas de modelos (centralizado, descentralizado, híbrido, federado, top-down, crowdsourced) e suas limitações práticas em contextos de pequena escala. O capítulo também aborda fatores críticos como liderança, cultura de dados, infraestrutura mínima e barreiras organizacionais, com base em autores como Ladley (2020), Mahanti (2021a), Barata (2015) e Begg e Caira (2012). Elementos visuais — como a Figura 2.1 (Espectro dos modelos de GD), o Quadro 2.1 (benefícios estratégicos) e a Figura 2.3 (Fatores críticos de sucesso) — são utilizados para apoiar a compreensão conceitual.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Capítulo 3 – Metodologia:</strong> descreve a abordagem adotada, classificada como qualitativa, exploratória e aplicada, estruturada em três fases: (i) revisão bibliográfica sistemática; (ii) desenvolvimento do modelo GD-PME 3 Pilares; e (iii) simulação projetiva por meio de estudo de caso hipotético. O modelo é concebido como uma tecnologia incremental baseada em três fundamentos interdependentes: políticas graduais e simplificadas, capacitação contínua e separação entre dados e sistemas. Também são apresentados os artefatos desenvolvidos (como o dicionário de dados, a matriz RACI, trilhas formativas e mecanismos de governança leve), os indicadores utilizados na simulação e a lógica de parametrização adotada. A Figura 1.1 ilustra a estrutura conceitual do modelo.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Capítulo 4 – Resultados esperados:</strong> discute os efeitos projetados da adoção do modelo GD-PME 3 Pilares em uma empresa fictícia — Varejo Inteligente Ltda. — representativa do perfil operacional das MPEs brasileiras. Com base em benchmarks técnicos (SEBRAE, IBGE) e na literatura especializada, são analisados impactos sobre eficiência operacional, taxa de retrabalho, decisões orientadas por dados, conformidade à LGPD e engajamento das equipes. O capítulo reforça a viabilidade incremental da proposta e sua coerência com realidades organizacionais restritivas, ancorando-se em estudos de Mahanti (2021a), Rêgo (2013), Wamba et al. (2015a) e Santiago (2024).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Capítulo 5 – Conclusões e recomendações para pesquisas futuras:</strong> sintetiza as contribuições do estudo nos âmbitos teórico, metodológico e aplicado. Destaca-se a originalidade do modelo GD-PME 3 Pilares, sua estrutura incremental e a potencial replicabilidade em contextos similares. São reconhecidas limitações, como a ausência de validação empírica direta, e delineada uma agenda de pesquisa com três frentes: (i) aplicação em campo com análise longitudinal; (ii) desenvolvimento de ferramentas complementares (dashboards, roteiros setoriais, instrumentos de avaliação de maturidade); e (iii) expansão tecnológica do modelo com automações simplificadas, integração com APIs e adaptação a setores específicos. Finaliza-se com uma reflexão sobre o impacto econômico sistêmico da adoção do modelo em larga escala.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Além dos capítulos, o trabalho é complementado por um conjunto de apêndices que reforçam seu caráter aplicado e operacional. A inclusão do Quadro BA.1 – Guia de Aplicação dos Apêndices, localizado no Apêndice BA, tem por objetivo facilitar o uso prático dos instrumentos por parte de consultores, gestores e pesquisadores. Esse quadro apresenta de forma sistematizada todos os apêndices da monografia, seus objetivos, relação com os pilares do modelo e aplicações técnicas sugerida.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Apêndice A – Checklist de diagnóstico inicial:</strong> instrumento de autoavaliação destinado à identificação do nível de maturidade informacional das empresas, servindo como etapa preparatória para a implantação do modelo.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Apêndice B – Manual operacional do modelo GD-PME 3 Pilares:</strong> roteiro de implantação baseado em ciclos trimestrais, contendo ações por pilar, responsabilidades atribuídas e métricas de acompanhamento, com foco na aplicabilidade prática para gestores de MPEs.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Apêndice C – Glossário de Termos-Chave em Governança de Dados:</strong> apresenta definições claras dos principais conceitos de GD, focado em simplificar a terminologia para PMEs.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Apêndice D – Oficina introdutória para lideranças:</strong> guia de mobilização institucional com base na apresentação simplificada do modelo, destinado a lideranças operacionais e gerenciais.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>Apêndice E – Roteiro de validação piloto:</strong> apresenta um conjunto de oito etapas operacionais para condução de projetos-piloto com o modelo GD-PME 3 Pilares em PMEs reais, conforme a seção 5.20.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Essa estrutura assegura a articulação entre solidez conceitual e aplicabilidade prática, promovendo tanto a compreensão aprofundada da governança de dados como disciplina estratégica quanto sua operacionalização em ambientes empresariais restritivos. O Capítulo 2 dá continuidade ao percurso analítico ao apresentar os fundamentos teóricos que sustentam a proposta, com ênfase nos desafios enfrentados pelas MPEs, nas limitações dos modelos tradicionais e na construção incremental do modelo GD-PME 3 Pilares.</p>
+        </section>
+
+        <section id="barreiras-superacao" class="card fade-in-section" style="animation-delay: 1.3s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.7 - Barreiras Práticas e Estratégias de Superação</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Embora a governança de dados (GD) represente um vetor promissor de transformação informacional nas micro e pequenas empresas (MPEs), sua adoção enfrenta um conjunto expressivo de barreiras práticas. Entre os principais entraves destacam-se: resistência cultural à mudança, ausência de recursos técnicos e financeiros, desconhecimento sobre o potencial estratégico dos dados e sobrecarga das equipes com tarefas operacionais rotineiras. Tais obstáculos são particularmente acentuados em organizações com baixa maturidade digital, estrutura informalizada e cultura gerencial reativa — características recorrentes no contexto das MPEs brasileiras, conforme apontam Santiago (2024) e Carvalho (2015).</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Com o objetivo de mitigar essas barreiras, o modelo GD-PME 3 Pilares foi concebido com base em princípios de viabilidade incremental, absorção progressiva e engajamento contextualizado. Entre as estratégias propostas, destaca-se a priorização da capacitação de lideranças informais — atores-chave na mobilização de equipes em ambientes informais — e a incorporação de ações de governança ao fluxo de trabalho já existente, de modo a evitar sobrecargas operacionais. Ademais, recomenda-se a utilização de ferramentas acessíveis e de baixo custo, como planilhas compartilhadas, repositórios gratuitos e reuniões quinzenais de alinhamento, para estruturar os primeiros ciclos de implantação.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Essas abordagens são respaldadas por Mahanti (2021a) e Otto (2011), que defendem a adequação de soluções pragmáticas à realidade de organizações com capacidade técnica e orçamentária limitada. Em tais cenários, a governança funcional deve ser concebida como um processo adaptável, sem depender de altos investimentos iniciais ou estruturas complexas.</p>
+            <p class="text-slate-300 leading-relaxed text-justify">Ao incorporar essas limitações já na fase de formulação, esta monografia propõe não apenas um modelo tecnicamente consistente, mas também aderente às condições reais de aplicação. Com isso, busca-se ampliar a viabilidade de implantação e a sustentabilidade das práticas de governança em MPEs, evitando a armadilha da reprodução mecânica de frameworks corporativos que, embora sofisticados, se mostram ineficazes quando dissociados do contexto operacional local.</p>
+        </section>
+
+        <section id="diretrizes-futuras" class="card fade-in-section" style="animation-delay: 1.4s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">1.8 - Diretrizes Futuras de Pesquisa e Implementação do Modelo GD-PME 3 Pilares</h2>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">Considerando o estágio inicial de desenvolvimento do modelo GD-PME 3 Pilares e os resultados obtidos na simulação projetiva, esta monografia propõe um plano de continuidade estruturado em marcos temporais progressivos. O objetivo é viabilizar futuras etapas de validação empírica, disseminação prática e institucionalização do modelo, ampliando sua relevância como instrumento de política pública e de transformação informacional em micro e pequenas empresas (MPEs) brasileiras.</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3">A trajetória de continuidade da proposta está estruturada em três marcos temporais progressivos:</p>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>a) Curto prazo (0 a 12 meses):</strong></p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Realizar uma fase piloto com aplicação controlada do modelo GD-PME 3 Pilares em três micro e pequenas empresas reais, selecionadas de diferentes setores econômicos;</li>
+                <li class="mb-2">Testar em ambiente real os instrumentos desenvolvidos nesta monografia, notadamente:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>o checklist de diagnóstico de maturidade (Apêndice A);</li>
+                        <li>o manual operacional de implantação (Apêndice B);</li>
+                    </ul>
+                </li>
+                <li class="mb-2">Aferir indicadores preliminares, como:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>eficiência informacional;</li>
+                        <li>grau de adesão organizacional;</li>
+                        <li>evolução da maturidade dos dados;</li>
+                    </ul>
+                </li>
+                <li class="mb-2">Conduzir a execução conforme o roteiro metodológico descrito no Apêndice E, com acompanhamento instrumental baseado no Quadro BA.1.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>b) Médio prazo (12 a 36 meses):</strong></p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Conduzir estudos longitudinais voltados à mensuração dos efeitos organizacionais associados à adoção do modelo GD-PME 3 Pilares;</li>
+                <li class="mb-2">Sistematizar evidências por meio de:
+                    <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                        <li>relatos de boas práticas;</li>
+                        <li>estudos de caso comparativos;</li>
+                        <li>análises documentadas sobre:
+                            <ul class="list-disc list-inside ml-6 text-slate-300 leading-relaxed">
+                                <li>maturidade informacional;</li>
+                                <li>conformidade com a LGPD;</li>
+                                <li>redução de retrabalho;</li>
+                                <li>engajamento institucional com a governança da informação;</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mb-2">Consolidar a robustez teórica e a aplicabilidade prática do modelo.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify mb-3"><strong>c) Longo prazo (36 a 60 meses):</strong></p>
+            <ul class="list-disc list-inside text-slate-300 leading-relaxed text-justify mb-3">
+                <li class="mb-2">Estabelecer parcerias institucionais com organizações como SEBRAE, FINEP e universidades públicas, visando à difusão em escala nacional;</li>
+                <li class="mb-2">Desenvolver um framework público derivado do GD-PME 3 Pilares, com adaptações setoriais e regionais baseadas nas evidências acumuladas;</li>
+                <li class="mb-2">Promover sua institucionalização como política de incentivo à governança em PMEs brasileiras.</li>
+            </ul>
+            <p class="text-slate-300 leading-relaxed text-justify">Este roadmap constitui uma diretriz estratégica de amadurecimento da proposta, convertendo o modelo GD-PME 3 Pilares em uma ferramenta testada, replicável e com potencial de reconhecimento institucional. Ao alinhar rigor conceitual, viabilidade operacional e potencial de disseminação, consolida-se a governança de dados como vetor estruturante do desenvolvimento organizacional e do fortalecimento do ecossistema produtivo nacional.</p>
+        </section>
+        
+        <section id="appendix-menu-link" class="card fade-in-section" style="animation-delay: 1.5s;">
+            <h2 class="text-3xl font-semibold text-center gradient-title mb-6">Menu de Apêndices</h2>
+            <p class="text-slate-300 leading-relaxed mb-8 text-center">
+                Explore os apêndices técnicos e guias práticos que complementam o modelo GD-PME 3 Pilares.
+            </p>
+            <div class="appendix-menu-grid">
+                <a href="Apêndice - A.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice A</span> <span class="appendix-description">Diagnóstico Inicial e Avaliação de Maturidade em GD.</span> </a>
+                <a href="Apêndice - B.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice B</span> <span class="appendix-description">Manual Operacional do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - C.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice C</span> <span class="appendix-description">Glossário de Termos-Chave em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - D.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice D</span> <span class="appendix-description">Guia de Oficina Introdutória: Implantando a Cultura de Dados nas PMEs.</span> </a>
+                <a href="Apêndice - E.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice E</span> <span class="appendix-description">Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - F.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice F</span> <span class="appendix-description">Ficha de Autoavaliação Trimestral Simplificada.</span> </a>
+                <a href="Apêndice - G.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice G</span> <span class="appendix-description">Modelo de Documento Interno de Políticas de Dados (Termo Simplificado).</span> </a>
+                <a href="Apêndice - H.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice H</span> <span class="appendix-description">Exemplo de Caso Aplicado: Simulação do Ciclo Inicial (Empresa Fictícia).</span> </a>
+                <a href="Apêndice - I.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice I</span> <span class="appendix-description">Plano de Comunicação Interna para Implantação da GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - J.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice J</span> <span class="appendix-description">Roteiro de Coleta de Feedbacks Pós-Ciclo.</span> </a>
+                <a href="Apêndice - K.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice K</span> <span class="appendix-description">Ferramentas Digitais Abertas para Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - L.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice L</span> <span class="appendix-description">Cronograma para a Implementação Inicial do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - M.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice M</span> <span class="appendix-description">Miniguia Visual: Passo a Passo do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - N.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice N</span> <span class="appendix-description">Matriz de Riscos Informacionais para PMEs.</span> </a>
+                <a href="Apêndice - O.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice O</span> <span class="appendix-description">Mapa de Stakeholders da Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - P.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice P</span> <span class="appendix-description">Template de Relatório Trimestral de Governança de Dados.</span> </a>
+                <a href="Apêndice - Q.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Q</span> <span class="appendix-description">Comparativo de Evolução da Maturidade Informacional com o Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - R.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice R</span> <span class="appendix-description">Roteiro de Capacitação Setorial por Pilares do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - S.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice S</span> <span class="appendix-description">Banco de Boas Práticas em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - T.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice T</span> <span class="appendix-description">Mecanismo de Feedback Participativo sobre a Governança de Dados.</span> </a>
+                <a href="Apêndice - U.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice U</span> <span class="appendix-description">Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - V.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice V</span> <span class="appendix-description">Indicadores de Impacto Territorial da Governança de Dados em PMEs.</span> </a>
+                <a href="Apêndice - W.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice W</span> <span class="appendix-description">Modelos de Mensagens para Comunicação da Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - X.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice X</span> <span class="appendix-description">Ferramentas e Modelos de Visualização para Relatórios de Governança de Dados do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - Y.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Y</span> <span class="appendix-description">Modelo de Relatório Trimestral Consolidado de Acompanhamento da Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - Z.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice Z</span> <span class="appendix-description">Sugestões de Instrumentos Pedagógicos para Oficinas de Governança de Dados (GD).</span> </a>
+                <a href="Apêndice - AA.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AA</span> <span class="appendix-description">Modelo de Termo de Boas Práticas com Dados.</span> </a>
+                <a href="Apêndice - AB.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AB</span> <span class="appendix-description">Matriz Simplificada de Riscos Informacionais para PMEs.</span> </a>
+                <a href="Apêndice - AC.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AC</span> <span class="appendix-description">Roteiro de Comunicação Interna sobre GD.</span> </a>
+                <a href="Apêndice - AD.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AD</span> <span class="appendix-description">Plano de Multiplicadores Internos por Setor.</span> </a>
+                <a href="Apêndice - AE.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AE</span> <span class="appendix-description">Miniguia Visual para Empresas com Baixa Digitalização.</span> </a>
+                <a href="Apêndice - AF.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AF</span> <span class="appendix-description">Roteiro de Diagnóstico Rápido de Maturidade em GD para Consultores Externos.</span> </a>
+                <a href="Apêndice - AG.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AG</span> <span class="appendix-description">Painel de Indicadores Visuais Simplificados (KPIs por Pilar) do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AH.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AH</span> <span class="appendix-description">Modelo de Termo de Compromisso Institucional com a Governança de Dados.</span> </a>
+                <a href="Apêndice - AI.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AI</span> <span class="appendix-description">Roteiro Estratégico para Implementação Territorial do Modelo GD-PME 3 Pilares em Municípios ou Regiões.</span> </a>
+                <a href="Apêndice - AJ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AJ</span> <span class="appendix-description">Checklist de Evidências para Adesão ao Modelo GD-PME 3 Pilares em Editais Públicos e Programas de Fomento.</span> </a>
+                <a href="Apêndice - AK.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AK</span> <span class="appendix-description">Template para Relatório Trimestral de Avaliação da Maturidade em Governança de Dados (GD-PME 3 Pilares).</span> </a>
+                <a href="Apêndice - AL.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AL</span> <span class="appendix-description">Inventário Modelo de Dados Essenciais.</span> </a>
+                <a href="Apêndice - AM.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AM</span> <span class="appendix-description">Agenda Anual Sugerida para Ciclos de Governança de Dados com o Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AN.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AN</span> <span class="appendix-description">Modelo de Comunicado Interno sobre a Implantação da Governança de Dados.</span> </a>
+                <a href="Apêndice - AO.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AO</span> <span class="appendix-description">Painel Visual de Progresso por Pilar do Modelo GD-PME 3 Pilares (Modelo para Impressão ou Mural).</span> </a>
+                <a href="Apêndice - AP.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AP</span> <span class="appendix-description">Modelo de Termo de Adesão Individual à Iniciativa de Governança de Dados.</span> </a>
+                <a href="Apêndice - AQ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AQ</span> <span class="appendix-description">Template de Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AR.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AR</span> <span class="appendix-description">Kit Visual de Boas Práticas em Governança de Dados para PMEs.</span> </a>
+                <a href="Apêndice - AS.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AS</span> <span class="appendix-description">Quadro de Indicadores de Impacto da Implementação do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - AT.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AT</span> <span class="appendix-description">Roteiro de Avaliação Pós-Ciclo do Modelo GD-PME 3 Pilares: Reflexão, Métricas e Aprendizado Contínuo.</span> </a>
+                <a href="Apêndice - AU.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AU</span> <span class="appendix-description">Guia para Integração do Modelo GD-PME 3 Pilares a Programas de Fomento e Iniciativas Públicas.</span> </a>
+                <a href="Apêndice - AV.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AV</span> <span class="appendix-description">Matriz de Planejamento da Comunicação Interna sobre Governança de Dados.</span> </a>
+                <a href="Apêndice - AW.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AW</span> <span class="appendix-description">Comunicado Trimestral de Avanços da GD para Equipes e Colaboradores.</span> </a>
+                <a href="Apêndice - AX.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AX</span> <span class="appendix-description">Protocolo de Auditoria Interna em Governança de Dados.</span> </a>
+                <a href="Apêndice - AY.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AY</span> <span class="appendix-description">Lembrete Rápido: Nossas 3 Regras de Ouro com os Dados!</span> </a>
+                <a href="Apêndice - AZ.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice AZ</span> <span class="appendix-description">Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares.</span> </a>
+                <a href="Apêndice - BA.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice BA</span> <span class="appendix-description">Guia de Aplicação dos Apêndices.</span> </a>
+                <a href="Apêndice - BB.html" class="appendix-item"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h-1.5a3.375 3.375 0 0 1-3.375-3.375V9.75m3.75 9.75h-3.75V9.75m3.75 9.75a1.125 1.125 0 0 1-1.125 1.125H4.5a3.375 3.375 0 0 1-3.375-3.375V9.75m14.25 12V5.625a3.375 3.375 0 0 0-3.375-3.375H9.75M16.5 14.25h-2.25m-0.75 2.25h-3.75m2.25-4.5h2.25m-0.75 2.25h-3.75" /></svg> <span class="appendix-title">Apêndice BB</span> <span class="appendix-description">Análise Comparativa Detalhada de Frameworks de Governança de Dados sob a Ótica das MPEs.</span> </a>
+            </div>
+        </section>
+
+        <section id="referencias-bibliograficas" class="card fade-in-section" style="animation-delay: 1.6s;">
+    <h2 class="text-3xl font-semibold text-center gradient-title mb-6">REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+    <ul class="references-list">
+        <li>[1] ABRAHAM, R.; SCHNEIDER, J.; VOM BROCKE, J. Data governance: a conceptual framework, structured review, and research agenda. International Journal of Information Management, v. 49, p. 424–438, 2019. Disponível em: <a href="https://doi.org/10.1016/j.ijinfomgt.2019.07.008" target="_blank">https://doi.org/10.1016/j.ijinfomgt.2019.07.008</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[2] ASSOCIATION OF COLLEGE AND RESEARCH LIBRARIES (ACRL). Information Literacy Competency Standards for Higher Education. Chicago: ALA, 2000.</li>
+        <li>[3] BARATA, André Montoia. Gestão de dados como suporte à maturidade informacional: uma proposta de modelo para organizações públicas. 2015. 154 f. Dissertação (Mestrado em Gestão da Informação) – Universidade de São Paulo, São Paulo, 2015. Disponível em: <a href="https://www.teses.usp.br/teses/disponiveis/100/100131/tde-28072015-215618/publico/ANDRE_MONTOIA_BARATA_DISSERTACAO_MESTRADO.pdf" target="_blank">https://www.teses.usp.br/teses/disponiveis/100/100131/tde-28072015-215618/publico/ANDRE_MONTOIA_BARATA_DISSERTACAO_MESTRADO.pdf</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[4] BEGG, Chris; CAIRA, Tony. Exploring the SME quandary: data governance in practice. Journal of Data and Information Quality, v. 4, n. 1, 2012.</li>
+        <li>[5] BENTO, Patrícia Isabel Penteado Roque. How data governance frameworks can leverage data-driven decision making: a sustainable approach for data governance in organizations. 2021. Dissertação (Mestrado em Information Management, especialização em Knowledge Management and Business Intelligence) – NOVA Information Management School, Universidade Nova de Lisboa, Lisboa, 2021.</li>
+        <li>[6] BRASIL. Autoridade Nacional de Proteção de Dados (ANPD). Guia Orientativo sobre Segurança da Informação para Agentes de Tratamento de Pequeno Porte. Brasília: ANPD, 2021. Disponível em: <a href="https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-sobre-seguranca-da-informacao-para-agentes-de-tratamento-de-pequeno-porte" target="_blank">https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-sobre-seguranca-da-informacao-para-agentes-de-tratamento-de-pequeno-porte</a>. Acesso em: 26 mai. 2025.</li>
+        <li>[7] BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais – LGPD. Diário Oficial da União, Brasília, DF, 15 ago. 2018. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[8] CARVALHO, Hugo Eduardo Santana. Gestão de informação em pequenas empresas. Belo Horizonte: Universidade Federal de Minas Gerais, 2015.</li>
+        <li>[9] DAGNINO, Renato. Tecnologia social: ferramenta para construir outra sociedade. Rio de Janeiro: Fundação Banco do Brasil, 2004.</li>
+        <li>[10] DAMA INTERNATIONAL. DAMA-DMBOK: Data Management Body of Knowledge. 2. ed. Bradley Beach, NJ: Technics Publications, 2017.</li>
+        <li>[11] DATA GOVERNANCE INSTITUTE (DGI). The DGI Data Governance Framework. Chicago: DGI, 2021. Disponível em: <a href="https://datagovernance.com/the-dgi-data-governance-framework/" target="_blank">https://datagovernance.com/the-dgi-data-governance-framework/</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[12] ECKERSON GROUP. Data Governance Technology Guide. [S.l.]: Eckerson Group, 2020. Disponível em: <a href="https://markets.eckerson.com/data-governance/technology/" target="_blank">https://markets.eckerson.com/data-governance/technology/</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[13] FEDERAÇÃO BRASILEIRA DE BANCOS (FEBRABAN). Relatório de crédito e inadimplência nas MPMEs. São Paulo: FEBRABAN, 2023.</li>
+        <li>[14] FLORIDI, Luciano. Information: a very short introduction. Oxford: Oxford University Press, 2010.</li>
+        <li>[15] FLYVBJERG, Bent. Making social science matter: why social inquiry fails and how it can succeed again. Cambridge: Cambridge University Press, 2001.</li>
+        <li>[16] GIL, Antonio Carlos. Métodos e técnicas de pesquisa social. 6. ed. São Paulo: Atlas, 2008.</li>
+        <li>[17] HABERMAS, Jürgen. Teoria do agir comunicativo: racionalidade da ação e racionalização social. Vol. 1. São Paulo: Martins Fontes, 1987.</li>
+        <li>[18] HARAWAY, Donna. Situated knowledges: the science question in feminism and the privilege of partial perspective. Feminist Studies, v. 14, n. 3, p. 575–599, 1988.</li>
+        <li>[19] HUMBY, Clive. Data is the new oil. Palestra proferida na conferência da Association of National Advertisers, Kellogg School, 2006. Disponível em: <a href="https://ana.blogs.com/maestros/2006/11/data_is_the_new.html" target="_blank">https://ana.blogs.com/maestros/2006/11/data_is_the_new.html</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[20] INMON, William H. Building the data warehouse. 4. ed. Indianapolis: Wiley, 2005.</li>
+        <li>[21] INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Estatísticas econômicas das empresas 2021: Cadastro Central de Empresas – CEMPRE. Rio de Janeiro: IBGE, 2022. Disponível em: <a href="https://www.ibge.gov.br/estatisticas/economicas/empresa/9227-cadastro-central-de-empresas.html" target="_blank">https://www.ibge.gov.br/estatisticas/economicas/empresa/9227-cadastro-central-de-empresas.html</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[22] INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Pesquisa Anual de Comércio 2023 – PMEs no Brasil: estrutura, desempenho e inovação. Rio de Janeiro: IBGE, 2023a.</li>
+        <li>[23] INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Pesquisa Nacional sobre Digitalização de Pequenos Negócios. Brasília: IBGE, 2023b.</li>
+        <li>[24] INSTITUTO DE PESQUISA ECONÔMICA APLICADA (IPEA). Proposta de redação à regulamentação da política nacional de apoio e desenvolvimento das micro e pequenas empresas. Nota Técnica nº 97. Brasília: Ipea, 2022. Disponível em: <a href="https://portalantigo.ipea.gov.br/portal/index.php?Itemid=1&id=38926&option=com_content&view=article" target="_blank">https://portalantigo.ipea.gov.br/portal/index.php?Itemid=1&id=38926&option=com_content&view=article</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[25] KHATRI, Vijay; BROWN, Carol V. Designing data governance. Communications of the ACM, v. 53, n. 1, p. 148–152, 2010.</li>
+        <li>[26] KRITIKA, Namrata. An Overarching Guide to Data Governance. In: HELGE, Kris; ROOKEY, Caitlin A. (Eds.). Creating and Sustaining an Information Governance Program. Hershey, PA: IGI Global, 2024. Cap. 15, p. 283-307. Disponível em: <a href="https://doi.org/10.4018/979-8-3693-0472-3.ch015" target="_blank">https://doi.org/10.4018/979-8-3693-0472-3.ch015</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[27] LADLEY, John. Data Governance: How to Design, Deploy, and Sustain an Effective Data Governance Program. 2. ed. Cambridge, MA: Academic Press, 2020.</li>
+        <li>[28] LINHARES, Francisco Carlos S.; DIAS, Guilherme Ataide. A tomada de decisão da alta governança no SEBRAE/PB: um panorama da contribuição da análise de dados, processos e ferramentas. 2022. Trabalho de Conclusão de Curso (Especialização em Gestão de Dados no Cenário de Big Data) – Universidade Federal da Paraíba, João Pessoa, 2022.</li>
+        <li>[29] MAHANTI, Rupa. Data Governance Success: Growing and Sustaining Data Governance. Singapore: Springer, 2021a.</li>
+        <li>[30] MAHANTI, Rupa. Data Governance: The Definitive Guide. New York: Apress, 2021b.</li>
+        <li>[31] MANZINI, Ezio. Design, when everybody designs: an introduction to design for social innovation. Cambridge, MA: The MIT Press, 2015.</li>
+        <li>[32] MARGOLIN, Victor. The politics of the artificial: essays on design and design studies. Chicago: University of Chicago Press, 2002. DOI: 10.7208/chicago/9780226518374.001.0001.</li>
+        <li>[33] MILAN, Stefania; TRERÉ, Emiliano. Big Data from the South(s): Beyond Data Universalism. Television & New Media, v. 20, n. 4, p. 319–335, 2019. DOI: 10.1177/1527476419837739. Disponível em: <a href="https://journals.sagepub.com/doi/pdf/10.1177/1527476419837739" target="_blank">https://journals.sagepub.com/doi/pdf/10.1177/1527476419837739</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[34] MORAES, Gilberto de Andrade; ESCRIVÃO FILHO, Edmundo Antônio. A gestão da informação diante das especificidades das PMEs. Ciência da Informação, Brasília, v. 35, n. 3, p. 124–132, set./dez. 2006.</li>
+        <li>[35] ORGANIZAÇÃO DAS NAÇÕES UNIDAS PARA ASSENTAMENTOS HUMANOS (ONU-HABITAT). Relatório Anual 2023: Ação Local em Tempos de Crise. Nairobi: ONU-Habitat, 2023. Disponível em: <a href="https://unhabitat.org/annual-report-2023" target="_blank">https://unhabitat.org/annual-report-2023</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[36] OTTO, Boris. Organizing Data Governance: Findings from the Telecommunications Industry and Consequences for Large Service Providers. Communications of the Association for Information Systems, [S.l.], v. 29, art. 3, 2011. Disponível em: <a href="https://doi.org/10.17705/1CAIS.02903" target="_blank">https://doi.org/10.17705/1CAIS.02903</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[37] PRADO, Lauro Jorge. GOVERNANÇA DE DADOS PARA PEQUENAS EMPRESAS. LinkedIn, 11 jan. 2024. Disponível em: <a href="https://www.linkedin.com/pulse/governança-de-dados-para-pequenas-empresas-lauro-jorge-prado-g9xcf/" target="_blank">https://www.linkedin.com/pulse/governança-de-dados-para-pequenas-empresas-lauro-jorge-prado-g9xcf/</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[38] QUIJANO, Aníbal. Colonialidade do poder, eurocentrismo e América Latina. In: LANDER, Edgardo (org.). A colonialidade do saber: eurocentrismo e ciências sociais. Perspectivas latino-americanas. Buenos Aires: CLACSO, 2005. Disponível em: <a href="https://biblioteca.clacso.edu.ar/clacso/sur-sur/20100624103322/12_Quijano.pdf" target="_blank">https://biblioteca.clacso.edu.ar/clacso/sur-sur/20100624103322/12_Quijano.pdf</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[39] REDMAN, Thomas C. Data quality for the information age. Boston: Artech House, 1996. 320 p.</li>
+        <li>[40] RÊGO, Bergson Lopes. Gestão e governança de dados: promovendo os dados como ativo de valor nas empresas. Rio de Janeiro: Brasport, 2013.</li>
+        <li>[41] SANTIAGO, Eduardo D. Governança Informacional em Ambientes Não Estruturados: Propostas e Limites para Pequenas Empresas. Revista Brasileira de Gestão e Inovação, São Leopoldo, RS, v. 10, n. 2, p. 203-228, mar./abr. 2023.</li>
+        <li>[42] SANTIAGO, Lucas Monteiro. Governança de dados em pequenas empresas: barreiras e práticas emergentes. São Paulo: Universidade Federal de São Paulo, 2024.</li>
+        <li>[43] SANTOS, Boaventura de Sousa. Epistemologias do Sul. 1. ed. São Paulo: Cortez, 2010.</li>
+        <li>[44] SANTOS, Luciano; ROSSI, Eduardo Dallagnol. A Importância da Governança na Melhoria da Qualidade dos Dados e na Tomada de Decisão de Marketing, estudo de caso em uma Startup. 2023. Trabalho de Conclusão de Curso (Graduação em Administração) – Universidade do Sul de Santa Catarina, Balneário Camboriú, 2023.</li>
+        <li>[45] SANTOS, Matheus Henrique Pereira dos. A importância do gerenciamento de dados mestres. 2022. Trabalho de Conclusão de Curso (Graduação em Engenharia de Produção) – Faculdade Anhanguera Campinas Ouro Verde, Campinas, 2022.</li>
+        <li>[46] SAS INSTITUTE INC. The SAS® Data Governance Framework: A Blueprint for Success. Cary, NC: SAS Institute Inc., 2016. Disponível em: <a href="https://www.sas.com/en/whitepapers/sas-data-governance-framework-107325.html" target="_blank">https://www.sas.com/en/whitepapers/sas-data-governance-framework-107325.html</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[47] SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS (SEBRAE). Boletim de Indicadores das Micro e Pequenas Empresas – 2024. Brasília, DF: SEBRAE, 2024. Disponível em: <a href="https://datasebrae.com.br" target="_blank">https://datasebrae.com.br</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[48] SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS (SEBRAE). Boas Práticas de Gestão para Pequenas Empresas. Brasília, DF: SEBRAE Nacional, 2024.</li>
+        <li>[49] SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS (SEBRAE). Panorama das Micro e Pequenas Empresas 2021–2022. Brasília, DF: SEBRAE, 2022.</li>
+        <li>[50] SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS (SEBRAE). Panorama das Micro e Pequenas Empresas. Brasília, DF: SEBRAE Nacional, 2023.</li>
+        <li>[51] SHANNON, Claude E.; WEAVER, Warren. The mathematical theory of communication. Urbana: University of Illinois Press, 1949.</li>
+        <li>[52] SILVEIRA, Marco Antonio; LANGEN, Talita da Silva Carlos. Gestão de dados em micro e pequenas empresas: Conformidade com a lei geral de proteção de dados. Revista de Gestão e Secretariado (GeSec), São Paulo, v. 14, n. 6, p. 9198-9216, 2023. Disponível em: <a href="https://doi.org/10.5007/2175-8077.2023.e82226" target="_blank">https://doi.org/10.5007/2175-8077.2023.e82226</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[53] STAKE, Robert E. The Art of Case Study Research. Thousand Oaks, CA: SAGE Publications, 1995. 175 p.</li>
+        <li>[54] TERRA, Priscila de Mello. A influência da governança de dados na gestão estratégica. 2017. Trabalho de Conclusão de Curso (Graduação em Sistemas de Informação) – Universidade Federal Fluminense, Niterói, 2017.</li>
+        <li>[55] THE ECONOMIST. The world’s most valuable resource is no longer oil, but data. The Economist, Londres, 6 mai. 2017. Disponível em: <a href="https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data" target="_blank">https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[56] THOMAS, Gwen. The DGI Data Governance Framework. Chicago: Data Governance Institute, 2004. Disponível em: <a href="https://datagovernance.com/the-dgi-data-governance-framework/" target="_blank">https://datagovernance.com/the-dgi-data-governance-framework/</a>. Acesso em: 26 mai. 2025.</li>
+        <li>[57] THIOLLENT, Michel. Metodologia da pesquisa-ação. 18. ed. São Paulo: Cortez, 2011.</li>
+        <li>[58] THOMAS, Gwen. Alpha Males and Data Disasters: The Case for Data Governance. Basking Ridge, NJ: Brass Cannon Press, 2006. 222 p.</li>
+        <li>[59] ORGANIZAÇÃO DAS NAÇÕES UNIDAS PARA A EDUCAÇÃO, A CIÊNCIA E A CULTURA (UNESCO). Global framework on digital inclusion: guidelines and recommendations. Paris: UNESCO, 2023. Disponível em: <a href="https://www.unesco.org/es/ifap/documents" target="_blank">https://www.unesco.org/es/ifap/documents</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[60] WAMBA, Samuel Fosso; AKTER, Shahriar; EDWARDS, Andrew; CHOPIN, Geoffrey; GNANZOU, Dubravko. How ‘big data’ can make big impact: findings from a systematic review and a longitudinal case study. International Journal of Production Economics, [S.l.], v. 165, p. 234-246, July 2015b. Disponível em: <a href="https://2024.sci-hub.se/6826/6dba18e73ab36381994d71d38da1d4b5/fossowamba2015.pdf" target="_blank">https://2024.sci-hub.se/6826/6dba18e73ab36381994d71d38da1d4b5/fossowamba2015.pdf</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[61] WAMBA, Samuel Fosso et al. Big data analytics and firm performance: effects of dynamic capabilities. Journal of Business Research, [S.l.], v. 70, p. 356-365, 2015a. Disponível em: <a href="https://doi.org/10.1016/j.jbusres.2016.08.009" target="_blank">https://doi.org/10.1016/j.jbusres.2016.08.009</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[62] WANG, Richard Y.; STRONG, Diane M. Beyond accuracy: what data quality means to data consumers. Journal of Management Information Systems, [S.l.], v. 12, n. 4, p. 5-33, Spring 1996. Disponível em: <a href="https://doi.org/10.1080/07421222.1996.11518099" target="_blank">https://doi.org/10.1080/07421222.1996.11518099</a>. Acesso em: 27 mai. 2025.</li>
+        <li>[63] WEICK, Karl E. Making sense of the organization. Malden: Blackwell Publishing, 2005.</li>
+        <li>[64] YIN, Robert K. Case Study Research and Applications: Design and Methods. 7. ed. Thousand Oaks, CA: SAGE Publications, 2023.</li>
+        <li>[65] YIN, Robert K. Estudo de caso: planejamento e métodos. 5. ed. Porto Alegre: Bookman, 2015.</li>
+    </ul>
+            <p class="text-center mt-10">
+                <a href="monografia.pdf" target="_blank" class="inline-block px-8 py-3 border-2 border-teal-400 text-teal-300 font-semibold rounded-lg hover:bg-teal-400 hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-teal-400/40">
+                    Acesse a Monografia completa em PDF
+                </a>
+            </p>
+        </section>
+
+        <footer class="footer fade-in-section" style="animation-delay: 1.7s;">
+            <div class="note-card">
+                <p>Este documento interativo apresenta os conceitos-chave da monografia e um menu de navegação para os apêndices. Modelo GD-PME 3 Pilares © 2025.</p>
+            </div>
+        </footer>
+    </main>
+
+      </div> <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
+            const closeRotateBtn = document.getElementById('closeRotateSuggestion');
+
+            // 1. Fechar o Aviso de Rotação
+            if (rotateOverlay && closeRotateBtn) {
+                closeRotateBtn.addEventListener('click', () => {
+                    rotateOverlay.style.display = 'none';
+                });
+            }
+
+            // 2. Abrir/Fechar o menu no clique do hambúrguer
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Impede que o clique feche o menu imediatamente
+                    sidebar.classList.toggle('open');
+                });
+            }
+
+            // 3. Fechar o menu se clicar fora dele (no conteúdo)
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                    // Se o clique não foi no menu nem no botão, fecha o menu
+                    if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                        sidebar.classList.remove('open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
