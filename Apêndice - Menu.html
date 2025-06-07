@@ -838,70 +838,65 @@
     </main>
 
     <script>
-           document.addEventListener('DOMContentLoaded', () => {
-        // --- Elementos Principais ---
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const mainContentArea = document.querySelector('.main-content-area');
-        const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
-        const closeRotateBtn = document.getElementById('closeRotateSuggestion');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Elementos Principais ---
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const mainContentArea = document.querySelector('.main-content-area');
+            const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
+            const closeRotateBtn = document.getElementById('closeRotateSuggestion');
 
-        // --- LÓGICA CENTRALIZADA PARA AJUSTAR O LAYOUT ---
-        // Esta função define como o layout deve se parecer em diferentes tamanhos de tela
-        function adjustLayout() {
-            if (window.innerWidth > 768) {
-                // DESKTOP: O conteúdo principal tem espaço para o menu
-                mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
-                sidebar.style.transform = 'var(--sidebar-visible-transform)';
-            } else {
-                // MOBILE: O conteúdo principal ocupa a tela toda
-                mainContentArea.style.paddingLeft = '0';
-                // E o menu só aparece se tiver a classe 'open'
-                if (!sidebar.classList.contains('open')) {
-                    sidebar.style.transform = 'var(--sidebar-hidden-transform)';
+            // --- LÓGICA CORRIGIDA PARA AJUSTAR O LAYOUT ---
+            // Esta função agora só se preocupa com o padding do desktop,
+            // deixando o CSS controlar a visibilidade do menu.
+            function adjustLayout() {
+                if (window.innerWidth > 768) {
+                    // DESKTOP: O conteúdo principal tem espaço para o menu
+                    mainContentArea.style.paddingLeft = 'var(--sidebar-width)';
+                    sidebar.classList.remove('open'); // Garante que não fique com a classe 'open' em desktop
+                } else {
+                    // MOBILE: O conteúdo principal ocupa a tela toda
+                    mainContentArea.style.paddingLeft = '0';
                 }
             }
-        }
-        
-        // --- EVENTOS E AÇÕES DO USUÁRIO ---
+            
+            // --- EVENTOS E AÇÕES DO USUÁRIO ---
 
-        // 1. Fechar o Aviso de Rotação
-        if (rotateOverlay && closeRotateBtn) {
-            closeRotateBtn.addEventListener('click', () => {
-                rotateOverlay.style.display = 'none';
-            });
-        }
-
-        // 2. Controle do Menu Lateral (Sidebar) no clique do hamburguer
-        if (sidebarToggle && sidebar) {
-            sidebarToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sidebar.classList.toggle('open');
-                // Após abrir/fechar, reajusta o transform caso necessário
-                adjustLayout(); 
-            });
-        }
-
-        // 3. Fechar o menu se clicar fora dele no celular
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-                    sidebar.classList.remove('open');
-                    adjustLayout();
-                }
+            // 1. Fechar o Aviso de Rotação
+            if (rotateOverlay && closeRotateBtn) {
+                closeRotateBtn.addEventListener('click', () => {
+                    rotateOverlay.style.display = 'none';
+                });
             }
+
+            // 2. Controle do Menu Lateral (Sidebar) no clique do hamburguer
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('open');
+                    // A função adjustLayout() não é mais necessária aqui para o toggle,
+                    // pois o CSS já faz todo o trabalho de mostrar/esconder.
+                });
+            }
+
+            // 3. Fechar o menu se clicar fora dele no celular
+            document.addEventListener('click', (e) => {
+                // Verifica se a tela é de celular e se o menu está aberto
+                if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                    // Verifica se o clique NÃO foi dentro do menu e NEM no botão de toggle
+                    if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                        sidebar.classList.remove('open');
+                    }
+                }
+            });
+            
+            // --- GATILHOS DO NAVEGADOR ---
+            // Ajusta o layout sempre que a janela muda de tamanho
+            window.addEventListener('resize', adjustLayout);
+            
+            // Execução inicial para garantir o estado correto da página
+            adjustLayout();
         });
-        
-        // --- GATILHOS DO NAVEGADOR ---
-        // Ajusta o layout sempre que a janela muda de tamanho ou orientação
-        window.addEventListener('resize', adjustLayout);
-        window.addEventListener('orientationchange', () => {
-             setTimeout(adjustLayout, 150); // Delay para garantir que o browser tenha atualizado as dimensões
-        });
-        
-        // Execução inicial para garantir o estado correto da página
-        adjustLayout();
-    });
     </script>
 </body>
 </html>
