@@ -863,35 +863,66 @@
 
       </div> <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Seleciona todos os elementos importantes ---
             const sidebar = document.getElementById('sidebar');
             const sidebarToggle = document.getElementById('sidebarToggle');
+            const contentWrapper = document.getElementById('content-wrapper');
             const rotateOverlay = document.querySelector('.rotate-suggestion-overlay');
             const closeRotateBtn = document.getElementById('closeRotateSuggestion');
 
-            // 1. Fechar o Aviso de Rotação
-            if (rotateOverlay && closeRotateBtn) {
+            // --- Função de Layout Robusta ---
+            // Garante que o layout está correto para o tamanho da tela.
+            function adjustLayout() {
+                // Se o contentWrapper não existir por algum motivo, não faz nada.
+                if (!contentWrapper) return;
+
+                if (window.innerWidth > 768) {
+                    // --- MODO DESKTOP ---
+                    contentWrapper.style.paddingLeft = 'var(--sidebar-width)';
+                    // Garante que o menu móvel feche se a tela for aumentada
+                    if(sidebar) sidebar.classList.remove('open');
+                } else {
+                    // --- MODO CELULAR ---
+                    contentWrapper.style.paddingLeft = '0';
+                }
+            }
+
+            // --- Gatilhos de Eventos ---
+
+            // 1. Ao fechar o aviso de "Melhor Experiência"
+            if (closeRotateBtn) {
                 closeRotateBtn.addEventListener('click', () => {
-                    rotateOverlay.style.display = 'none';
+                    if (rotateOverlay) {
+                        rotateOverlay.style.display = 'none';
+                    }
+                    // FORÇA o reajuste do layout neste exato momento.
+                    // Isso corrige o problema de redimensionar a tela com o aviso aberto.
+                    adjustLayout();
                 });
             }
 
             // 2. Abrir/Fechar o menu no clique do hambúrguer
             if (sidebarToggle && sidebar) {
                 sidebarToggle.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Impede que o clique feche o menu imediatamente
+                    e.stopPropagation();
                     sidebar.classList.toggle('open');
                 });
             }
 
-            // 3. Fechar o menu se clicar fora dele (no conteúdo)
+            // 3. Fechar o menu ao clicar fora
             document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                    // Se o clique não foi no menu nem no botão, fecha o menu
+                if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
                     if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
                         sidebar.classList.remove('open');
                     }
                 }
             });
+
+            // 4. "Escutar" o evento de redimensionamento da tela
+            window.addEventListener('resize', adjustLayout);
+
+            // 5. Chamar a função uma vez no início para garantir o layout correto no carregamento
+            adjustLayout();
         });
     </script>
 </body>
