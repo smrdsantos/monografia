@@ -74,11 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Menu dinâmico (Highlight Ativo)
+    // 5. Menu dinâmico (Highlight Ativo) - VERSÃO CORRIGIDA E MAIS PRECISA
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.4
+        rootMargin: '-35% 0px -35% 0px',
+        threshold: 0
     };
 
     const observer = new IntersectionObserver((entries) => {
