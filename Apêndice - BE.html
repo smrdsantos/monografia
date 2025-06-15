@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Modelo de Termo de Abertura do Comitê de Governança de Dados (Data Governance Charter) - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light Slate background */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .charter-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b; /* Slate 800 */
+            border-bottom: 2px solid #e2e8f0; /* Slate 200 */
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        .footer-charter {
+            font-size: 0.875rem;
+            color: #334155; /* Slate 700 */
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1; /* Slate 300 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
+            <div class="flex justify-center items-center gap-4">
+                 <svg class="w-10 h-10 text-slate-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-800">Modelo de Termo de Abertura do Comitê de Governança de Dados (Data Governance Charter)</h1>
+            </div>
+            <h2 class="text-xl md:text-2xl text-slate-600 mt-2">APÊNDICE - BE</h2>
+        </header>
+
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <div class="text-center mb-6">
+                <p><strong>Empresa:</strong> [Nome da Empresa]</p>
+                <p><strong>Data de Aprovação:</strong> [Data] | <strong>Versão:</strong> 1.0</p>
+            </div>
+            
+            <div class="space-y-6 charter-section">
+                <div>
+                    <h3>1. Missão e Justificativa</h3>
+                    <p>A missão do programa de Governança de Dados da [Nome da Empresa] é assegurar que nossos dados sejam gerenciados como um ativo estratégico, garantindo sua qualidade, segurança e uso ético para potencializar nossas decisões, otimizar nossas operações e sustentar nosso crescimento. Este comitê é estabelecido para resolver problemas críticos de negócio causados por inconsistências e falta de controle sobre nossas informações.</p>
+                </div>
+
+                <div>
+                    <h3>2. Objetivos Estratégicos</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Aumentar a confiança e a precisão dos dados utilizados em relatórios gerenciais.</li>
+                        <li>Reduzir riscos operacionais e de conformidade, especialmente em relação à LGPD.</li>
+                        <li>Fomentar uma cultura orientada a dados, onde as decisões são baseadas em evidências.</li>
+                        <li>Melhorar a eficiência operacional através da redução de retrabalho causado por dados de má qualidade.</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>3. Escopo Inicial</h3>
+                    <p>Inicialmente, o programa de Governança de Dados focará nos seguintes domínios de dados, priorizados por seu alto impacto no negócio:</p>
+                    <ul class="list-disc list-inside space-y-1 mt-2">
+                        <li>Dados de Clientes</li>
+                        <li>Dados de Produtos e Estoque</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>4. Estrutura Organizacional e Papéis</h3>
+                    <p class="mb-2">A governança será exercida por uma estrutura em dois níveis:</p>
+                    <div class="ml-4 space-y-2">
+                       <p><strong>Conselho de Dados (Estratégico):</strong><br>
+                           <span class="text-sm"><strong>Membros:</strong> [Nome do Sócio/Diretor], [Nome do Data Owner de Clientes], [Nome do Data Owner de Produtos].<br></span>
+                           <span class="text-sm"><strong>Responsabilidades:</strong> Aprovar Business Cases, priorizar sprints de governança, aprovar políticas.</span></p>
+                       <p><strong>Grupo de Trabalho de Dados (Tático):</strong><br>
+                           <span class="text-sm"><strong>Membros:</strong> [Nome do Data Steward de Clientes], [Nome do Data Steward de Estoque], [Nome do Facilitador da GD].<br></span>
+                           <span class="text-sm"><strong>Responsabilidades:</strong> Executar os sprints, investigar problemas e implementar soluções.</span></p>
+                    </div>
+                    <p class="mt-3 text-sm">As responsabilidades detalhadas de cada papel estão descritas no <strong>Apêndice BD</strong>.</p>
+                </div>
+
+                <div>
+                    <h3>5. Autoridade e Poder de Decisão</h3>
+                    <p>Este Comitê, através de seu Conselho de Dados, detém a autoridade delegada pela diretoria para definir e aprovar todas as políticas, padrões e procedimentos relacionados à governança dos dados em escopo. Suas decisões sobre prioridades e regras de dados devem ser respeitadas por todas as áreas da empresa.</p>
+                </div>
+
+                <div>
+                    <h3>6. Métricas de Sucesso</h3>
+                    <p>O sucesso do programa será medido por:</p>
+                     <ul class="list-disc list-inside space-y-1 mt-2">
+                        <li>O Retorno sobre Investimento (ROI) de cada sprint, calculado no Business Case (Apêndice BC).</li>
+                        <li>A evolução dos indicadores no Scorecard de Qualidade de Dados (Apêndice BI).</li>
+                        <li>O avanço na Matriz Escalonável de Maturidade GD-PME (Quadro 5.14).</li>
+                    </ul>
+                </div>
+
+                <div class="pt-6 text-center">
+                    <h3>7. Aprovação</h3>
+                    <p class="mb-8">Este termo de abertura foi lido e aprovado, e sua implementação é autorizada a partir da data de assinatura.</p>
+                    <div class="w-1/2 mx-auto">
+                        <p class="border-t border-gray-400 pt-2">[Nome do Sócio-Diretor ou Principal Patrocinador]</p>
+                        <p class="text-sm">[Cargo]</p>
+                        <p class="text-sm">[Nome da Empresa]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-charter fade-in-section" style="animation-delay: 0.3s;">
+            <p class="mt-1"><strong>Nota [1]:</strong> Este artefato consolida a estrutura organizacional em dois níveis (Conselho e Grupo de Trabalho) proposta no Módulo de Evolução 2. O Charter é um instrumento clássico da governança corporativa, aqui adaptado para a realidade de uma PME, com o objetivo de conferir legitimidade, autoridade e sustentabilidade ao programa de Governança de Dados, conforme as recomendações de patrocínio executivo discutidas na Seção 2.6.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -7,12 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos gerais do corpo do documento */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f4f4f5; /* PADRÃO NOVO: Fundo Zinco claro */
+            background-color: #f4f4f5; 
         }
-        /* Estilos para cartões */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
         .card {
             background-color: white;
             border-radius: 12px;
@@ -25,16 +30,6 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        /* Animação de fade-in */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
-        }
-
-        /* Estilos para a tabela */
         .data-table {
             width: 100%;
             border-collapse: collapse;
@@ -43,20 +38,18 @@
         .data-table th, .data-table td {
             text-align: left;
             padding: 10px 12px;
-            border: 1px solid #e4e4e7; /* PADRÃO NOVO: Borda Zinco */
+            border: 1px solid #e4e4e7; 
             font-size: 0.85rem;
             vertical-align: top;
         }
         .data-table th {
-            background-color: #fafafa; /* PADRÃO NOVO: Fundo de cabeçalho Zinco */
+            background-color: #fafafa;
             font-weight: 600;
             color: #3f3f46;
         }
         .data-table td {
             color: #27272a;
         }
-        
-        /* Estilos para a figura */
         .figure-container {
             text-align: center;
             margin: 2em 0;
@@ -73,26 +66,22 @@
             color: #52525b;
             margin-top: 10px;
         }
-
-        /* ======================================================= */
-        /* ====== NOVOS ESTILOS TEMÁTICOS (GUIA - ZINCO) ========= */
-        /* ======================================================= */
         .section-title-guia {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #3f3f46; /* Cor Zinco Escura para Títulos */
+            color: #3f3f46; 
         }
         .header-title-guia {
             font-size: 2.4rem;
             font-weight: 700;
-            color: #3f3f46; /* Cor Zinco Escura */
+            color: #18181b; 
             text-align: center;
             margin-bottom: 10px;
         }
         .header-subtitle-guia {
             font-size: 1.15rem;
-            color: #52525b; /* Cor Zinco mais Escura */
+            color: #52525b; 
             text-align: center;
             margin-bottom: 32px;
             max-width: 800px;
@@ -109,21 +98,21 @@
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 16px;
-            background-color: #e4e4e7; /* Fundo Zinco claro para o ícone */
+            background-color: #e4e4e7; 
         }
         .header-icon-guia svg {
             width: 32px;
             height: 32px;
-            color: #3f3f46; /* Cor Zinco Escura */
+            color: #3f3f46; 
         }
         .highlight-guia {
-            color: #71717a; /* Cor Zinco para destaque */
+            color: #3f3f46; 
             font-weight: 600;
         }
         .footer-guia {
             text-align: center;
             font-size: 0.8rem;
-            color: #27272a; /* Cor Zinco mais Escura para o rodapé */
+            color: #27272a; 
             margin-top: 32px;
             padding-bottom: 24px;
         }
@@ -139,9 +128,8 @@
             color: #27272a;
         }
         .note-card .highlight-guia {
-             color: #3f3f46;
+            color: #18181b;
         }
-
     </style>
 </head>
 <body>
@@ -158,24 +146,16 @@
 
         <section class="card fade-in-section" style="animation-delay: 0.2s;">
             <h2 class="section-title-guia">BA.1 Introdução e Propósito do Guia</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Este apêndice tem como propósito consolidar, organizar e orientar o uso estratégico do conjunto de Apêndices Técnicos (identificados de A à AZ) desenvolvidos ao longo desta monografia. Longe de serem meros complementos periféricos, tais apêndices configuram-se como extensões metodológicas e operacionais do modelo GD-PME 3 Pilares — concebidas para transformar teoria em prática, conceito em ação e ideal em resultado mensurável.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Diante da densidade e variedade dos materiais reunidos — que incluem instrumentos de diagnóstico, planos operacionais, roteiros de formação, ferramentas de validação, matrizes de avaliação, guias para políticas públicas e dispositivos de auditoria — faz-se necessário um mapeamento sistemático que permita ao leitor compreender claramente:
-            </p>
-            <ul class="list-disc ml-6 text-gray-700 leading-relaxed mb-4">
-                <li class="mb-1">A função prática e o objetivo principal de cada apêndice;</li>
-                <li class="mb-1">O público-alvo ideal para sua aplicação e utilização;</li>
-                <li class="mb-1">O momento mais apropriado para o uso de cada instrumento dentro do ciclo de implantação e sustentação do modelo GD-PME 3 Pilares;</li>
-                <li>O bloco temático a que cada apêndice pertence, conforme a estrutura conceitual e funcional da presente proposta de Governança de Dados para Pequenas e Médias Empresas (PMEs).</li>
+            <p class="text-gray-700 leading-relaxed mb-4">Este apêndice tem como propósito consolidar, organizar e orientar o uso estratégico do conjunto de Apêndices Técnicos desenvolvidos ao longo desta monografia. Longe de serem meros complementos periféricos, tais apêndices configuram-se como extensões metodológicas e operacionais do modelo GD-PME 3 Pilares.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">Reconhecendo a jornada de maturidade proposta por este trabalho — que parte de um modelo fundamental e avança para uma plataforma robusta —, este guia foi estruturado em duas seções principais, refletidas em dois quadros distintos:</p>
+            <ul class="list-decimal ml-6 text-gray-700 leading-relaxed mb-4 space-y-2">
+                <li><strong class="highlight-guia">Quadro BA.1 – Guia de Aplicação dos Apêndices do Estágio Fundamental:</strong> Detalha os instrumentos operacionais (Apêndices A à BB) que compõem o modelo original, focados em PMEs que iniciam sua jornada em governança.</li>
+                <li><strong class="highlight-guia">Quadro BA.2 – Guia de Aplicação dos Apêndices dos Módulos de Evolução:</strong> Descreve os artefatos avançados (Apêndices BC a BI) que compõem o segundo estágio de maturidade, para PMEs que buscam escalar sua governança, focando em estratégia, processos ágeis e valor de negócio.</li>
             </ul>
-            <p class="text-gray-700 leading-relaxed">
-                Para orientar essa navegação pelo conjunto de ferramentas práticas, apresenta-se, primeiramente, a Figura BA.1, que sintetiza visualmente a arquitetura geral e a lógica de implantação do modelo GD-PME 3 Pilares.
-            </p>
+             <p class="text-gray-700 leading-relaxed">A Figura BA.1 a seguir sintetiza visualmente a arquitetura geral e a lógica de implantação do modelo, servindo como base para a apropriação dos instrumentos detalhados nos quadros.</p>
         </section>
 
-      <div class="figure-container fade-in-section" style="animation-delay: 0.3s;">
+ <div class="figure-container fade-in-section" style="animation-delay: 0.3s;">
     <img src=GZ09W2e.png 
          class="block mx-auto" 
          alt="Diagrama da Arquitetura Geral do Modelo GD-PME 3 Pilares">
@@ -183,415 +163,163 @@
     <p class="figure-caption">Fonte: Elaborado pelo Autor (2025).</p>
 </div>  
 
-
-
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <p class="text-gray-600 leading-relaxed text-center italic">Representação visual da jornada incremental de implantação da Governança de Dados em Micro e Pequenas Empresas, articulada em três pilares fundamentais: separação entre dados e sistemas, capacitação contínua e políticas simplificadas. A estrutura culmina na aplicação cíclica, simulação de impactos e consolidação de uma cultura de dados sustentável.</p>
+        </section>
+        
         <section class="card fade-in-section" style="animation-delay: 0.5s;">
             <h2 class="section-title-guia">BA.2 Guia de Aplicação dos Apêndices</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                O Quadro BA.1 funciona como uma cartografia orientadora do acervo de apêndices. Ele permite que gestores, educadores, consultores e formuladores de políticas públicas selecionem com precisão os instrumentos mais adequados às suas realidades e desafios.
-            </p>
-            <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">Quadro BA.1 – Guia de Aplicação dos Apêndices do Modelo GD-PME 3 Pilares.</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">Os quadros a seguir funcionam como uma cartografia orientadora do acervo de apêndices, permitindo que gestores, educadores, consultores e formuladores de políticas públicas selecionem com precisão os instrumentos mais adequados às suas realidades e desafios.</p>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quadro BA.1 – Guia de Aplicação dos Apêndices do Estágio Fundamental</h3>
             <div class="overflow-x-auto">
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Nome do Apêndice (Título Final)</th>
-                            <th>Objetivo Prático Principal do Apêndice</th>
+                            <th>Nome do Apêndice</th>
+                            <th>Objetivo Prático Principal</th>
                             <th>Público-Alvo Principal</th>
-                            <th>Momento Ideal de Uso Principal</th>
-                            <th>Bloco Temático Correspondente (Sugestão)</th>
+                            <th>Momento Ideal de Uso</th>
+                            <th>Bloco Temático</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="font-semibold">APÊNDICE A – Diagnóstico Inicial</td><td>Fornecer um checklist prático para PMEs autoavaliarem seu estágio inicial de maturidade em GD, identificando lacunas e prioridades.</td><td>Gestores da PME; Lideranças operacionais; Equipe envolvida na implantação da GD.</td><td>Fase inicial da implantação do GD-PME 3 Pilares; Antes de definir o primeiro plano de ação; Pode ser reaplicado para comparar evolução.</td><td><span class="highlight-guia">1 – Diagnóstico e Planejamento Inicial da GD</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE B – Manual Operacional do Modelo GD-PME 3 Pilares</td><td>Guiar a execução dos ciclos trimestrais de implantação do modelo GD-PME 3 Pilares, detalhando ações, ferramentas e responsabilidades por pilar.</td><td>Equipe de coordenação do projeto GD-PME 3 Pilares na empresa; Multiplicadores internos; Consultores.</td><td>Durante o planejamento e a execução de cada ciclo de implantação; Como material de referência contínuo.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE C – Glossário de Termos-Chave em Governança de Dados para PMEs</td><td>Oferecer definições claras e acessíveis dos principais conceitos de GD utilizados na monografia e no modelo, facilitando o entendimento.</td><td>Todos os colaboradores da PME; Participantes de oficinas; Novos funcionários.</td><td>Durante as capacitações iniciais (Apêndice D); Como material de consulta permanente; Na formação de multiplicadores (Apêndice U/AQ).</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE D – Guia de Oficina Introdutória: Implantando a Cultura de Dados nas PMEs</td><td>Orientar a realização de uma oficina participativa para sensibilizar sobre a importância da GD e introduzir o modelo GD-PME 3 Pilares.</td><td>Facilitadores da oficina (internos ou externos); Gestores e colaboradores da PME.</td><td>Fase de pré-implantação do GD-PME 3 Pilares; Início do primeiro ciclo; Para integração de novos colaboradores.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE E – Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares</td><td>Planejar e conduzir projetos-piloto para testar e validar a aplicabilidade do modelo GD-PME 3 Pilares em PMEs reais, coletando evidências.</td><td>Pesquisadores; Consultores; Equipes de projetos de inovação em GD.</td><td>Após a validação conceitual do modelo; Como etapa de pesquisa futura para refinamento empírico.</td><td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE F – Ficha de Autoavaliação Trimestral Simplificada</td><td>Fornecer uma ficha padrão para autoavaliação simplificada da evolução da GD, a ser aplicada ao final de cada ciclo trimestral, com pontuação objetiva.</td><td>Gestores de dados (se houver); Lideranças responsáveis pela GD; Equipe de implantação.</td><td>Ao final de cada ciclo trimestral de implementação do GD-PME 3 Pilares; Como insumo para os Relatórios Trimestrais.</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE G – Modelo de Documento Interno de Políticas de Dados (Termo Simplificado)</td><td>Oferecer um modelo básico de Termo de Boas Práticas em Dados para PMEs, alinhado ao Pilar 3, para formalizar políticas mínimas e compromissos.</td><td>Colaboradores da PME; Lideranças; RH.</td><td>Durante a implementação do Pilar 3 (Políticas); No processo de integração de novos colaboradores; Em oficinas de sensibilização.</td><td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE H – Exemplo de Caso Aplicado: Simulação do Ciclo Inicial (Empresa Fictícia)</td><td>Apresentar um exemplo fictício e didático da aplicação do primeiro ciclo do modelo GD-PME 3 Pilares na empresa "Varejo Inteligente Ltda.".</td><td>Gestores de PMEs; Consultores; Equipes de implantação; Participantes de capacitações.</td><td>Como material ilustrativo em oficinas de capacitação (Apêndice D); Para guiar as primeiras discussões sobre a aplicação do modelo.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE I – Plano de Comunicação Interna para Implantação da GD-PME 3 Pilares</td><td>Propor um roteiro e estratégias de comunicação interna para apoiar a implantação do GD-PME 3 Pilares.</td><td>Equipe de coordenação da GD; Lideranças; RH; Comunicação Interna (se houver).</td><td>Desde o planejamento inicial do projeto GD-PME 3 Pilares e de forma contínua.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE J – Roteiro de Coleta de Feedbacks Pós-Ciclo</td><td>Oferecer um modelo de roteiro para coletar feedback dos colaboradores após cada ciclo trimestral.</td><td>Gestores; RH; Facilitadores da GD; Equipe de coordenação da GD.</td><td>Ao final de cada ciclo, como parte do processo de avaliação e planejamento (Apêndice AT).</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE K – Ferramentas Digitais Abertas para Governança de Dados em PMEs</td><td>Apresentar uma curadoria de ferramentas gratuitas ou de baixo custo para apoiar a implementação dos três pilares.</td><td>Gestores de PMEs; Equipes de TI (se houver); Consultores.</td><td>Durante o planejamento das ações de cada pilar.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE L – Cronograma para a Implementação Inicial do Modelo GD-PME 3 Pilares</td><td>Propor um cronograma semestral para a implementação inicial do modelo.</td><td>Equipe de coordenação do projeto; Lideranças.</td><td>Na fase de planejamento detalhado da implantação.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE M – Miniguia Visual: Passo a Passo do Modelo GD-PME 3 Pilares</td><td>Oferecer uma versão condensada e visual do passo a passo para implementar o modelo.</td><td>Todos os colaboradores da PME; Facilitadores de oficinas.</td><td>Como material de apoio em capacitações (Apêndice D) e comunicação interna (Apêndice W).</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE N – Matriz de Riscos Informacionais para PMEs</td><td>Apresentar uma matriz simplificada para PMEs identificarem, avaliarem e priorizarem riscos informacionais.</td><td>Gestores da PME; Responsáveis por processos críticos.</td><td>Durante o diagnóstico inicial e para revisão periódica.</td><td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE O – Mapa de Stakeholders da Governança de Dados em PMEs</td><td>Apresentar um modelo visual para mapear os stakeholders internos e externos da GD.</td><td>Equipe de coordenação do projeto; Lideranças da PME.</td><td>Na fase inicial de planejamento, antes do plano de comunicação.</td><td><span class="highlight-guia">1 – Diagnóstico e Planejamento Inicial da GD</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE P – Template de Relatório Trimestral de Governança de Dados</td><td>Fornecer um template para o relatório trimestral de acompanhamento das ações e avanços da GD.</td><td>Equipe gestora da GD; Responsáveis pelos pilares.</td><td>Ao final de cada ciclo trimestral, para consolidar informações.</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE Q – Comparativo de Evolução da Maturidade Informacional</td><td>Apresentar um instrumento para registrar visualmente a evolução da maturidade da PME.</td><td>Gestores da PME; Equipe de GD.</td><td>Ao final de cada ciclo de avaliação para comparação.</td><td><span class="highlight-guia">4 – Monitoramento e Avaliação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE R – Roteiro de Capacitação Setorial por Pilares</td><td>Fornecer um roteiro para adaptar ações de capacitação às necessidades de cada setor.</td><td>Multiplicadores internos; Líderes de setor; RH.</td><td>No planejamento de oficinas temáticas.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE S – Banco de Boas Práticas em Governança de Dados</td><td>Reunir exemplos de boas práticas em GD para inspirar e orientar as PMEs.</td><td>Líderes da PME; Equipes de implantação; Todos os colaboradores.</td><td>Como material de consulta contínua e para inspirar ações.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE T – Mecanismo de Feedback Participativo</td><td>Oferecer um formulário para coletar feedback participativo dos colaboradores sobre a GD.</td><td>Gestores da PME; Equipe de coordenação da GD.</td><td>Ao final de cada ciclo, para subsidiar a melhoria contínua.</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE U – Roteiro para Formação de Multiplicadores Internos</td><td>Estruturar um roteiro para a formação de colaboradores-chave como multiplicadores da GD.</td><td>Lideranças da PME; RH; Colaboradores selecionados.</td><td>Na fase de planejamento e execução do Pilar 2.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE V – Indicadores de Impacto Territorial da GD</td><td>Propor indicadores para avaliar o impacto sistêmico do modelo em nível regional.</td><td>Entidades públicas; Agências de fomento; Pesquisadores.</td><td>Para planejamento e avaliação de políticas públicas.</td><td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE W – Modelos de Mensagens para Comunicação</td><td>Oferecer exemplos de mensagens para comunicação interna sobre a GD.</td><td>Equipe de coordenação da GD; Lideranças; RH.</td><td>Ao longo de todo o processo de implantação.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE X – Ferramentas de Visualização para Relatórios</td><td>Sugerir modelos de visualização para apresentar de forma clara os resultados da GD.</td><td>Equipe gestora da GD; Elaboradores de relatórios.</td><td>Na elaboração de relatórios e comunicados.</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE Y – Modelo de Relatório Trimestral Consolidado</td><td>Apresentar um modelo de relatório narrativo para consolidar avanços para a liderança.</td><td>Liderança da PME; Stakeholders externos.</td><td>Ao final de cada ciclo trimestral.</td><td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE Z – Sugestões de Instrumentos Pedagógicos</td><td>Oferecer sugestões de materiais e dinâmicas para tornar as oficinas de GD mais eficazes.</td><td>Facilitadores de oficinas; Multiplicadores.</td><td>No planejamento e execução das oficinas.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AA – Modelo de Termo de Boas Práticas com Dados</td><td>Apresentar um modelo de termo interno para formalizar as práticas básicas de GD.</td><td>Todos os colaboradores da PME; Lideranças; RH.</td><td>No onboarding de novos funcionários e em oficinas.</td><td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AB – Matriz Simplificada de Riscos</td><td>Oferecer um instrumento para PMEs avaliarem riscos informacionais e planejarem mitigação.</td><td>Gestores da PME; Responsáveis por processos.</td><td>Durante o diagnóstico inicial e para revisão periódica.</td><td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AC – Roteiro de Comunicação Interna</td><td>Apresentar um roteiro de comunicação para sensibilizar e engajar colaboradores na implantação.</td><td>Lideranças da PME; Multiplicadores internos.</td><td>No início e ao longo de cada ciclo de implementação.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AD – Plano de Multiplicadores Internos</td><td>Propor um plano para identificar, formar e acompanhar multiplicadores internos da GD.</td><td>Lideranças da PME; RH; Coordenação da GD.</td><td>Na fase de planejamento e implementação do Pilar 2.</td><td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AE – Miniguia para Baixa Digitalização</td><td>Oferecer um guia com práticas analógicas de GD para PMEs com poucos recursos.</td><td>Gestores e colaboradores de PMEs com baixa digitalização.</td><td>Na fase inicial de sensibilização em empresas com pouca infraestrutura.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AF – Roteiro de Diagnóstico Rápido</td><td>Fornecer um roteiro para consultores avaliarem rapidamente a maturidade em GD.</td><td>Consultores externos; Agentes de fomento.</td><td>Em reuniões iniciais de diagnóstico.</td><td><span class="highlight-guia">1 – Diagnóstico e Planejamento</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AG – Painel de Indicadores Visuais</td><td>Sugerir indicadores visuais simples para monitorar e comunicar os avanços da GD.</td><td>Toda a equipe da PME; Lideranças.</td><td>Para acompanhamento contínuo em murais internos.</td><td><span class="highlight-guia">4 – Monitoramento e Avaliação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AH – Modelo de Termo de Compromisso</td><td>Apresentar um termo para formalizar o compromisso da alta gestão com a GD.</td><td>Liderança principal da PME (Diretoria, Sócios).</td><td>No início formal do projeto de implementação da GD.</td><td><span class="highlight-guia">5 – Formalização e Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AI – Roteiro para Implementação Territorial</td><td>Apresentar etapas para a aplicação do modelo em escala territorial.</td><td>Gestores públicos; Associações comerciais; SEBRAE.</td><td>No planejamento de políticas públicas ou programas de fomento.</td><td><span class="highlight-guia">6 – Expansão e Impacto</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AJ – Checklist de Evidências para Editais</td><td>Fornecer um checklist para PMEs usarem o GD-PME 3 Pilares em editais de fomento.</td><td>PMEs que buscam fomento; Avaliadores de editais.</td><td>Ao preparar propostas para editais de inovação ou fomento.</td><td><span class="highlight-guia">6 – Expansão e Impacto</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AK – Modelo de Relatório Trimestral de Maturidade</td><td>Oferecer um template para a PME documentar a evolução de sua maturidade.</td><td>Equipe de GD da PME; Lideranças.</td><td>Ao final de cada ciclo trimestral.</td><td><span class="highlight-guia">4 – Monitoramento e Avaliação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AL – Inventário de Dados Essenciais</td><td>Oferecer um modelo de planilha para o mapeamento inicial dos dados essenciais.</td><td>Equipe de GD da PME; Responsáveis de negócio.</td><td>No início da implementação do Pilar 1.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AM – Agenda Anual de Ciclos</td><td>Apresentar uma proposta de cronograma anual para aplicação do modelo.</td><td>Equipe de coordenação da GD; Lideranças.</td><td>No planejamento de longo prazo da implementação.</td><td><span class="highlight-guia">2 – Instrumentos Operacionais</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AN – Modelo de Comunicado Interno</td><td>Apresentar um modelo de mensagem para divulgar a implantação da GD.</td><td>Liderança da PME; RH; Todos os colaboradores.</td><td>No lançamento da iniciativa de GD na empresa.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AO – Painel Visual de Progresso</td><td>Oferecer um modelo de painel gráfico para monitoramento público da GD.</td><td>Toda a equipe da PME; Lideranças.</td><td>Para afixação em murais, com atualização periódica.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AP – Modelo de Termo de Adesão Individual</td><td>Formalizar o comprometimento individual dos colaboradores com as práticas de GD.</td><td>Todos os colaboradores e gestores da PME.</td><td>No processo de integração de novos colaboradores.</td><td><span class="highlight-guia">5 – Formalização e Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AQ – Template de Roteiro para Formação de Multiplicadores</td><td>Oferecer um roteiro didático para preparar multiplicadores internos.</td><td>Lideranças; RH; Colaboradores selecionados.</td><td>No planejamento da formação de multiplicadores.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AR – Kit Visual de Boas Práticas</td><td>Oferecer sugestões de elementos gráficos para reforçar a comunicação e a cultura de dados.</td><td>Equipes de comunicação; Multiplicadores; RH.</td><td>Para uso contínuo ao longo da implantação da GD.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AS – Quadro de Indicadores de Impacto</td><td>Apresentar indicadores práticos para mensurar os impactos da implementação.</td><td>Gestores da PME; Equipe de GD.</td><td>Para definição de metas e avaliação de impacto.</td><td><span class="highlight-guia">4 – Monitoramento e Avaliação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AT – Roteiro de Avaliação Pós-Ciclo</td><td>Apresentar um roteiro para conduzir a avaliação reflexiva após cada ciclo.</td><td>Equipe envolvida na GD; Lideranças.</td><td>Ao final de cada ciclo de implementação.</td><td><span class="highlight-guia">4 – Monitoramento e Avaliação</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AU – Guia para Integração com Programas de Fomento</td><td>Propor caminhos para integrar o modelo a programas de fomento e iniciativas públicas.</td><td>Gestores públicos; SEBRAE; Agências de fomento.</td><td>No planejamento de políticas públicas e parcerias.</td><td><span class="highlight-guia">6 – Expansão e Impacto</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AV – Matriz de Planejamento da Comunicação</td><td>Oferecer uma matriz para planejar a comunicação interna sobre GD.</td><td>Equipe de coordenação da GD; Lideranças.</td><td>No planejamento inicial da comunicação da GD.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AW – Comunicado Trimestral de Avanços</td><td>Oferecer um modelo de comunicado visual para informar os avanços da GD.</td><td>Todos os colaboradores; Multiplicadores.</td><td>Ao final de cada ciclo trimestral.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AX – Protocolo de Auditoria Interna</td><td>Apresentar um protocolo para PMEs realizarem auditorias internas sobre a GD.</td><td>Lideranças locais; Comitê interno de GD.</td><td>Periodicamente para verificar conformidade.</td><td><span class="highlight-guia">5 – Formalização e Riscos</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AY – Lembrete Rápido: 3 Regras de Ouro</td><td>Oferecer um lembrete visual com regras básicas de uso de dados.</td><td>Todos os colaboradores, especialmente em PMEs informais.</td><td>No início da sensibilização sobre GD.</td><td><span class="highlight-guia">3 – Capacitação e Cultura</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE AZ – Plano de Disseminação Expandido</td><td>Apresentar um plano estratégico para a disseminação do modelo GD-PME.</td><td>Autor; Instituições de ensino; Órgãos de fomento.</td><td>Como visão de futuro e direcionamento para expansão.</td><td><span class="highlight-guia">6 – Expansão e Impacto</span></td></tr>
+                        <tr><td class="font-semibold">APÊNDICE BB – Análise Comparativa Detalhada</td><td>Apresentar uma análise de benchmarking aprofundada do modelo GD-PME.</td><td>Gestores de MPEs; Consultores; Formuladores de políticas.</td><td>Para validar a proposta e compreender nuances de diferentes abordagens.</td><td><span class="highlight-guia">1 – Diagnóstico e Planejamento</span></td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-10">Quadro BA.2 – Guia de Aplicação dos Apêndices dos Módulos de Evolução</h3>
+            <div class="overflow-x-auto">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Apêndice</th>
+                            <th>Objetivo Prático Principal</th>
+                            <th>Público-Alvo Principal</th>
+                            <th>Momento Ideal de Uso</th>
+                            <th>Bloco Temático</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="font-semibold">APÊNDICE A – Diagnóstico Inicial e Avaliação de Maturidade em Governança de Dados</td>
-                            <td>Fornecer um checklist prático para PMEs autoavaliarem seu estágio inicial de maturidade em GD, identificando lacunas e prioridades.</td>
-                            <td>Gestores da PME; Lideranças operacionais; Equipe envolvida na implantação da GD.</td>
-                            <td>Fase inicial da implantação do GD-PME 3 Pilares; Antes de definir o primeiro plano de ação; Pode ser reaplicado para comparar evolução.</td>
-                            <td><span class="highlight-guia">1 – Diagnóstico e Planejamento Inicial da GD</span></td>
+                            <td class="font-semibold">APÊNDICE BC – Modelo de Business Case</td>
+                            <td>Conectar cada iniciativa de GD a uma "dor" de negócio, justificando o investimento com base em ROI.</td>
+                            <td>Grupo de Trabalho de Dados; Conselho de Dados; Liderança.</td>
+                            <td>No início de cada "sprint de governança", para obter aprovação formal.</td>
+                            <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">APÊNDICE B – Manual Operacional do Modelo GD-PME 3 Pilares</td>
-                            <td>Guiar a execução dos ciclos trimestrais de implantação do modelo GD-PME 3 Pilares, detalhando ações, ferramentas e responsabilidades por pilar.</td>
-                            <td>Equipe de coordenação do projeto GD-PME 3 Pilares na empresa; Multiplicadores internos; Consultores.</td>
-                            <td>Durante o planejamento e a execução de cada ciclo de implantação; Como material de referência contínuo.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
+                            <td class="font-semibold">APÊNDICE BD – Definição de Papéis e Responsabilidades</td>
+                            <td>Formalizar e detalhar os papéis de Data Owner e Data Steward, evoluindo da matriz RACI.</td>
+                            <td>Liderança da PME; RH; Equipe de coordenação da GD.</td>
+                            <td>Durante a estruturação ou revisão do Comitê de Governança.</td>
+                            <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE C – Glossário de Termos-Chave em Governança de Dados para PMEs</td>
-                            <td>Oferecer definições claras e acessíveis dos principais conceitos de GD utilizados na monografia e no modelo, facilitando o entendimento.</td>
-                            <td>Todos os colaboradores da PME; Participantes de oficinas; Novos funcionários.</td>
-                            <td>Durante as capacitações iniciais (<span class="highlight-guia">Apêndice D</span>); Como material de consulta permanente; Na formação de multiplicadores (<span class="highlight-guia">Apêndice U/AQ</span>).</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE D – Guia de Oficina Introdutória: Implantando a Cultura de Dados nas PMEs</td>
-                            <td>Orientar a realização de uma oficina participativa para sensibilizar sobre a importância da GD e introduzir o modelo GD-PME 3 Pilares.</td>
-                            <td>Facilitadores da oficina (internos ou externos); Gestores e colaboradores da PME.</td>
-                            <td>Fase de pré-implantação do GD-PME 3 Pilares; Início do primeiro ciclo; Para integração de novos colaboradores.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE E – Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares</td>
-                            <td>Planejar e conduzir projetos-piloto para testar e validar a aplicabilidade do modelo GD-PME 3 Pilares em PMEs reais, coletando evidências.</td>
-                            <td>Pesquisadores; Consultores; Equipes de projetos de inovação em GD.</td>
-                            <td>Após a validação conceitual do modelo; Como etapa de pesquisa futura para refinamento empírico.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE F – Ficha de Autoavaliação Trimestral Simplificada</td>
-                            <td>Fornecer uma ficha padrão para autoavaliação simplificada da evolução da GD, a ser aplicada ao final de cada ciclo trimestral, com pontuação objetiva.</td>
-                            <td>Gestores de dados (se houver); Lideranças responsáveis pela GD; Equipe de implantação.</td>
-                            <td>Ao final de cada ciclo trimestral de implementação do GD-PME 3 Pilares; Como insumo para os Relatórios Trimestrais.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE G – Modelo de Documento Interno de Políticas de Dados (Termo Simplificado)</td>
-                            <td>Oferecer um modelo básico de Termo de Boas Práticas em Dados para PMEs, alinhado ao Pilar 3, para formalizar políticas mínimas e compromissos.</td>
-                            <td>Colaboradores da PME; Lideranças; RH.</td>
-                            <td>Durante a implementação do Pilar 3 (Políticas); No processo de integração de novos colaboradores; Em oficinas de sensibilização.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE H – Exemplo de Caso Aplicado: Simulação do Ciclo Inicial (Empresa Fictícia)</td>
-                            <td>Apresentar um exemplo fictício e didático da aplicação do primeiro ciclo do modelo GD-PME 3 Pilares na empresa "Varejo Inteligente Ltda.", ilustrando ações e resultados.</td>
-                            <td>Gestores de PMEs; Consultores; Equipes de implantação; Participantes de capacitações.</td>
-                            <td>Como material ilustrativo em oficinas de capacitação (<span class="highlight-guia">Apêndice D</span>); Para guiar as primeiras discussões sobre a aplicação do modelo na empresa.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE I – Plano de Comunicação Interna para Implantação da GD-PME 3 Pilares</td>
-                            <td>Propor um roteiro e estratégias de comunicação interna para apoiar a implantação do GD-PME 3 Pilares, garantindo alinhamento, engajamento e compreensão.</td>
-                            <td>Equipe de coordenação da GD; Lideranças; RH; Comunicação Interna (se houver).</td>
-                            <td>Desde o planejamento inicial do projeto GD-PME 3 Pilares e de forma contínua ao longo de todas as fases de implantação e manutenção.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE J – Roteiro de Coleta de Feedbacks Pós-Ciclo</td>
-                            <td>Oferecer um modelo de roteiro para entrevistas ou formulários de coleta de feedback dos colaboradores após cada ciclo trimestral do GD-PME 3 Pilares.</td>
-                            <td>Gestores; RH; Facilitadores da GD; Equipe de coordenação da GD.</td>
-                            <td>Ao final de cada ciclo trimestral de implantação; Como parte do processo de avaliação e planejamento do próximo ciclo (<span class="highlight-guia">Apêndice AT</span>).</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE K – Ferramentas Digitais Abertas para Governança de Dados em PMEs</td>
-                            <td>Apresentar uma curadoria de ferramentas digitais gratuitas ou de baixo custo para apoiar a implementação dos três pilares do modelo GD-PME 3 Pilares.</td>
-                            <td>Gestores de PMEs; Equipes de TI (se houver) ou responsáveis pela tecnologia; Consultores.</td>
-                            <td>Durante o planejamento das ações de cada pilar; Ao buscar soluções práticas e acessíveis para operacionalizar a GD.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE L – Cronograma para a Implementação Inicial do Modelo GD-PME 3 Pilares</td>
-                            <td>Propor um cronograma semestral (ou adaptável) para a implementação inicial do modelo GD-PME 3 Pilares, organizando as ações dos três pilares no tempo.</td>
-                            <td>Equipe de coordenação do projeto GD-PME 3 Pilares na empresa; Lideranças.</td>
-                            <td>Na fase de planejamento detalhado da implantação, após o diagnóstico inicial; Para guiar a execução dos primeiros ciclos.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE M – Miniguia Visual: Passo a Passo do Modelo GD-PME 3 Pilares</td>
-                            <td>Oferecer uma versão condensada, visual e de fácil compreensão do passo a passo para implementar o modelo GD-PME 3 Pilares, referenciando outros apêndices.</td>
-                            <td>Todos os colaboradores da PME; Facilitadores de oficinas; Novos funcionários.</td>
-                            <td>Como material de apoio em capacitações (<span class="highlight-guia">Apêndice D</span>); Para comunicação interna contínua (<span class="highlight-guia">Apêndice W</span>); Como guia rápido de consulta.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE N – Matriz de Riscos Informacionais para PMEs</td>
-                            <td>Apresentar uma matriz simplificada para PMEs identificarem, avaliarem e priorizarem o tratamento de riscos informacionais.</td>
-                            <td>Gestores da PME; Responsáveis por processos críticos; Equipe de GD.</td>
-                            <td>Durante o diagnóstico inicial (para identificar riscos); Periodicamente (ex: semestralmente) para revisão e atualização dos riscos.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE O – Mapa de Stakeholders da Governança de Dados em PMEs</td>
-                            <td>Apresentar um modelo visual para mapear os principais stakeholders internos e externos da GD na PME, facilitando o alinhamento e engajamento.</td>
-                            <td>Equipe de coordenação do projeto GD-PME 3 Pilares; Lideranças da PME; Consultores.</td>
-                            <td>Na fase inicial de planejamento do projeto de GD; Antes de desenvolver o plano de comunicação.</td>
-                            <td><span class="highlight-guia">1 – Diagnóstico e Planejamento Inicial da GD</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE P – Template de Relatório Trimestral de Governança de Dados</td>
-                            <td>Fornecer um template estruturado para o relatório trimestral de acompanhamento e registro das ações e avanços da GD na PME.</td>
-                            <td>Equipe gestora da GD na PME; Responsáveis pelos pilares.</td>
-                            <td>Ao final de cada ciclo trimestral de implementação, para consolidar informações para o <span class="highlight-guia">Apêndice Y</span> (Consolidado).</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE Q – Comparativo de Evolução da Maturidade Informacional com o Modelo GD-PME 3 Pilares</td>
-                            <td>Apresentar um instrumento para registrar e mensurar visualmente a evolução da maturidade informacional da PME em cada pilar, ao longo do tempo.</td>
-                            <td>Gestores da PME; Equipe de GD; Stakeholders que acompanham o projeto.</td>
-                            <td>Ao final de cada ciclo de avaliação (ex: trimestral ou semestral), para comparar com o estado inicial e ciclos anteriores.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE R – Roteiro de Capacitação Setorial por Pilares do Modelo GD-PME 3 Pilares</td>
-                            <td>Fornecer um roteiro prático para adaptar e direcionar ações de capacitação em GD (Pilar 2) às necessidades e realidades específicas de cada setor da PME.</td>
-                            <td>Multiplicadores internos de GD; Líderes de setor; Equipe de RH ou responsável pela capacitação.</td>
-                            <td>Durante a implementação do Pilar 2 (Capacitação Contínua); No planejamento de oficinas temáticas ou de reforço para setores específicos.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE S – Banco de Boas Práticas em Governança de Dados para PMEs</td>
-                            <td>Reunir e apresentar exemplos de boas práticas em GD, alinhadas aos pilares do GD-PME 3 Pilares, para inspirar e orientar as PMEs na sua jornada de implementação.</td>
-                            <td>Líderes da PME; Equipes de implantação da GD; Multiplicadores internos; Todos os colaboradores.</td>
-                            <td>Como material de consulta contínua; Para inspirar ações nos ciclos de implementação; Em oficinas de capacitação para ilustrar conceitos.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE T – Mecanismo de Feedback Participativo sobre a Governança de Dados</td>
-                            <td>Oferecer um modelo de formulário semiestruturado para coletar feedback participativo dos colaboradores sobre a implementação e as práticas do GD-PME 3 Pilares.</td>
-                            <td>Gestores da PME; Equipe de coordenação da GD; RH; Facilitadores.</td>
-                            <td>Ao final de cada ciclo trimestral de implantação; Como parte do Roteiro de Avaliação Pós-Ciclo (<span class="highlight-guia">Apêndice AT</span>) para subsidiar a melhoria contínua.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE U – Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares</td>
-                            <td>Estruturar um roteiro básico para a formação de colaboradores-chave como multiplicadores internos do GD-PME 3 Pilares, visando descentralizar e sustentar a GD.</td>
-                            <td>Lideranças da PME; RH; Colaboradores selecionados para serem multiplicadores.</td>
-                            <td>Na fase de planejamento e execução do Pilar 2 (Capacitação Contínua); Antes de iniciar a atuação dos multiplicadores nos setores (<span class="highlight-guia">Apêndice AD</span>).</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE V – Indicadores de Impacto Territorial da Governança de Dados em PMEs</td>
-                            <td>Propor uma estrutura inicial de indicadores para avaliar o impacto sistêmico da disseminação do modelo GD-PME 3 Pilares em nível regional ou municipal.</td>
-                            <td>Entidades públicas (prefeituras, secretarias); Agências de fomento; Consórcios intermunicipais; Pesquisadores.</td>
-                            <td>Para planejamento, monitoramento e avaliação de políticas públicas ou programas de desenvolvimento territorial que utilizem ou incentivem a adoção do GD-PME 3 Pilares.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE W – Modelos de Mensagens para Comunicação da Governança de Dados (GD-PME 3 Pilares)</td>
-                            <td>Oferecer exemplos de modelos de mensagens para diferentes finalidades e canais de comunicação interna sobre a GD, apoiando o plano do <span class="highlight-guia">Apêndice I</span>.</td>
-                            <td>Equipe de coordenação da GD; Lideranças; RH; Comunicação Interna.</td>
-                            <td>Ao longo de todo o processo de implantação da GD, conforme as etapas definidas no Plano de Comunicação Interna (<span class="highlight-guia">Apêndice I</span>).</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE X – Ferramentas e Modelos de Visualização para Relatórios de Governança de Dados do Modelo GD-PME 3 Pilares</td>
-                            <td>Sugerir ferramentas e modelos de visualização para apresentar de forma clara e impactante os resultados e avanços da GD em relatórios e comunicados.</td>
-                            <td>Equipe gestora da GD; Responsáveis pela elaboração de relatórios e apresentações.</td>
-                            <td>Na elaboração dos Relatórios Trimestrais (<span class="highlight-guia">Apêndices Y, AK</span>) e dos Comunicados de Avanços (<span class="highlight-guia">Apêndice AW</span>); Em reuniões de apresentação de resultados.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE Y – Modelo de Relatório Trimestral Consolidado de Acompanhamento da Governança de Dados (GD-PME 3 Pilares)</td>
-                            <td>Apresentar um modelo para um relatório trimestral narrativo e sintético, consolidando avanços, desafios e aprendizados da GD para liderança e stakeholders.</td>
-                            <td>Liderança da PME; Equipe de coordenação da GD; Potenciais stakeholders externos (investidores, parceiros).</td>
-                            <td>Ao final de cada ciclo trimestral, utilizando como base o <span class="highlight-guia">Apêndice AK</span> (Relatório de Maturidade) e outros instrumentos de avaliação.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE Z – Sugestões de Instrumentos Pedagógicos para Oficinas de Governança de Dados (GD)</td>
-                            <td>Oferecer sugestões práticas de materiais e dinâmicas para tornar as oficinas de GD mais engajadoras e eficazes, alinhadas ao Pilar 2.</td>
-                            <td>Facilitadores de oficinas de GD; Multiplicadores internos; Equipe de RH.</td>
-                            <td>Durante o planejamento e a execução das oficinas de capacitação (<span class="highlight-guia">Apêndice D e R</span>).</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AA – Modelo de Termo de Boas Práticas com Dados</td>
-                            <td>Apresentar um modelo de termo interno para formalizar as práticas básicas de GD e o compromisso dos colaboradores, alinhado ao Pilar 3.</td>
-                            <td>Todos os colaboradores da PME; Lideranças; RH.</td>
-                            <td>No processo de integração de novos colaboradores; Em oficinas de sensibilização; Ao iniciar a implementação de políticas de dados.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AB – Matriz Simplificada de Riscos Informacionais para PMEs</td>
-                            <td>Oferecer um instrumento prático para PMEs avaliarem riscos informacionais e planejarem ações de mitigação, alinhado ao Pilar 3.</td>
-                            <td>Gestores da PME; Responsáveis por processos; Equipe de GD.</td>
-                            <td>Durante o diagnóstico inicial; Periodicamente (ex: semestralmente) para revisão e atualização.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AC – Roteiro de Comunicação Interna sobre GD</td>
-                            <td>Apresentar um roteiro de comunicação para sensibilizar e engajar colaboradores na implantação do GD-PME 3 Pilares, detalhando etapas e ações.</td>
-                            <td>Lideranças da PME; Multiplicadores internos; Equipe de coordenação da GD.</td>
-                            <td>No início e ao longo de cada ciclo de implementação da GD, para reforçar mensagens e manter o engajamento.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AD – Plano de Multiplicadores Internos por Setor</td>
-                            <td>Propor um plano para identificar, formar e acompanhar colaboradores que atuarão como multiplicadores internos das práticas de GD (Pilar 2).</td>
-                            <td>Lideranças da PME; RH; Equipe de coordenação da GD.</td>
-                            <td>Na fase de planejamento e implementação do Pilar 2 (Capacitação Contínua).</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AE – Miniguia Visual para Empresas com Baixa Digitalização</td>
-                            <td>Oferecer um guia visual com práticas analógicas de GD para PMEs com recursos tecnológicos limitados, mostrando a aplicabilidade do GD-PME 3 Pilares.</td>
-                            <td>Gestores e colaboradores de PMEs com baixa digitalização; Facilitadores e consultores que atuam nesses contextos.</td>
-                            <td>Na fase inicial de sensibilização e organização em empresas com pouca ou nenhuma infraestrutura digital.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AF – Roteiro de Diagnóstico Rápido de Maturidade em GD para Consultores Externos</td>
-                            <td>Fornecer um roteiro prático para consultores ou agentes de fomento avaliarem rapidamente o estágio de maturidade em GD de uma PME.</td>
-                            <td>Consultores externos; Agentes do SEBRAE ou outras entidades de fomento; Gestores de PMEs (em autoaplicação inicial).</td>
-                            <td>Em reuniões iniciais de diagnóstico; Antes de propor um plano de intervenção ou consultoria em GD.</td>
-                            <td><span class="highlight-guia">1 – Diagnóstico e Planejamento Inicial da GD</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AG – Painel de Indicadores Visuais Simplificados (KPIs por Pilar) do Modelo GD-PME 3 Pilares</td>
-                            <td>Sugerir indicadores visuais simples (analógicos ou de baixa tecnologia) para monitorar e comunicar os avanços da GD de forma intuitiva e participativa.</td>
-                            <td>Toda a equipe da PME; Lideranças; Multiplicadores.</td>
-                            <td>Para acompanhamento contínuo (ex: trimestral) em murais internos, reuniões de equipe ou intranet.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AH – Modelo de Termo de Compromisso Institucional com a Governança de Dados</td>
-                            <td>Apresentar um modelo de termo para formalizar o compromisso da alta gestão da PME com a implantação e sustentação do modelo GD-PME 3 Pilares.</td>
+                         <tr>
+                            <td class="font-semibold">APÊNDICE BE – Modelo de Termo de Abertura (Charter)</td>
+                            <td>Legitimar e conferir autoridade ao programa de GD, definindo missão, objetivos e estrutura.</td>
                             <td>Liderança principal da PME (Diretoria, Sócios).</td>
-                            <td>No início formal do projeto de implementação da GD na empresa; Ao buscar parcerias ou apresentar a iniciativa a stakeholders externos.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
+                            <td>No lançamento oficial do programa de governança em seu estágio maduro.</td>
+                            <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">APÊNDICE AI – Roteiro Estratégico para Implementação Territorial do Modelo GD-PME 3 Pilares em Municípios ou Regiões</td>
-                            <td>Apresentar etapas para a aplicação e disseminação do modelo GD-PME 3 Pilares em escala territorial, por entidades públicas, associações, etc.</td>
-                            <td>Gestores públicos; Secretarias de desenvolvimento; Associações comerciais; SEBRAE; Agentes de desenvolvimento local.</td>
-                            <td>No planejamento e execução de políticas públicas ou programas de fomento à competitividade e transformação digital de PMEs em um território.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
+                            <td class="font-semibold">APÊNDICE BF – Manual de Processo Ágil para GD</td>
+                            <td>Detalhar o funcionamento dos "Sprints de Governança" e suas cerimônias.</td>
+                            <td>Grupo de Trabalho de Dados; Facilitador da GD.</td>
+                            <td>Como guia operacional contínuo para a execução dos ciclos ágeis.</td>
+                            <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">APÊNDICE AJ – Checklist de Evidências para Adesão ao Modelo GD-PME 3 Pilares em Editais Públicos e Programas de Fomento</td>
-                            <td>Fornecer um checklist para PMEs utilizarem o GD-PME 3 Pilares como diferencial ao se candidatarem a editais ou programas de fomento.</td>
-                            <td>PMEs que buscam fomento; Avaliadores de editais; Agentes de financiamento.</td>
-                            <td>Ao preparar propostas para editais de inovação, transformação digital, aceleração ou linhas de crédito.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
+                           <td class="font-semibold">APÊNDICE BG – Template de Acordo de Compartilhamento de Dados</td>
+                           <td>Formalizar o compartilhamento de dados entre áreas, definindo regras, finalidade e segurança.</td>
+                           <td>Gestores de departamento; Data Owners.</td>
+                           <td>Quando um projeto exige que uma área consuma dados críticos de outra.</td>
+                           <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">APÊNDICE AK – Template para Relatório Trimestral de Avaliação da Maturidade em Governança de Dados (GD-PME 3 Pilares)</td>
-                            <td>Oferecer um template estruturado para a PME documentar e analisar a evolução de seu nível de maturidade em GD a cada ciclo.</td>
-                            <td>Equipe de GD da PME; Lideranças responsáveis pela avaliação da maturidade.</td>
-                            <td>Ao final de cada ciclo trimestral, como base para o Relatório Consolidado (<span class="highlight-guia">Apêndice Y</span>) e para o planejamento do próximo ciclo.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
+                           <td class="font-semibold">APÊNDICE BH – Template de SLA de Qualidade de Dados</td>
+                           <td>Estabelecer metas de qualidade de dados mensuráveis e formais para ativos críticos.</td>
+                           <td>Data Owners; Data Stewards; Grupo de Trabalho.</td>
+                           <td>Após a definição de domínios e métricas de qualidade.</td>
+                           <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">APÊNDICE AL – Inventário Modelo de Dados Essenciais</td>
-                            <td>Oferecer um modelo de planilha para o mapeamento inicial e inventário dos dados essenciais da PME, fundamental para o Pilar 1.</td>
-                            <td>Equipe de GD da PME; Responsáveis por processos e áreas de negócio.</td>
-                            <td>No início da implementação do Pilar 1; Como documento vivo a ser atualizado continuamente.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AM – Agenda Anual Sugerida para Ciclos de Governança de Dados com o Modelo GD-PME 3 Pilares</td>
-                            <td>Apresentar uma proposta de cronograma anual (4 ciclos trimestrais) para aplicação e consolidação do modelo GD-PME 3 Pilares, orientando o planejamento.</td>
-                            <td>Equipe de coordenação da GD na PME; Lideranças.</td>
-                            <td>No planejamento de longo prazo da implementação da GD; Como guia para a distribuição de ações ao longo do ano.</td>
-                            <td><span class="highlight-guia">2 – Instrumentos Operacionais e de Implementação</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AN – Modelo de Comunicado Interno sobre a Implantação da Governança de Dados</td>
-                            <td>Apresentar um modelo de mensagem institucional para divulgar a implantação do GD-PME 3 Pilares e engajar os colaboradores.</td>
-                            <td>Liderança da PME; RH; Todos os colaboradores.</td>
-                            <td>No lançamento da iniciativa de GD na empresa; Para reforçar a comunicação em momentos chave.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AO – Painel Visual de Progresso por Pilar do Modelo GD-PME 3 Pilares (Modelo para Impressão ou Mural)</td>
-                            <td>Oferecer um modelo de painel gráfico simplificado para monitoramento público e participativo da evolução da GD na empresa.</td>
-                            <td>Toda a equipe da PME; Lideranças.</td>
-                            <td>Para afixação em murais ou intranet, com atualização periódica (ex: semanal ou mensal) para acompanhamento visual do progresso.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AP – Modelo de Termo de Adesão Individual à Iniciativa de Governança de Dados</td>
-                            <td>Formalizar o conhecimento e o comprometimento individual de gestores e colaboradores com a adoção e as práticas do modelo GD-PME 3 Pilares.</td>
-                            <td>Todos os colaboradores e gestores da PME.</td>
-                            <td>No processo de integração de novos colaboradores; No início da participação em programas de GD; Ao comunicar novas políticas.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AQ – Template de Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares</td>
-                            <td>Oferecer um template de roteiro didático para preparar colaboradores-chave como multiplicadores internos do modelo GD-PME 3 Pilares (Pilar 2).</td>
-                            <td>Lideranças; RH; Colaboradores selecionados para serem multiplicadores.</td>
-                            <td>No planejamento e execução da formação de multiplicadores, como parte do Pilar 2.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AR – Kit Visual de Boas Práticas em Governança de Dados para PMEs</td>
-                            <td>Oferecer sugestões de elementos gráficos (cartaz, etiquetas, cartilha, canal de dúvidas) para reforçar a comunicação e a cultura de dados.</td>
-                            <td>Equipes de comunicação (se houver); Multiplicadores; RH; Todos os colaboradores.</td>
-                            <td>Para uso contínuo ao longo da implantação da GD, para reforçar mensagens e boas práticas de forma visual e acessível.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AS – Quadro de Indicadores de Impacto da Implementação do Modelo GD-PME 3 Pilares</td>
-                            <td>Apresentar um conjunto de indicadores práticos para mensurar o progresso e os impactos da implementação do modelo GD-PME 3 Pilares.</td>
-                            <td>Gestores da PME; Equipe de GD; Responsáveis pelo monitoramento de resultados.</td>
-                            <td>Para definição de metas no início dos ciclos e para avaliação de impacto ao final de cada ciclo ou período maior (semestral/anual).</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AT – Roteiro de Avaliação Pós-Ciclo do Modelo GD-PME 3 Pilares: Reflexão, Métricas e Aprendizado Contínuo</td>
-                            <td>Apresentar um roteiro prático para conduzir a avaliação reflexiva e participativa ao final de cada ciclo de implementação do GD-PME 3 Pilares.</td>
-                            <td>Equipe envolvida na GD; Lideranças; Facilitador interno/externo.</td>
-                            <td>Ao final de cada ciclo de implementação (ex: trimestral) para identificar aprendizados e planejar o próximo ciclo.</td>
-                            <td><span class="highlight-guia">4 – Monitoramento, Avaliação e Melhoria Contínua</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AU – Guia para Integração do Modelo GD-PME 3 Pilares a Programas de Fomento e Iniciativas Públicas</td>
-                            <td>Propor caminhos estratégicos para integrar o modelo GD-PME 3 Pilares a programas de fomento, capacitação e transformação digital existentes.</td>
-                            <td>Gestores públicos; SEBRAE; Agências de fomento; Instituições de ensino.</td>
-                            <td>No planejamento de políticas públicas; Ao desenhar programas de apoio a PMEs; Em parcerias interinstitucionais.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AV – Matriz de Planejamento da Comunicação Interna sobre Governança de Dados</td>
-                            <td>Oferecer uma matriz para planejar a comunicação interna sobre GD, alinhada aos pilares do GD-PME 3 Pilares, com objetivos, canais, frequência, etc.</td>
-                            <td>Equipe de coordenação da GD; Lideranças; RH; Comunicação Interna.</td>
-                            <td>No planejamento inicial da implantação da GD e para revisões periódicas da estratégia de comunicação.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AW – Comunicado Trimestral de Avanços da GD para Equipes e Colaboradores</td>
-                            <td>Oferecer um modelo de comunicado visual e simplificado para informar todos os colaboradores sobre os avanços da GD.</td>
-                            <td>Todos os colaboradores da PME; Multiplicadores internos.</td>
-                            <td>Ao final de cada ciclo trimestral, como forma de manter o engajamento e a transparência.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AX – Protocolo de Auditoria Interna em Governança de Dados</td>
-                            <td>Apresentar um protocolo simplificado para PMEs realizarem auditorias internas periódicas sobre a aplicação e eficácia do modelo GD-PME 3 Pilares.</td>
-                            <td>Lideranças locais; Comitê interno de GD (se houver); Multiplicadores capacitados.</td>
-                            <td>Periodicamente (ex: semestralmente ou trimestralmente, dependendo da maturidade) para verificar a conformidade e a eficácia.</td>
-                            <td><span class="highlight-guia">5 – Formalização, Conformidade e Gestão de Riscos</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AY – Lembrete Rápido: Nossas 3 Regras de Ouro com os Dados!</td>
-                            <td>Oferecer um modelo de lembrete visual e extremamente simplificado com três "Regras de Ouro" para o uso de dados em PMEs em estágio inicialíssimo.</td>
-                            <td>Todos os colaboradores, especialmente em PMEs com baixa formalidade.</td>
-                            <td>No início da sensibilização sobre GD; Como material de reforço contínuo e de fácil memorização.</td>
-                            <td><span class="highlight-guia">3 – Capacitação, Comunicação e Cultura de Dados</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">APÊNDICE AZ – Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares</td>
-                            <td>Apresentar um plano estratégico para a disseminação e apropriação do modelo GD-PME 3 Pilares por múltiplas instituições e esferas.</td>
-                            <td>Autor da monografia; Instituições de ensino; Órgãos de fomento; Formuladores de políticas públicas.</td>
-                            <td>Como visão de futuro e direcionamento para a expansão do impacto do modelo GD-PME 3 Pilares para além da PME individual.</td>
-                            <td><span class="highlight-guia">6 – Expansão, Disseminação e Impacto Estratégico</span></td>
+                           <td class="font-semibold">APÊNDICE BI – Roteiro Tecnológico da Plataforma GD-PME</td>
+                           <td>Apresentar um roteiro de evolução tecnológica em três níveis (manual, catálogo, scorecards).</td>
+                           <td>Liderança da PME; Coordenadores de TI.</td>
+                           <td>No planejamento estratégico de longo prazo e ao avaliar investimentos.</td>
+                           <td><span class="highlight-guia">7 – Módulos de Evolução</span></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <p class="note mt-4 text-xs">Fonte: Elaborado pelo Autor (2025).</p>
+                </div>
+            <p class="mt-4 text-xs text-gray-500">Fonte: Elaborado pelo Autor (2025).</p>
         </section>
 
         <section class="card fade-in-section" style="animation-delay: 0.6s;">
             <h2 class="section-title-guia">BA.3 Considerações Gerais e Recomendações de Uso</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Ao sistematizar os instrumentos operacionais deste trabalho, o Apêndice BA, por meio do Quadro BA.1, transcende a função de um índice técnico e se consolida como um guia estratégico para a implementação progressiva da Governança de Dados em ambientes de baixa maturidade institucional. Trata-se de um esforço de organização cognitiva e epistemológica, que permite transformar um corpo potencialmente fragmentado de boas práticas e ferramentas em uma arquitetura coerente, acessível e replicável.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                O modelo GD-PME 3 Pilares, ancorado nos princípios da inclusão, simplicidade e pragmatismo incremental, é aqui fortalecido por um acervo de ferramentas projetadas para serem aplicáveis à realidade concreta de milhares de organizações frequentemente invisibilizadas pelos grandes frameworks corporativos. Este guia (<span class="highlight-guia">Apêndice BA</span>) não apenas facilita o uso direcionado dos demais apêndices — ele torna possível sua apropriação crítica, sua expansão territorial e sua reinvenção criativa por educadores, gestores públicos, consultores e pelas próprias comunidades de prática nas PMEs.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Como afirmam Floridi (2010) e Santos, B.S. (2010), a informação é sempre uma disputa pelo que pode ser conhecido, lembrado e legitimado. O modelo GD-PME 3 Pilares e seus instrumentos são, portanto, mais do que um conjunto de ferramentas técnicas: representam uma estratégia de justiça epistêmica e uma ponte entre a teoria informacional global e as urgências organizacionais locais.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-                Recomenda-se que os apêndices sejam explorados de forma progressiva, colaborativa e situada — respeitando os tempos, territórios e trajetórias de cada organização usuária. Quando apropriado, devem ser customizados, adaptados e retroalimentados com base na experiência prática, fortalecendo, assim, a vocação do modelo GD-PME 3 Pilares como uma infraestrutura viva de transformação institucional e aprendizado contínuo.
-            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">Ao sistematizar os instrumentos operacionais deste trabalho, o Apêndice BA transcende a função de um índice técnico e se consolida como um guia estratégico para a implementação progressiva da Governança de Dados. Trata-se de um esforço de organização cognitiva que transforma um corpo de boas práticas em uma arquitetura coerente e replicável.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">O modelo GD-PME 3 Pilares, ancorado na inclusão, simplicidade e pragmatismo, é fortalecido por um acervo de ferramentas para a realidade de organizações invisibilizadas pelos grandes frameworks. Este guia não apenas facilita o uso dos apêndices — ele torna possível sua apropriação crítica, expansão territorial e reinvenção criativa por educadores, gestores e comunidades de prática nas PMEs.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">Como afirmam Floridi (2010) e Santos, B.S. (2010), a informação é sempre uma disputa pelo que pode ser conhecido e legitimado. O modelo GD-PME 3 Pilares e seus instrumentos são, portanto, uma estratégia de justiça epistêmica e uma ponte entre a teoria informacional global e as urgências organizacionais locais.</p>
+            <p class="text-gray-700 leading-relaxed">Finalmente, reitera-se a importância da jornada de maturidade. Recomenda-se que a PME explore e busque consolidar as práticas contidas nos apêndices do <strong class="highlight-guia">Quadro BA.1 (Estágio Fundamental)</strong> antes de avançar para os instrumentos mais avançados e estratégicos do <strong class="highlight-guia">Quadro BA.2 (Módulos de Evolução)</strong>. Esta progressão garante que a complexidade aumente de forma orgânica e sustentável, alinhada à capacidade real da organização.</p>
         </section>
 
         <footer class="footer-guia fade-in-section" style="animation-delay: 0.7s;">
             <div class="note-card">
-                <p><sup>1</sup> Nota: Este Guia (<span class="highlight-guia">Apêndice BA</span>) é um instrumento organizacional para orientar o uso estratégico dos Apêndices Técnicos (A a AY) que operacionalizam o modelo GD-PME. Ao mapear a função, público, momento de uso e conexão temática de cada ferramenta com os Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), facilita a implementação e apropriação do modelo.</p>
+                <p><sup>1</sup> Nota: Este Guia (Apêndice BA) é um instrumento organizacional para orientar o uso estratégico dos Apêndices Técnicos (A à BB) que operacionalizam o modelo GD-PME. Ao mapear a função, público, momento de uso e conexão temática de cada ferramenta com os Pilares 1, 2 e 3, facilita a implementação e apropriação do modelo em seus dois estágios de maturidade: o Fundamental e o de Evolução.</p>
             </div>
         </footer>
     </div>
