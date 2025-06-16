@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Roteiro para Formação de Multiplicadores Internos - GD-PME 3 Pilares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light Slate background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-formacao {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #334155; /* Dark Slate for titles */
+        }
+        .header-title-formacao {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #334155; /* Dark Slate */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-formacao {
+            font-size: 1.15rem;
+            color: #475569; /* Medium Slate */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-formacao {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #1e293b; /* Darkest Slate for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-formacao {
+            color: #64748b; /* Slate highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-formacao {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e2e8f0; /* Light Slate background for icon */
+        }
+        .header-icon-formacao svg {
+            width: 32px;
+            height: 32px;
+            color: #334155; /* Dark Slate */
+        }
+
+        .table-formacao {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-formacao th, .table-formacao td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1; /* Lighter Slate border */
+            font-size: 0.75rem; /* Smaller font for denser table */
+            vertical-align: top;
+        }
+        .table-formacao th {
+            background-color: #f8fafc; /* Very Light Slate for table headers */
+            font-weight: 600;
+            color: #475569; /* Medium Slate */
+        }
+        .table-formacao td {
+            color: #1e293b; /* Darkest Slate for table text */
+        }
+        /* Specific column widths */
+        .etapa-col-form { width: 18%; }
+        .conteudo-col-form { width: 25%; }
+        .metodologia-col-form { width: 22%; }
+        .duracao-col-form { width: 10%; }
+        .produto-col-form { width: 25%; }
+        .materiais-col-form {width: 15%;}
+
+
+        .recomendacoes-card-formacao {
+            background-color: #e2e8f0; /* Light Slate for recommendations */
+            border-left: 4px solid #64748b;
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .recomendacoes-card-formacao h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+        .recomendacoes-card-formacao ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #1e293b;
+        }
+        .recomendacoes-card-formacao li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-formacao">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25M12 12V9.75M12 12H9.75M12 12l3-3m-3 3-3-3" />
+                </svg>
+            </div>
+            <h1 class="header-title-formacao">Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares</h1>
+            <p class="header-subtitle-formacao">APÊNDICE U: Estrutura básica para capacitar colaboradores-chave, descentralizando a disseminação da cultura de GD e garantindo sustentabilidade.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este roteiro é uma estratégia fundamental do <span class="highlight-formacao">Pilar 2 (Capacitação Contínua)</span>. O objetivo é descentralizar a responsabilidade pela disseminação da cultura de Governança de Dados (GD), ampliar a capilaridade do modelo e garantir sua sustentabilidade a longo prazo.
+            </p>
+        </section>
+
+        <!-- Training Roster Table Section (Quadro U.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-formacao text-center">Quadro U.1 – Roteiro Sugerido para Oficina de Formação de Multiplicadores</h2>
+            <div class="overflow-x-auto">
+                <table class="table-formacao">
+                    <thead>
+                        <tr>
+                            <th class="etapa-col-form">Etapa da Formação</th>
+                            <th class="conteudo-col-form">Conteúdo Principal Abordado</th>
+                            <th class="metodologia-col-form">Metodologia Sugerida</th>
+                            <th class="duracao-col-form">Duração Estimada</th>
+                            <th class="produto-col-form">Produto Esperado / Resultado Chave</th>
+                            <th class="materiais-col-form">Materiais de Apoio (Apêndices)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">1. Introdução e Alinhamento Conceitual</td>
+                            <td>Apresentação dos objetivos da formação; O que é Governança de Dados e por que ela é crucial para PMEs?; Fundamentos e Pilares do modelo GD-PME 3 Pilares.</td>
+                            <td>Apresentação interativa; Discussão em grupo sobre desafios informacionais percebidos na empresa.</td>
+                            <td>1h</td>
+                            <td>Nivelamento conceitual; Compreensão do papel estratégico da GD e do modelo GD-PME 3 Pilares.</td>
+                            <td>Apêndice C (Glossário); Apêndice M (Miniguia Visual).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">2. Aplicação Prática dos Pilares</td>
+                            <td>Como aplicar o Diagnóstico Inicial (Pilar 1); Condução de minioficinas de sensibilização (Pilar 2); Como elaborar e comunicar políticas simplificadas (Pilar 3).</td>
+                            <td>Estudo de caso simulado da "Varejo Inteligente Ltda." (Apêndice H); Simulação de preenchimento de templates.</td>
+                            <td>2h</td>
+                            <td>Multiplicadores familiarizados com os instrumentos práticos do GD-PME 3 Pilares e capazes de simular sua aplicação.</td>
+                            <td>Apêndices A, B, D, G/AA.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">3. Adaptação e Planejamento Setorial</td>
+                            <td>Discussão sobre como adaptar as ferramentas do GD-PME 3 Pilares para a realidade de cada setor da empresa; Elaboração de um miniplano de ação inicial para disseminação no próprio setor.</td>
+                            <td>Dinâmica em grupos por setor (ou área de afinidade); Brainstorming orientado.</td>
+                            <td>1h30</td>
+                            <td>Esboço de um miniplano de ação para cada setor representado, com foco em 1 ou 2 ações prioritárias.</td>
+                            <td>Apêndice R (Roteiro de Capacitação Setorial).</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">4. Definição de Papéis e Compromisso</td>
+                            <td>Discussão sobre o papel, responsabilidades e desafios do multiplicador interno; Formalização simbólica do compromisso com a disseminação da GD.</td>
+                            <td>Roda de conversa sobre expectativas e apoio necessário; Leitura e assinatura de um "Termo do Multiplicador" (modelo similar ao Apêndice AP).</td>
+                            <td>30min</td>
+                            <td>Multiplicadores conscientes de seu papel e formalmente engajados; Definição de canais de comunicação com a coordenação da GD.</td>
+                            <td>Apêndice AP (adaptado para "Termo do Multiplicador").</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section class="card recomendacoes-card-formacao fade-in-section" style="animation-delay: 0.5s;">
+            <h3>U.1 Recomendações para o Programa de Multiplicadores:</h3>
+            <ul>
+                <li>Sugere-se indicar, no mínimo, um multiplicador por setor-chave da PME, priorizando colaboradores com bom trânsito interpessoal, proatividade e interesse pelo tema, independentemente do nível hierárquico;</li>
+                <li>A liderança da empresa deve apoiar ativamente o programa, oferecendo tempo para as atividades de formação e multiplicação, e reconhecendo o esforço dos multiplicadores (ex: menção em reuniões, pequenos incentivos simbólicos);</li>
+                <li>O grupo de multiplicadores deve ter encontros periódicos (ex: mensais ou bimestrais) com a coordenação da GD para troca de experiências, alinhamento e planejamento de novas ações (ver Apêndice B e AT);</li>
+                <li>O plano de formação e atuação dos multiplicadores deve ser revisado e atualizado anualmente ou a cada dois ciclos completos de governança, para garantir sua contínua relevância e eficácia.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-formacao fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), e em experiências de aprendizagem organizacional participativa e formação de agentes multiplicadores.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Como componente estratégico do Pilar 2 (Capacitação Contínua) do modelo GD-PME, este roteiro visa preparar multiplicadores internos para disseminar a cultura de dados e auxiliar na aplicação das diretrizes dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nos setores, promovendo sustentabilidade e engajamento.</p>
+        </footer>
+    </div>
+</body>
+</html>

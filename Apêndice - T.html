@@ -3,308 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Mecanismo de Feedback Participativo sobre a Governança de Dados - GD-PME</title>
+    <title>Mecanismo de Feedback Participativo sobre a Governança de Dados</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f3ff; /* Light Purple background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-feedback-participativo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #6d28d9; /* Purple for titles */
-        }
-        .header-title-feedback-participativo {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #6d28d9; /* Purple */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-feedback-participativo {
-            font-size: 1.15rem;
-            color: #5b21b6; /* Darker Purple */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-feedback-participativo {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #4c1d95; /* Darkest Purple for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-feedback-participativo {
-            color: #7c3aed; /* Lighter Purple highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-feedback-participativo {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #a78bfa, #c4b5fd); /* Roxo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Feedback */
+        .dimension-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #a5b4fc; /* Roxo claro */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #4338ca;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ddd6fe; /* Light purple background for icon */
         }
-        .header-icon-feedback-participativo svg {
-            width: 32px;
-            height: 32px;
-            color: #6d28d9; /* Purple */
+        .dimension-header i {
+            margin-right: 0.75rem;
         }
 
-        .table-feedback {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        .feedback-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #4b5563;
         }
-        .table-feedback th, .table-feedback td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #c4b5fd; /* Lighter Purple border */
-            font-size: 0.8rem;
-            vertical-align: top;
+        .feedback-card .question {
+            font-size: 1.05rem;
+            color: #e5e7eb;
+            margin-bottom: 1rem;
         }
-        .table-feedback th {
-            background-color: #f5f3ff; /* Very Light Purple for table headers */
+        
+        .rating-scale {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .rating-scale label {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .rating-scale input[type="radio"] { display: none; }
+        .rating-scale label:hover { background-color: #4b5563; }
+        .rating-scale input[type="radio"]:checked + label {
+            background-color: #6d28d9;
+            border-color: #8b5cf6;
+            color: white;
             font-weight: 600;
-            color: #5b21b6; /* Darker Purple */
         }
-        .table-feedback td {
-            color: #4c1d95; /* Darkest Purple for table text */
-        }
-        .dimensao-col { width: 20%; }
-        .pergunta-col { width: 35%; }
-        .escala-col { width: 20%; }
-        .comentarios-col { width: 25%; }
 
-        .escala-group label {
-            margin-right: 5px;
-            font-size: 0.75rem;
-        }
-        .escala-group input[type="radio"], .escala-group input[type="checkbox"] { /* Using checkbox for multiple choice if needed, or radio for single */
-            margin-right: 2px;
-            transform: scale(0.9);
-        }
-        .comentario-textarea {
+        .comment-area textarea {
             width: 100%;
-            font-size: 0.75rem;
-            padding: 4px;
-            border: 1px solid #a78bfa;
-            border-radius: 4px;
-            min-height: 40px;
-            resize: vertical;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: #d1d5db;
         }
-        .dimensao-header td {
-            background-color: #ede9fe; /* Even lighter purple for dimension headers */
-            font-weight: bold;
-            color: #5b21b6;
+        .comment-area textarea:focus { outline: none; border-color: #8b5cf6; }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #6d28d9; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
         }
-
-        .orientacoes-card {
-            background-color: #ede9fe; /* Light purple for orientacoes */
-            border-left: 4px solid #7c3aed;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .orientacoes-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #5b21b6;
-            margin-bottom: 8px;
-        }
-        .orientacoes-card ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #4c1d95;
-        }
-        .orientacoes-card li {
-            margin-bottom: 5px;
-        }
+        #backToTopBtn:hover { background-color: #5b21b6; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-feedback-participativo">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.306 3 12s4.03 8.25 9 8.25Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75h.008v.008H12v-.008Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 12.75h.008v.008H8.25v-.008Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 12.75h.008v.008H15.75v-.008Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-violet-400">
+                <i class="fas fa-comments fa-2x text-violet-300"></i>
             </div>
-            <h1 class="header-title-feedback-participativo">Mecanismo de Feedback Participativo sobre a Governança de Dados</h1>
-            <p class="header-subtitle-feedback-participativo">APÊNDICE T: Modelo de formulário semiestruturado para coleta de feedback, permitindo identificar pontos de atrito, ajustar práticas e refinar ciclos de governança.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Mecanismo de Feedback Participativo</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE T: Modelo de formulário para coleta de feedback, permitindo identificar pontos de atrito e refinar ciclos de governança.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A construção de uma cultura de GD eficaz e a sustentabilidade do modelo GD-PME 3 Pilares dependem da <span class="highlight-feedback-participativo">participação contínua e do engajamento</span> dos colaboradores. Este formulário auxilia na coleta dessas percepções.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A construção de uma cultura de GD eficaz e a sustentabilidade do modelo dependem da <strong class="text-violet-300">participação contínua e do engajamento</strong> dos colaboradores. Este formulário auxilia na coleta dessas percepções.
             </p>
         </section>
 
-        <!-- Feedback Form Table Section (Quadro T.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-feedback-participativo text-center">Quadro T.1 – Modelo de Formulário para Coleta de Feedback</h2>
-            <div class="overflow-x-auto">
-                <table class="table-feedback">
-                    <thead>
-                        <tr>
-                            <th class="dimensao-col">Dimensão Avaliada</th>
-                            <th class="pergunta-col">Pergunta Qualitativa para Reflexão</th>
-                            <th class="escala-col">Escala de Percepção (1=Pouco, 5=Muito)</th>
-                            <th class="comentarios-col">Comentários, Justificativas ou Sugestões (Campo Aberto)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="dimensao-header">
-                            <td colspan="4">Clareza e Compreensão</td>
-                        </tr>
-                        <tr>
-                            <td>Clareza sobre os dados utilizados no setor</td>
-                            <td>Você compreende de onde vêm, para onde vão e qual a importância dos principais dados que você utiliza ou produz em seu setor?</td>
-                            <td class="escala-group">
-                                <label><input type="radio" name="q1_escala" value="1"> 1</label>
-                                <label><input type="radio" name="q1_escala" value="2"> 2</label>
-                                <label><input type="radio" name="q1_escala" value="3"> 3</label>
-                                <label><input type="radio" name="q1_escala" value="4"> 4</label>
-                                <label><input type="radio" name="q1_escala" value="5"> 5</label>
-                            </td>
-                            <td><textarea class="comentario-textarea" name="q1_comentario"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Facilidade de acesso às informações necessárias</td>
-                            <td>De modo geral, é fácil e rápido localizar e acessar os dados e informações de que você precisa para realizar seu trabalho?</td>
-                            <td class="escala-group">
-                                <label><input type="radio" name="q2_escala" value="1"> 1</label>
-                                <label><input type="radio" name="q2_escala" value="2"> 2</label>
-                                <label><input type="radio" name="q2_escala" value="3"> 3</label>
-                                <label><input type="radio" name="q2_escala" value="4"> 4</label>
-                                <label><input type="radio" name="q2_escala" value="5"> 5</label>
-                            </td>
-                            <td><textarea class="comentario-textarea" name="q2_comentario"></textarea></td>
-                        </tr>
-                        <tr class="dimensao-header">
-                            <td colspan="4">Capacitação e Materiais de Apoio</td>
-                        </tr>
-                        <tr>
-                            <td>Relevância dos treinamentos/oficinas sobre GD</td>
-                            <td>As capacitações (oficinas, cartilhas, glossário – Apêndices C, D, AR) sobre Governança de Dados ajudaram a melhorar seu entendimento e suas práticas de trabalho com dados?</td>
-                             <td class="escala-group">
-                                <label><input type="radio" name="q3_escala" value="1"> 1</label>
-                                <label><input type="radio" name="q3_escala" value="2"> 2</label>
-                                <label><input type="radio" name="q3_escala" value="3"> 3</label>
-                                <label><input type="radio" name="q3_escala" value="4"> 4</label>
-                                <label><input type="radio" name="q3_escala" value="5"> 5</label>
-                            </td>
-                            <td><textarea class="comentario-textarea" name="q3_comentario"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Utilidade dos materiais de apoio</td>
-                            <td>Os materiais de apoio disponibilizados (ex: manuais, checklists – Apêndices A, B) são úteis e de fácil compreensão?</td>
-                             <td class="escala-group">
-                                <label><input type="radio" name="q4_escala" value="1"> 1</label>
-                                <label><input type="radio" name="q4_escala" value="2"> 2</label>
-                                <label><input type="radio" name="q4_escala" value="3"> 3</label>
-                                <label><input type="radio" name="q4_escala" value="4"> 4</label>
-                                <label><input type="radio" name="q4_escala" value="5"> 5</label>
-                            </td>
-                            <td><textarea class="comentario-textarea" name="q4_comentario"></textarea></td>
-                        </tr>
-                         <tr class="dimensao-header">
-                            <td colspan="4">Políticas e Práticas de GD</td>
-                        </tr>
-                        <tr>
-                            <td>Compreensão das regras e políticas internas</td>
-                            <td>As regras e políticas sobre uso, armazenamento, backup e proteção de dados (conforme Termo de Boas Práticas – Apêndice G ou AA) são claras para você?</td>
-                             <td class="escala-group">
-                                <label><input type="radio" name="q5_escala" value="1"> 1</label>
-                                <label><input type="radio" name="q5_escala" value="2"> 2</label>
-                                <label><input type="radio" name="q5_escala" value="3"> 3</label>
-                                <label><input type="radio" name="q5_escala" value="4"> 4</label>
-                                <label><input type="radio" name="q5_escala" value="5"> 5</label>
-                            </td>
-                            <td><textarea class="comentario-textarea" name="q5_comentario"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Impacto percebido das práticas de GD</td>
-                            <td>Você percebeu alguma melhoria ou dificuldade no seu trabalho diário após a implementação das práticas de Governança de Dados neste ciclo? Qual(is)?</td>
-                            <td>N/A</td>
-                            <td><textarea class="comentario-textarea" name="q6_comentario"></textarea></td>
-                        </tr>
-                        <tr class="dimensao-header">
-                            <td colspan="4">Sugestões Gerais</td>
-                        </tr>
-                        <tr>
-                            <td>Sugestões de melhoria para a GD na empresa</td>
-                            <td>Você tem alguma sugestão para melhorar a Governança de Dados, os treinamentos ou os materiais em nossa empresa?</td>
-                            <td>N/A</td>
-                            <td><textarea class="comentario-textarea" name="q7_comentario"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Recomendação de continuidade</td>
-                            <td>Você recomendaria a continuação e a expansão das práticas de Governança de Dados na empresa? Por quê?</td>
-                            <td>N/A</td>
-                            <td><textarea class="comentario-textarea" name="q8_comentario"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-edit mr-3 text-violet-300"></i>Quadro T.1 – Formulário para Coleta de Feedback</h2>
+            <form class="space-y-8">
+                
+                <div>
+                    <h3 class="dimension-header"><i class="fas fa-brain"></i>Clareza e Compreensão</h3>
+                    <div class="space-y-6">
+                        <div class="feedback-card"><p class="question">1. Você compreende de onde vêm e qual a importância dos principais dados que você utiliza no seu setor?</p><div class="rating-scale"><input type="radio" id="q1_1" name="q1_escala" value="1"><label for="q1_1">1</label><input type="radio" id="q1_2" name="q1_escala" value="2"><label for="q1_2">2</label><input type="radio" id="q1_3" name="q1_escala" value="3"><label for="q1_3">3</label><input type="radio" id="q1_4" name="q1_escala" value="4"><label for="q1_4">4</label><input type="radio" id="q1_5" name="q1_escala" value="5"><label for="q1_5">5</label></div><div class="comment-area"><textarea name="q1_comentario" rows="2" placeholder="Comentários..."></textarea></div></div>
+                        <div class="feedback-card"><p class="question">2. De modo geral, é fácil e rápido localizar os dados e informações de que você precisa para realizar seu trabalho?</p><div class="rating-scale"><input type="radio" id="q2_1" name="q2_escala" value="1"><label for="q2_1">1</label><input type="radio" id="q2_2" name="q2_escala" value="2"><label for="q2_2">2</label><input type="radio" id="q2_3" name="q2_escala" value="3"><label for="q2_3">3</label><input type="radio" id="q2_4" name="q2_escala" value="4"><label for="q2_4">4</label><input type="radio" id="q2_5" name="q2_escala" value="5"><label for="q2_5">5</label></div><div class="comment-area"><textarea name="q2_comentario" rows="2" placeholder="Comentários..."></textarea></div></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="dimension-header"><i class="fas fa-book-open"></i>Capacitação e Materiais de Apoio</h3>
+                    <div class="space-y-6">
+                       <div class="feedback-card"><p class="question">3. As capacitações (oficinas, cartilhas, glossário) sobre GD ajudaram a melhorar seu entendimento e suas práticas de trabalho?</p><div class="rating-scale"><input type="radio" id="q3_1" name="q3_escala" value="1"><label for="q3_1">1</label><input type="radio" id="q3_2" name="q3_escala" value="2"><label for="q3_2">2</label><input type="radio" id="q3_3" name="q3_escala" value="3"><label for="q3_3">3</label><input type="radio" id="q3_4" name="q3_escala" value="4"><label for="q3_4">4</label><input type="radio" id="q3_5" name="q3_escala" value="5"><label for="q3_5">5</label></div><div class="comment-area"><textarea name="q3_comentario" rows="2" placeholder="Comentários..."></textarea></div></div>
+                       <div class="feedback-card"><p class="question">4. Os materiais de apoio disponibilizados (manuais, checklists) são úteis e de fácil compreensão?</p><div class="rating-scale"><input type="radio" id="q4_1" name="q4_escala" value="1"><label for="q4_1">1</label><input type="radio" id="q4_2" name="q4_escala" value="2"><label for="q4_2">2</label><input type="radio" id="q4_3" name="q4_escala" value="3"><label for="q4_3">3</label><input type="radio" id="q4_4" name="q4_escala" value="4"><label for="q4_4">4</label><input type="radio" id="q4_5" name="q4_escala" value="5"><label for="q4_5">5</label></div><div class="comment-area"><textarea name="q4_comentario" rows="2" placeholder="Comentários..."></textarea></div></div>
+                    </div>
+                </div>
+
+                 <div>
+                    <h3 class="dimension-header"><i class="fas fa-gavel"></i>Políticas e Práticas de GD</h3>
+                    <div class="space-y-6">
+                       <div class="feedback-card"><p class="question">5. As regras e políticas sobre uso, armazenamento e proteção de dados são claras para você?</p><div class="rating-scale"><input type="radio" id="q5_1" name="q5_escala" value="1"><label for="q5_1">1</label><input type="radio" id="q5_2" name="q5_escala" value="2"><label for="q5_2">2</label><input type="radio" id="q5_3" name="q5_escala" value="3"><label for="q5_3">3</label><input type="radio" id="q5_4" name="q5_escala" value="4"><label for="q5_4">4</label><input type="radio" id="q5_5" name="q5_escala" value="5"><label for="q5_5">5</label></div><div class="comment-area"><textarea name="q5_comentario" rows="2" placeholder="Comentários..."></textarea></div></div>
+                       <div class="feedback-card"><p class="question">6. Você percebeu alguma melhoria ou dificuldade no seu trabalho após a implementação das práticas de GD neste ciclo?</p><div class="comment-area"><textarea name="q6_comentario" rows="3" placeholder="Descreva..."></textarea></div></div>
+                    </div>
+                </div>
+
+                 <div>
+                    <h3 class="dimension-header"><i class="fas fa-lightbulb"></i>Sugestões Gerais</h3>
+                    <div class="space-y-6">
+                       <div class="feedback-card"><p class="question">7. Você tem alguma sugestão para melhorar a Governança de Dados, os treinamentos ou os materiais em nossa empresa?</p><div class="comment-area"><textarea name="q7_comentario" rows="3" placeholder="Suas ideias são bem-vindas..."></textarea></div></div>
+                       <div class="feedback-card"><p class="question">8. Você recomendaria a continuação e a expansão das práticas de Governança de Dados? Por quê?</p><div class="comment-area"><textarea name="q8_comentario" rows="3" placeholder="Sua opinião é importante..."></textarea></div></div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Instrumento vital para a melhoria contínua, este mecanismo de feedback coleta percepções sobre as ações dos Pilares 1, 2 e 3, sendo valioso para o aprimoramento da governança.</p>
             </div>
-        </section>
-
-        <!-- Application Guidelines Section -->
-        <section class="card orientacoes-card fade-in-section" style="animation-delay: 0.5s;">
-            <h3>T.1 Orientações para Aplicação:</h3>
-            <ul>
-                <li>Recomenda-se aplicar o formulário (impresso ou digital, via Google Forms, por exemplo) ao final de cada ciclo trimestral de implementação do modelo GD-PME 3 Pilares, conforme previsto no Apêndice L ou AM (Cronogramas) e no Apêndice AT (Roteiro de Avaliação Pós-Ciclo);</li>
-                <li>Garanta o anonimato das respostas para incentivar a sinceridade e a participação genuína;</li>
-                <li>Promova um ambiente de escuta ativa e demonstre que os feedbacks são valorizados e serão considerados para os próximos ciclos;</li>
-                <li>Compile os resultados e discuta os principais achados e sugestões nas reuniões de revisão de ciclo (ver Apêndice AT), utilizando-os como insumo para o planejamento das próximas ações e para o Relatório Trimestral (Apêndice P ou AW).</li>
-            </ul>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer-feedback-participativo fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Floridi (2010), Bento (2021) e em práticas de design participativo e melhoria contínua.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Instrumento vital para o ciclo de aprendizado e melhoria do modelo GD-PME, este mecanismo de feedback participativo coleta percepções sobre as ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), conforme Apêndices L, AM e AT. Tais insumos são valiosos para o aprimoramento da governança e o fortalecimento da cultura informacional.</p>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

@@ -1,232 +1,214 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro para Formação de Multiplicadores Internos - GD-PME 3 Pilares</title>
+    <title>Roteiro para Formação de Multiplicadores Internos - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light Slate background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-formacao {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #334155; /* Dark Slate for titles */
-        }
-        .header-title-formacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #334155; /* Dark Slate */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-formacao {
-            font-size: 1.15rem;
-            color: #475569; /* Medium Slate */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-formacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e293b; /* Darkest Slate for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-formacao {
-            color: #64748b; /* Slate highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-formacao {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #818cf8, #a78bfa); /* Indigo/Roxo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #4338ca; /* Indigo */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e2e8f0; /* Light Slate background for icon */
+            color: #c7d2fe;
+            font-size: 1.2rem;
         }
-        .header-icon-formacao svg {
-            width: 32px;
-            height: 32px;
-            color: #334155; /* Dark Slate */
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .table-formacao {
-            width: 100%;
-            border-collapse: collapse;
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #a5b4fc; /* Light Indigo */
+        }
+        .info-block {
             margin-top: 16px;
         }
-        .table-formacao th, .table-formacao td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #cbd5e1; /* Lighter Slate border */
-            font-size: 0.75rem; /* Smaller font for denser table */
-            vertical-align: top;
-        }
-        .table-formacao th {
-            background-color: #f8fafc; /* Very Light Slate for table headers */
+        .info-block h4 {
             font-weight: 600;
-            color: #475569; /* Medium Slate */
-        }
-        .table-formacao td {
-            color: #1e293b; /* Darkest Slate for table text */
-        }
-        /* Specific column widths */
-        .etapa-col-form { width: 18%; }
-        .conteudo-col-form { width: 25%; }
-        .metodologia-col-form { width: 22%; }
-        .duracao-col-form { width: 10%; }
-        .produto-col-form { width: 25%; }
-        .materiais-col-form {width: 15%;}
-
-
-        .recomendacoes-card-formacao {
-            background-color: #e2e8f0; /* Light Slate for recommendations */
-            border-left: 4px solid #64748b;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .recomendacoes-card-formacao h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #334155;
+            color: #818cf8; /* Lighter Indigo */
             margin-bottom: 8px;
         }
-        .recomendacoes-card-formacao ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #1e293b;
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .recomendacoes-card-formacao li {
-            margin-bottom: 5px;
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #4338ca; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-formacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25M12 12V9.75M12 12H9.75M12 12l3-3m-3 3-3-3" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-indigo-400">
+                <i class="fas fa-users-cog fa-2x text-indigo-300"></i>
             </div>
-            <h1 class="header-title-formacao">Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-formacao">APÊNDICE U: Estrutura básica para capacitar colaboradores-chave, descentralizando a disseminação da cultura de GD e garantindo sustentabilidade.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro para Formação de Multiplicadores Internos</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE U: Estrutura para capacitar colaboradores-chave, descentralizando a disseminação da cultura de GD.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este roteiro é uma estratégia fundamental do <span class="highlight-formacao">Pilar 2 (Capacitação Contínua)</span>. O objetivo é descentralizar a responsabilidade pela disseminação da cultura de Governança de Dados (GD), ampliar a capilaridade do modelo e garantir sua sustentabilidade a longo prazo.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este roteiro é uma estratégia do <strong class="text-indigo-300">Pilar 2 (Capacitação Contínua)</strong> para descentralizar a disseminação da cultura de dados e garantir a sustentabilidade do modelo.
             </p>
         </section>
 
-        <!-- Training Roster Table Section (Quadro U.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-formacao text-center">Quadro U.1 – Roteiro Sugerido para Oficina de Formação de Multiplicadores</h2>
-            <div class="overflow-x-auto">
-                <table class="table-formacao">
-                    <thead>
-                        <tr>
-                            <th class="etapa-col-form">Etapa da Formação</th>
-                            <th class="conteudo-col-form">Conteúdo Principal Abordado</th>
-                            <th class="metodologia-col-form">Metodologia Sugerida</th>
-                            <th class="duracao-col-form">Duração Estimada</th>
-                            <th class="produto-col-form">Produto Esperado / Resultado Chave</th>
-                            <th class="materiais-col-form">Materiais de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">1. Introdução e Alinhamento Conceitual</td>
-                            <td>Apresentação dos objetivos da formação; O que é Governança de Dados e por que ela é crucial para PMEs?; Fundamentos e Pilares do modelo GD-PME 3 Pilares.</td>
-                            <td>Apresentação interativa; Discussão em grupo sobre desafios informacionais percebidos na empresa.</td>
-                            <td>1h</td>
-                            <td>Nivelamento conceitual; Compreensão do papel estratégico da GD e do modelo GD-PME 3 Pilares.</td>
-                            <td>Apêndice C (Glossário); Apêndice M (Miniguia Visual).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">2. Aplicação Prática dos Pilares</td>
-                            <td>Como aplicar o Diagnóstico Inicial (Pilar 1); Condução de minioficinas de sensibilização (Pilar 2); Como elaborar e comunicar políticas simplificadas (Pilar 3).</td>
-                            <td>Estudo de caso simulado da "Varejo Inteligente Ltda." (Apêndice H); Simulação de preenchimento de templates.</td>
-                            <td>2h</td>
-                            <td>Multiplicadores familiarizados com os instrumentos práticos do GD-PME 3 Pilares e capazes de simular sua aplicação.</td>
-                            <td>Apêndices A, B, D, G/AA.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">3. Adaptação e Planejamento Setorial</td>
-                            <td>Discussão sobre como adaptar as ferramentas do GD-PME 3 Pilares para a realidade de cada setor da empresa; Elaboração de um miniplano de ação inicial para disseminação no próprio setor.</td>
-                            <td>Dinâmica em grupos por setor (ou área de afinidade); Brainstorming orientado.</td>
-                            <td>1h30</td>
-                            <td>Esboço de um miniplano de ação para cada setor representado, com foco em 1 ou 2 ações prioritárias.</td>
-                            <td>Apêndice R (Roteiro de Capacitação Setorial).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">4. Definição de Papéis e Compromisso</td>
-                            <td>Discussão sobre o papel, responsabilidades e desafios do multiplicador interno; Formalização simbólica do compromisso com a disseminação da GD.</td>
-                            <td>Roda de conversa sobre expectativas e apoio necessário; Leitura e assinatura de um "Termo do Multiplicador" (modelo similar ao Apêndice AP).</td>
-                            <td>30min</td>
-                            <td>Multiplicadores conscientes de seu papel e formalmente engajados; Definição de canais de comunicação com a coordenação da GD.</td>
-                            <td>Apêndice AP (adaptado para "Termo do Multiplicador").</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-clipboard-list mr-3 text-indigo-300"></i>Estrutura Sugerida para Oficina</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-10">
+                <h3 class="text-lg font-bold text-white text-center mb-4">DETALHES DA FORMAÇÃO</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-sm text-center">
+                    <div><strong class="text-gray-400 block">Carga Horária</strong><span class="text-white">Aprox. 5 horas</span></div>
+                    <div><strong class="text-gray-400 block">Formato</strong><p>Oficina prática e interativa</p></div>
+                    <div><strong class="text-gray-400 block">Público-Alvo</strong><p>5 a 15 colaboradores-chave</p></div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                
+                <div class="timeline-container"><div class="timeline-icon"><i class="fas fa-play"></i></div><div class="timeline-content"><h3>1. Introdução e Alinhamento Conceitual (1h)</h3><div class="info-block"><h4>Conteúdo</h4><p>Apresentação dos objetivos; O que é GD e por que é crucial para PMEs?; Fundamentos dos 3 Pilares.</p></div><div class="info-block"><h4>Apoio</h4><p><span class="ref-tag">Ap. C</span> <span class="ref-tag">Ap. M</span></p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon"><i class="fas fa-tools"></i></div><div class="timeline-content"><h3>2. Aplicação Prática dos Pilares (2h)</h3><div class="info-block"><h4>Conteúdo</h4><p>Como aplicar o Diagnóstico (Pilar 1); Como conduzir minioficinas (Pilar 2); Como elaborar e comunicar políticas (Pilar 3).</p></div><div class="info-block"><h4>Apoio</h4><p><span class="ref-tag">Ap. A, B, D, G</span></p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon"><i class="fas fa-sitemap"></i></div><div class="timeline-content"><h3>3. Adaptação e Planejamento Setorial (1h30)</h3><div class="info-block"><h4>Conteúdo</h4><p>Discussão sobre como adaptar as ferramentas para cada setor; Elaboração de um miniplano de ação para disseminação.</p></div><div class="info-block"><h4>Apoio</h4><p><span class="ref-tag">Ap. R</span></p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon"><i class="fas fa-handshake"></i></div><div class="timeline-content"><h3>4. Definição de Papéis e Compromisso (30min)</h3><div class="info-block"><h4>Conteúdo</h4><p>Discussão sobre o papel e responsabilidades do multiplicador; Formalização simbólica do compromisso com um "Termo do Multiplicador".</p></div><div class="info-block"><h4>Apoio</h4><p><span class="ref-tag">Ap. AP (adaptado)</span></p></div></div></div>
+
             </div>
         </section>
 
-        <!-- Recommendations Section -->
-        <section class="card recomendacoes-card-formacao fade-in-section" style="animation-delay: 0.5s;">
-            <h3>U.1 Recomendações para o Programa de Multiplicadores:</h3>
-            <ul>
-                <li>Sugere-se indicar, no mínimo, um multiplicador por setor-chave da PME, priorizando colaboradores com bom trânsito interpessoal, proatividade e interesse pelo tema, independentemente do nível hierárquico;</li>
-                <li>A liderança da empresa deve apoiar ativamente o programa, oferecendo tempo para as atividades de formação e multiplicação, e reconhecendo o esforço dos multiplicadores (ex: menção em reuniões, pequenos incentivos simbólicos);</li>
-                <li>O grupo de multiplicadores deve ter encontros periódicos (ex: mensais ou bimestrais) com a coordenação da GD para troca de experiências, alinhamento e planejamento de novas ações (ver Apêndice B e AT);</li>
-                <li>O plano de formação e atuação dos multiplicadores deve ser revisado e atualizado anualmente ou a cada dois ciclos completos de governança, para garantir sua contínua relevância e eficácia.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-indigo-300"></i>Recomendações para o Programa</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Seleção:</strong> Escolha multiplicadores com base no engajamento, proatividade e boa comunicação.</li>
+                <li><strong>Apoio da Liderança:</strong> A gestão deve apoiar o programa, oferecendo tempo para as atividades e reconhecendo os esforços.</li>
+                <li><strong>Rede de Multiplicadores:</strong> Fomente encontros periódicos entre os multiplicadores para troca de experiências e alinhamento.</li>
+                <li><strong>Revisão Contínua:</strong> O plano de formação e atuação deve ser revisado e atualizado anualmente ou a cada dois ciclos.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-formacao fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), e em experiências de aprendizagem organizacional participativa e formação de agentes multiplicadores.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Como componente estratégico do Pilar 2 (Capacitação Contínua) do modelo GD-PME, este roteiro visa preparar multiplicadores internos para disseminar a cultura de dados e auxiliar na aplicação das diretrizes dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nos setores, promovendo sustentabilidade e engajamento.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Como componente do Pilar 2, este roteiro visa preparar multiplicadores para disseminar a cultura de dados e apoiar a aplicação das diretrizes dos Pilares 1 e 3.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

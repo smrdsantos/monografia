@@ -3,252 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Mapa de Stakeholders da Governança de Dados em PMEs - GD-PME</title>
+    <title>Mapa de Stakeholders da Governança de Dados em PMEs - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light Blue-Gray background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-stakeholders {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1e3a8a; /* Dark Blue for titles */
-        }
-        .header-title-stakeholders {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #1e3a8a; /* Dark Blue */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-stakeholders {
-            font-size: 1.15rem;
-            color: #172554; /* Darker Blue */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-stakeholders {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e40af; /* Medium Blue for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-stakeholders {
-            color: #2563eb; /* Blue highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-stakeholders {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #dbeafe; /* Light Blue background for icon */
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .header-icon-stakeholders svg {
-            width: 32px;
-            height: 32px;
-            color: #1e3a8a; /* Dark Blue */
+        
+        .gradient-title {
+            background: linear-gradient(to right, #94a3b8, #e5e7eb); /* Zinco/Cinza */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        /* Stakeholder map specific styles */
+        
+        /* Mapa de Stakeholders */
         .stakeholder-map-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* Gap between central PME and stakeholder groups */
-            padding: 20px;
-            background-color: #e0f2fe; /* Light sky blue background for the map area */
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: #1f2937;
             border-radius: 12px;
         }
         .pme-central {
-            background-color: #3b82f6; /* Blue */
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
             color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
             font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
+        
         .stakeholder-group {
             width: 100%;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom:16px;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            padding: 1.5rem;
+            border-radius: 12px;
         }
         .stakeholder-group h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stakeholder-group h3 i {
+            margin-right: 0.75rem;
+        }
+        
+        .stakeholder-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
         }
         .stakeholder-item {
-            background-color: #ffffff;
-            color: #1e3a8a;
-            padding: 10px;
-            border-radius: 6px;
+            background-color: #1f2937;
+            color: #d1d5db;
+            padding: 0.75rem;
+            border-radius: 8px;
             text-align: center;
             font-size: 0.9rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 8px;
         }
-        .internos-group {
-            background-color: #bfdbfe; /* Lighter blue for internal */
-        }
-        .internos-group h3 { color: #1e40af; }
 
-        .externos-group {
-            background-color: #93c5fd; /* Light blue for external */
-        }
-        .externos-group h3 { color: #1d4ed8; }
-
-        .impacto-amplo-group {
-            background-color: #60a5fa; /* Blue for broad impact */
-        }
-        .impacto-amplo-group h3 { color: #1e3a8a; }
-
-        .interactions {
-            text-align: center;
-            font-style: italic;
-            color: #172554;
-            margin-top: 12px;
-            font-size: 0.9rem;
-        }
-         /* Arrow styling (simplified) */
-        .arrow-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 0;
-        }
         .arrow {
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-        }
-        .arrow-down {
-            border-top: 12px solid #60a5fa; /* Blue arrow */
-        }
-         .arrow-up {
-            border-bottom: 12px solid #60a5fa; /* Blue arrow */
-        }
-        .horizontal-arrows {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-            margin: 10px 0;
-        }
-        .arrow-left, .arrow-right {
             font-size: 2rem;
-            color: #3b82f6;
+            color: #4b5563;
         }
-
-
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #71717a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #52525b; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-5xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-stakeholders">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-zinc-600 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-zinc-400">
+                <i class="fas fa-users fa-2x text-zinc-300"></i>
             </div>
-            <h1 class="header-title-stakeholders">Mapa de Stakeholders da Governança de Dados em PMEs</h1>
-            <p class="header-subtitle-stakeholders">APÊNDICE O: Modelo visual para mapear partes interessadas internas e externas, auxiliando na identificação de atores críticos e no alinhamento de expectativas.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Mapa de Stakeholders da Governança de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE O: Modelo visual para mapear partes interessadas, auxiliando na identificação de atores críticos e no alinhamento de expectativas.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este mapa auxilia as organizações a identificar os atores críticos para o sucesso da Governança de Dados (GD), alinhar expectativas e promover o <span class="highlight-stakeholders">engajamento contínuo</span>. Ele é crucial para desenvolver estratégias de comunicação (Pilar 2) e fomentar a colaboração para os Pilares 1 e 3.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este mapa auxilia as organizações a identificar os atores críticos para o sucesso da Governança de Dados, alinhar expectativas e promover o <strong class="text-zinc-300">engajamento contínuo</strong>.
             </p>
         </section>
 
-        <!-- Stakeholder Map Section (Figura O.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-stakeholders text-center">Figura O.1 – Mapa de Stakeholders GD-PME 3 Pilares</h2>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-sitemap mr-3 text-zinc-300"></i>Figura O.1 – Mapa de Stakeholders GD-PME</h2>
             <div class="stakeholder-map-container">
-                <div class="pme-central">PME (Governança de Dados)</div>
+                
+                <div class="pme-central"><i class="fas fa-building mr-2"></i>PME (Governança de Dados)</div>
 
-                <div class="arrow-container"><div class="arrow arrow-down"></div></div>
+                <div class="arrow"><i class="fas fa-long-arrow-alt-down"></i></div>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
-                    <div class="stakeholder-group internos-group">
-                        <h3>Stakeholders Internos</h3>
-                        <div class="stakeholder-item">Colaboradores</div>
-                        <div class="stakeholder-item">Gestores Operacionais</div>
-                        <div class="stakeholder-item">Setor Administrativo/Financeiro</div>
-                        <div class="stakeholder-item">TI / Suporte Externo (parceria)</div>
+                    <div class="stakeholder-group">
+                        <h3 style="color:#60a5fa;"><i class="fas fa-user-friends"></i>Stakeholders Internos</h3>
+                        <div class="stakeholder-items-grid">
+                            <div class="stakeholder-item">Colaboradores</div>
+                            <div class="stakeholder-item">Gestores Operacionais</div>
+                            <div class="stakeholder-item">Setor Administrativo</div>
+                            <div class="stakeholder-item">TI / Suporte</div>
+                        </div>
                     </div>
-
-                    <div class="stakeholder-group externos-group">
-                        <h3>Stakeholders Externos</h3>
-                        <div class="stakeholder-item">Clientes</div>
-                        <div class="stakeholder-item">Órgãos Reguladores</div>
-                        <div class="stakeholder-item">Parceiros/Fornecedores Chave</div>
+                    <div class="stakeholder-group">
+                        <h3 style="color:#a7f3d0;"><i class="fas fa-globe-americas"></i>Stakeholders Externos</h3>
+                        <div class="stakeholder-items-grid">
+                            <div class="stakeholder-item">Clientes</div>
+                            <div class="stakeholder-item">Órgãos Reguladores</div>
+                            <div class="stakeholder-item">Fornecedores Chave</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="horizontal-arrows">
-                    <span class="arrow-left">←</span>
-                    <p class="interactions">Interações Primárias e Influência Mútua</p>
-                    <span class="arrow-right">→</span>
+                <div class="w-full text-center my-2 text-gray-400 italic">
+                    <i class="fas fa-long-arrow-alt-left mx-2"></i> Influência Mútua <i class="fas fa-long-arrow-alt-right mx-2"></i>
                 </div>
 
-                <div class="arrow-container"><div class="arrow arrow-up"></div></div>
-                
-                <div class="stakeholder-group impacto-amplo-group w-full md:w-1/2">
-                    <h3>Impacto Amplo</h3>
-                    <div class="stakeholder-item">Comunidade / Sociedade</div>
+                <div class="w-full md:w-1/2">
+                    <div class="stakeholder-group">
+                        <h3 style="color:#fcd34d;"><i class="fas fa-broadcast-tower"></i>Impacto Amplo</h3>
+                        <div class="stakeholder-items-grid">
+                            <div class="stakeholder-item">Comunidade / Sociedade</div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-             <p class="text-center text-sm text-gray-600 mt-4">
-                Este mapeamento categoriza os stakeholders, indicando interações primárias e influência mútua no contexto da GD, auxiliando na identificação de necessidades de comunicação, engajamento e definição de responsabilidades.
+             <p class="text-center text-sm text-gray-400 mt-6">
+                Este mapeamento categoriza os stakeholders, indicando interações e influência no contexto da GD, auxiliando na identificação de necessidades de comunicação e engajamento.
             </p>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-stakeholders fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor (2025).</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este Mapa de Stakeholders facilita a identificação dos atores internos e externos relevantes para a Governança de Dados na PME, sendo crucial para o desenvolvimento de estratégias de comunicação e engajamento (Pilar 2 do modelo GD-PME), e para fomentar a colaboração necessária à execução dos Pilares 1 (Dados e Sistemas) e 3 (Políticas).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este Mapa de Stakeholders facilita a identificação de atores relevantes para a Governança de Dados, sendo crucial para desenvolver estratégias de comunicação e engajamento (Pilar 2).</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

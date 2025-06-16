@@ -3,221 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Banco de Boas Práticas em Governança de Dados para PMEs - GD-PME</title>
+    <title>Banco de Boas Práticas em Governança de Dados para PMEs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* Light Teal background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-boaspraticas {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0d9488; /* Dark Teal for titles */
-        }
-        .header-title-boaspraticas {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0d9488; /* Dark Teal */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-boaspraticas {
-            font-size: 1.15rem;
-            color: #0f766e; /* Medium Teal */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-boaspraticas {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #134e4a; /* Darkest Teal for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-boaspraticas {
-            color: #14b8a6; /* Teal highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-boaspraticas {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #2dd4bf, #34d399); /* Verde-azulado */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Pilar */
+        .pillar-card {
+            background-color: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
+        }
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ccfbf1; /* Light Teal background for icon */
         }
-        .header-icon-boaspraticas svg {
-            width: 32px;
-            height: 32px;
-            color: #0d9488; /* Dark Teal */
+        .pillar-card h3 i {
+            margin-right: 12px;
         }
-
-        .table-boaspraticas {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-boaspraticas th, .table-boaspraticas td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #99f6e4; /* Lighter Teal border */
-            font-size: 0.8rem;
-            vertical-align: top;
-        }
-        .table-boaspraticas th {
-            background-color: #f0fdfa; /* Very Light Teal for table headers */
-            font-weight: 600;
-            color: #0f766e; /* Medium Teal */
-        }
-        .table-boaspraticas td {
-            color: #134e4a; /* Darkest Teal for table text */
-        }
-        /* Specific column widths */
-        .pilar-col-bp { width: 15%; }
-        .pratica-col-bp { width: 30%; }
-        .origem-col-bp { width: 20%; }
-        .beneficio-col-bp { width: 25%; }
-        .apoio-col-bp { width: 10%; }
+        .title-p1 { color: #60a5fa; }
+        .title-p2 { color: #34d399; }
+        .title-p3 { color: #facc15; }
         
-        .recomendacoes-card {
-            background-color: #ccfbf1; /* Light Teal for recommendations */
-            border-left: 4px solid #14b8a6;
+        .practice-block {
             padding: 16px;
-            margin-top: 20px;
+            background-color: #374151;
             border-radius: 8px;
+            border-left: 4px;
+            margin-bottom: 16px;
         }
-        .recomendacoes-card p {
-            font-size: 0.9rem;
-            color: #134e4a;
-            line-height: 1.6;
+        .practice-block h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 12px;
+        }
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0d9488; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0f766e; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-boaspraticas">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068M15.75 12c0-1.268.63-2.39 1.593-3.068m-1.593 3.068L21 12M2.25 12c0-1.268.63-2.39 1.593-3.068M12 15V5.25A2.25 2.25 0 0 0 9.75 3h-4.5A2.25 2.25 0 0 0 3 5.25v13.5A2.25 2.25 0 0 0 5.25 21h10.5a2.25 2.25 0 0 0 2.25-2.25V15M12 15h-3.75" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-teal-400">
+                <i class="fas fa-thumbs-up fa-2x text-teal-300"></i>
             </div>
-            <h1 class="header-title-boaspraticas">Banco de Boas Práticas em Governança de Dados para PMEs</h1>
-            <p class="header-subtitle-boaspraticas">APÊNDICE S: Exemplos simples, práticos e eficazes de aplicação dos princípios e pilares do modelo GD-PME 3 Pilares para inspirar líderes e equipes.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Banco de Boas Práticas em Governança de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE S: Exemplos práticos para inspirar líderes e equipes na aplicação do modelo GD-PME 3 Pilares.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este apêndice reúne exemplos de boas práticas em GD, extraídas da literatura e simulações, para inspirar PMEs. O objetivo é fomentar a <span class="highlight-boaspraticas">aplicação prática e eficaz</span> dos princípios do modelo GD-PME 3 Pilares.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este apêndice reúne exemplos de boas práticas para fomentar a <strong class="text-teal-300">aplicação prática e eficaz</strong> dos princípios de Governança de Dados.
             </p>
         </section>
 
-        <!-- Good Practices Table Section (Quadro S.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-boaspraticas text-center">Quadro S.1 – Exemplos de Boas Práticas em Governança de Dados</h2>
-            <div class="overflow-x-auto">
-                <table class="table-boaspraticas">
-                    <thead>
-                        <tr>
-                            <th class="pilar-col-bp">Pilar do Modelo GD-PME 3 Pilares</th>
-                            <th class="pratica-col-bp">Boa Prática Sugerida</th>
-                            <th class="origem-col-bp">Origem da Prática ou Referência Principal</th>
-                            <th class="beneficio-col-bp">Principal Benefício Observado/Esperado</th>
-                            <th class="apoio-col-bp">Apêndice de Apoio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="2" class="font-semibold align-top pt-3">Dados e Sistemas</td>
-                            <td>Realizar um inventário quinzenal dos principais dados operacionais, utilizando uma planilha centralizada e compartilhada;</td>
-                            <td>Simulação da “Varejo Inteligente Ltda.” (Capítulo 4); Mahanti (2021a)</td>
-                            <td>Redução de inconsistências em relatórios; Melhoria na rastreabilidade dos dados.</td>
-                            <td>Apêndice AL</td>
-                        </tr>
-                        <tr>
-                            <td>Adotar um padrão mínimo de nomenclatura para arquivos e pastas importantes, facilitando a localização e o versionamento.</td>
-                            <td>Práticas de organização informacional; Apêndice B (Manual Operacional).</td>
-                            <td>Diminuição do tempo gasto na procura por informações; Menor risco de uso de versões desatualizadas.</td>
-                            <td>Apêndice B</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" class="font-semibold align-top pt-3">Capacitação Contínua</td>
-                            <td>Desenvolver e disponibilizar um glossário impresso ou digital (Apêndice C) com os termos-chave da GD nos setores operacionais;</td>
-                            <td>Mahanti (2021a); Bento (2021).</td>
-                            <td>Aumento da compreensão sobre a terminologia da GD; Melhoria na comunicação interna sobre dados.</td>
-                            <td>Apêndice C, D</td>
-                        </tr>
-                        <tr>
-                            <td>Promover minioficinas quinzenais (30-60 min) sobre temas específicos da GD, como validação de dados ou segurança da informação.</td>
-                            <td>Apêndice B (Manual Operacional); Apêndice D (Guia de Oficina).</td>
-                            <td>Engajamento da equipe; Desenvolvimento gradual da cultura de dados.</td>
-                            <td>Apêndice D, R, U</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" class="font-semibold align-top pt-3">Políticas Simplificadas</td>
-                            <td>Elaborar e obter assinatura anual de um "Termo de Uso Ético e Responsável dos Dados" por todos os colaboradores;</td>
-                            <td>Otto (2011); Práticas recomendadas pelo SEBRAE; Apêndice G ou AA.</td>
-                            <td>Redução de incidentes informacionais; Maior conscientização sobre a LGPD.</td>
-                            <td>Apêndice G, AA, AY</td>
-                        </tr>
-                        <tr>
-                            <td>Estabelecer uma rotina simples e documentada de backup semanal para os dados críticos da empresa.</td>
-                            <td>Pilar 3 do Modelo GD-PME 3 Pilares; Práticas básicas de segurança da informação.</td>
-                            <td>Minimização do risco de perda de dados importantes; Continuidade operacional.</td>
-                            <td>Apêndice AB</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+             <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-lightbulb mr-3 text-teal-300"></i>Quadro S.1 – Exemplos de Boas Práticas</h2>
+            <div class="space-y-8">
+                
+                <div class="pillar-card">
+                    <h3 class="title-p1"><i class="fas fa-database"></i>Pilar 1: Dados e Sistemas</h3>
+                    <div class="practice-block" style="border-color:#60a5fa;">
+                        <h4>Realizar inventário quinzenal dos dados operacionais</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Simulação “Varejo Inteligente”</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Redução de inconsistências; Melhoria na rastreabilidade.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. AL</span></p></div>
+                        </div>
+                    </div>
+                     <div class="practice-block" style="border-color:#60a5fa;">
+                        <h4>Adotar padrão mínimo de nomenclatura para arquivos</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Práticas de organização; Apêndice B</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Menos tempo procurando informações; Menor risco de usar versões antigas.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. B</span></p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <h3 class="title-p2"><i class="fas fa-users-cog"></i>Pilar 2: Capacitação Contínua</h3>
+                    <div class="practice-block" style="border-color:#34d399;">
+                        <h4>Disponibilizar glossário com termos-chave</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Mahanti (2021a); Bento (2021)</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Melhora a compreensão e a comunicação interna sobre dados.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. C</span> <span class="ref-tag">Ap. D</span></p></div>
+                        </div>
+                    </div>
+                    <div class="practice-block" style="border-color:#34d399;">
+                        <h4>Promover minioficinas quinzenais</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Apêndice B (Manual); Apêndice D (Guia de Oficina)</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Engajamento da equipe; Desenvolvimento gradual da cultura de dados.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. D</span> <span class="ref-tag">Ap. R</span> <span class="ref-tag">Ap. U</span></p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <h3 class="title-p3"><i class="fas fa-shield-alt"></i>Pilar 3: Políticas Simplificadas</h3>
+                    <div class="practice-block" style="border-color:#facc15;">
+                        <h4>Elaborar um "Termo de Uso Ético e Responsável dos Dados"</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Otto (2011); Práticas SEBRAE</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Redução de incidentes; Maior conscientização sobre a LGPD.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. G</span> <span class="ref-tag">Ap. AA</span> <span class="ref-tag">Ap. AY</span></p></div>
+                        </div>
+                    </div>
+                    <div class="practice-block" style="border-color:#facc15;">
+                        <h4>Estabelecer rotina de backup semanal</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="info-block"><label>Origem/Referência</label><p>Pilar 3 do Modelo GD-PME; Práticas de segurança</p></div>
+                            <div class="info-block"><label>Benefício</label><p>Minimização do risco de perda de dados; Continuidade operacional.</p></div>
+                            <div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. AB</span></p></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Recommendations Section -->
-        <section class="card recomendacoes-card fade-in-section" style="animation-delay: 0.5s;">
-            <h3 class="font-semibold text-teal-700 mb-2">Recomendações de Uso:</h3>
-            <p>
-                Recomenda-se que cada PME utilize este banco como ponto de partida para criar e manter seu próprio repositório interno de boas práticas, enriquecendo-o continuamente com as experiências e aprendizados locais adquiridos ao longo da execução dos ciclos operacionais do modelo GD-PME 3 Pilares. A discussão dessas práticas em reuniões de avaliação de ciclo (Apêndice AT) pode fomentar a inovação e a apropriação coletiva da governança.
-            </p>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+             <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-teal-300"></i>Recomendações de Uso</h2>
+             <p class="text-gray-300 leading-relaxed">
+                 Recomenda-se que cada PME utilize este banco como ponto de partida para criar e manter seu próprio repositório interno de boas práticas, enriquecendo-o com as experiências e aprendizados locais. A discussão dessas práticas em reuniões de avaliação de ciclo (Apêndice AT) pode fomentar a inovação e a apropriação coletiva da governança.
+             </p>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-boaspraticas fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Otto (2011), Bento (2021), SEBRAE e nos aprendizados da simulação do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice compila exemplos de boas práticas alinhadas ao modelo GD-PME 3 Pilares, com o fito de inspirar ações concretas e eficazes. As sugestões ilustram a operacionalização do Pilar 1 (Dados e Sistemas), do Pilar 2 (Capacitação Contínua) e do Pilar 3 (Políticas Graduais e Simplificadas), vinculando-as a benefícios e aos instrumentos de suporte dos demais apêndices.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este apêndice compila exemplos de boas práticas para inspirar ações concretas e eficazes, ilustrando a operacionalização dos Pilares 1, 2 e 3 e vinculando-as a benefícios e instrumentos de suporte.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

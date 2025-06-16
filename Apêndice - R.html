@@ -3,231 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro de Capacitação Setorial por Pilares - GD-PME 3 Pilares</title>
+    <title>Roteiro de Capacitação Setorial por Pilares - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eef2ff; /* Light Indigo background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-capacitacao {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #4338ca; /* Indigo for titles */
-        }
-        .header-title-capacitacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #4338ca; /* Indigo */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-capacitacao {
-            font-size: 1.15rem;
-            color: #4f46e5; /* Medium Indigo */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-capacitacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #3730a3; /* Darkest Indigo for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-capacitacao {
-            color: #6366f1; /* Indigo highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-capacitacao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #818cf8, #a78bfa); /* Indigo/Roxo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Capacitação */
+        .training-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+        }
+        .training-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #c4b5fd; /* Roxo claro */
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+        }
+        .training-card h3 i {
+            margin-right: 12px;
+        }
+        
+        .info-block {
             margin-bottom: 16px;
-            background-color: #e0e7ff; /* Light Indigo background for icon */
         }
-        .header-icon-capacitacao svg {
-            width: 32px;
-            height: 32px;
-            color: #4338ca; /* Indigo */
+        .info-block:last-child {
+            margin-bottom: 0;
         }
-
-        .table-capacitacao {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-capacitacao th, .table-capacitacao td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #c7d2fe; /* Lighter Indigo border */
-            font-size: 0.8rem;
-            vertical-align: top;
-        }
-        .table-capacitacao th {
-            background-color: #eef2ff; /* Very Light Indigo for table headers */
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #4f46e5; /* Medium Indigo */
-        }
-        .table-capacitacao td {
-            color: #3730a3; /* Darkest Indigo for table text */
-        }
-        /* Specific column widths */
-        .setor-col { width: 15%; }
-        .pilar-col-cap { width: 20%; }
-        .tema-col { width: 30%; }
-        .ferramenta-col-cap { width: 25%; }
-        .duracao-col { width: 10%; }
-
-        .observacoes-card {
-            background-color: #e0e7ff; /* Light Indigo for observations */
-            border-left: 4px solid #6366f1;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .observacoes-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #4338ca;
+            color: #9ca3af;
             margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .observacoes-card ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #3730a3;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .observacoes-card li {
-            margin-bottom: 5px;
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #6d28d9; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
         }
-
+        #backToTopBtn:hover { background-color: #5b21b6; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-capacitacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 9H9m6 3H9m3-6v6m0 0 3-3m-3 3-3-3" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-violet-400">
+                <i class="fas fa-chalkboard-teacher fa-2x text-violet-300"></i>
             </div>
-            <h1 class="header-title-capacitacao">Roteiro de Capacitação Setorial por Pilares do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-capacitacao">APÊNDICE R: Guia prático para direcionar ações de capacitação adaptadas às realidades e necessidades específicas de cada área funcional da PME.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro de Capacitação Setorial por Pilares</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE R: Guia prático para direcionar ações de capacitação adaptadas às realidades de cada área da PME.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A proposta é adaptar o conteúdo das capacitações (Pilar 2) às realidades de cada setor, promovendo <span class="highlight-capacitacao">maior engajamento, relevância e aderência</span> organizacional às práticas de Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A proposta é adaptar o conteúdo das capacitações (Pilar 2) às realidades de cada setor, promovendo <strong class="text-violet-300">maior engajamento, relevância e aderência</strong> às práticas de Governança de Dados.
             </p>
         </section>
 
-        <!-- Sectoral Training Roster Table Section (Quadro R.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-capacitacao text-center">Quadro R.1 – Sugestões para Roteiro de Capacitação Setorial</h2>
-            <div class="overflow-x-auto">
-                <table class="table-capacitacao">
-                    <thead>
-                        <tr>
-                            <th class="setor-col">Setor da PME (Exemplo)</th>
-                            <th class="pilar-col-cap">Pilar(es) GD-PME 3 Pilares com Foco Principal</th>
-                            <th class="tema-col">Tema Sugerido para Oficina/Capacitação</th>
-                            <th class="ferramenta-col-cap">Ferramenta(s) de Apoio Sugerida(s) (Apêndices)</th>
-                            <th class="duracao-col">Duração Indicada</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Comercial / Vendas</td>
-                            <td>Pilar 1 (Dados e Sistemas); Pilar 3 (Políticas)</td>
-                            <td>Inventário e padronização de dados de clientes; Regras de uso para CRM (se houver) e planilhas de vendas.</td>
-                            <td>Google Planilhas (Apêndice AL); Checklist de qualidade de dados (customizado).</td>
-                            <td>1h - 1h30</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Financeiro / Administrativo</td>
-                            <td>Pilar 3 (Políticas); Pilar 1 (Dados e Sistemas)</td>
-                            <td>Regras básicas de retenção de documentos fiscais e financeiros; Segurança e backup de dados financeiros.</td>
-                            <td>Google Drive / Dropbox (Apêndice K); Cartilha sobre LGPD e dados financeiros (customizada); Termo de Boas Práticas (Apêndice G ou AA).</td>
-                            <td>1h30</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Recursos Humanos (RH)</td>
-                            <td>Pilar 2 (Capacitação); Pilar 3 (Políticas)</td>
-                            <td>Introdução à cultura de dados para novos colaboradores; Coleta e uso ético de dados de funcionários (LGPD).</td>
-                            <td>Canva / Apresentação (Apêndice D, M, AR); Glossário interno (Apêndice C).</td>
-                            <td>1h por módulo</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">TI / Suporte (se houver ou terceirizado)</td>
-                            <td>Pilar 1 (Dados e Sistemas); Pilar 3 (Políticas)</td>
-                            <td>Procedimentos de backup e versionamento de arquivos importantes; Segurança de acesso aos sistemas e dados.</td>
-                            <td>Dropbox / Roteiro Manual de Backup; Checklist de segurança (customizado).</td>
-                            <td>1h - 1h30</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Operações / Produção</td>
-                            <td>Pilar 1 (Dados e Sistemas); Pilar 2 (Capacitação)</td>
-                            <td>Mapeamento de dados de produção/serviço; Identificação de gargalos informacionais; Uso de dados para melhoria de processos.</td>
-                            <td>Fluxogramas (Apêndice M); Planilhas para coleta de dados de processo.</td>
-                            <td>1h30</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-stream mr-3 text-violet-300"></i>Quadro R.1 – Sugestões para Capacitação Setorial</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="training-card" style="border-color: #ef4444;"><h3 style="color:#f87171;"><i class="fas fa-cash-register"></i>Comercial / Vendas</h3><div class="info-block"><label>Foco</label><p>Pilar 1 e 3</p></div><div class="info-block"><label>Tema Sugerido</label><p>Inventário e padronização de dados de clientes; Regras de uso para CRM e planilhas.</p></div><div class="info-block"><label>Duração</label><p>1h - 1h30</p></div></div>
+                <div class="training-card" style="border-color: #f59e0b;"><h3 style="color:#fbbf24;"><i class="fas fa-file-invoice-dollar"></i>Financeiro / Administrativo</h3><div class="info-block"><label>Foco</label><p>Pilar 3 e 1</p></div><div class="info-block"><label>Tema Sugerido</label><p>Regras de retenção de documentos fiscais; Segurança e backup de dados financeiros.</p></div><div class="info-block"><label>Duração</label><p>1h30</p></div></div>
+                <div class="training-card" style="border-color: #10b981;"><h3 style="color:#34d399;"><i class="fas fa-users"></i>Recursos Humanos (RH)</h3><div class="info-block"><label>Foco</label><p>Pilar 2 e 3</p></div><div class="info-block"><label>Tema Sugerido</label><p>Cultura de dados para novos colaboradores; Coleta e uso ético de dados de funcionários (LGPD).</p></div><div class="info-block"><label>Duração</label><p>1h por módulo</p></div></div>
+                <div class="training-card" style="border-color: #3b82f6;"><h3 style="color:#60a5fa;"><i class="fas fa-hard-hat"></i>TI / Suporte</h3><div class="info-block"><label>Foco</label><p>Pilar 1 e 3</p></div><div class="info-block"><label>Tema Sugerido</label><p>Procedimentos de backup e versionamento; Segurança de acesso aos sistemas e dados.</p></div><div class="info-block"><label>Duração</label><p>1h - 1h30</p></div></div>
+                <div class="training-card" style="border-color: #6366f1;"><h3 style="color:#a5b4fc;"><i class="fas fa-cogs"></i>Operações / Produção</h3><div class="info-block"><label>Foco</label><p>Pilar 1 e 2</p></div><div class="info-block"><label>Tema Sugerido</label><p>Mapeamento de dados de produção/serviço; Identificação de gargalos; Uso de dados para melhoria de processos.</p></div><div class="info-block"><label>Duração</label><p>1h30</p></div></div>
+            
             </div>
         </section>
 
-        <!-- Observations and Recommendations Section -->
-        <section class="card observacoes-card fade-in-section" style="animation-delay: 0.5s;">
-            <h3>Observações e Recomendações de Uso:</h3>
-            <ul>
-                <li>Este roteiro é exemplificativo e deve ser adaptado à estrutura e às necessidades específicas de cada PME;</li>
-                <li>As oficinas devem ser interativas, utilizando exemplos práticos do cotidiano do setor e os materiais didáticos sugeridos nos apêndices (ex: Apêndice D, M, AR, Z);</li>
-                <li>Os "Produtos Esperados" podem servir como indicadores de sucesso da capacitação e devem ser registrados no Relatório Trimestral de Governança (Apêndice P ou AW);</li>
-                <li>A frequência e a profundidade das capacitações setoriais podem ser ajustadas conforme a evolução da maturidade informacional da empresa, monitorada através dos instrumentos dos Apêndices A, F e Q, e discutidas nas avaliações de ciclo (Apêndice AT).</li>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-violet-300"></i>Observações e Recomendações de Uso</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>Este roteiro é exemplificativo e deve ser adaptado à estrutura e às necessidades de cada PME.</li>
+                <li>As oficinas devem ser interativas, com exemplos práticos do cotidiano e uso dos materiais didáticos dos apêndices.</li>
+                <li>Os "Produtos Esperados" de cada capacitação podem servir como indicadores de sucesso e devem ser registrados no Relatório Trimestral.</li>
+                <li>A frequência e a profundidade das capacitações podem ser ajustadas conforme a evolução da maturidade da empresa.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-capacitacao fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base no modelo GD-PME 3 Pilares e nas necessidades de capacitação setorial identificadas na literatura (BENTO, 2021; MAHANTI, 2021a).</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este roteiro direciona a personalização das ações do Pilar 2 (Capacitação Contínua) do modelo GD-PME, ajustando os conteúdos formativos às particularidades de cada setor da PME. Tal adaptação busca intensificar o engajamento e a aplicação prática dos conceitos dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nas rotinas setoriais.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este roteiro direciona a personalização das ações do Pilar 2, ajustando os conteúdos formativos às particularidades de cada setor para intensificar o engajamento e a aplicação prática dos Pilares 1 e 3.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

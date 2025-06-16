@@ -3,212 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Matriz de Riscos Informacionais para PMEs - GD-PME</title>
+    <title>Matriz de Riscos Informacionais para PMEs - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fef2f2; /* Light Red background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-riscos {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #b91c1c; /* Dark Red for titles */
-        }
-        .header-title-riscos {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #b91c1c; /* Dark Red */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-riscos {
-            font-size: 1.15rem;
-            color: #991b1b; /* Medium Red */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-riscos {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #7f1d1d; /* Darkest Red for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-riscos {
-            color: #ef4444; /* Red highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-riscos {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #ef4444, #f87171); /* Vermelho */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Risco */
+        .risk-card {
+            background-color: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
+        }
+        .risk-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fca5a5; /* Vermelho claro */
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+        }
+        .risk-card h3 i {
+            margin-right: 12px;
+        }
+        
+        .info-block {
             margin-bottom: 16px;
-            background-color: #fee2e2; /* Light Red background for icon */
         }
-        .header-icon-riscos svg {
-            width: 32px;
-            height: 32px;
-            color: #b91c1c; /* Dark Red */
-        }
-
-        .table-riscos {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-riscos th, .table-riscos td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #fecaca; /* Lighter Red border */
-            font-size: 0.8rem; /* Smaller font for denser table */
-            vertical-align: top;
-        }
-        .table-riscos th {
-            background-color: #fef2f2; /* Very Light Red for table headers */
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #991b1b; /* Medium Red */
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .table-riscos td {
-            color: #7f1d1d; /* Darkest Red for table text */
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        /* Specific column widths */
-        .categoria-col { width: 15%; }
-        .exemplo-col { width: 20%; }
-        .consequencia-col { width: 25%; }
-        .gravidade-col { width: 10%; }
-        .estrategia-col { width: 30%; }
+        .severity-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .severity-alta { background-color: #991b1b; color: #fecaca; } /* Red */
+        .severity-media { background-color: #9a3412; color: #fed7aa; } /* Amber */
 
-        .gravidade-alta {
-            color: #dc2626; /* Red for high severity */
-            font-weight: bold;
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #b91c1c; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
         }
-        .gravidade-media {
-            color: #f59e0b; /* Amber for medium severity */
-            font-weight: bold;
-        }
-
+        #backToTopBtn:hover { background-color: #991b1b; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-7xl"> <!-- Max width adjusted for wider table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-riscos">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-red-400">
+                <i class="fas fa-exclamation-triangle fa-2x text-red-300"></i>
             </div>
-            <h1 class="header-title-riscos">Matriz de Riscos Informacionais para PMEs</h1>
-            <p class="header-subtitle-riscos">APÊNDICE N: Identificação, categorização e estratégias de mitigação para riscos operacionais e estratégicos relacionados a dados em PMEs.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Matriz de Riscos Informacionais para PMEs</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE N: Identificação, categorização e estratégias de mitigação para riscos relacionados a dados.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Esta matriz visa apoiar líderes na identificação de riscos informacionais e na proposição de estratégias de mitigação, utilizando o modelo <span class="highlight-riscos">GD-PME 3 Pilares</span>. A análise deve ser colaborativa e revisitada a cada ciclo trimestral.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Esta matriz visa apoiar líderes na identificação de riscos e na proposição de estratégias de mitigação, utilizando o modelo <strong class="text-red-300">GD-PME 3 Pilares</strong>. A análise deve ser colaborativa e revisitada a cada ciclo.
             </p>
         </section>
 
-        <!-- Risk Matrix Table Section (Quadro N.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-riscos text-center">Quadro N.1 – Matriz de Riscos Informacionais no Contexto GD-PME</h2>
-            <div class="overflow-x-auto">
-                <table class="table-riscos">
-                    <thead>
-                        <tr>
-                            <th class="categoria-col">Categoria de Risco</th>
-                            <th class="exemplo-col">Exemplo Comum</th>
-                            <th class="consequencia-col">Consequência Potencial</th>
-                            <th class="gravidade-col">Nível de Gravidade Sugerido</th>
-                            <th class="estrategia-col">Estratégia GD-PME 3 Pilares Recomendada (Pilar Principal)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Acesso não autorizado</td>
-                            <td>Senhas compartilhadas entre setores ou fracas.</td>
-                            <td>Vazamento de dados de clientes ou da empresa; Perda de confidencialidade.</td>
-                            <td class="gravidade-alta">Alta</td>
-                            <td>Política mínima de acesso e senhas (Pilar 3).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Inconsistência nos dados</td>
-                            <td>Dados duplicados, desatualizados ou incompletos.</td>
-                            <td>Erros em relatórios gerenciais; Decisões equivocadas; Retrabalho.</td>
-                            <td class="gravidade-alta">Média a Alta</td> <!-- Combined as per source -->
-                            <td>Inventário e padronização de dados (Pilar 1); Validação periódica.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Ausência de backups</td>
-                            <td>Perda de arquivos importantes após falhas em hardware, software ou erro humano.</td>
-                            <td>Paralisação das operações; Perda de histórico vital para o negócio.</td>
-                            <td class="gravidade-alta">Alta</td>
-                            <td>Rotina de backup quinzenal ou semanal simples (Pilar 3).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Falta de capacitação</td>
-                            <td>Equívocos na coleta, manipulação ou interpretação de dados em planilhas ou sistemas.</td>
-                            <td>Decisões baseadas em dados imprecisos; Ineficiência.</td>
-                            <td class="gravidade-alta">Alta</td>
-                            <td>Oficinas internas e criação de materiais didáticos (Pilar 2).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Falta de versionamento</td>
-                            <td>Uso simultâneo de diferentes versões de documentos ou planilhas importantes.</td>
-                            <td>Conflitos de informação; Decisões baseadas em dados obsoletos.</td>
-                            <td class="gravidade-media">Média</td>
-                            <td>Centralização de documentos e nomeação padrão com datas/versões (Pilar 1).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Excesso de informalidade</td>
-                            <td>Processos decisórios sem base documental clara; Conhecimento crítico retido apenas por indivíduos.</td>
-                            <td>Perda de rastreabilidade e controle; Dificuldade na continuidade de processos.</td>
-                            <td class="gravidade-alta">Alta</td>
-                            <td>Formalização mínima de fluxos e responsabilidades por escrito (Pilar 3); Criação de glossário (Pilar 2).</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-table mr-3 text-red-300"></i>Quadro N.1 – Matriz de Riscos Informacionais</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <div class="risk-card"><h3><i class="fas fa-key"></i>Acesso não autorizado</h3><div class="info-block"><label>Exemplo</label><p>Senhas compartilhadas ou fracas.</p></div><div class="info-block"><label>Consequência</label><p>Vazamento de dados, perda de confidencialidade.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-alta">Alta</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Política mínima de acesso e senhas (Pilar 3).</p></div></div>
+                <div class="risk-card"><h3><i class="fas fa-unlink"></i>Inconsistência nos dados</h3><div class="info-block"><label>Exemplo</label><p>Dados duplicados, desatualizados ou incompletos.</p></div><div class="info-block"><label>Consequência</label><p>Erros em relatórios, decisões equivocadas, retrabalho.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-media">Média a Alta</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Inventário e padronização de dados (Pilar 1); Validação periódica.</p></div></div>
+                <div class="risk-card"><h3><i class="fas fa-hdd"></i>Ausência de backups</h3><div class="info-block"><label>Exemplo</label><p>Perda de arquivos após falhas de hardware, software ou erro humano.</p></div><div class="info-block"><label>Consequência</label><p>Paralisação das operações; Perda de histórico vital.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-alta">Alta</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Rotina de backup quinzenal ou semanal simples (Pilar 3).</p></div></div>
+                <div class="risk-card"><h3><i class="fas fa-user-times"></i>Falta de capacitação</h3><div class="info-block"><label>Exemplo</label><p>Equívocos na coleta, manipulação ou interpretação de dados.</p></div><div class="info-block"><label>Consequência</label><p>Decisões baseadas em dados imprecisos; Ineficiência.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-alta">Alta</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Oficinas internas e materiais didáticos (Pilar 2).</p></div></div>
+                <div class="risk-card"><h3><i class="fas fa-copy"></i>Falta de versionamento</h3><div class="info-block"><label>Exemplo</label><p>Uso de diferentes versões de documentos importantes.</p></div><div class="info-block"><label>Consequência</label><p>Conflitos de informação; Decisões baseadas em dados obsoletos.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-media">Média</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Centralização de documentos e nomeação padrão (Pilar 1).</p></div></div>
+                <div class="risk-card"><h3><i class="fas fa-comment-slash"></i>Excesso de informalidade</h3><div class="info-block"><label>Exemplo</label><p>Processos sem base documental; Conhecimento crítico retido por indivíduos.</p></div><div class="info-block"><label>Consequência</label><p>Perda de rastreabilidade; Dificuldade na continuidade de processos.</p></div><div class="info-block"><label>Gravidade</label><p><span class="severity-tag severity-alta">Alta</span></p></div><div class="info-block"><label>Estratégia GD-PME</label><p>Formalização mínima de fluxos (Pilar 3); Criação de glossário (Pilar 2).</p></div></div>
+
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-riscos fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Otto (2011), ISO/IEC 27005:2018 e nas diretrizes do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Esta Matriz de Riscos Informacionais serve ao diagnóstico e planejamento, sustentando a implementação integrada dos três pilares do modelo GD-PME. A identificação de riscos e a proposição de estratégias de mitigação direcionam ações dos Pilares 1 (organização/rastreabilidade), 2 (conscientização/redução de erros) e, principalmente, 3 (controles/segurança).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Esta Matriz de Riscos serve ao diagnóstico e planejamento, direcionando ações dos Pilares 1 (organização), 2 (conscientização) e 3 (controles) do modelo GD-PME.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

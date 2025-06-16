@@ -3,226 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Modelo de Relatório Trimestral Consolidado de Governança de Dados - GD-PME</title>
+    <title>Modelo de Relatório Trimestral Consolidado de GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eff6ff; /* Lightest Blue background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-relatorio-cons {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1d4ed8; /* Dark Blue for titles */
-        }
-        .header-title-relatorio-cons {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #1d4ed8; /* Dark Blue */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-relatorio-cons {
-            font-size: 1.15rem;
-            color: #2563eb; /* Medium Blue */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-relatorio-cons {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e3a8a; /* Darkest Blue for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-relatorio-cons {
-            color: #3b82f6; /* Blue highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-relatorio-cons {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #60a5fa, #818cf8); /* Azul/Indigo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Seção do Relatório */
+        .section-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+        }
+        .section-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #dbeafe; /* Light Blue background for icon */
         }
-        .header-icon-relatorio-cons svg {
-            width: 32px;
-            height: 32px;
-            color: #1d4ed8; /* Dark Blue */
+        .section-card h3 i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
         }
-
-        .table-relatorio-cons {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-relatorio-cons th, .table-relatorio-cons td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #bfdbfe; /* Lighter Blue border */
-            font-size: 0.8rem;
-            vertical-align: top;
-        }
-        .table-relatorio-cons th {
-            background-color: #eff6ff; /* Very Light Blue for table headers */
-            font-weight: 600;
-            color: #2563eb; /* Medium Blue */
-        }
-        .table-relatorio-cons td {
-            color: #1e3a8a; /* Darkest Blue for table text */
-        }
-        /* Specific column widths */
-        .secao-col-cons { width: 25%; }
-        .conteudo-col-cons { width: 45%; }
-        .instrumentos-col-cons { width: 30%; }
         
-        .recomendacoes-card-cons {
-            background-color: #dbeafe; /* Light Blue for recommendations */
-            border-left: 4px solid #3b82f6; /* Blue border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        .info-block {
+            margin-bottom: 16px;
         }
-        .recomendacoes-card-cons h3 {
-            font-size: 1.1rem;
+        .info-block:last-child { margin-bottom: 0; }
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #1d4ed8;
+            color: #9ca3af;
             margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .recomendacoes-card-cons ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #1e3a8a;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .recomendacoes-card-cons li {
-            margin-bottom: 5px;
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #4338ca; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-relatorio-cons">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-indigo-400">
+                <i class="fas fa-file-alt fa-2x text-indigo-300"></i>
             </div>
-            <h1 class="header-title-relatorio-cons">Modelo de Relatório Trimestral Consolidado de Governança de Dados</h1>
-            <p class="header-subtitle-relatorio-cons">APÊNDICE Y: Modelo-padrão para registrar, analisar e comunicar os avanços com a aplicação do modelo GD-PME 3 Pilares.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Modelo de Relatório Trimestral Consolidado</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE Y: Modelo para registrar, analisar e comunicar os avanços da Governança de Dados em PMEs.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                O documento proposto visa ser <span class="highlight-relatorio-cons">sucinto, didático e útil</span> para reuniões de gestão, prestação de contas a parceiros institucionais e para o acompanhamento interno da evolução da maturidade em Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este template visa facilitar a <strong class="text-indigo-300">prestação de contas</strong>, consolidar a memória organizacional e mensurar os avanços em cada ciclo do modelo GD-PME 3 Pilares.
             </p>
         </section>
 
-        <!-- Report Structure Table Section (Quadro Y.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-relatorio-cons text-center">Quadro Y.1 – Estrutura Sugerida para o Relatório Trimestral</h2>
-            <div class="overflow-x-auto">
-                <table class="table-relatorio-cons">
-                    <thead>
-                        <tr>
-                            <th class="secao-col-cons">Seção do Relatório</th>
-                            <th class="conteudo-col-cons">Conteúdo Detalhado Sugerido</th>
-                            <th class="instrumentos-col-cons">Instrumentos de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Capa</td>
-                            <td>Nome da PME; Trimestre/Ano de referência do ciclo avaliado (ex: 1º Trimestre/2025); Nome do(s) responsável(eis) pela elaboração do relatório.</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">1. Visão Geral do Ciclo</td>
-                            <td>Breve resumo dos principais objetivos estabelecidos para o ciclo de GD; Escopo das ações (quais pilares foram focados); Principais participantes e setores envolvidos.</td>
-                            <td>Apêndice B (Manual Operacional); Apêndice L ou AM (Cronogramas).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">2. Ações Realizadas no Ciclo</td>
-                            <td>Listagem e breve descrição das atividades efetivamente realizadas em cada Pilar do GD-PME 3 Pilares (ex: inventário de dados criado/atualizado, nº de oficinas realizadas, políticas definidas/revisadas).</td>
-                            <td>Apêndice B (Manual Operacional).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">3. Avaliação de Maturidade</td>
-                            <td>Apresentação da pontuação obtida na Ficha de Autoavaliação Trimestral (Apêndice F) ou na Matriz de Maturidade (Quadro B.4 ou Q.1); Análise comparativa com a pontuação do ciclo anterior (se houver); Comentários qualitativos sobre o progresso em cada pilar.</td>
-                            <td>Apêndices A, B (Quadro B.4), F, Q.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">4. Lições Aprendidas e Desafios</td>
-                            <td>Identificação dos principais pontos positivos e avanços percebidos pela equipe; Dificuldades e obstáculos enfrentados durante a implementação das ações; Sugestões de melhoria coletadas dos colaboradores (conforme Apêndice J ou T).</td>
-                            <td>Apêndices J, T, AT.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">5. Plano para o Próximo Ciclo</td>
-                            <td>Ações prioritárias planejadas para o próximo trimestre, com base na avaliação de maturidade e nas lições aprendidas; Metas de evolução para cada pilar; Responsáveis e prazos definidos.</td>
-                            <td>Apêndice B (Manual Operacional); Apêndice L ou AM (Cronogramas).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Anexos (Opcional)</td>
-                            <td>Cópias de materiais produzidos (ex: nova política, cartilha); Listas de presença de oficinas; Fotos de atividades; Prints de planilhas ou painéis de indicadores (Apêndice AO).</td>
-                            <td>Apêndices C, D, G/AA, AL, AR, AO, etc.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-stream mr-3 text-indigo-300"></i>Quadro Y.1 – Estrutura Sugerida para o Relatório</h2>
+            <div class="space-y-6">
+                
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-fingerprint"></i>Identificação do Ciclo</h3><div class="info-block"><label>Conteúdo</label><p>Trimestre de referência (ex: Q1/2025); Datas de início e fim; Responsável(eis) pela elaboração.</p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-bullseye"></i>1. Visão Geral do Ciclo</h3><div class="info-block"><label>Conteúdo</label><p>Breve resumo dos objetivos, escopo das ações (pilares focados) e principais participantes.</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. B</span> <span class="ref-tag">Ap. L/AM</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-tasks"></i>2. Ações Realizadas no Ciclo</h3><div class="info-block"><label>Conteúdo</label><p>Listagem e breve descrição das atividades realizadas em cada Pilar (inventário, oficinas, políticas, etc.).</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. B</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-check-double"></i>3. Avaliação de Maturidade</h3><div class="info-block"><label>Conteúdo</label><p>Apresentação da pontuação obtida na Ficha de Autoavaliação (Ap. F); Comparativo com o ciclo anterior; Comentários sobre o progresso.</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. A</span> <span class="ref-tag">Ap. B</span> <span class="ref-tag">Ap. F</span> <span class="ref-tag">Ap. Q</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-lightbulb"></i>4. Lições Aprendidas e Desafios</h3><div class="info-block"><label>Conteúdo</label><p>Identificação dos pontos positivos, dificuldades, obstáculos e sugestões de melhoria coletadas dos colaboradores.</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. J</span> <span class="ref-tag">Ap. T</span> <span class="ref-tag">Ap. AT</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-arrow-right"></i>5. Plano para o Próximo Ciclo</h3><div class="info-block"><label>Conteúdo</label><p>Ações prioritárias planejadas, metas de maturidade atualizadas e responsáveis atribuídos.</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Ap. B</span> <span class="ref-tag">Ap. L/AM</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-paperclip"></i>Anexos (Opcional)</h3><div class="info-block"><label>Conteúdo</label><p>Fotos, listas de presença, prints de planilhas, exemplos de materiais de comunicação.</p></div><div class="info-block"><label>Apoio</label><p><span class="ref-tag">Vários</span></p></div></div>
+
             </div>
         </section>
 
-        <!-- Usage Recommendations Section -->
-        <section class="card recomendacoes-card-cons fade-in-section" style="animation-delay: 0.5s;">
-            <h3>Y.1 Recomendações de Uso:</h3>
-            <ul>
-                <li>O relatório deve ser produzido com linguagem clara, objetiva e acessível a todos os níveis da organização, contendo, preferencialmente, no máximo 5 a 7 páginas (excluindo anexos);</li>
-                <li>É fundamental que seja compartilhado com todos os setores da empresa para promover transparência e engajamento;</li>
-                <li>Caso existam parceiros institucionais envolvidos (ex.: SEBRAE, prefeitura, agências de fomento), recomenda-se o envio do relatório como documento formal de acompanhamento e prestação de contas dos avanços na Governança de Dados;</li>
-                <li>Utilize os dados deste relatório para alimentar as discussões nas reuniões de avaliação de ciclo (conforme Apêndice AT).</li>
+         <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-indigo-300"></i>Y.1 Recomendações de Uso</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>O relatório deve ser produzido com linguagem clara e objetiva, contendo, preferencialmente, no máximo 5 a 7 páginas.</li>
+                <li>É fundamental que seja compartilhado com todos os setores para promover transparência e engajamento.</li>
+                <li>Pode ser enviado a parceiros institucionais (SEBRAE, etc.) como documento formal de acompanhamento.</li>
+                <li>Utilize os dados deste relatório para alimentar as discussões nas reuniões de avaliação de ciclo (Apêndice AT).</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-relatorio-cons fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos Apêndices A, B, F, J, L/AM, Q, T, W e na lógica de acompanhamento do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este modelo de relatório trimestral consolidado serve à gestão e comunicação dos avanços na aplicação do modelo GD-PME 3 Pilares, estruturando o reporte das ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), a evolução da maturidade (Apêndices A, B, F, Q) e os aprendizados do ciclo (Apêndice AT).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este modelo de relatório consolida os avanços na implementação, estruturando o acompanhamento das ações dos Pilares 1, 2 e 3, o registro da evolução da maturidade e o planejamento dos próximos ciclos.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

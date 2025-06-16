@@ -3,198 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Template de Relatório Trimestral de Governança de Dados - GD-PME</title>
+    <title>Template de Relatório Trimestral de Governança de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f5f5; /* Light Gray background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-relatorio {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #404040; /* Dark Gray for titles */
-        }
-        .header-title-relatorio {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #404040; /* Dark Gray */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-relatorio {
-            font-size: 1.15rem;
-            color: #525252; /* Medium Gray */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-relatorio {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #262626; /* Darkest Gray for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-relatorio {
-            color: #737373; /* Gray highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-relatorio {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #a1a1aa, #e5e7eb); /* Zinco/Cinza */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Seção do Relatório */
+        .section-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+        }
+        .section-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #d4d4d8; /* Cinza claro */
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+        }
+        .section-card h3 i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .info-block {
             margin-bottom: 16px;
-            background-color: #e5e5e5; /* Light Gray background for icon */
         }
-        .header-icon-relatorio svg {
-            width: 32px;
-            height: 32px;
-            color: #404040; /* Dark Gray */
+        .info-block:last-child {
+            margin-bottom: 0;
         }
-
-        .table-relatorio {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-relatorio th, .table-relatorio td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #d4d4d4; /* Lighter Gray border */
-            font-size: 0.85rem;
-            vertical-align: top;
-        }
-        .table-relatorio th {
-            background-color: #f5f5f5; /* Very Light Gray for table headers */
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #525252; /* Medium Gray */
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .table-relatorio td {
-            color: #262626; /* Darkest Gray for table text */
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        /* Specific column widths */
-        .secao-col { width: 25%; }
-        .conteudo-col { width: 45%; }
-        .instrumentos-col { width: 30%; }
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
+        }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #71717a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #52525b; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-7xl"> <!-- Max width adjusted for wider table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-relatorio">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-zinc-600 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-zinc-400">
+                <i class="fas fa-file-invoice fa-2x text-zinc-300"></i>
             </div>
-            <h1 class="header-title-relatorio">Template de Relatório Trimestral de Governança de Dados</h1>
-            <p class="header-subtitle-relatorio">APÊNDICE P: Modelo estruturado para acompanhamento e registro das ações de GD em PMEs, facilitando a prestação de contas e a mensuração de avanços.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Template de Relatório Trimestral de GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE P: Modelo estruturado para acompanhamento e registro das ações de Governança de Dados em PMEs.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este template visa facilitar a <span class="highlight-relatorio">prestação de contas à liderança</span>, a consolidação da memória organizacional sobre as iniciativas de GD e a mensuração dos avanços em cada ciclo, conforme os pilares do modelo GD-PME 3 Pilares.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este template visa facilitar a <strong class="text-zinc-300">prestação de contas à liderança</strong>, a consolidação da memória organizacional e a mensuração dos avanços em cada ciclo do modelo GD-PME 3 Pilares.
             </p>
         </section>
 
-        <!-- Report Structure Table Section (Quadro P.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-relatorio text-center">Quadro P.1 – Estrutura Sugerida para o Relatório Trimestral</h2>
-            <div class="overflow-x-auto">
-                <table class="table-relatorio">
-                    <thead>
-                        <tr>
-                            <th class="secao-col">Seção do Relatório</th>
-                            <th class="conteudo-col">Conteúdo Esperado / Tópicos a Abordar</th>
-                            <th class="instrumentos-col">Instrumentos de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Identificação do Ciclo</td>
-                            <td>Trimestre de referência (ex: Q1/2025); Datas de início e fim do ciclo; Responsável(eis) pela elaboração do relatório.</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 1 – Dados e Sistemas</td>
-                            <td>Ações realizadas neste pilar durante o ciclo (ex: atualização do inventário de dados, mapeamento de novos fluxos); Gaps identificados e progresso em relação ao ciclo anterior; Principais desafios e aprendizados.</td>
-                            <td>Apêndice AL (Inventário); Apêndice B (Manual Operacional).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 2 – Capacitação Contínua</td>
-                            <td>Oficinas ou treinamentos ministrados (temas, datas, nº de participantes); Materiais didáticos utilizados ou criados (ex: cartilhas, glossário); Percepção do engajamento da equipe.</td>
-                            <td>Apêndices C, D, M, R, Z, AR (Materiais de Capacitação e Visuais).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 3 – Políticas Simplificadas</td>
-                            <td>Políticas de dados implementadas ou revisadas no ciclo (ex: política de backup, termo de boas práticas); Nível de adesão dos setores às políticas; Necessidade de novas políticas ou ajustes.</td>
-                            <td>Apêndices G, AA, AB, AY (Modelos de Políticas, Termos e Ferramentas de Análise de Risco para o Pilar 3).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Avaliação de Maturidade</td>
-                            <td>Pontuação obtida na Ficha de Autoavaliação Trimestral (Apêndice F) ou na Matriz de Maturidade (Quadro B.4); Comparativo com a pontuação do ciclo anterior; Comentários sobre o progresso.</td>
-                            <td>Apêndices A, F, B (Quadro B.4), Q.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Riscos e Desvios Identificados</td>
-                            <td>Principais incidentes informacionais ocorridos (se houver); Dificuldades na implementação das ações planejadas; Medidas corretivas propostas ou implementadas.</td>
-                            <td>Apêndice N (Matriz de Riscos).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Projeções para o Próximo Ciclo</td>
-                            <td>Ações planejadas para cada pilar no próximo trimestre; Metas de maturidade atualizadas; Responsáveis atribuídos para as próximas ações.</td>
-                            <td>Apêndice B (Manual Operacional); Apêndice L ou AM (Cronograma).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Anexos (Opcional)</td>
-                            <td>Fotos de oficinas; Listas de presença; Prints de planilhas de inventário; Exemplos de materiais de comunicação utilizados.</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-stream mr-3 text-zinc-300"></i>Quadro P.1 – Estrutura Sugerida para o Relatório</h2>
+            <div class="space-y-6">
+
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-info-circle"></i>Identificação do Ciclo</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Trimestre de referência (ex: Q1/2025); Datas de início e fim; Responsável(eis) pela elaboração.</p></div></div>
+                <div class="section-card" style="border-color:#60a5fa;"><h3 style="color:#60a5fa;"><i class="fas fa-database"></i>Pilar 1 – Dados e Sistemas</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Ações realizadas (ex: atualização do inventário, mapeamento de novos fluxos); Gaps, progresso, desafios e aprendizados.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. AL</span> <span class="ref-tag">Ap. B</span></p></div></div>
+                <div class="section-card" style="border-color:#34d399;"><h3 style="color:#34d399;"><i class="fas fa-users-cog"></i>Pilar 2 – Capacitação Contínua</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Oficinas ministradas (temas, datas, participantes); Materiais criados (cartilhas, glossário); Percepção do engajamento.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. C</span> <span class="ref-tag">Ap. D</span> <span class="ref-tag">Ap. M</span> <span class="ref-tag">Ap. R</span> <span class="ref-tag">Ap. Z</span> <span class="ref-tag">Ap. AR</span></p></div></div>
+                <div class="section-card" style="border-color:#facc15;"><h3 style="color:#facc15;"><i class="fas fa-shield-alt"></i>Pilar 3 – Políticas Simplificadas</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Políticas implementadas/revisadas no ciclo (ex: backup, termo de boas práticas); Nível de adesão; Necessidade de novas políticas.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. G</span> <span class="ref-tag">Ap. AA</span> <span class="ref-tag">Ap. AB</span> <span class="ref-tag">Ap. AY</span></p></div></div>
+                <div class="section-card" style="border-color:#a78bfa;"><h3 style="color:#a78bfa;"><i class="fas fa-check-double"></i>Avaliação de Maturidade</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Pontuação obtida na Ficha de Autoavaliação (Ap. F); Comparativo com o ciclo anterior; Comentários sobre o progresso.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. A</span> <span class="ref-tag">Ap. F</span> <span class="ref-tag">Ap. B</span> <span class="ref-tag">Ap. Q</span></p></div></div>
+                <div class="section-card" style="border-color:#ef4444;"><h3 style="color:#f87171;"><i class="fas fa-exclamation-triangle"></i>Riscos e Desvios</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Principais incidentes informacionais (se houver); Dificuldades na implementação; Medidas corretivas propostas.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. N</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-arrow-right"></i>Projeções para o Próximo Ciclo</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Ações planejadas para cada pilar; Metas de maturidade atualizadas; Responsáveis atribuídos.</p></div><div class="info-block"><label>Instrumentos de Apoio</label><p><span class="ref-tag">Ap. B</span> <span class="ref-tag">Ap. L/AM</span></p></div></div>
+                <div class="section-card" style="border-color:#a1a1aa;"><h3 style="color:#e5e7eb;"><i class="fas fa-paperclip"></i>Anexos (Opcional)</h3><div class="info-block"><label>Conteúdo Esperado</label><p>Fotos de oficinas; Listas de presença; Prints de planilhas de inventário; Exemplos de materiais de comunicação utilizados.</p></div></div>
+
             </div>
-            <p class="text-xs text-gray-500 mt-3 text-center">Este relatório pode ser editado e adaptado em formato Word, Google Docs ou utilizando formulários online. Sua principal função é ser um instrumento central para a governança adaptativa e para a demonstração de valor das iniciativas de GD.</p>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-relatorio fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos instrumentos e na lógica cíclica do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este template de relatório trimestral visa consolidar e comunicar os avanços na implementação do modelo GD-PME 3 Pilares, estruturando o acompanhamento das ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), o registro da evolução da maturidade e o planejamento dos ciclos de governança.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este template visa consolidar e comunicar os avanços na implementação do modelo, estruturando o acompanhamento das ações e o planejamento dos próximos ciclos de governança.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

@@ -3,330 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Comparativo de Evolução da Maturidade Informacional - GD-PME 3 Pilares</title>
+    <title>Comparativo de Evolução da Maturidade Informacional - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f9f8; /* Light Mint/Teal background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-comparativo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #047857; /* Dark Emerald for titles */
-        }
-        .header-title-comparativo {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #047857; /* Dark Emerald */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-comparativo {
-            font-size: 1.15rem;
-            color: #059669; /* Medium Emerald */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-comparativo {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #065f46; /* Darkest Emerald for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-comparativo {
-            color: #10b981; /* Emerald highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-comparativo {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #d1fae5; /* Light Emerald background for icon */
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .header-icon-comparativo svg {
-            width: 32px;
-            height: 32px;
-            color: #047857; /* Dark Emerald */
+        
+        .gradient-title {
+            background: linear-gradient(to right, #34d399, #a7f3d0); /* Verde */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .table-comparativo {
+        
+        /* Tabela Comparativa Reestilizada */
+        .comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 16px;
         }
-        .table-comparativo th, .table-comparativo td {
-            text-align: left;
-            padding: 8px 10px; /* Adjusted padding for denser table */
-            border: 1px solid #a7f3d0; /* Lighter Emerald border */
-            font-size: 0.8rem; /* Smaller font for table content */
-            vertical-align: top;
+        .comparison-table th, .comparison-table td {
+            text-align: left; padding: 12px; border: 1px solid #374151; font-size: 0.9rem;
         }
-        .table-comparativo th {
-            background-color: #f0fdfa; /* Very Light Emerald for table headers */
-            font-weight: 600;
-            color: #059669; /* Medium Emerald */
-        }
-        .table-comparativo td {
-            color: #065f46; /* Darkest Emerald for table text */
-        }
-        .checkbox-group label {
-            margin-right: 8px;
-            font-size: 0.75rem;
-        }
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 3px;
-            transform: scale(0.9);
-        }
-        .nota-input {
-            width: 50px;
-            font-size: 0.75rem;
-            padding: 2px 4px;
-            border: 1px solid #6ee7b7;
-            border-radius: 4px;
-            text-align: center;
+        .comparison-table th { background-color: #374151; font-weight: 600; color: #d1d5db; text-align: center; }
+        .comparison-table td { color: #a1a1aa; vertical-align: top; }
+        .comparison-table tbody tr:hover { background-color: #263142; }
+        
+        .pillar-label { font-weight: 600; color: #e5e7eb; font-size: 1rem; }
+        .pillar-label .subtext { font-size: 0.8rem; color: #9ca3af; font-weight: 400; display: block; }
+        
+        .checkbox-group label { display: block; margin-bottom: 6px; cursor: pointer; }
+        .checkbox-group input { margin-right: 8px; accent-color: #34d399; }
+        .nota-input { 
+            width: 80px; padding: 6px; border-radius: 6px; text-align: center; margin-top: 8px;
+            background-color: #1f2937; border: 1px solid #4b5563;
         }
         .comentarios-textarea {
-            width: 100%;
-            font-size: 0.75rem;
-            padding: 4px;
-            border: 1px solid #6ee7b7;
-            border-radius: 4px;
-            min-height: 50px; /* Adjust as needed */
-            resize: vertical;
+             width: 100%; min-height: 120px; padding: 8px; border-radius: 6px;
+             background-color: #1f2937; border: 1px solid #4b5563; resize: vertical;
         }
-        .pilar-col-comp { width: 20%; }
-        .mes0-col-comp, .mes3-col-comp, .mes6-col-comp { width: 20%; }
-        .comentarios-col-comp { width: 40%; }
-
-        .instrucoes-card {
-            background-color: #ecfdf5; /* Light green for instructions */
-            border-left: 4px solid #10b981;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #16a34a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
         }
-        .instrucoes-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #047857;
-            margin-bottom: 8px;
-        }
-        .instrucoes-card ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #065f46;
-        }
-        .instrucoes-card li {
-            margin-bottom: 5px;
-        }
-
+        #backToTopBtn:hover { background-color: #15803d; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-comparativo">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h12A2.25 2.25 0 0 0 20.25 14.25V3M3.75 14.25m-1.5 0h3m-3 0h18m-18 0h3m15 0h3M3.75 14.25V21m18-6.75V21m0-18H3.75M5.25 6H9m3 0h3.75M5.25 12H9m3 0h3.75" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-green-400">
+                <i class="fas fa-chart-line fa-2x text-green-300"></i>
             </div>
-            <h1 class="header-title-comparativo">Comparativo de Evolução da Maturidade Informacional com o Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-comparativo">APÊNDICE Q: Instrumento prático para registrar e mensurar a evolução da maturidade informacional em PMEs, facilitando análises e prestação de contas.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Comparativo de Evolução da Maturidade</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE Q: Instrumento prático para registrar e mensurar a evolução da maturidade informacional em PMEs.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este instrumento visa documentar, de forma <span class="highlight-comparativo">visual e objetiva</span>, as mudanças percebidas em cada pilar do modelo GD-PME após diferentes ciclos de implementação (ex: inicial, após 3 meses, após 6 meses).
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este instrumento visa documentar, de forma <strong class="text-green-300">visual e objetiva</strong>, as mudanças percebidas em cada pilar do modelo GD-PME após diferentes ciclos de implementação (ex: inicial, após 3 meses, após 6 meses).
             </p>
         </section>
 
-        <!-- Maturity Evolution Table Section (Quadro Q.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-comparativo text-center">Quadro Q.1 – Comparativo de Evolução da Maturidade por Pilar</h2>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-table mr-3 text-green-300"></i>Quadro Q.1 – Comparativo de Evolução da Maturidade por Pilar</h2>
             <div class="overflow-x-auto">
-                <table class="table-comparativo">
+                <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th class="pilar-col-comp">Pilar do Modelo GD-PME 3 Pilares</th>
-                            <th class="mes0-col-comp">Nível de Maturidade na Situação Inicial (Mês 0)</th>
-                            <th class="mes3-col-comp">Nível de Maturidade Após 3 Meses (Fim do Ciclo 1)</th>
-                            <th class="mes6-col-comp">Nível de Maturidade Após 6 Meses (Fim do Ciclo 2)</th>
-                            <th class="comentarios-col-comp">Principais Comentários e Evidências Notáveis por Período</th>
+                            <th>Pilar do Modelo GD-PME</th>
+                            <th>Mês 0 (Situação Inicial)</th>
+                            <th>Mês 3 (Fim do Ciclo 1)</th>
+                            <th>Mês 6 (Fim do Ciclo 2)</th>
+                            <th>Comentários e Evidências</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="font-semibold">Dados e Sistemas <span class="text-xs block font-normal">(Existência de inventário; Padronização; Rastreabilidade; Responsáveis)</span></td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p1_m0_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p1_m0_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p1_m0_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p1_m0_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p1_m3_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p1_m3_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p1_m3_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p1_m3_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p1_m6_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p1_m6_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p1_m6_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p1_m6_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <label class="text-xs block mb-1">Mês 0:</label>
-                                <textarea class="comentarios-textarea" name="p1_com_m0"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 3:</label>
-                                <textarea class="comentarios-textarea" name="p1_com_m3"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 6:</label>
-                                <textarea class="comentarios-textarea" name="p1_com_m6"></textarea>
-                            </td>
+                            <td class="pillar-label">Dados e Sistemas<span class="subtext">(Inventário, Padrões, etc.)</span></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><textarea class="comentarios-textarea"></textarea></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">Capacitação Contínua <span class="text-xs block font-normal">(Oficinas realizadas; Materiais utilizados; Engajamento; Multiplicadores)</span></td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p2_m0_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p2_m0_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p2_m0_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p2_m0_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p2_m3_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p2_m3_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p2_m3_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p2_m3_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p2_m6_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p2_m6_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p2_m6_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p2_m6_nota" placeholder=" /4">
-                            </td>
-                             <td>
-                                <label class="text-xs block mb-1">Mês 0:</label>
-                                <textarea class="comentarios-textarea" name="p2_com_m0"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 3:</label>
-                                <textarea class="comentarios-textarea" name="p2_com_m3"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 6:</label>
-                                <textarea class="comentarios-textarea" name="p2_com_m6"></textarea>
-                            </td>
+                            <td class="pillar-label">Capacitação Contínua<span class="subtext">(Oficinas, Engajamento, etc.)</span></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><textarea class="comentarios-textarea"></textarea></td>
                         </tr>
                         <tr>
-                            <td class="font-semibold">Políticas Simplificadas <span class="text-xs block font-normal">(Políticas definidas e comunicadas; Adesão da equipe; Revisões periódicas)</span></td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p3_m0_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p3_m0_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p3_m0_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p3_m0_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p3_m3_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p3_m3_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p3_m3_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p3_m3_nota" placeholder=" /4">
-                            </td>
-                            <td>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="p3_m6_inex"> Inexistente</label><br>
-                                    <label><input type="checkbox" name="p3_m6_parc"> Parcial</label><br>
-                                    <label><input type="checkbox" name="p3_m6_cons"> Consolidado</label>
-                                </div>
-                                Nota: <input type="text" class="nota-input" name="p3_m6_nota" placeholder=" /4">
-                            </td>
-                             <td>
-                                <label class="text-xs block mb-1">Mês 0:</label>
-                                <textarea class="comentarios-textarea" name="p3_com_m0"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 3:</label>
-                                <textarea class="comentarios-textarea" name="p3_com_m3"></textarea>
-                                <label class="text-xs block mt-1 mb-1">Mês 6:</label>
-                                <textarea class="comentarios-textarea" name="p3_com_m6"></textarea>
-                            </td>
+                            <td class="pillar-label">Políticas Simplificadas<span class="subtext">(Regras, Backups, etc.)</span></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><div class="checkbox-group"><label><input type="checkbox"> Inexistente</label><label><input type="checkbox"> Parcial</label><label><input type="checkbox"> Consolidado</label></div><input type="text" class="nota-input" placeholder="Nota /4"></td>
+                            <td><textarea class="comentarios-textarea"></textarea></td>
                         </tr>
-                        <tr>
-                            <td class="font-semibold">Maturidade Global GD-PME 3 Pilares <span class="text-xs block font-normal">(ver Apêndice F ou Quadro B.4/5.14 para cálculo)</span></td>
-                            <td>Nota Inicial: <input type="text" class="nota-input" name="global_m0_nota" placeholder=" /4"></td>
-                            <td>Nota Após 3 Meses: <input type="text" class="nota-input" name="global_m3_nota" placeholder=" /4"></td>
-                            <td>Nota Após 6 Meses: <input type="text" class="nota-input" name="global_m6_nota" placeholder=" /4"></td>
-                            <td> </td> <!-- Empty cell for comments on global maturity -->
+                         <tr>
+                            <td class="pillar-label">Maturidade Global<span class="subtext">(Média ou Consolidada)</span></td>
+                            <td>Nota: <input type="text" class="nota-input" placeholder=" /4"></td>
+                            <td>Nota: <input type="text" class="nota-input" placeholder=" /4"></td>
+                            <td>Nota: <input type="text" class="nota-input" placeholder=" /4"></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Instructions Section -->
-        <section class="card instrucoes-card fade-in-section" style="animation-delay: 0.5s;">
-            <h3>Instruções de Preenchimento e Uso:</h3>
-            <ul>
-                <li>Este quadro deve ser preenchido ao final de cada ciclo de avaliação (sugestivamente a cada 3 ou 6 meses) pela equipe responsável pela implementação da GD na PME.</li>
-                <li>Para cada Pilar, marque o nível de maturidade percebido (Inexistente, Parcial ou Consolidado) em cada período de avaliação. Considere também registrar a nota de 0 a 4 obtida na Ficha de Autoavaliação Trimestral (Apêndice F) ou na Matriz Escalonável de Maturidade (Quadro 5.14) para cada pilar e período;</li>
-                <li>Na coluna "Principais Comentários e Evidências Notáveis por Período", registre brevemente as principais ações realizadas, os desafios encontrados e os resultados alcançados que justificam a avaliação de maturidade para cada pilar no respectivo período;</li>
-                <li>A linha "Maturidade Global GD-PME 3 Pilares" pode ser preenchida com a pontuação consolidada, calculada conforme a fórmula do Quadro 5.15, para uma visão geral da evolução;</li>
-                <li>Este quadro comparativo serve como base para as análises a serem incluídas no Relatório Trimestral (Apêndice P ou AW) e para o planejamento das ações dos próximos ciclos.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+             <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-green-300"></i>Instruções de Preenchimento e Uso</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>Este quadro deve ser preenchido ao final de cada ciclo de avaliação pela equipe responsável.</li>
+                <li>Marque o nível de maturidade percebido em cada período. Considere registrar também a nota de 0 a 4 da Ficha de Autoavaliação (Ap. F).</li>
+                <li>Na coluna de comentários, registre as principais ações, desafios e evidências que justificam a avaliação.</li>
+                <li>A linha "Maturidade Global" pode ser preenchida com a pontuação consolidada para uma visão geral da evolução.</li>
+                <li>Este quadro serve como base para as análises do Relatório Trimestral (Ap. P/AW) e para o planejamento dos próximos ciclos.</li>
             </ul>
         </section>
-
-        <!-- Footer -->
-        <footer class="footer-comparativo fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Otto (2011), no modelo GD-PME 3 Pilares e nos instrumentos de avaliação dos Apêndices A, B e F.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Projetado para documentar e analisar a trajetória da maturidade informacional, este instrumento comparativo acompanha o progresso da PME na implementação dos Pilares 1 (Dados e Sistemas), 2 (Capacitação Contínua) e 3 (Políticas Graduais e Simplificadas) do modelo GD-PME, fornecendo subsídios para relatórios (Apêndice P ou AW) e para o planejamento dos ciclos futuros.</p>
+        
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este instrumento comparativo acompanha o progresso na implementação dos Pilares 1, 2 e 3, fornecendo subsídios para relatórios e para o planejamento dos ciclos futuros.</p>
+            </div>
         </footer>
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>
