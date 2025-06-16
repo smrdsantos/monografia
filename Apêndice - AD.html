@@ -3,270 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Plano de Multiplicadores Internos por Setor - GD-PME 3 Pilares</title>
+    <title>Plano de Multiplicadores Internos por Setor - GD-PME 3 Pilares</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fdf4ff; /* Light Fuchsia/Purple background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-multiplicadores {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #86198f; /* Dark Fuchsia for titles */
-        }
-        .header-title-multiplicadores {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #86198f; /* Dark Fuchsia */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-multiplicadores {
-            font-size: 1.15rem;
-            color: #701a75; /* Medium Fuchsia */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-multiplicadores {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #4a044e; /* Darkest Fuchsia for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-multiplicadores {
-            color: #c026d3; /* Fuchsia highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-multiplicadores {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #fae8ff; /* Light Fuchsia background for icon */
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .header-icon-multiplicadores svg {
-            width: 32px;
-            height: 32px;
-            color: #86198f; /* Dark Fuchsia */
-        }
-
-        .table-multiplicadores {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-multiplicadores th, .table-multiplicadores td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #f5d0fe; /* Lighter Fuchsia border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-multiplicadores th {
-            background-color: #fdf4ff; /* Very Light Fuchsia for table headers */
-            font-weight: 600;
-            color: #701a75; /* Medium Fuchsia */
-        }
-        .table-multiplicadores td {
-            color: #4a044e; /* Darkest Fuchsia for table text */
-        }
-        /* Specific column widths */
-        .setor-col-mult { width: 15%; }
-        .nome-col-mult { width: 20%; }
-        .resp-col-mult { width: 25%; }
-        .acomp-col-mult { width: 25%; }
-        .apoio-col-mult { width: 15%; }
         
-        .recomendacoes-card-mult {
-            background-color: #fae8ff; /* Light Fuchsia for recommendations */
-            border-left: 4px solid #c026d3; /* Fuchsia border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        .gradient-title {
+            background: linear-gradient(to right, #c084fc, #e879f9); /* Roxo/Fuchsia */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .recomendacoes-card-mult h3 {
-            font-size: 1.1rem;
+        
+        /* Estilo dos Cards de Multiplicadores */
+        .multiplier-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #4b5563;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .multiplier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            border-color: #c084fc;
+        }
+        .multiplier-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #d8b4fe; /* Roxo claro */
+            padding-bottom: 10px;
+            border-bottom: 1px solid #4b5563;
+            margin-bottom: 16px;
+        }
+        .info-block {
+            margin-bottom: 16px;
+        }
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #86198f;
+            color: #a78bfa; /* Roxo mais claro */
             margin-bottom: 8px;
+            font-size: 0.9rem;
         }
-        .recomendacoes-card-mult ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #4a044e;
+        .info-block p, .info-block .form-input, .info-block .form-select {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .recomendacoes-card-mult li {
-            margin-bottom: 5px;
-        }
-        .sim-nao-input {
+        .form-input, .form-select {
             width: 100%;
-            font-size: 0.75rem;
-            padding: 4px;
-            border: 1px solid #f5d0fe;
-            border-radius: 4px;
-            margin-top: 4px;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 8px;
+            color: #d1d5db;
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.5);
         }
 
-
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #a855f7; /* Roxo */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #9333ea;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-multiplicadores">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-purple-400">
+                <i class="fas fa-sitemap fa-2x text-purple-300"></i>
             </div>
-            <h1 class="header-title-multiplicadores">Plano de Multiplicadores Internos por Setor</h1>
-            <p class="header-subtitle-multiplicadores">APÊNDICE AD: Plano simples para apoiar a identificação, formação e acompanhamento de colaboradores que atuarão como multiplicadores internos das práticas de GD.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Plano de Multiplicadores Internos por Setor</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AD: Plano simples para apoiar a identificação, formação e acompanhamento de colaboradores que atuarão como multiplicadores internos das práticas de GD.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Esta iniciativa está alinhada ao <span class="highlight-multiplicadores">Pilar 2 (Capacitação Contínua)</span> e visa criar uma rede de referência interna para sustentar a disseminação da cultura de dados na PME.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Esta iniciativa está alinhada ao <strong class="text-purple-300">Pilar 2 (Capacitação Contínua)</strong> e visa criar uma rede de referência interna para sustentar a disseminação da cultura de dados na PME.
             </p>
         </section>
 
-        <!-- Multipliers Plan Table Section (Quadro AD.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-multiplicadores text-center">Quadro AD.1 – Modelo de Plano para Formação e Acompanhamento de Multiplicadores</h2>
-            <div class="overflow-x-auto">
-                <table class="table-multiplicadores">
-                    <thead>
-                        <tr>
-                            <th class="setor-col-mult">Setor da PME (Exemplo)</th>
-                            <th class="nome-col-mult">Nome do(a) Colaborador(a) Indicado(a) como Multiplicador(a)</th>
-                            <th class="resp-col-mult">Principais Responsabilidades Sugeridas do(a) Multiplicador(a)</th>
-                            <th class="acomp-col-mult">Ações de Acompanhamento e Suporte Periódico</th>
-                            <th class="apoio-col-mult">Necessidade de Apoio Adicional Identificada (Sim/Não e Observações)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Vendas</td>
-                            <td>[Nome do Colaborador(a) do Setor de Vendas]</td>
-                            <td>Compartilhar boas práticas de registro de dados de clientes; Esclarecer dúvidas da equipe de vendas sobre o inventário e políticas (Pilares 1 e 3).</td>
-                            <td>Reunião quinzenal com a liderança da GD para alinhamento e troca de experiências; Participação em oficinas de atualização.</td>
-                            <td>
-                                <select class="sim-nao-input">
-                                    <option value="nao">Não</option>
-                                    <option value="sim">Sim</option>
-                                </select>
-                                <textarea class="sim-nao-input mt-1" placeholder="Observações..."></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Atendimento ao Cliente</td>
-                            <td>[Nome do Colaborador(a) do Setor de Atendimento]</td>
-                            <td>Coletar dúvidas e sugestões da equipe de atendimento sobre o uso dos dados e ferramentas; Propor melhorias nos fluxos informacionais.</td>
-                            <td>Formulário mensal de acompanhamento de atividades e dificuldades (similar ao Apêndice J ou T); Acesso a um canal direto com a liderança da GD.</td>
-                            <td>
-                                <select class="sim-nao-input">
-                                    <option value="nao">Não</option>
-                                    <option value="sim">Sim</option>
-                                </select>
-                                <textarea class="sim-nao-input mt-1" placeholder="Observações..."></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Recursos Humanos (RH)</td>
-                            <td>[Nome do Colaborador(a) do Setor de RH]</td>
-                            <td>Organizar e apoiar a condução das oficinas de capacitação (Apêndice D); Manter o glossário (Apêndice C) e as cartilhas (Apêndice AR) atualizados e divulgados.</td>
-                            <td>Check-in formal a cada ciclo trimestral com a coordenação da GD para planejar as próximas ações de capacitação.</td>
-                            <td>
-                                <select class="sim-nao-input">
-                                    <option value="nao">Não</option>
-                                    <option value="sim">Sim</option>
-                                </select>
-                                <textarea class="sim-nao-input mt-1" placeholder="Observações..."></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Financeiro/ Administrativo</td>
-                            <td>[Nome do Colaborador(a) do Setor Financeiro]</td>
-                            <td>Ajudar a manter os dados financeiros e administrativos organizados e padronizados (Pilar 1); Orientar sobre as políticas de retenção e backup (Pilar 3).</td>
-                            <td>Relato verbal ou e-mail mensal sobre o progresso e desafios; Suporte para desenvolvimento de checklists específicos para o setor.</td>
-                            <td>
-                                <select class="sim-nao-input">
-                                    <option value="nao">Não</option>
-                                    <option value="sim">Sim</option>
-                                </select>
-                                <textarea class="sim-nao-input mt-1" placeholder="Observações..."></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">(Outro Setor Chave)</td>
-                            <td>[Nome]</td>
-                            <td>[Descrever responsabilidades específicas para o setor]</td>
-                            <td>[Descrever formas de acompanhamento]</td>
-                            <td>
-                                <select class="sim-nao-input">
-                                    <option value="nao">Não</option>
-                                    <option value="sim">Sim</option>
-                                </select>
-                                <textarea class="sim-nao-input mt-1" placeholder="Observações..."></textarea>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-users-cog mr-3 text-purple-300"></i>Quadro AD.1 – Plano de Formação e Acompanhamento de Multiplicadores</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <div class="multiplier-card">
+                    <h3><i class="fas fa-store-alt mr-2"></i>Setor: Vendas</h3>
+                    <div class="info-block">
+                        <label for="nome-vendas">Nome do(a) Colaborador(a) Indicado(a)</label>
+                        <input type="text" id="nome-vendas" class="form-input" placeholder="[Nome do Colaborador(a) do Setor de Vendas]">
+                    </div>
+                    <div class="info-block">
+                        <label>Principais Responsabilidades Sugeridas</label>
+                        <p>Compartilhar boas práticas de registro de dados de clientes; Esclarecer dúvidas da equipe de vendas sobre o inventário e políticas (Pilares 1 e 3).</p>
+                    </div>
+                    <div class="info-block">
+                        <label>Ações de Acompanhamento e Suporte</label>
+                        <p>Reunião quinzenal com a liderança da GD para alinhamento e troca de experiências; Participação em oficinas de atualização.</p>
+                    </div>
+                    <div class="info-block">
+                        <label for="apoio-vendas">Necessidade de Apoio Adicional?</label>
+                        <select id="apoio-vendas" class="form-select">
+                            <option value="nao">Não</option>
+                            <option value="sim">Sim</option>
+                        </select>
+                        <textarea class="form-input mt-2" rows="2" placeholder="Observações..."></textarea>
+                    </div>
+                </div>
+
+                <div class="multiplier-card">
+                    <h3><i class="fas fa-headset mr-2"></i>Setor: Atendimento ao Cliente</h3>
+                    <div class="info-block">
+                        <label for="nome-atendimento">Nome do(a) Colaborador(a) Indicado(a)</label>
+                        <input type="text" id="nome-atendimento" class="form-input" placeholder="[Nome do Colaborador(a) do Setor de Atendimento]">
+                    </div>
+                    <div class="info-block">
+                        <label>Principais Responsabilidades Sugeridas</label>
+                        <p>Coletar dúvidas e sugestões da equipe de atendimento sobre o uso dos dados e ferramentas; Propor melhorias nos fluxos informacionais.</p>
+                    </div>
+                    <div class="info-block">
+                        <label>Ações de Acompanhamento e Suporte</label>
+                        <p>Formulário mensal de acompanhamento de atividades e dificuldades (similar ao Apêndice J ou T); Acesso a um canal direto com a liderança da GD.</p>
+                    </div>
+                    <div class="info-block">
+                        <label for="apoio-atendimento">Necessidade de Apoio Adicional?</label>
+                        <select id="apoio-atendimento" class="form-select">
+                            <option value="nao">Não</option>
+                            <option value="sim">Sim</option>
+                        </select>
+                        <textarea class="form-input mt-2" rows="2" placeholder="Observações..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="multiplier-card">
+                    <h3><i class="fas fa-user-friends mr-2"></i>Setor: Recursos Humanos (RH)</h3>
+                    <div class="info-block">
+                        <label for="nome-rh">Nome do(a) Colaborador(a) Indicado(a)</label>
+                        <input type="text" id="nome-rh" class="form-input" placeholder="[Nome do Colaborador(a) do Setor de RH]">
+                    </div>
+                    <div class="info-block">
+                        <label>Principais Responsabilidades Sugeridas</label>
+                        <p>Organizar e apoiar a condução das oficinas de capacitação (Apêndice D); Manter o glossário (Apêndice C) e as cartilhas (Apêndice AR) atualizados e divulgados.</p>
+                    </div>
+                    <div class="info-block">
+                        <label>Ações de Acompanhamento e Suporte</label>
+                        <p>Check-in formal a cada ciclo trimestral com a coordenação da GD para planejar as próximas ações de capacitação.</p>
+                    </div>
+                    <div class="info-block">
+                        <label for="apoio-rh">Necessidade de Apoio Adicional?</label>
+                        <select id="apoio-rh" class="form-select">
+                            <option value="nao">Não</option>
+                            <option value="sim">Sim</option>
+                        </select>
+                        <textarea class="form-input mt-2" rows="2" placeholder="Observações..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="multiplier-card">
+                    <h3><i class="fas fa-file-invoice-dollar mr-2"></i>Setor: Financeiro/Administrativo</h3>
+                    <div class="info-block">
+                        <label for="nome-financeiro">Nome do(a) Colaborador(a) Indicado(a)</label>
+                        <input type="text" id="nome-financeiro" class="form-input" placeholder="[Nome do Colaborador(a) do Setor Financeiro]">
+                    </div>
+                    <div class="info-block">
+                        <label>Principais Responsabilidades Sugeridas</label>
+                        <p>Ajudar a manter os dados financeiros e administrativos organizados e padronizados (Pilar 1); Orientar sobre as políticas de retenção e backup (Pilar 3).</p>
+                    </div>
+                    <div class="info-block">
+                        <label>Ações de Acompanhamento e Suporte</label>
+                        <p>Relato verbal ou e-mail mensal sobre o progresso e desafios; Suporte para desenvolvimento de checklists específicos para o setor.</p>
+                    </div>
+                    <div class="info-block">
+                        <label for="apoio-financeiro">Necessidade de Apoio Adicional?</label>
+                        <select id="apoio-financeiro" class="form-select">
+                            <option value="nao">Não</option>
+                            <option value="sim">Sim</option>
+                        </select>
+                        <textarea class="form-input mt-2" rows="2" placeholder="Observações..."></textarea>
+                    </div>
+                </div>
+
+                <div class="multiplier-card border-dashed border-gray-500">
+                    <h3><i class="fas fa-plus-circle mr-2"></i>Setor: (Outro Setor Chave)</h3>
+                    <div class="info-block">
+                        <label for="nome-outro">Nome do(a) Colaborador(a) Indicado(a)</label>
+                        <input type="text" id="nome-outro" class="form-input" placeholder="[Nome]">
+                    </div>
+                    <div class="info-block">
+                        <label>Principais Responsabilidades Sugeridas</label>
+                        <textarea class="form-input" rows="2" placeholder="[Descrever responsabilidades específicas para o setor]"></textarea>
+                    </div>
+                    <div class="info-block">
+                        <label>Ações de Acompanhamento e Suporte</label>
+                        <textarea class="form-input" rows="2" placeholder="[Descrever formas de acompanhamento]"></textarea>
+                    </div>
+                    <div class="info-block">
+                        <label for="apoio-outro">Necessidade de Apoio Adicional?</label>
+                        <select id="apoio-outro" class="form-select">
+                            <option value="nao">Não</option>
+                            <option value="sim">Sim</option>
+                        </select>
+                        <textarea class="form-input mt-2" rows="2" placeholder="Observações..."></textarea>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Recommendations Section (AD.1) -->
-        <section class="card recomendacoes-card-mult fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AD.1 Recomendações para a Implementação do Plano de Multiplicadores:</h3>
-            <ul>
-                <li><strong>Seleção dos Multiplicadores:</strong> Os multiplicadores devem ser escolhidos preferencialmente por critérios de engajamento, proatividade, boa comunicação e respeito entre os colegas, e não necessariamente por nível hierárquico. O ideal é ter ao menos um por setor ou área funcional chave da PME;</li>
-                <li><strong>Formação Inicial e Contínua:</strong> Os multiplicadores selecionados devem passar por uma formação específica sobre o modelo GD-PME 3 Pilares, seus instrumentos e sobre como facilitar o aprendizado e o engajamento de suas equipes (conforme Apêndice U ou AQ – Roteiro para Formação de Multiplicadores). Oficinas de atualização periódicas são recomendadas;</li>
-                <li><strong>Apoio da Liderança:</strong> A alta gestão da PME deve apoiar ativamente o programa de multiplicadores, designando tempo para suas atividades de formação e disseminação, fornecendo os recursos necessários (mesmo que mínimos) e reconhecendo publicamente seus esforços e contribuições (ex: certificado interno, menção em reuniões, pequenos incentivos simbólicos);</li>
-                <li><strong>Rede de Multiplicadores:</strong> Fomentar a criação de uma pequena rede entre os multiplicadores para troca de experiências, desafios e soluções, com encontros periódicos (ex: mensais ou bimestrais) mediados pela coordenação da GD para alinhamento e planejamento de novas ações (ver Apêndice B e AT);</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-purple-300"></i>AD.1 Recomendações para a Implementação</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Seleção dos Multiplicadores:</strong> Os multiplicadores devem ser escolhidos preferencialmente por critérios de engajamento, proatividade, boa comunicação e respeito entre os colegas, e não necessariamente por nível hierárquico. O ideal é ter ao menos um por setor ou área funcional chave da PME.</li>
+                <li><strong>Formação Inicial e Contínua:</strong> Os multiplicadores selecionados devem passar por uma formação específica sobre o modelo GD-PME 3 Pilares, seus instrumentos e sobre como facilitar o aprendizado e o engajamento de suas equipes (conforme Apêndice U ou AQ – Roteiro para Formação de Multiplicadores). Oficinas de atualização periódicas são recomendadas.</li>
+                <li><strong>Apoio da Liderança:</strong> A alta gestão da PME deve apoiar ativamente o programa de multiplicadores, designando tempo para suas atividades de formação e disseminação, fornecendo os recursos necessários (mesmo que mínimos) e reconhecendo publicamente seus esforços e contribuições (ex: certificado interno, menção em reuniões, pequenos incentivos simbólicos).</li>
+                <li><strong>Rede de Multiplicadores:</strong> Fomentar a criação de uma pequena rede entre os multiplicadores para troca de experiências, desafios e soluções, com encontros periódicos (ex: mensais ou bimestrais) mediados pela coordenação da GD para alinhamento e planejamento de novas ações (ver Apêndice B e AT).</li>
                 <li><strong>Acompanhamento e Atualização do Plano:</strong> O plano de multiplicadores e a atuação de cada um devem ser acompanhados continuamente. Recomenda-se que o plano seja revisado e atualizado a cada ciclo de governança (ex: semestralmente ou anualmente), podendo ser expandido para novos setores ou projetos conforme a evolução da maturidade informacional da empresa.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-multiplicadores fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), Floridi (2010), nas diretrizes do Pilar 2 do modelo GD-PME 3 Pilares e em experiências de capacitação modular e formação de agentes multiplicadores em pequenas empresas.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Ferramenta estratégica para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este Plano de Multiplicadores estrutura a formação (Apêndice U ou AQ) e acompanhamento de colaboradores-chave para disseminar a cultura de dados e assegurar a internalização das práticas dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nos setores da PME.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), Floridi (2010), nas diretrizes do Pilar 2 do modelo GD-PME 3 Pilares e em experiências de capacitação modular e formação de agentes multiplicadores em pequenas empresas.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Ferramenta estratégica para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este Plano de Multiplicadores estrutura a formação (Apêndice U ou AQ) e acompanhamento de colaboradores-chave para disseminar a cultura de dados e assegurar a internalização das práticas dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nos setores da PME.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

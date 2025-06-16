@@ -3,288 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Painel Visual de Progresso por Pilar do Modelo GD-PME 3 Pilares</title>
+    <title>Painel Visual de Progresso por Pilar - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light Gray background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-painel-ao {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1f2937; /* Dark Gray for titles */
-        }
-        .header-title-painel-ao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #1f2937; /* Dark Gray */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-painel-ao {
-            font-size: 1.15rem;
-            color: #374151; /* Medium Gray */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-painel-ao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #111827; /* Darkest Gray for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-painel-ao {
-            color: #4b5563; /* Gray highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-painel-ao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #94a3b8, #e5e7eb); /* Cinza/Branco */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo dos Cards de Pilar */
+        .pillar-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+        }
+        .pillar-card-1 { border-color: #3b82f6; } /* Azul */
+        .pillar-card-2 { border-color: #10b981; } /* Verde */
+        .pillar-card-3 { border-color: #f59e0b; } /* Âmbar */
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e5e7eb; /* Light Gray background for icon */
         }
-        .header-icon-painel-ao svg {
-            width: 32px;
-            height: 32px;
-            color: #1f2937; /* Dark Gray */
+        .pillar-card h3 i {
+            margin-right: 12px;
         }
-
-        .painel-header-info {
-            border: 1px dashed #9ca3af;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background-color: #f9fafb;
-        }
-        .painel-header-info p {
-            font-size: 0.9rem;
-            color: #374151;
-            margin-bottom: 4px;
-        }
-        .painel-header-info .placeholder-text-ao {
-            font-style: italic;
-            color: #6b7280;
-        }
-         .painel-header-info .checkbox-label-ao {
-            margin-right: 10px;
-            font-size: 0.9rem;
-         }
-         .painel-header-info input[type="checkbox"] {
-            margin-right: 4px;
-            transform: scale(0.9);
-         }
-
-
-        .table-painel-ao {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-painel-ao th, .table-painel-ao td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db; /* Lighter Gray border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-painel-ao th {
-            background-color: #f3f4f6; /* Very Light Gray for table headers */
-            font-weight: 600;
-            color: #374151; /* Medium Gray */
-        }
-        .table-painel-ao td {
-            color: #111827; /* Darkest Gray for table text */
-        }
-        /* Specific column widths */
-        .pilar-col-ao { width: 20%; }
-        .status-col-ao { width: 20%; }
-        .meta-col-ao { width: 25%; }
-        .resp-col-ao { width: 15%; }
-        .obs-col-ao { width: 20%; }
+        .title-pillar-1 { color: #60a5fa; }
+        .title-pillar-2 { color: #34d399; }
+        .title-pillar-3 { color: #facc15; }
         
-        .status-checkbox-group-ao label {
-            display: block;
-            margin-bottom: 3px;
-            font-size: 0.7rem;
+        .info-block {
+            margin-bottom: 16px;
         }
-         .status-checkbox-group-ao input[type="radio"] {
-            margin-right: 3px;
-            transform: scale(0.8);
-         }
-        .obs-textarea-ao {
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .info-block p, .info-block input[type="text"], .info-block textarea {
+            font-size: 0.95rem;
+            color: #d1d5db;
             width: 100%;
-            font-size: 0.75rem;
-            padding: 4px;
-            border: 1px solid #9ca3af;
-            border-radius: 4px;
-            min-height: 40px;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 8px;
+        }
+        .info-block textarea {
+            min-height: 50px;
             resize: vertical;
         }
-        
-        .recomendacoes-card-ao {
-            background-color: #e5e7eb; /* Light Gray for recommendations */
-            border-left: 4px solid #6b7280; /* Medium Gray border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+
+        /* Estilização dos Radio Buttons */
+        .status-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        .recomendacoes-card-ao h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 8px;
+        .status-options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
         }
-        .recomendacoes-card-ao ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #111827;
+        .status-options input[type="radio"] {
+            display: none;
         }
-        .recomendacoes-card-ao li {
-            margin-bottom: 5px;
+        .status-options label::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #6b7280;
+            margin-right: 10px;
+            transition: all 0.2s;
+        }
+        .status-options input[type="radio"]:checked + label {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #c7d2fe;
+        }
+        .status-options input[type="radio"]:checked + label::before {
+            border-color: #6366f1;
+            background-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #64748b; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #475569; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-painel-ao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 8.25 20.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25A2.25 2.25 0 0 1 13.5 8.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-slate-400">
+                <i class="fas fa-th-large fa-2x text-slate-300"></i>
             </div>
-            <h1 class="header-title-painel-ao">Painel Visual de Progresso por Pilar do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-painel-ao">APÊNDICE AO: Modelo de painel gráfico simplificado para monitoramento público, visual e participativo da evolução da GD na PME.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Painel Visual de Progresso por Pilar</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AO: Modelo de painel gráfico simplificado para monitoramento público, visual e participativo da evolução da GD na PME.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este instrumento, alinhado com os princípios de <span class="highlight-painel-ao">gestão visual e comunicação acessível</span>, pode ser afixado em murais ou áreas de convivência para promover o engajamento e a transparência no acompanhamento da Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este instrumento, alinhado com os princípios de <strong class="text-slate-300">gestão visual e comunicação acessível</strong>, pode ser afixado em murais ou áreas de convivência para promover o engajamento e a transparência.
             </p>
         </section>
 
-        <!-- Visual Panel Model Section (AO.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-painel-ao text-center">AO.1 Modelo de Painel Visual de Acompanhamento</h2>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-clipboard-check mr-3 text-slate-300"></i>AO.1 Modelo de Painel Visual de Acompanhamento</h2>
             
-            <div class="painel-header-info">
-                <p class="text-lg font-semibold text-center text-gray-700 mb-4">PAINEL DE ACOMPANHAMENTO – GOVERNANÇA DE DADOS GD-PME 3 Pilares</p>
-                <p><span class="font-semibold">Empresa:</span> <span class="placeholder-text-ao">[Nome da Empresa]</span></p>
-                <p><span class="font-semibold">Ciclo Atual (Trimestre/Ano):</span> <span class="placeholder-text-ao">[Ex: Q3/2025]</span>
-                    <span class="ml-4">
-                        <label class="checkbox-label-ao"><input type="radio" name="ciclo_trimestre" value="1"> 1º</label>
-                        <label class="checkbox-label-ao"><input type="radio" name="ciclo_trimestre" value="2"> 2º</label>
-                        <label class="checkbox-label-ao"><input type="radio" name="ciclo_trimestre" value="3"> 3º</label>
-                        <label class="checkbox-label-ao"><input type="radio" name="ciclo_trimestre" value="4"> 4º</label>
-                    </span>
-                </p>
+            <div class="bg-gray-800 p-4 rounded-lg border border-gray-700 mb-6">
+                <h3 class="text-lg font-bold text-center text-white mb-4">PAINEL DE ACOMPANHAMENTO – GOVERNANÇA DE DADOS</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <p><strong class="text-gray-400">Empresa:</strong> <span class="text-white">[Nome da Empresa]</span></p>
+                    <div class="flex items-center gap-4"><strong class="text-gray-400">Ciclo Atual:</strong>
+                        <label><input type="radio" name="ciclo_trimestre" value="1" class="mr-1">1º Trim.</label>
+                        <label><input type="radio" name="ciclo_trimestre" value="2" class="mr-1">2º Trim.</label>
+                        <label><input type="radio" name="ciclo_trimestre" value="3" class="mr-1">3º Trim.</label>
+                        <label><input type="radio" name="ciclo_trimestre" value="4" class="mr-1">4º Trim.</label>
+                    </div>
+                </div>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="table-painel-ao">
-                    <thead>
-                        <tr>
-                            <th class="pilar-col-ao">Pilar do Modelo GD-PME 3 Pilares</th>
-                            <th class="status-col-ao">Status Atual de Implementação do Pilar (Marque o nível alcançado)</th>
-                            <th class="meta-col-ao">Meta Principal do Trimestre para este Pilar</th>
-                            <th class="resp-col-ao">Responsável Local pelo Acompanhamento do Pilar</th>
-                            <th class="obs-col-ao">Breves Observações / Próximos Passos (Opcional)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Pilar 1: Dados e Sistemas <br><span class="text-xs font-normal">(Organização, Inventário, Padrões)</span></td>
-                            <td class="status-checkbox-group-ao">
-                                <label><input type="radio" name="status_p1" value="inicial"> Fase Inicial (Diagnóstico/Planejamento)</label>
-                                <label><input type="radio" name="status_p1" value="intermediaria"> Fase Intermediária (Primeiras Ações)</label>
-                                <label><input type="radio" name="status_p1" value="consolidada"> Fase Consolidada (Práticas Estabelecidas)</label>
-                            </td>
-                            <td>Concluir o inventário de dados do setor de Vendas (Apêndice AL) e padronizar 3 campos-chave.</td>
-                            <td>[Nome do Colaborador] / Setor de Vendas</td>
-                            <td><textarea class="obs-textarea-ao" placeholder="Ex: Inventário em 70%. Próximo passo: validar com equipe."></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 2: Capacitação Contínua <br><span class="text-xs font-normal">(Oficinas, Materiais, Multiplicadores)</span></td>
-                            <td class="status-checkbox-group-ao">
-                                <label><input type="radio" name="status_p2" value="inicial"> Fase Inicial</label>
-                                <label><input type="radio" name="status_p2" value="intermediaria"> Fase Intermediária</label>
-                                <label><input type="radio" name="status_p2" value="consolidada"> Fase Consolidada</label>
-                            </td>
-                            <td>Realizar 2 minioficinas sobre "Qualidade de Dados" (Apêndice D, R); Distribuir cartilha visual (Apêndice AR).</td>
-                            <td>[Nome do Colaborador] / RH ou Multiplicador</td>
-                            <td><textarea class="obs-textarea-ao" placeholder="Ex: 1ª oficina realizada com 80% de presença. Cartilha em elaboração."></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 3: Políticas Simplificadas <br><span class="text-xs font-normal">(Termos, Regras, Backups)</span></td>
-                            <td class="status-checkbox-group-ao">
-                                <label><input type="radio" name="status_p3" value="inicial"> Fase Inicial</label>
-                                <label><input type="radio" name="status_p3" value="intermediaria"> Fase Intermediária</label>
-                                <label><input type="radio" name="status_p3" value="consolidada"> Fase Consolidada</label>
-                            </td>
-                            <td>Ter o "Termo de Boas Práticas com Dados" (Apêndice G/AA/AY) assinado por 100% da equipe do setor X.</td>
-                            <td>[Nome do Colaborador] / Gestor Administrativo</td>
-                            <td><textarea class="obs-textarea-ao" placeholder="Ex: 85% assinaram. Próximo passo: conversar com os pendentes."></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-                 <p class="text-xs text-gray-500 mt-1 text-center">Fonte: Elaborado pelo Autor (2025).</p>
+            <div class="space-y-6">
+
+                <div class="pillar-card pillar-card-1">
+                    <h3 class="title-pillar-1"><i class="fas fa-database"></i>Pilar 1: Dados e Sistemas</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block">
+                            <label>Status Atual de Implementação</label>
+                            <div class="status-options">
+                                <label for="s1_inicial"><input type="radio" id="s1_inicial" name="status_p1" value="inicial"> Fase Inicial (Diagnóstico/Planejamento)</label>
+                                <label for="s1_inter"><input type="radio" id="s1_inter" name="status_p1" value="intermediaria"> Fase Intermediária (Primeiras Ações)</label>
+                                <label for="s1_consol"><input type="radio" id="s1_consol" name="status_p1" value="consolidada"> Fase Consolidada (Práticas Estabelecidas)</label>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="info-block"><label>Meta Principal do Trimestre</label><p>Concluir o inventário de dados do setor de Vendas (Apêndice AL) e padronizar 3 campos-chave.</p></div>
+                            <div class="info-block"><label>Responsável Local</label><p>[Nome do Colaborador] / Setor de Vendas</p></div>
+                        </div>
+                    </div>
+                    <div class="info-block mt-4"><label>Observações / Próximos Passos</label><textarea placeholder="Ex: Inventário em 70%. Próximo passo: validar com equipe."></textarea></div>
+                </div>
+
+                <div class="pillar-card pillar-card-2">
+                    <h3 class="title-pillar-2"><i class="fas fa-users-cog"></i>Pilar 2: Capacitação Contínua</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block">
+                            <label>Status Atual de Implementação</label>
+                            <div class="status-options">
+                                <label for="s2_inicial"><input type="radio" id="s2_inicial" name="status_p2" value="inicial"> Fase Inicial</label>
+                                <label for="s2_inter"><input type="radio" id="s2_inter" name="status_p2" value="intermediaria"> Fase Intermediária</label>
+                                <label for="s2_consol"><input type="radio" id="s2_consol" name="status_p2" value="consolidada"> Fase Consolidada</label>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="info-block"><label>Meta Principal do Trimestre</label><p>Realizar 2 minioficinas sobre "Qualidade de Dados" (Apêndice D, R); Distribuir cartilha visual (Apêndice AR).</p></div>
+                            <div class="info-block"><label>Responsável Local</label><p>[Nome do Colaborador] / RH ou Multiplicador</p></div>
+                        </div>
+                    </div>
+                    <div class="info-block mt-4"><label>Observações / Próximos Passos</label><textarea placeholder="Ex: 1ª oficina realizada com 80% de presença. Cartilha em elaboração."></textarea></div>
+                </div>
+                
+                <div class="pillar-card pillar-card-3">
+                    <h3 class="title-pillar-3"><i class="fas fa-shield-alt"></i>Pilar 3: Políticas Simplificadas</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block">
+                            <label>Status Atual de Implementação</label>
+                            <div class="status-options">
+                                <label for="s3_inicial"><input type="radio" id="s3_inicial" name="status_p3" value="inicial"> Fase Inicial</label>
+                                <label for="s3_inter"><input type="radio" id="s3_inter" name="status_p3" value="intermediaria"> Fase Intermediária</label>
+                                <label for="s3_consol"><input type="radio" id="s3_consol" name="status_p3" value="consolidada"> Fase Consolidada</label>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="info-block"><label>Meta Principal do Trimestre</label><p>Ter o "Termo de Boas Práticas com Dados" (Apêndice G/AA/AY) assinado por 100% da equipe do setor X.</p></div>
+                            <div class="info-block"><label>Responsável Local</label><p>[Nome do Colaborador] / Gestor Administrativo</p></div>
+                        </div>
+                    </div>
+                    <div class="info-block mt-4"><label>Observações / Próximos Passos</label><textarea placeholder="Ex: 85% assinaram. Próximo passo: conversar com os pendentes."></textarea></div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Usage Recommendations Section (AO.2) -->
-        <section class="card recomendacoes-card-ao fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AO.2 Recomendações para Uso do Painel Visual:</h3>
-            <ul>
-                <li><strong>Localização Estratégica:</strong> Afixe o painel em um local de alta visibilidade e fácil acesso a todos os colaboradores (ex: mural da copa, sala de reuniões, intranet da empresa se houver);</li>
-                <li><strong>Atualização Regular e Participativa:</strong> Defina uma frequência para atualização do painel (ex: semanal para acompanhamento de metas curtas, ou mensal/trimestral para o status geral do ciclo). Incentive que os "Responsáveis Locais" ou os multiplicadores (Apêndice AD/AQ) participem da atualização;</li>
-                <li><strong>Linguagem Visual e Acessível:</strong> Utilize linguagem extremamente simples, ícones (como os do Apêndice AR), cores e poucos elementos textuais para garantir a compreensão rápida. O foco é na comunicação visual do progresso e das metas;</li>
-                <li><strong>Ponto de Conversa:</strong> Incentive o uso do painel como um ponto de partida para conversas sobre a Governança de Dados entre os setores e com a liderança, facilitando a identificação de dificuldades e a celebração de conquistas;</li>
-                <li><strong>Integração com Outras Ferramentas:</strong> As informações do painel devem refletir o que está sendo trabalhado e avaliado através de outros instrumentos do GD-PME 3 Pilares, como o cronograma (Apêndice L/AM), os relatórios trimestrais (Apêndice P/Y/AK/AW) e as fichas de autoavaliação (Apêndice F).</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-slate-300"></i>AO.2 Recomendações de Uso</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Localização Estratégica:</strong> Afixe o painel em um local de alta visibilidade (mural da copa, sala de reuniões, intranet).</li>
+                <li><strong>Atualização Participativa:</strong> Defina uma frequência para atualização e incentive que os "Responsáveis Locais" ou multiplicadores participem.</li>
+                <li><strong>Linguagem Visual e Acessível:</strong> Utilize linguagem simples, ícones e cores para garantir a compreensão rápida. O foco é na comunicação do progresso.</li>
+                <li><strong>Ponto de Conversa:</strong> Use o painel como ponto de partida para conversas sobre a GD, facilitando a identificação de dificuldades e a celebração de conquistas.</li>
+                <li><strong>Integração com Ferramentas:</strong> As informações do painel devem refletir o que está sendo trabalhado nos outros instrumentos (cronogramas, relatórios, etc.).</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-painel-ao fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este painel visual de progresso, como instrumento de comunicação e gestão à vista, apoia o monitoramento participativo dos três pilares do modelo GD-PME. Ao tornar visíveis o status e as metas dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), com apoio dos Apêndices AL, D, R, G/AA/AY, AD/AQ e AR, promove engajamento, transparência e acompanhamento contínuo.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este painel visual apoia o monitoramento participativo dos três pilares do modelo GD-PME, tornando visíveis o status e as metas e fomentando engajamento e cultura de dados.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

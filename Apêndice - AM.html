@@ -3,285 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Agenda Anual Sugerida para Ciclos de Governança de Dados - GD-PME</title>
+    <title>Agenda Anual para Ciclos de Governança de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light Slate background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-agenda-am {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #334155; /* Dark Slate for titles */
-        }
-        .header-title-agenda-am {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #334155; /* Dark Slate */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-agenda-am {
-            font-size: 1.15rem;
-            color: #475569; /* Medium Slate */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-agenda-am {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e293b; /* Darkest Slate for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-agenda-am {
-            color: #64748b; /* Slate highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-agenda-am {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #94a3b8, #cbd5e1); /* Cinza/Slate */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Ciclo */
+        .cycle-card {
+            background-color: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
+        }
+        
+        .cycle-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e2e8f0; /* Light Slate background for icon */
+            padding-bottom: 16px;
+            border-bottom: 1px solid #374151;
         }
-        .header-icon-agenda-am svg {
-            width: 32px;
-            height: 32px;
-            color: #334155; /* Dark Slate */
+        .cycle-card h3 i {
+            margin-right: 12px;
+        }
+        
+        .month-block {
+            border-left: 3px solid #4b5563;
+            padding-left: 20px;
+            margin-bottom: 24px;
+        }
+        .month-block:last-child {
+            margin-bottom: 0;
         }
 
-        .table-agenda-am {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-agenda-am th, .table-agenda-am td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #cbd5e1; /* Lighter Slate border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-agenda-am th {
-            background-color: #f8fafc; /* Very Light Slate for table headers */
+        .month-block h4 {
+            font-size: 1.25rem;
             font-weight: 600;
-            color: #475569; /* Medium Slate */
+            color: #e5e7eb;
+            margin-bottom: 12px;
         }
-        .table-agenda-am td {
-            color: #1e293b; /* Darkest Slate for table text */
-        }
-        /* Specific column widths */
-        .mes-col-am { width: 10%; }
-        .foco-col-am { width: 25%; }
-        .pilar-col-am { width: 20%; }
-        .acoes-col-am { width: 45%; }
         
-        .ciclo-header-am td {
-            background-color: #e2e8f0 !important; /* Light Slate for cycle headers */
-            font-weight: bold;
-            text-align: center;
-            color: #334155; /* Dark Slate text */
-            padding: 8px !important;
+        .info-block {
+            margin-bottom: 12px;
+        }
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 4px;
             font-size: 0.9rem;
         }
-        
-        .recomendacoes-card-am {
-            background-color: #e2e8f0; /* Light Slate for recommendations */
-            border-left: 4px solid #64748b; /* Slate border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .recomendacoes-card-am h3 {
-            font-size: 1.1rem;
+        .ref-tag {
+            display: inline-block;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #334155;
-            margin-bottom: 8px;
-        }
-        .recomendacoes-card-am ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #1e293b;
-        }
-        .recomendacoes-card-am li {
-            margin-bottom: 5px;
+            margin-right: 4px;
+            margin-bottom: 4px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #64748b; /* Cinza */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        #backToTopBtn:hover {
+            background-color: #475569;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-agenda-am">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-slate-400">
+                <i class="fas fa-calendar-alt fa-2x text-slate-300"></i>
             </div>
-            <h1 class="header-title-agenda-am">Agenda Anual Sugerida para Ciclos de Governança de Dados com o Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-agenda-am">APÊNDICE AM: Proposta de cronograma anual simplificado, estruturado em quatro ciclos trimestrais, para aplicação e consolidação do modelo GD-PME.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Agenda Anual para Ciclos de Governança de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AM: Proposta de cronograma anual simplificado, estruturado em quatro ciclos trimestrais, para aplicação e consolidação do modelo GD-PME.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Esta agenda visa orientar o <span class="highlight-agenda-am">planejamento de longo prazo</span> das ações de Governança de Dados (GD), permitindo uma evolução gradual e sustentável da maturidade informacional. A PME pode adaptar este cronograma conforme seu porte, ritmo e prioridades.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Esta agenda visa orientar o <strong class="text-slate-300">planejamento de longo prazo</strong> das ações de Governança de Dados (GD), permitindo uma evolução gradual e sustentável. A PME pode adaptar este cronograma conforme seu porte, ritmo e prioridades.
             </p>
         </section>
 
-        <!-- Annual Schedule Table Section (Quadro AM.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-agenda-am text-center">Quadro AM.1 – Exemplo de Agenda Anual de Ciclos Operacionais</h2>
-            <div class="overflow-x-auto">
-                <table class="table-agenda-am">
-                    <thead>
-                        <tr>
-                            <th class="mes-col-am">Mês</th>
-                            <th class="foco-col-am">Foco do Ciclo Trimestral / Etapa Principal</th>
-                            <th class="pilar-col-am">Pilar(es) GD-PME 3 Pilares com Maior Ênfase</th>
-                            <th class="acoes-col-am">Ações Prioritárias e Instrumentos de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="ciclo-header-am">
-                            <td colspan="4">Ciclo 1: Fundamentação e Diagnóstico (Janeiro – Março)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Janeiro</td>
-                            <td>Sensibilização, Alinhamento Estratégico e Diagnóstico Inicial</td>
-                            <td>Geral / Todos Pilares</td>
-                            <td>Reunião de lançamento com liderança e equipe (Apêndice D); Apresentação do modelo GD-PME 3 Pilares (Apêndice M); Aplicação do Diagnóstico Inicial (Apêndice A); Mapeamento de Stakeholders (Apêndice O); Definição de responsáveis.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Fevereiro</td>
-                            <td>Organização Inicial dos Dados e Primeiras Capacitações</td>
-                            <td>Pilar 1; Pilar 2</td>
-                            <td>Criação do Inventário de Dados Essenciais (Apêndice AL); Primeira oficina de capacitação sobre conceitos básicos de GD e uso do glossário (Apêndice C, D).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Março</td>
-                            <td>Definição de Políticas Iniciais e Primeira Avaliação de Ciclo</td>
-                            <td>Pilar 3; Geral</td>
-                            <td>Elaboração e assinatura do Termo de Boas Práticas (Apêndice G/AA/AY); Definição de rotina de backup; Aplicação da Ficha de Autoavaliação Trimestral (Apêndice F); Reunião de avaliação do ciclo (Apêndice AT).</td>
-                        </tr>
-                        <tr class="ciclo-header-am">
-                            <td colspan="4">Ciclo 2: Aprofundamento e Engajamento (Abril – Junho)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Abril</td>
-                            <td>Revisão de Dados e Capacitação Temática</td>
-                            <td>Pilar 1; Pilar 2</td>
-                            <td>Atualização do inventário de dados; Oficina temática (ex: Qualidade de Dados ou LGPD – Apêndice R); Identificação de multiplicadores internos (Apêndice AD/AQ).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Maio</td>
-                            <td>Fortalecimento das Políticas e Comunicação Interna</td>
-                            <td>Pilar 3; Geral</td>
-                            <td>Revisão das políticas existentes; Desenvolvimento de novas políticas simples conforme necessidade (ex: acesso a dados); Implementação do Plano de Comunicação Interna (Apêndice I/AC/AN/AV).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Junho</td>
-                            <td>Segunda Avaliação de Ciclo e Relatório de Maturidade</td>
-                            <td>Geral / Todos Pilares</td>
-                            <td>Aplicação da Ficha de Autoavaliação (Apêndice F) e do Comparativo de Maturidade (Apêndice Q); Elaboração do Relatório Trimestral (Apêndice P/Y/AK/AW); Planejamento do Ciclo 3.</td>
-                        </tr>
-                         <tr class="ciclo-header-am">
-                            <td colspan="4">Ciclo 3: Consolidação e Gestão de Riscos (Julho – Setembro)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Julho</td>
-                            <td>Foco em Políticas Avançadas e Segurança</td>
-                            <td>Pilar 3; Pilar 1</td>
-                            <td>Definição de regras mais específicas de acesso e segurança; Aplicação da Matriz de Riscos Informacionais (Apêndice N ou AB) e definição de planos de mitigação.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Agosto</td>
-                            <td>Capacitação Avançada e Multiplicadores em Ação</td>
-                            <td>Pilar 2</td>
-                            <td>Oficina sobre segurança da informação e/ou LGPD para equipes específicas; Início da atuação dos multiplicadores internos com apoio e materiais (Apêndice U/AQ, Z, AR).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Setembro</td>
-                            <td>Terceira Avaliação de Ciclo e Revisão de Indicadores</td>
-                            <td>Geral / Todos Pilares</td>
-                            <td>Aplicação dos instrumentos de avaliação (Apêndices F, Q); Revisão dos indicadores de impacto (Apêndice AS) e do painel visual (Apêndice AG); Reunião de planejamento estratégico.</td>
-                        </tr>
-                        <tr class="ciclo-header-am">
-                            <td colspan="4">Ciclo 4: Sustentabilidade e Melhoria Contínua (Outubro – Dezembro)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Outubro</td>
-                            <td>Auditoria Interna e Consolidação de Boas Práticas</td>
-                            <td>Geral / Todos Pilares</td>
-                            <td>Aplicação do Protocolo de Auditoria Interna (Apêndice AX); Coleta e sistematização de boas práticas internas (Apêndice S).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Novembro</td>
-                            <td>Planejamento Estratégico Anual da GD e Disseminação de Resultados</td>
-                            <td>Geral</td>
-                            <td>Elaboração do plano de GD para o próximo ano; Publicação interna dos principais resultados e aprendizados do ano; Preparação de material para comunicação externa (se aplicável).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Dezembro</td>
-                            <td>Apresentação de Resultados Anuais e Reconhecimento</td>
-                            <td>Geral</td>
-                            <td>Reunião geral de apresentação dos resultados anuais da GD para toda a empresa; Reconhecimento das equipes e multiplicadores engajados; Considerar apresentação para parceiros/instituições (se relevante).</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-tasks mr-3 text-slate-300"></i>Exemplo de Agenda Anual de Ciclos Operacionais</h2>
+            <div class="space-y-8">
+
+                <div class="cycle-card">
+                    <h3 style="color: #60a5fa;"><i class="fas fa-seedling"></i>Ciclo 1: Fundamentação e Diagnóstico (Janeiro – Março)</h3>
+                    <div class="month-block">
+                        <h4>Janeiro: Sensibilização e Diagnóstico</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Alinhamento Estratégico e Diagnóstico Inicial</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Reunião de lançamento (Ap. D); Apresentação do modelo (Ap. M); Diagnóstico Inicial (Ap. A); Mapeamento de Stakeholders (Ap. O); Definição de responsáveis.</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Fevereiro: Organização Inicial</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Criação do Inventário de Dados e Primeiras Capacitações</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Criação do Inventário de Dados Essenciais (Ap. AL); Primeira oficina de capacitação sobre conceitos básicos de GD e uso do glossário (Ap. C, D).</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Março: Políticas Iniciais e Avaliação</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Definição de Políticas e Primeira Avaliação de Ciclo</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Elaboração do Termo de Boas Práticas (Ap. G/AA); Definição de rotina de backup; Aplicação da Ficha de Autoavaliação (Ap. F); Reunião de avaliação do ciclo (Ap. AT).</p></div>
+                    </div>
+                </div>
+                
+                <div class="cycle-card">
+                    <h3 style="color: #34d399;"><i class="fas fa-chart-line"></i>Ciclo 2: Aprofundamento e Engajamento (Abril – Junho)</h3>
+                    <div class="month-block">
+                        <h4>Abril: Capacitação Temática</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Revisão de Dados e Capacitação Específica</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Atualização do inventário de dados; Oficina temática (ex: Qualidade de Dados ou LGPD - Ap. R); Identificação de multiplicadores internos (Ap. AD).</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Maio: Fortalecimento das Políticas</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Revisão de Políticas e Comunicação Interna</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Revisão das políticas existentes; Desenvolvimento de novas políticas simples; Implementação do Plano de Comunicação (Ap. I/AC).</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Junho: Segunda Avaliação</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Avaliação de Ciclo e Relatório de Maturidade</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Aplicação da Ficha de Autoavaliação (Ap. F) e Comparativo (Ap. Q); Elaboração do Relatório Trimestral (Ap. P/Y/AK); Planejamento do Ciclo 3.</p></div>
+                    </div>
+                </div>
+
+                <div class="cycle-card">
+                    <h3 style="color: #facc15;"><i class="fas fa-shield-alt"></i>Ciclo 3: Consolidação e Gestão de Riscos (Julho – Setembro)</h3>
+                    <div class="month-block">
+                        <h4>Julho: Foco em Riscos</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Análise de Riscos e Políticas Avançadas</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Definição de regras mais específicas de acesso e segurança; Aplicação da Matriz de Riscos Informacionais (Ap. N/AB) e definição de planos de mitigação.</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Agosto: Multiplicadores em Ação</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Capacitação Avançada e Atuação dos Multiplicadores</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Oficina sobre segurança da informação/LGPD; Início da atuação dos multiplicadores com apoio e materiais (Ap. U/AQ, Z, AR).</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Setembro: Terceira Avaliação</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Revisão de Indicadores e Planejamento</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Aplicação dos instrumentos de avaliação (Ap. F, Q); Revisão dos indicadores de impacto (Ap. AS) e do painel visual (Ap. AG); Reunião de planejamento.</p></div>
+                    </div>
+                </div>
+                
+                <div class="cycle-card">
+                    <h3 style="color: #ef4444;"><i class="fas fa-trophy"></i>Ciclo 4: Sustentabilidade e Melhoria Contínua (Outubro – Dezembro)</h3>
+                    <div class="month-block">
+                        <h4>Outubro: Auditoria e Boas Práticas</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Auditoria Interna e Consolidação de Práticas</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Aplicação do Protocolo de Auditoria Interna (Ap. AX); Coleta e sistematização de boas práticas internas (Ap. S).</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Novembro: Planejamento Anual</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Planejamento Estratégico da GD para o Próximo Ano</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Elaboração do plano de GD para o próximo ano; Publicação interna dos resultados e aprendizados do ano.</p></div>
+                    </div>
+                    <div class="month-block">
+                        <h4>Dezembro: Apresentação de Resultados</h4>
+                        <div class="info-block"><label>Foco Principal</label><p>Apresentação Anual e Reconhecimento</p></div>
+                        <div class="info-block"><label>Ações Prioritárias</label><p>Reunião geral de apresentação dos resultados anuais da GD; Reconhecimento das equipes e multiplicadores engajados.</p></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Flexibility and Adaptation Section (AM.1) -->
-        <section class="card recomendacoes-card-am fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AM.1 Flexibilidade e Adaptação da Agenda Anual:</h3>
-            <ul>
-                <li>Esta agenda anual é uma sugestão e deve ser vista como um guia flexível. Cada PME deve adaptá-la à sua própria realidade, capacidade de execução, prioridades de negócio e ao ritmo de sua equipe;</li>
-                <li>A divisão em quatro ciclos trimestrais facilita o planejamento e permite que a empresa avance de forma incremental, consolidando os aprendizados de um ciclo antes de iniciar o próximo;</li>
-                <li>É crucial que, ao final de cada ciclo, haja um momento de avaliação (utilizando instrumentos como os Apêndices F, Q, AT) e de planejamento para o ciclo seguinte, garantindo que a Governança de Dados seja um processo vivo e de melhoria contínua na organização.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-slate-300"></i>AM.1 Flexibilidade e Adaptação da Agenda</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>Esta agenda anual é uma sugestão e deve ser vista como um guia flexível. Cada PME deve adaptá-la à sua própria realidade, capacidade, prioridades e ao ritmo de sua equipe.</li>
+                <li>A divisão em quatro ciclos trimestrais facilita o planejamento e permite que a empresa avance de forma incremental, consolidando os aprendizados de um ciclo antes de iniciar o próximo.</li>
+                <li>É crucial que, ao final de cada ciclo, haja um momento de avaliação (utilizando Apêndices F, Q, AT) e de planejamento para o ciclo seguinte, garantindo que a Governança de Dados seja um processo vivo e de melhoria contínua.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-agenda-am fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos Apêndices A a AY e na lógica de ciclos trimestrais de melhoria contínua do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Esta agenda anual estrutura a aplicação do modelo GD-PME 3 Pilares em quatro ciclos trimestrais, orientando o planejamento de longo prazo da Governança de Dados e detalhando como as atividades dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) podem ser implementadas ao longo de doze meses, com apoio dos Apêndices A a AY.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos Apêndices A a AY e na lógica de ciclos trimestrais de melhoria contínua do modelo GD-PME 3 Pilares.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Esta agenda anual estrutura a aplicação do modelo GD-PME 3 Pilares, detalhando como as atividades dos Pilares 1, 2 e 3 podem ser implementadas ao longo de doze meses.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

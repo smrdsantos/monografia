@@ -3,224 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Painel de Indicadores Visuais Simplificados (KPIs por Pilar) - GD-PME</title>
+    <title>Painel de Indicadores Visuais Simplificados (KPIs) - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* Lightest Green/Teal background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-kpis {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #059669; /* Emerald for titles */
-        }
-        .header-title-kpis {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #059669; /* Emerald */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-kpis {
-            font-size: 1.15rem;
-            color: #047857; /* Darker Emerald */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-kpis {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #065f46; /* Darkest Emerald for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-kpis {
-            color: #10b981; /* Bright Emerald highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-kpis {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #34d399, #6ee7b7); /* Verde Esmeralda */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de KPI */
+        .kpi-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        .pilar-1 { border-color: #3b82f6; } /* Azul */
+        .pilar-2 { border-color: #10b981; } /* Verde */
+        .pilar-3 { border-color: #f59e0b; } /* Âmbar */
+        .pilar-geral { border-color: #94a3b8; } /* Cinza */
+
+
+        .kpi-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #d1fae5; /* Light Emerald background for icon */
         }
-        .header-icon-kpis svg {
-            width: 32px;
-            height: 32px;
-            color: #059669; /* Emerald */
+        .kpi-card h3 i {
+            margin-right: 12px;
         }
+        .title-pillar-1 { color: #60a5fa; }
+        .title-pillar-2 { color: #34d399; }
+        .title-pillar-3 { color: #facc15; }
+        .title-pillar-geral { color: #cbd5e1; }
 
-        .table-kpis {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        .info-block {
+            margin-bottom: 20px;
         }
-        .table-kpis th, .table-kpis td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #a7f3d0; /* Lighter Emerald border */
-            font-size: 0.8rem; 
-            vertical-align: top;
-        }
-        .table-kpis th {
-            background-color: #f0fdfa; /* Very Light Emerald for table headers */
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #047857; /* Darker Emerald */
-        }
-        .table-kpis td {
-            color: #065f46; /* Darkest Emerald for table text */
-        }
-        /* Specific column widths */
-        .pilar-col-kpi { width: 15%; }
-        .indicador-col-kpi { width: 25%; }
-        .forma-col-kpi { width: 25%; }
-        .obs-col-kpi { width: 25%; }
-        .ref-col-kpi { width: 10%; }
-        
-        .recomendacoes-card-kpis {
-            background-color: #d1fae5; /* Light Emerald for recommendations */
-            border-left: 4px solid #10b981; /* Emerald border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .recomendacoes-card-kpis h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #059669;
+            color: #9ca3af;
             margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .recomendacoes-card-kpis ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #065f46;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
         }
-        .recomendacoes-card-kpis li {
-            margin-bottom: 5px;
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #059669; /* Verde Esmeralda */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #047857;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-kpis">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0ZM12 9v3.75m0-3.75V6m0 3.75H9m3.75 0h3.75M9 15h6" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-emerald-400">
+                <i class="fas fa-chart-pie fa-2x text-emerald-300"></i>
             </div>
-            <h1 class="header-title-kpis">Painel de Indicadores Visuais Simplificados (KPIs por Pilar) do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-kpis">APÊNDICE AG: Sugestões de indicadores visuais simples para PMEs monitorarem e comunicarem os avanços na implementação da GD de forma intuitiva e participativa.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Painel de Indicadores Visuais Simplificados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AG: Sugestões de KPIs visuais para PMEs monitorarem e comunicarem os avanços na implementação da GD de forma intuitiva e participativa.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A ideia é utilizar recursos gráficos básicos, que podem ser desenhados manualmente ou criados com ferramentas simples, para promover o <span class="highlight-kpis">engajamento e a percepção de progresso</span> na Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A ideia é utilizar recursos gráficos básicos, que podem ser desenhados manualmente ou criados com ferramentas simples, para promover o <strong class="text-emerald-300">engajamento e a percepção de progresso</strong> na Governança de Dados.
             </p>
         </section>
 
-        <!-- Visual Indicators Table Section (Quadro AG.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-kpis text-center">Quadro AG.1 – Sugestões de Indicadores Visuais Simplificados por Pilar</h2>
-            <div class="overflow-x-auto">
-                <table class="table-kpis">
-                    <thead>
-                        <tr>
-                            <th class="pilar-col-kpi">Pilar do Modelo GD-PME 3 Pilares</th>
-                            <th class="indicador-col-kpi">Indicador-Chave de Progresso (Exemplo)</th>
-                            <th class="forma-col-kpi">Forma Visual de Acompanhamento Sugerida (Analógica ou Baixa Tecnologia)</th>
-                            <th class="obs-col-kpi">Observações e Dicas de Aplicação</th>
-                            <th class="ref-col-kpi">Apêndice(s) de Referência</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Pilar 1 – Dados e Sistemas</td>
-                            <td>Percentual (%) de dados críticos (ex: clientes, produtos, financeiros) já inventariados, padronizados e centralizados (conforme metas do ciclo);</td>
-                            <td>"Termômetro do Progresso" desenhado em um cartaz, com escala de 0 a 100%, atualizado manualmente a cada avanço significativo.</td>
-                            <td>Pode ser um termômetro para cada tipo de dado crítico (ex: Termômetro Clientes, Termômetro Produtos). Celebrar cada meta atingida (ex: 25%, 50%).</td>
-                            <td>AL, B</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 2 – Capacitação Contínua</td>
-                            <td>Número de oficinas de GD realizadas no trimestre; Número de colaboradores capacitados; Número de materiais didáticos (cartilhas, glossários) produzidos e distribuídos.</td>
-                            <td>Um "Calendário de Capacitação" em mural, com marcações (ex: estrelas, adesivos) para cada oficina realizada e meta de participantes atingida; Pequenos gráficos de barras simples desenhados para mostrar o nº de materiais.</td>
-                            <td>Atualizar o calendário mensalmente. Destacar os nomes dos participantes ou setores com maior engajamento. Usar o Apêndice AR para ideias de materiais.</td>
-                            <td>D, U/AQ, C, AR</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 3 – Políticas Simplificadas</td>
-                            <td>Número de políticas básicas de GD definidas, comunicadas e com termo de adesão assinado; Percentual (%) de conformidade com a rotina de backup definida.</td>
-                            <td>Um "Gráfico de Pizza da Formalização" (desenhado) mostrando a proporção de políticas chave já implementadas vs. planejadas; Um pequeno "Placar do Backup" (Sim/Não) atualizado semanalmente.</td>
-                            <td>Utilizar cores diferentes para cada política no gráfico de pizza. Envolver os responsáveis de cada setor na atualização do placar de backup.</td>
-                            <td>G/AA/AY, AB, B</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Geral – Engajamento e Melhoria</td>
-                            <td>Número de sugestões de melhoria para a GD recebidas no ciclo (via formulário de feedback ou canal de dúvidas);</td>
-                            <td>Um "Quadro de Ideias" ou "Caixa de Sugestões da GD" onde as ideias são afixadas ou depositadas, com contagem mensal.</td>
-                            <td>Discutir as sugestões nas reuniões de avaliação de ciclo (Apêndice AT). Reconhecer as melhores ideias ou as mais implementadas.</td>
-                            <td>J/T, AT</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-tachometer-alt mr-3 text-emerald-300"></i>Quadro AG.1 – Sugestões de Indicadores por Pilar</h2>
+            <div class="space-y-6">
+
+                <div class="kpi-card pilar-1">
+                    <h3 class="title-pillar-1"><i class="fas fa-database"></i>Pilar 1 – Dados e Sistemas</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="info-block"><label>Indicador-Chave</label><p>Percentual (%) de dados críticos (clientes, produtos, financeiros) já inventariados, padronizados e centralizados.</p></div>
+                        <div class="info-block"><label>Forma Visual Sugerida</label><p>"Termômetro do Progresso" desenhado em um cartaz, com escala de 0 a 100%, atualizado manualmente a cada avanço.</p></div>
+                        <div class="info-block"><label>Dicas de Aplicação</label><p>Pode ser um termômetro para cada tipo de dado. Celebrar cada meta atingida (ex: 25%, 50%).</p></div>
+                        <div class="info-block"><label>Apêndices de Referência</label><p><span class="ref-tag">AL</span> <span class="ref-tag">B</span></p></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card pilar-2">
+                    <h3 class="title-pillar-2"><i class="fas fa-users-cog"></i>Pilar 2 – Capacitação Contínua</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="info-block"><label>Indicador-Chave</label><p>Número de oficinas de GD realizadas; Número de colaboradores capacitados; Número de materiais didáticos distribuídos.</p></div>
+                        <div class="info-block"><label>Forma Visual Sugerida</label><p>Um "Calendário de Capacitação" em mural, com marcações para cada oficina; Gráficos de barras simples desenhados para mostrar nº de materiais.</p></div>
+                        <div class="info-block"><label>Dicas de Aplicação</label><p>Atualizar o calendário mensalmente. Destacar os nomes dos participantes ou setores com maior engajamento. Usar Apêndice AR para ideias.</p></div>
+                        <div class="info-block"><label>Apêndices de Referência</label><p><span class="ref-tag">D</span> <span class="ref-tag">U/AQ</span> <span class="ref-tag">C</span> <span class="ref-tag">AR</span></p></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card pilar-3">
+                    <h3 class="title-pillar-3"><i class="fas fa-shield-alt"></i>Pilar 3 – Políticas Simplificadas</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="info-block"><label>Indicador-Chave</label><p>Número de políticas básicas definidas e comunicadas; Percentual (%) de conformidade com a rotina de backup.</p></div>
+                        <div class="info-block"><label>Forma Visual Sugerida</label><p>Um "Gráfico de Pizza da Formalização" (desenhado); Um pequeno "Placar do Backup" (Sim/Não) atualizado semanalmente.</p></div>
+                        <div class="info-block"><label>Dicas de Aplicação</label><p>Utilizar cores diferentes para cada política no gráfico. Envolver os responsáveis na atualização do placar de backup.</p></div>
+                        <div class="info-block"><label>Apêndices de Referência</label><p><span class="ref-tag">G/AA/AY</span> <span class="ref-tag">AB</span> <span class="ref-tag">B</span></p></div>
+                    </div>
+                </div>
+                
+                <div class="kpi-card pilar-geral">
+                    <h3 class="title-pillar-geral"><i class="fas fa-lightbulb"></i>Geral – Engajamento e Melhoria</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="info-block"><label>Indicador-Chave</label><p>Número de sugestões de melhoria para a GD recebidas no ciclo (via formulário de feedback ou canal de dúvidas).</p></div>
+                        <div class="info-block"><label>Forma Visual Sugerida</label><p>Um "Quadro de Ideias" ou "Caixa de Sugestões da GD" onde as ideias são afixadas ou depositadas, com contagem mensal.</p></div>
+                        <div class="info-block"><label>Dicas de Aplicação</label><p>Discutir as sugestões nas reuniões de avaliação de ciclo (Apêndice AT). Reconhecer as melhores ideias ou as mais implementadas.</p></div>
+                        <div class="info-block"><label>Apêndices de Referência</label><p><span class="ref-tag">J/T</span> <span class="ref-tag">AT</span></p></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Usage Recommendations Section (AG.1) -->
-        <section class="card recomendacoes-card-kpis fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AG.1 Recomendações para o Uso dos Indicadores Visuais:</h3>
-            <ul>
-                <li><strong>Visibilidade e Acesso:</strong> Os painéis ou murais com os indicadores visuais devem ser afixados em locais de grande circulação na PME (ex: refeitório, sala de reuniões, próximo ao registro de ponto) para garantir que todos os colaboradores possam vê-los e acompanhar o progresso;</li>
-                <li><strong>Atualização Colaborativa:</strong> Incentive que a atualização dos indicadores (ex: preencher o termômetro, marcar o calendário) seja feita de forma colaborativa ou rotativa entre os membros da equipe ou os multiplicadores de GD. Isso aumenta o senso de pertencimento e responsabilidade;</li>
-                <li><strong>Simplicidade e Clareza:</strong> Mantenha os visuais extremamente simples, com linguagem direta e cores que facilitem a compreensão imediata. O objetivo não é a sofisticação gráfica, mas a comunicação eficaz;</li>
-                <li><strong>Conexão com Metas:</strong> Sempre que possível, associe os indicadores visuais às metas estabelecidas para cada ciclo de implementação do GD-PME 3 Pilares. Celebrar o alcance das metas com base nesses painéis pode ser um fator de motivação;</li>
-                <li><strong>Integração com a Comunicação:</strong> Utilize fotos desses painéis e indicadores nos canais de comunicação interna (Apêndice W ou AN) para reforçar os avanços e o engajamento da empresa com a Governança de Dados.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-emerald-300"></i>AG.1 Recomendações para o Uso dos Indicadores Visuais</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Visibilidade e Acesso:</strong> Os painéis ou murais com os indicadores visuais devem ser afixados em locais de grande circulação na PME (ex: refeitório, sala de reuniões, próximo ao registro de ponto).</li>
+                <li><strong>Atualização Colaborativa:</strong> Incentive que a atualização dos indicadores seja feita de forma colaborativa ou rotativa entre os membros da equipe ou os multiplicadores de GD. Isso aumenta o senso de pertencimento.</li>
+                <li><strong>Simplicidade e Clareza:</strong> Mantenha os visuais extremamente simples, com linguagem direta e cores que facilitem a compreensão. O objetivo não é a sofisticação gráfica, mas a comunicação eficaz.</li>
+                <li><strong>Conexão com Metas:</strong> Sempre que possível, associe os indicadores visuais às metas estabelecidas para cada ciclo de implementação. Celebrar o alcance das metas com base nesses painéis pode ser um fator de motivação.</li>
+                <li><strong>Integração com a Comunicação:</strong> Utilize fotos desses painéis nos canais de comunicação interna (Apêndice W ou AN) para reforçar os avanços e o engajamento da empresa com a Governança de Dados.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-kpis fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em vivências profissionais e observações do contexto de PMEs, nos princípios de gestão visual, e nas obras de Mahanti (2021a) e Floridi (2010) sobre a importância da comunicação e do significado na governança.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este painel de indicadores visuais simplificados permite às PMEs monitorar e comunicar participativamente os avanços na implementação dos três pilares do modelo GD-PME. As sugestões visam tornar tangível o progresso nos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), fomentando engajamento e cultura de dados, com apoio dos Apêndices B, AL, D, U/AQ, C, AR, G/AA/AY, AB, J/T e AT.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base em vivências profissionais e observações do contexto de PMEs, nos princípios de gestão visual, e nas obras de Mahanti (2021a) e Floridi (2010).</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Este painel de indicadores visuais permite às PMEs monitorar e comunicar participativamente os avanços na implementação dos três pilares do modelo GD-PME, fomentando engajamento e cultura de dados.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

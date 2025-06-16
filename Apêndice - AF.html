@@ -3,258 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro de Diagnóstico Rápido de Maturidade em GD para Consultores - GD-PME</title>
+    <title>Roteiro de Diagnóstico Rápido de Maturidade em GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light Slate/Blue-Gray background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-diagnostico-rapido {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #334155; /* Dark Slate/Blue-Gray for titles */
-        }
-        .header-title-diagnostico-rapido {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #334155; /* Dark Slate/Blue-Gray */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-diagnostico-rapido {
-            font-size: 1.15rem;
-            color: #475569; /* Medium Slate/Blue-Gray */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-diagnostico-rapido {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e293b; /* Darkest Slate/Blue-Gray for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-diagnostico-rapido {
-            color: #64748b; /* Slate/Blue-Gray highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-diagnostico-rapido {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #94a3b8, #64748b); /* Cinza/Slate */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo dos Cards de Diagnóstico */
+        .diagnosis-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
+        }
+        .diagnosis-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #cbd5e1; /* Cinza claro */
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e2e8f0; /* Light Slate/Blue-Gray background for icon */
         }
-        .header-icon-diagnostico-rapido svg {
-            width: 32px;
-            height: 32px;
-            color: #334155; /* Dark Slate/Blue-Gray */
+        .diagnosis-card h3 i {
+            margin-right: 12px;
+            color: #94a3b8;
+        }
+        .diagnosis-card p {
+            font-size: 1rem;
+            color: #d1d5db;
+            margin-bottom: 20px;
         }
 
-        .table-diagnostico-rapido {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        /* Estilização dos Radio Buttons */
+        .level-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
         }
-        .table-diagnostico-rapido th, .table-diagnostico-rapido td {
-            text-align: left;
-            padding: 8px 10px; 
-            border: 1px solid #cbd5e1; /* Lighter Slate/Blue-Gray border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-diagnostico-rapido th {
-            background-color: #f8fafc; /* Very Light Slate/Blue-Gray for table headers */
-            font-weight: 600;
-            color: #475569; /* Medium Slate/Blue-Gray */
-        }
-        .table-diagnostico-rapido td {
-            color: #1e293b; /* Darkest Slate/Blue-Gray for table text */
-        }
-        /* Specific column widths */
-        .dimensao-col-dr { width: 20%; }
-        .questao-col-dr { width: 30%; }
-        .nivel0-col-dr, .nivel1-col-dr, .nivel2-col-dr { width: 10%; text-align: center;}
-        .obs-col-dr { width: 20%; }
-        
-        .checkbox-dr {
-            transform: scale(0.9);
-        }
-        .obs-textarea-dr {
-            width: 100%;
-            font-size: 0.75rem;
-            padding: 4px;
-            border: 1px solid #94a3b8;
-            border-radius: 4px;
-            min-height: 40px;
-            resize: vertical;
-        }
-        
-        .instrucoes-card-dr {
-            background-color: #e2e8f0; /* Light Slate/Blue-Gray for instructions */
-            border-left: 4px solid #64748b; /* Slate/Blue-Gray border */
-            padding: 16px;
-            margin-top: 20px;
+        .level-options label {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
             border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
         }
-        .instrucoes-card-dr h3 {
-            font-size: 1.1rem;
+        .level-options input[type="radio"] {
+            display: none;
+        }
+        .level-options label:hover {
+            background-color: #4b5563;
+        }
+        .level-options input[type="radio"]:checked + label {
+            background-color: #4f46e5; /* Roxo/Índigo para seleção */
+            border-color: #818cf8;
+            color: white;
             font-weight: 600;
-            color: #334155;
-            margin-bottom: 8px;
         }
-        .instrucoes-card-dr ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #1e293b;
+        .level-title {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
-        .instrucoes-card-dr li {
-            margin-bottom: 5px;
+        .level-desc {
+            font-size: 0.8rem;
+            color: #9ca3af;
         }
-        .instrucoes-card-dr strong {
-            color: #334155;
+        input[type="radio"]:checked + label .level-desc {
+            color: #c7d2fe;
         }
 
+        .obs-textarea {
+            width: 100%;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 10px;
+            color: #d1d5db;
+            min-height: 60px;
+        }
+        .obs-textarea:focus {
+            outline: none;
+            border-color: #64748b;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #64748b; /* Cinza */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #475569;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-diagnostico-rapido">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-slate-400">
+                <i class="fas fa-tasks fa-2x text-slate-300"></i>
             </div>
-            <h1 class="header-title-diagnostico-rapido">Roteiro de Diagnóstico Rápido de Maturidade em GD para Consultores</h1>
-            <p class="header-subtitle-diagnostico-rapido">APÊNDICE AF: Roteiro prático e simplificado para uso em reuniões iniciais de diagnóstico, visitas técnicas ou como parte de oficinas de sensibilização.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro de Diagnóstico Rápido de Maturidade em GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AF: Roteiro para consultores usarem em reuniões iniciais, visitas técnicas ou como parte de oficinas de sensibilização.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                O objetivo é fornecer uma <span class="highlight-diagnostico-rapido">visão geral rápida</span>, baseada nos princípios do modelo GD-PME 3 Pilares, para avaliar o estágio de maturidade informacional e de Governança de Dados (GD) de uma PME.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                O objetivo é fornecer uma <strong class="text-slate-300">visão geral rápida</strong>, baseada nos princípios do modelo GD-PME 3 Pilares, para avaliar o estágio de maturidade informacional e de Governança de Dados (GD) de uma PME.
             </p>
         </section>
 
-        <!-- Quick Diagnosis Roster Table Section (Quadro AF.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-diagnostico-rapido text-center">Quadro AF.1 – Roteiro de Diagnóstico Rápido de Maturidade em GD</h2>
-            <div class="overflow-x-auto">
-                <table class="table-diagnostico-rapido">
-                    <thead>
-                        <tr>
-                            <th class="dimensao-col-dr">Dimensão Avaliada (Relacionada aos Pilares GD-PME 3 Pilares)</th>
-                            <th class="questao-col-dr">Questão Diagnóstica-Chave para o Consultor Avaliar</th>
-                            <th class="nivel0-col-dr">Nível 0 – Inexistente / Muito Incipiente</th>
-                            <th class="nivel1-col-dr">Nível 1 – Parcial / Informal / Emergente</th>
-                            <th class="nivel2-col-dr">Nível 2 – Presente / Formalizado / Consolidado</th>
-                            <th class="obs-col-dr">Breves Observações do Consultor / Evidências</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Organização e Acesso aos Dados (Pilar 1)</td>
-                            <td>A empresa demonstra ter um controle mínimo sobre onde estão seus dados mais importantes (clientes, vendas, financeiro)? Existe alguma forma de inventário ou centralização, mesmo que simples?</td>
-                            <td><input type="radio" name="q1_nivel" value="0" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q1_nivel" value="1" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q1_nivel" value="2" class="checkbox-dr"></td>
-                            <td><textarea class="obs-textarea-dr" name="q1_obs"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Uso de Dados na Decisão e Cultura (Pilar 2)</td>
-                            <td>As decisões na empresa parecem ser baseadas mais na intuição e experiência dos gestores, ou já existe uma busca por dados e informações para embasá-las? Há alguma conversa sobre "cultura de dados"?</td>
-                            <td><input type="radio" name="q2_nivel" value="0" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q2_nivel" value="1" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q2_nivel" value="2" class="checkbox-dr"></td>
-                            <td><textarea class="obs-textarea-dr" name="q2_obs"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Políticas e Responsabilidades (Pilar 3)</td>
-                            <td>Existem regras mínimas, mesmo que informais, sobre quem pode acessar, alterar ou compartilhar dados críticos? Alguém é visto como "responsável" por determinados conjuntos de dados?</td>
-                            <td><input type="radio" name="q3_nivel" value="0" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q3_nivel" value="1" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q3_nivel" value="2" class="checkbox-dr"></td>
-                            <td><textarea class="obs-textarea-dr" name="q3_obs"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Conformidade e Riscos (LGPD e Geral)</td>
-                            <td>Há alguma consciência na empresa sobre os riscos legais associados ao tratamento inadequado de dados (especialmente dados pessoais sob a LGPD) e sobre a importância de backups e segurança básica?</td>
-                            <td><input type="radio" name="q4_nivel" value="0" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q4_nivel" value="1" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q4_nivel" value="2" class="checkbox-dr"></td>
-                            <td><textarea class="obs-textarea-dr" name="q4_obs"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Capacitação e Engajamento</td>
-                            <td>A equipe parece ter o conhecimento básico para lidar com os dados de suas rotinas? Há interesse ou abertura para aprender mais sobre como usar dados para melhorar o trabalho?</td>
-                            <td><input type="radio" name="q5_nivel" value="0" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q5_nivel" value="1" class="checkbox-dr"></td>
-                            <td><input type="radio" name="q5_nivel" value="2" class="checkbox-dr"></td>
-                            <td><textarea class="obs-textarea-dr" name="q5_obs"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in space-y-6" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-4"><i class="fas fa-clipboard-check mr-3 text-slate-300"></i>Quadro AF.1 – Diagnóstico Rápido de Maturidade</h2>
+
+            <div class="diagnosis-card">
+                <h3><i class="fas fa-database"></i>Organização e Acesso aos Dados (Pilar 1)</h3>
+                <p>A empresa demonstra ter um controle mínimo sobre onde estão seus dados mais importantes (clientes, vendas, financeiro)? Existe alguma forma de inventário ou centralização, mesmo que simples?</p>
+                <div class="level-options">
+                    <input type="radio" id="q1_lvl0" name="q1_nivel" value="0"><label for="q1_lvl0"><span class="level-title">Nível 0</span><span class="level-desc">Inexistente / Incipiente</span></label>
+                    <input type="radio" id="q1_lvl1" name="q1_nivel" value="1"><label for="q1_lvl1"><span class="level-title">Nível 1</span><span class="level-desc">Parcial / Informal</span></label>
+                    <input type="radio" id="q1_lvl2" name="q1_nivel" value="2"><label for="q1_lvl2"><span class="level-title">Nível 2</span><span class="level-desc">Presente / Formalizado</span></label>
+                </div>
+                <textarea class="obs-textarea" name="q1_obs" placeholder="Breves Observações / Evidências..."></textarea>
+            </div>
+            
+            <div class="diagnosis-card">
+                <h3><i class="fas fa-chart-line"></i>Uso de Dados na Decisão e Cultura (Pilar 2)</h3>
+                <p>As decisões na empresa parecem ser baseadas mais na intuição e experiência dos gestores, ou já existe uma busca por dados e informações para embasá-las? Há alguma conversa sobre "cultura de dados"?</p>
+                <div class="level-options">
+                    <input type="radio" id="q2_lvl0" name="q2_nivel" value="0"><label for="q2_lvl0"><span class="level-title">Nível 0</span><span class="level-desc">Inexistente / Incipiente</span></label>
+                    <input type="radio" id="q2_lvl1" name="q2_nivel" value="1"><label for="q2_lvl1"><span class="level-title">Nível 1</span><span class="level-desc">Parcial / Informal</span></label>
+                    <input type="radio" id="q2_lvl2" name="q2_nivel" value="2"><label for="q2_lvl2"><span class="level-title">Nível 2</span><span class="level-desc">Presente / Formalizado</span></label>
+                </div>
+                <textarea class="obs-textarea" name="q2_obs" placeholder="Breves Observações / Evidências..."></textarea>
+            </div>
+            
+            <div class="diagnosis-card">
+                <h3><i class="fas fa-gavel"></i>Políticas e Responsabilidades (Pilar 3)</h3>
+                <p>Existem regras mínimas, mesmo que informais, sobre quem pode acessar, alterar ou compartilhar dados críticos? Alguém é visto como "responsável" por determinados conjuntos de dados?</p>
+                <div class="level-options">
+                    <input type="radio" id="q3_lvl0" name="q3_nivel" value="0"><label for="q3_lvl0"><span class="level-title">Nível 0</span><span class="level-desc">Inexistente / Incipiente</span></label>
+                    <input type="radio" id="q3_lvl1" name="q3_nivel" value="1"><label for="q3_lvl1"><span class="level-title">Nível 1</span><span class="level-desc">Parcial / Informal</span></label>
+                    <input type="radio" id="q3_lvl2" name="q3_nivel" value="2"><label for="q3_lvl2"><span class="level-title">Nível 2</span><span class="level-desc">Presente / Formalizado</span></label>
+                </div>
+                <textarea class="obs-textarea" name="q3_obs" placeholder="Breves Observações / Evidências..."></textarea>
+            </div>
+
+            <div class="diagnosis-card">
+                <h3><i class="fas fa-shield-alt"></i>Conformidade e Riscos (LGPD e Geral)</h3>
+                <p>Há alguma consciência na empresa sobre os riscos legais associados ao tratamento inadequado de dados (especialmente dados pessoais sob a LGPD) e sobre a importância de backups e segurança básica?</p>
+                <div class="level-options">
+                    <input type="radio" id="q4_lvl0" name="q4_nivel" value="0"><label for="q4_lvl0"><span class="level-title">Nível 0</span><span class="level-desc">Inexistente / Incipiente</span></label>
+                    <input type="radio" id="q4_lvl1" name="q4_nivel" value="1"><label for="q4_lvl1"><span class="level-title">Nível 1</span><span class="level-desc">Parcial / Informal</span></label>
+                    <input type="radio" id="q4_lvl2" name="q4_nivel" value="2"><label for="q4_lvl2"><span class="level-title">Nível 2</span><span class="level-desc">Presente / Formalizado</span></label>
+                </div>
+                <textarea class="obs-textarea" name="q4_obs" placeholder="Breves Observações / Evidências..."></textarea>
+            </div>
+
+            <div class="diagnosis-card">
+                <h3><i class="fas fa-users-cog"></i>Capacitação e Engajamento</h3>
+                <p>A equipe parece ter o conhecimento básico para lidar com os dados de suas rotinas? Há interesse ou abertura para aprender mais sobre como usar dados para melhorar o trabalho?</p>
+                <div class="level-options">
+                    <input type="radio" id="q5_lvl0" name="q5_nivel" value="0"><label for="q5_lvl0"><span class="level-title">Nível 0</span><span class="level-desc">Inexistente / Incipiente</span></label>
+                    <input type="radio" id="q5_lvl1" name="q5_nivel" value="1"><label for="q5_lvl1"><span class="level-title">Nível 1</span><span class="level-desc">Parcial / Informal</span></label>
+                    <input type="radio" id="q5_lvl2" name="q5_nivel" value="2"><label for="q5_lvl2"><span class="level-title">Nível 2</span><span class="level-desc">Presente / Formalizado</span></label>
+                </div>
+                <textarea class="obs-textarea" name="q5_obs" placeholder="Breves Observações / Evidências..."></textarea>
             </div>
         </section>
 
-        <!-- Instructions Section (AF.1) -->
-        <section class="card instrucoes-card-dr fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AF.1 Instruções para Uso do Roteiro pelo Consultor:</h3>
-            <ul>
-                <li><strong>Aplicação:</strong> Este roteiro deve ser usado como um guia para uma conversa estruturada com os gestores e, se possível, com alguns colaboradores chave da PME. Não é um questionário a ser simplesmente entregue, mas um framework para a observação e o diálogo;</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-slate-300"></i>AF.1 Instruções para Uso do Roteiro</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-4">
+                <li><strong>Aplicação:</strong> Este roteiro deve ser usado como um guia para uma conversa estruturada com os gestores e, se possível, com alguns colaboradores chave da PME. Não é um questionário a ser simplesmente entregue, mas um framework para a observação e o diálogo.</li>
                 <li><strong>Escala Semiquantitativa:</strong> A escala de Nível 0, 1 e 2 é uma forma simplificada de registrar uma percepção inicial.
-                    <ul class="list-disc ml-5 mt-1">
+                    <ul class="list-disc list-inside ml-6 mt-2 space-y-1 text-gray-400">
                         <li><strong>Nível 0 (Inexistente / Muito Incipiente):</strong> Práticas ausentes ou muito rudimentares, sem consciência formal do tema.</li>
                         <li><strong>Nível 1 (Parcial / Informal / Emergente):</strong> Algumas práticas existem de forma isolada, informal ou com baixa sistematização; há alguma consciência, mas pouca formalização.</li>
                         <li><strong>Nível 2 (Presente / Formalizado / Consolidado):</strong> Existem práticas mais estabelecidas, mesmo que simples, com algum nível de formalização e consciência disseminada.</li>
                     </ul>
                 </li>
-                <li><strong>Observações:</strong> A coluna "Breves Observações do Consultor / Evidências" é crucial para anotar exemplos concretos, percepções e falas dos entrevistados que justifiquem a avaliação em cada dimensão;</li>
-                <li><strong>Resultado e Próximos Passos:</strong> O resultado deste diagnóstico rápido pode orientar a priorização das ações de um projeto de consultoria ou a indicação de quais pilares do modelo GD-PME 3 Pilares necessitam de atenção mais imediata. Ele pode servir como ponto de partida para a aplicação do Diagnóstico Inicial mais detalhado (Apêndice A);</li>
+                <li><strong>Observações:</strong> A coluna "Breves Observações do Consultor / Evidências" é crucial para anotar exemplos concretos, percepções e falas dos entrevistados que justifiquem a avaliação em cada dimensão.</li>
+                <li><strong>Resultado e Próximos Passos:</strong> O resultado deste diagnóstico rápido pode orientar a priorização das ações de um projeto de consultoria ou a indicação de quais pilares do modelo GD-PME 3 Pilares necessitam de atenção mais imediata. Ele pode servir como ponto de partida para a aplicação do Diagnóstico Inicial mais detalhado (Apêndice A).</li>
                 <li><strong>Limitação:</strong> Este é um instrumento de avaliação rápida e não substitui diagnósticos mais aprofundados, mas é útil para um primeiro contato e para alinhar expectativas antes de uma proposta formal de intervenção.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-diagnostico-rapido fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Adaptado pelo autor com base em Mahanti (2021a), Bento (2021), Ladley (2020), nos princípios do modelo GD-PME 3 Pilares e em instrumentos de diagnóstico rápido.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este roteiro de diagnóstico rápido oferece a consultores uma avaliação inicial da maturidade em GD de PMEs, orientando intervenções alinhadas ao modelo GD-PME 3 Pilares. As dimensões avaliadas cobrem os Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), antecedendo o diagnóstico detalhado do Apêndice A.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Fonte:</strong> Adaptado pelo autor com base em Mahanti (2021a), Bento (2021), Ladley (2020), nos princípios do modelo GD-PME 3 Pilares e em instrumentos de diagnóstico rápido.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Este roteiro de diagnóstico rápido oferece a consultores uma avaliação inicial da maturidade em GD de PMEs, orientando intervenções alinhadas ao modelo GD-PME 3 Pilares. As dimensões avaliadas cobrem os Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), antecedendo o diagnóstico detalhado do Apêndice A.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

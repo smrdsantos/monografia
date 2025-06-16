@@ -3,222 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro de Comunicação Interna sobre Governança de Dados - GD-PME</title>
+    <title>Roteiro de Comunicação Interna sobre Governança de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* Light Teal background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-comunicacao-ac {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0d9488; /* Dark Teal for titles */
-        }
-        .header-title-comunicacao-ac {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0d9488; /* Dark Teal */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-comunicacao-ac {
-            font-size: 1.15rem;
-            color: #0f766e; /* Medium Teal */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-comunicacao-ac {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #134e4a; /* Darkest Teal for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-comunicacao-ac {
-            color: #14b8a6; /* Teal highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-comunicacao-ac {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #2dd4bf, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #0d9488; /* Teal */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ccfbf1; /* Light Teal background for icon */
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #ccfbf1;
+            font-size: 1.2rem;
         }
-        .header-icon-comunicacao-ac svg {
-            width: 32px;
-            height: 32px;
-            color: #0d9488; /* Dark Teal */
+        .timeline-container:nth-child(1)::before { content: '1'; }
+        .timeline-container:nth-child(2)::before { content: '2'; }
+        .timeline-container:nth-child(3)::before { content: '3'; }
+        .timeline-container:nth-child(4)::before { content: '4'; }
+        .timeline-container:nth-child(5)::before { content: '5'; }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .table-comunicacao-ac {
-            width: 100%;
-            border-collapse: collapse;
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5eead4; /* Light Teal */
+        }
+        .info-block {
             margin-top: 16px;
         }
-        .table-comunicacao-ac th, .table-comunicacao-ac td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #99f6e4; /* Lighter Teal border */
-            font-size: 0.8rem;
-            vertical-align: top;
-        }
-        .table-comunicacao-ac th {
-            background-color: #f0fdfa; /* Very Light Teal for table headers */
+        .info-block h4 {
             font-weight: 600;
-            color: #0f766e; /* Medium Teal */
-        }
-        .table-comunicacao-ac td {
-            color: #134e4a; /* Darkest Teal for table text */
-        }
-        /* Specific column widths */
-        .etapa-col-ac { width: 20%; }
-        .objetivo-col-ac { width: 25%; }
-        .acoes-col-ac { width: 30%; }
-        .ferramenta-col-ac { width: 25%; }
-        
-        .recomendacoes-card-ac {
-            background-color: #ccfbf1; /* Light Teal for recommendations */
-            border-left: 4px solid #14b8a6;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .recomendacoes-card-ac h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #0d9488;
+            color: #a7f3d0; /* Lighter Green */
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
         }
-        .recomendacoes-card-ac ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #134e4a;
+        .info-block i {
+            margin-right: 8px;
         }
-        .recomendacoes-card-ac li {
-            margin-bottom: 5px;
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #0d9488;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #0f766e;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-comunicacao-ac">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-teal-400">
+                <i class="fas fa-bullhorn fa-2x text-teal-300"></i>
             </div>
-            <h1 class="header-title-comunicacao-ac">Roteiro de Comunicação Interna sobre Governança de Dados (GD)</h1>
-            <p class="header-subtitle-comunicacao-ac">APÊNDICE AC: Roteiro para sensibilizar colaboradores sobre a importância da GD e engajá-los nas práticas do modelo GD-PME 3 Pilares.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro de Comunicação Interna sobre Governança de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AC: Roteiro para sensibilizar colaboradores sobre a importância da GD e engajá-los nas práticas do modelo GD-PME 3 Pilares.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                O foco deste roteiro é promover um <span class="highlight-comunicacao-ac">entendimento acessível e uma adesão consciente</span> às novas rotinas e responsabilidades inerentes à Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                O foco deste roteiro é promover um <strong class="text-teal-300">entendimento acessível e uma adesão consciente</strong> às novas rotinas e responsabilidades inerentes à Governança de Dados.
             </p>
         </section>
 
-        <!-- Communication Roster Table Section (Quadro AC.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-comunicacao-ac text-center">Quadro AC.1 – Roteiro de Comunicação Interna por Etapas</h2>
-            <div class="overflow-x-auto">
-                <table class="table-comunicacao-ac">
-                    <thead>
-                        <tr>
-                            <th class="etapa-col-ac">Etapa da Comunicação</th>
-                            <th class="objetivo-col-ac">Objetivo Principal da Etapa</th>
-                            <th class="acoes-col-ac">Ações de Comunicação Sugeridas</th>
-                            <th class="ferramenta-col-ac">Ferramenta(s) de Apoio / Canal(is) Sugerido(s) (Ver Apêndice K, W, AR)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">1. Anúncio Inicial e Contextualização</td>
-                            <td>Informar sobre o início da iniciativa de GD e apresentar seus objetivos gerais e benefícios para a PME.</td>
-                            <td>Envio de e-mail institucional ou comunicado geral (ver Apêndice AN); Reunião breve de apresentação com a liderança.</td>
-                            <td>E-mail; Mural interno; Reunião presencial ou online.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">2. Apresentação Detalhada do Modelo GD-PME 3 Pilares</td>
-                            <td>Explicar os três pilares do modelo GD-PME 3 Pilares, as principais mudanças esperadas e o papel dos colaboradores.</td>
-                            <td>Oficina introdutória (Apêndice D); Apresentação visual (slides) com exemplos práticos (Apêndice M); Distribuição do Glossário (Apêndice C).</td>
-                            <td>Google Slides/PowerPoint; Materiais impressos; Intranet.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">3. Engajamento com Exemplos Práticos e Papéis</td>
-                            <td>Mostrar como a GD já se manifesta (ou deveria se manifestar) nas rotinas diárias de cada setor; Clarificar papéis e responsabilidades.</td>
-                            <td>Discussão de casos ou desafios informacionais reais da empresa; Dinâmica "O Caminho do Dado" (Apêndice Z); Apresentação dos responsáveis/multiplicadores.</td>
-                            <td>Fichas visuais; Dinâmicas participativas; Apresentação.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">4. Formalização do Compromisso e Esclarecimento de Dúvidas</td>
-                            <td>Obter o comprometimento formal (simbólico) dos colaboradores com as boas práticas de GD; Abrir canais para dúvidas.</td>
-                            <td>Apresentação e assinatura do Termo de Boas Práticas/Adesão (Apêndice G/AA/AH/AP/AY); Criação de um canal de dúvidas (e-mail, grupo, formulário).</td>
-                            <td>Formulário físico ou digital (Apêndice J/T); Murais; Grupos de WhatsApp.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">5. Comunicação Contínua e Reforço</td>
-                            <td>Manter a GD como tema presente na organização; Divulgar avanços, boas práticas e lições aprendidas.</td>
-                            <td>Envios periódicos de dicas (via e-mail, WhatsApp); Murais visuais com progresso (Apêndice AO); Newsletter interna (conforme Apêndice W).</td>
-                            <td>E-mail; WhatsApp; Murais; Reuniões de equipe.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-stream mr-3 text-teal-300"></i>Quadro AC.1 – Roteiro de Comunicação Interna por Etapas</h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>1. Anúncio Inicial e Contextualização</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-bullseye"></i>Objetivo Principal</h4>
+                            <p>Informar sobre o início da iniciativa de GD e apresentar seus objetivos gerais e benefícios para a PME.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ações Sugeridas</h4>
+                            <p>Envio de e-mail institucional ou comunicado geral (ver Apêndice AN); Reunião breve de apresentação com a liderança.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Ferramentas / Canais</h4>
+                            <p>E-mail; Mural interno; Reunião presencial ou online.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>2. Apresentação Detalhada do Modelo</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-bullseye"></i>Objetivo Principal</h4>
+                            <p>Explicar os três pilares do modelo GD-PME 3 Pilares, as principais mudanças esperadas e o papel dos colaboradores.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ações Sugeridas</h4>
+                            <p>Oficina introdutória (Apêndice D); Apresentação visual (slides) com exemplos práticos (Apêndice M); Distribuição do Glossário (Apêndice C).</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Ferramentas / Canais</h4>
+                            <p>Google Slides/PowerPoint; Materiais impressos; Intranet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>3. Engajamento com Exemplos Práticos</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-bullseye"></i>Objetivo Principal</h4>
+                            <p>Mostrar como a GD já se manifesta (ou deveria se manifestar) nas rotinas diárias de cada setor; Clarificar papéis e responsabilidades.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ações Sugeridas</h4>
+                            <p>Discussão de casos ou desafios informacionais reais da empresa; Dinâmica "O Caminho do Dado" (Apêndice Z); Apresentação dos responsáveis/multiplicadores.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Ferramentas / Canais</h4>
+                            <p>Fichas visuais; Dinâmicas participativas; Apresentação.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>4. Formalização do Compromisso</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-bullseye"></i>Objetivo Principal</h4>
+                            <p>Obter o comprometimento formal (simbólico) dos colaboradores com as boas práticas de GD; Abrir canais para dúvidas.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ações Sugeridas</h4>
+                            <p>Apresentação e assinatura do Termo de Boas Práticas/Adesão (Apêndice G/AA/AH/AP/AY); Criação de um canal de dúvidas (e-mail, grupo, formulário).</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Ferramentas / Canais</h4>
+                            <p>Formulário físico ou digital (Apêndice J/T); Murais; Grupos de WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>5. Comunicação Contínua e Reforço</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-bullseye"></i>Objetivo Principal</h4>
+                            <p>Manter a GD como tema presente na organização; Divulgar avanços, boas práticas e lições aprendidas.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ações Sugeridas</h4>
+                            <p>Envios periódicos de dicas (via e-mail, WhatsApp); Murais visuais com progresso (Apêndice AO); Newsletter interna (conforme Apêndice W).</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Ferramentas / Canais</h4>
+                            <p>E-mail; WhatsApp; Murais; Reuniões de equipe.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Additional Recommendations Section (AC.1) -->
-        <section class="card recomendacoes-card-ac fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AC.1 Recomendações Adicionais para a Efetividade do Roteiro:</h3>
-            <ul>
-                <li>Este roteiro deve ser adaptado conforme o porte da empresa, sua cultura organizacional e o perfil da equipe. A flexibilidade é chave;</li>
-                <li>A comunicação deve ser aplicada de forma contínua, especialmente no início de cada novo ciclo trimestral de governança (conforme Apêndice L ou AM), e ser conduzida preferencialmente pela liderança direta ou por um multiplicador interno treinado (Apêndice U ou AQ);</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-teal-300"></i>AC.1 Recomendações Adicionais para a Efetividade</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>Este roteiro deve ser adaptado conforme o porte da empresa, sua cultura organizacional e o perfil da equipe. A flexibilidade é chave.</li>
+                <li>A comunicação deve ser aplicada de forma contínua, especialmente no início de cada novo ciclo trimestral de governança (conforme Apêndice L ou AM), e ser conduzida preferencialmente pela liderança direta ou por um multiplicador interno treinado (Apêndice U ou AQ).</li>
                 <li>Utilize linguagem acessível, exemplos do cotidiano da PME e recursos visuais (Apêndice AR) para facilitar a compreensão e o engajamento, conforme discutido nas seções 2.7 e 2.16 da monografia.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-comunicacao-ac fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base no modelo GD-PME 3 Pilares e em práticas de comunicação organizacional (MAHANTI, 2021a; OTTO, 2011; BENTO, 2021).</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Fundamental para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este roteiro de comunicação interna visa promover entendimento, sensibilização e engajamento dos colaboradores com as rotinas da governança de dados, criando um ambiente colaborativo para a implementação dos Pilares 1 (Dados e Sistemas) e 3 (Políticas).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base no modelo GD-PME 3 Pilares e em práticas de comunicação organizacional (MAHANTI, 2021a; OTTO, 2011; BENTO, 2021).</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Fundamental para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este roteiro de comunicação interna visa promover entendimento, sensibilização e engajamento dos colaboradores com as rotinas da governança de dados, criando um ambiente colaborativo para a implementação dos Pilares 1 (Dados e Sistemas) e 3 (Políticas).</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

@@ -3,233 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Modelo de Termo de Compromisso Institucional com a Governança de Dados - GD-PME</title>
+    <title>Modelo de Termo de Compromisso Institucional com a GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light Slate background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-termo-ah {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #334155; /* Dark Slate for titles */
-        }
-        .header-title-termo-ah {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #334155; /* Dark Slate */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-termo-ah {
-            font-size: 1.15rem;
-            color: #475569; /* Medium Slate */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-termo-ah {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1e293b; /* Darkest Slate for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-termo-ah {
-            color: #64748b; /* Slate highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-termo-ah {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e2e8f0; /* Light Slate background for icon */
-        }
-        .header-icon-termo-ah svg {
-            width: 32px;
-            height: 32px;
-            color: #334155; /* Dark Slate */
-        }
-
-        .termo-document-ah {
-            border: 1px solid #94a3b8; /* Slate border for the document */
-            border-radius: 8px;
-            padding: 24px; /* Increased padding */
-            background-color: #f8fafc; /* Very light Slate background */
-        }
-        .termo-document-ah h2 {
-            font-size: 1.3rem; /* Adjusted for document title */
-            font-weight: 600;
-            color: #1e293b; /* Darkest Slate */
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        .termo-document-ah p, .termo-document-ah ul {
-            font-size: 0.9rem;
-            color: #334155; /* Dark Slate for text */
-            line-height: 1.7; /* Increased line height */
-            margin-bottom: 12px;
-        }
-        .termo-document-ah ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        .termo-document-ah li {
-            margin-bottom: 8px;
-        }
-        .termo-document-ah .input-line-ah {
-            border-bottom: 1px solid #64748b; /* Slate border for input lines */
-            display: inline-block;
-            min-width: 250px; /* Adjust as needed */
-            margin-left: 8px;
-            font-weight: normal;
-            color: #475569;
-        }
-         .termo-document-ah .label-text-ah {
-            font-weight: 600; /* Bolder labels */
-            color: #334155;
-         }
-        .signature-section-ah {
-            margin-top: 40px; /* Increased top margin */
-            color: #1e293b;
-        }
-        .signature-block-ah {
-            margin-top: 24px; /* Increased margin for signature block */
-        }
-        .signature-line-ah {
-            border-bottom: 1px solid #475569; /* Medium Slate border */
-            width: 100%;
-            max-width:350px; /* Wider signature line */
-            display:block;
-            margin-top: 4px; /* Adjusted margin */
-            margin-bottom: 6px;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
         
-        .observacoes-card-ah {
-            background-color: #e2e8f0; /* Light Slate for observations */
-            border-left: 4px solid #64748b; /* Slate border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .observacoes-card-ah h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 8px;
-        }
-        .observacoes-card-ah ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #1e293b;
-        }
-        .observacoes-card-ah li {
-            margin-bottom: 5px;
+        .gradient-title {
+            background: linear-gradient(to right, #94a3b8, #cbd5e1); /* Cinza/Slate */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
+        /* Estilo para o documento dentro do card */
+        .termo-document {
+            background-color: #f8fafc; /* Fundo claro para o documento */
+            color: #1e293b; /* Texto escuro para legibilidade */
+            border-radius: 8px;
+            padding: 32px;
+            border: 1px solid #cbd5e1;
+        }
+        .termo-document h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+        .termo-document p, .termo-document li {
+            font-size: 1rem; /* Tamanho de fonte maior para um documento formal */
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        .termo-document ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .termo-document li {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .termo-document li::before {
+            content: '\f058'; /* Ícone de check do Font Awesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #1e40af;
+        }
+        .termo-document .placeholder {
+            font-weight: 600;
+            color: #1e40af;
+            background-color: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .signature-section {
+            margin-top: 48px;
+        }
+        .signature-block {
+            margin-top: 32px;
+        }
+        .signature-line {
+            border-bottom: 1.5px solid #334155;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin-top: 60px;
+        }
+        .signature-label {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #64748b; /* Cinza */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #475569;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-termo-ah">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-5xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-slate-400">
+                <i class="fas fa-handshake fa-2x text-slate-300"></i>
             </div>
-            <h1 class="header-title-termo-ah">Modelo de Termo de Compromisso Institucional com a Governança de Dados</h1>
-            <p class="header-subtitle-termo-ah">APÊNDICE AH: Documento-base para formalização do compromisso institucional de uma PME com a implantação e sustentação do modelo GD-PME 3 Pilares.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Termo de Compromisso Institucional</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AH: Documento-base para formalização do compromisso da PME com a implantação e sustentação do modelo GD-PME 3 Pilares.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Sua assinatura pela liderança da empresa demonstra o <span class="highlight-termo-ah">patrocínio executivo</span>, um dos fatores críticos de sucesso para a Governança de Dados. Este documento pode ser utilizado no início do primeiro ciclo operacional ou ao aderir a programas de fomento.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Sua assinatura pela liderança da empresa demonstra o <strong class="text-slate-300">patrocínio executivo</strong>, um dos fatores críticos de sucesso para a Governança de Dados. Este documento pode ser utilizado no início do primeiro ciclo operacional ou ao aderir a programas de fomento.
             </p>
         </section>
 
-        <!-- Termo de Compromisso Document Section (AH.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-termo-ah text-center">AH.1 Modelo de Termo de Compromisso Institucional</h2>
-            <div class="termo-document-ah">
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-file-signature mr-3 text-slate-300"></i>AH.1 Modelo de Termo de Compromisso</h2>
+            <div class="termo-document">
                 <h2>TERMO DE COMPROMISSO INSTITUCIONAL COM A GOVERNANÇA DE DADOS SEGUNDO O MODELO GD-PME 3 PILARES</h2>
 
-                <p>A empresa <span class="label-text-ah">[Nome Completo da Empresa]</span>, inscrita no CNPJ sob o nº <span class="label-text-ah">[Número do CNPJ]</span>, com sede em <span class="label-text-ah">[Endereço Completo da Sede]</span>, neste ato representada por seu(sua) <span class="label-text-ah">[Cargo do Representante Legal, ex: Diretor(a) Geral, Sócio(a) Administrador(a)]</span>, Sr.(a) <span class="label-text-ah">[Nome Completo do Representante Legal]</span>, declara, por meio deste termo, seu firme compromisso institucional com a adoção progressiva, a implementação e a manutenção contínua de práticas de Governança de Dados, conforme os princípios e diretrizes estabelecidos pelo modelo GD-PME 3 Pilares, desenvolvido no âmbito da monografia "Impacto da Governança de Dados na Tomada de Decisões Corporativas: Implantação de Políticas de Governança em Pequenas e Médias Empresas".</p>
+                <p>A empresa <span class="placeholder">[Nome Completo da Empresa]</span>, inscrita no CNPJ sob o nº <span class="placeholder">[Número do CNPJ]</span>, com sede em <span class="placeholder">[Endereço Completo da Sede]</span>, neste ato representada por seu(sua) <span class="placeholder">[Cargo do Representante Legal]</span>, Sr.(a) <span class="placeholder">[Nome Completo do Representante Legal]</span>, declara, por meio deste termo, seu firme compromisso institucional com a adoção progressiva, a implementação e a manutenção contínua de práticas de Governança de Dados, conforme os princípios e diretrizes estabelecidos pelo modelo GD-PME 3 Pilares.</p>
 
                 <p>Para tanto, a empresa compromete-se a envidar esforços para:</p>
+                
                 <ul>
-                    <li><strong>Implementar o Pilar 1 – Separação entre Dados e Sistemas:</strong> Buscar progressivamente a organização, o inventário (conforme Apêndice AL), a padronização e a rastreabilidade dos dados essenciais da empresa, tratando-os como ativos estratégicos independentes dos sistemas operacionais;</li>
-                    <li><strong>Fomentar o Pilar 2 – Capacitação Contínua:</strong> Promover ações regulares de sensibilização, treinamento e desenvolvimento de uma cultura de dados entre seus colaboradores, utilizando os instrumentos pedagógicos e roteiros de capacitação propostos (conforme Apêndices C, D, M, U/AQ, Z, AR), e incentivando a formação de multiplicadores internos;</li>
-                    <li><strong>Estabelecer e Manter o Pilar 3 – Políticas Graduais e Simplificadas:</strong> Definir, comunicar, aplicar e revisar periodicamente políticas mínimas e acessíveis de acesso, uso ético, segurança, retenção e descarte de dados (conforme modelos e diretrizes dos Apêndices G/AA/AY, AB, AN), incluindo o alinhamento com a Lei Geral de Proteção de Dados Pessoais (LGPD – Lei nº 13.709/2018).</li>
+                    <li><strong>Implementar o Pilar 1 – Separação entre Dados e Sistemas:</strong> Buscar progressivamente a organização, o inventário (conforme Apêndice AL), a padronização e a rastreabilidade dos dados essenciais da empresa, tratando-os como ativos estratégicos.</li>
+                    <li><strong>Fomentar o Pilar 2 – Capacitação Contínua:</strong> Promover ações regulares de sensibilização, treinamento e desenvolvimento de uma cultura de dados entre seus colaboradores, utilizando os instrumentos pedagógicos e roteiros de capacitação propostos.</li>
+                    <li><strong>Estabelecer o Pilar 3 – Políticas Graduais e Simplificadas:</strong> Definir, comunicar e aplicar políticas mínimas de acesso, uso ético, segurança e retenção de dados, incluindo o alinhamento com a Lei Geral de Proteção de Dados Pessoais (LGPD).</li>
                 </ul>
 
-                <p>A empresa declara, ainda, que compreende a importância fundamental da Governança de Dados para a melhoria da tomada de decisão, para o aumento da eficiência operacional, para a garantia da conformidade regulatória (especialmente com a LGPD) e para a sustentabilidade e competitividade institucional no atual cenário de transformação digital. Comprometemo-nos, assim, a aplicar os princípios da clareza, simplicidade, participação, progressividade e continuidade que norteiam o modelo GD-PME 3 Pilares.</p>
+                <p>A empresa declara, ainda, que compreende a importância fundamental da Governança de Dados para a melhoria da tomada de decisão, para o aumento da eficiência operacional, para a garantia da conformidade regulatória e para a sustentabilidade e competitividade institucional. Comprometemo-nos, assim, a aplicar os princípios da clareza, simplicidade, participação e continuidade que norteiam o modelo GD-PME 3 Pilares.</p>
 
-                <p class="text-center mt-8">[Local de assinatura], [Dia] de [Mês] de [Ano].</p>
+                <p class="text-center mt-10">[Local de assinatura], [Dia] de [Mês] de [Ano].</p>
 
-                <div class="signature-section-ah">
-                    <div class="signature-block-ah text-center">
-                        <div class="signature-line-ah mx-auto"></div>
-                        <p class="label-text-ah">[Nome Completo do Representante Legal]</p>
+                <div class="signature-section">
+                    <div class="signature-block text-center">
+                        <div class="signature-line mx-auto"></div>
+                        <p class="signature-label">[Nome Completo do Representante Legal]</p>
                         <p class="text-sm">[Cargo do Representante Legal]</p>
                         <p class="text-sm">[Nome da Empresa]</p>
                     </div>
                 </div>
-                 <p class="text-xs text-center mt-2">(Campos de Assinatura: Times New Roman 12)</p>
             </div>
         </section>
         
-        <!-- Usage Observations Section (AH.2) -->
-        <section class="card observacoes-card-ah fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AH.2 Observações sobre a Utilização do Termo:</h3>
-            <ul>
-                <li>Este termo de compromisso é um instrumento simbólico e estratégico importante para marcar o início formal da jornada de Governança de Dados na PME;</li>
-                <li>Recomenda-se que sua assinatura seja comunicada internamente (conforme Apêndice W ou AC) para reforçar o comprometimento da liderança e engajar os colaboradores;</li>
-                <li>O documento pode ser utilizado como anexo em processos de adesão a editais públicos de fomento à inovação ou transformação digital (ver Apêndice AJ), ou em parcerias com instituições como SEBRAE, FINEP, bancos de fomento e universidades, como evidência do engajamento da PME com boas práticas de gestão informacional.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+             <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-slate-300"></i>AH.2 Observações sobre a Utilização</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li>Este termo de compromisso é um instrumento simbólico e estratégico importante para marcar o início formal da jornada de Governança de Dados na PME.</li>
+                <li>Recomenda-se que sua assinatura seja comunicada internamente (conforme Apêndice W ou AC) para reforçar o comprometimento da liderança e engajar os colaboradores.</li>
+                <li>O documento pode ser utilizado como anexo em processos de adesão a editais públicos de fomento à inovação ou transformação digital (ver Apêndice AJ), ou em parcerias com instituições como SEBRAE, FINEP e outras, como evidência do engajamento da PME com boas práticas.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-termo-ah fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este Termo de Compromisso Institucional formaliza o patrocínio executivo da PME com a implementação integral do modelo GD-PME 3 Pilares, declarando o engajamento com as diretrizes dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), e servindo como marco da importância da governança, conforme Seção 2.6.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Nota [1]:</strong> Este Termo de Compromisso Institucional formaliza o patrocínio executivo da PME com a implementação integral do modelo GD-PME 3 Pilares, declarando o engajamento com as diretrizes dos Pilares 1, 2 e 3.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

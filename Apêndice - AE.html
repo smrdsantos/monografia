@@ -3,205 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Miniguia Visual para Empresas com Baixa Digitalização - GD-PME</title>
+    <title>Miniguia para Empresas com Baixa Digitalização - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdf4; /* Light Green background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-baixa-digitalizacao {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #166534; /* Dark Green for titles */
-        }
-        .header-title-baixa-digitalizacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #166534; /* Dark Green */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-baixa-digitalizacao {
-            font-size: 1.15rem;
-            color: #15803d; /* Medium Green */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-baixa-digitalizacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #14532d; /* Darkest Green for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-baixa-digitalizacao {
-            color: #22c55e; /* Green highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-baixa-digitalizacao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #4ade80, #34d399); /* Verde */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Pilares */
+        .pillar-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        .pillar-1 { border-color: #3b82f6; } /* Azul */
+        .pillar-2 { border-color: #10b981; } /* Verde */
+        .pillar-3 { border-color: #f59e0b; } /* Âmbar */
+
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #dcfce7; /* Light Green background for icon */
         }
-        .header-icon-baixa-digitalizacao svg {
-            width: 32px;
-            height: 32px;
-            color: #166534; /* Dark Green */
+        .pillar-card h3 i {
+            margin-right: 12px;
         }
+        .title-pillar-1 { color: #60a5fa; }
+        .title-pillar-2 { color: #34d399; }
+        .title-pillar-3 { color: #facc15; }
 
-        .table-baixa-digitalizacao {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        .info-block {
+            margin-bottom: 16px;
         }
-        .table-baixa-digitalizacao th, .table-baixa-digitalizacao td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #bbf7d0; /* Lighter Green border */
-            font-size: 0.8rem; 
-            vertical-align: top;
-        }
-        .table-baixa-digitalizacao th {
-            background-color: #f0fdf4; /* Very Light Green for table headers */
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #15803d; /* Medium Green */
-        }
-        .table-baixa-digitalizacao td {
-            color: #14532d; /* Darkest Green for table text */
-        }
-        /* Specific column widths */
-        .pilar-col-bd { width: 25%; }
-        .ferramenta-col-bd { width: 25%; }
-        .aplicacao-col-bd { width: 25%; }
-        .obs-col-bd { width: 25%; }
-        
-        .observacao-card-bd {
-            background-color: #dcfce7; /* Light Green for observation card */
-            border-left: 4px solid #22c55e; /* Green border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .observacao-card-bd h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #166534;
+            color: #9ca3af;
             margin-bottom: 8px;
-        }
-        .observacao-card-bd p {
             font-size: 0.9rem;
-            color: #14532d;
+            text-transform: uppercase;
+        }
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
             line-height: 1.6;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #16a34a; /* Verde */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #15803d;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-baixa-digitalizacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7.5h6M9 10.5h6M9 13.5h6" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-green-400">
+                <i class="fas fa-ruler-combined fa-2x text-green-300"></i>
             </div>
-            <h1 class="header-title-baixa-digitalizacao">Miniguia Visual para Empresas com Baixa Digitalização</h1>
-            <p class="header-subtitle-baixa-digitalizacao">APÊNDICE AE: Sugestões de ferramentas e práticas analógicas ou de baixíssima complexidade digital para PMEs com recursos tecnológicos limitados.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Miniguia para Empresas com Baixa Digitalização</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AE: Sugestões de ferramentas e práticas analógicas ou de baixíssima complexidade digital para PMEs com recursos tecnológicos limitados.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                O objetivo é demonstrar que os fundamentos da Governança de Dados (GD), conforme o modelo GD-PME 3 Pilares, podem ser aplicados mesmo em contextos de <span class="highlight-baixa-digitalizacao">escassa digitalização</span>, focando na organização básica da informação e na mudança cultural.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                O objetivo é demonstrar que os fundamentos da Governança de Dados (GD), conforme o modelo GD-PME 3 Pilares, podem ser aplicados mesmo em contextos de <strong class="text-green-300">escassa digitalização</strong>, focando na organização básica da informação e na mudança cultural.
             </p>
         </section>
 
-        <!-- Analog Tools Table Section (Quadro AE.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-baixa-digitalizacao text-center">Quadro AE.1 – Ferramentas e Práticas Analógicas ou de Baixa Digitalização</h2>
-            <div class="overflow-x-auto">
-                <table class="table-baixa-digitalizacao">
-                    <thead>
-                        <tr>
-                            <th class="pilar-col-bd">Pilar do Modelo GD-PME 3 Pilares</th>
-                            <th class="ferramenta-col-bd">Ferramenta Manual/Analógica ou de Baixa Digitalização Sugerida</th>
-                            <th class="aplicacao-col-bd">Exemplo de Aplicação Prática na PME</th>
-                            <th class="obs-col-bd">Observações e Conexão com o GD-PME 3 Pilares</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Pilar 1 – Dados e Sistemas <br><span class="text-xs font-normal">(Foco: Organização e Rastreabilidade)</span></td>
-                            <td>Pastas físicas com divisórias e etiquetas claras; Cadernos ou livros de registro por processo (ex: Livro Caixa, Caderno de Pedidos); Planilhas simples em papel milimetrado ou impressas.</td>
-                            <td>Separar e organizar documentos importantes (contratos, notas fiscais, cadastros de clientes) por setor, processo ou data em pastas físicas identificadas; Registrar manualmente as transações ou dados chave de forma padronizada em cadernos específicos.</td>
-                            <td>Mesmo sem sistemas digitais, o princípio da separação e organização dos dados pode ser aplicado para melhorar a rastreabilidade e reduzir perdas de informação (ver Apêndice AL para modelo de inventário que pode ser adaptado).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 2 – Capacitação Contínua <br><span class="text-xs font-normal">(Foco: Conscientização e Conhecimento Compartilhado)</span></td>
-                            <td>Cartazes explicativos em murais internos; Reuniões curtas e periódicas de equipe ("bate-papos sobre dados"); Criação de um "Caderno de Boas Práticas" físico e colaborativo.</td>
-                            <td>Exibir em local visível um cartaz com 2 ou 3 boas práticas de dados (ex: "Verifique o dado antes de anotar", "Guarde os documentos no lugar certo") usando linguagem simples (Apêndice AR); Dedicar 15 minutos em reuniões de equipe para discutir um problema informacional e como resolvê-lo.</td>
-                            <td>A capacitação não depende exclusivamente de tecnologia. O diálogo, a visualização de regras simples e o compartilhamento de experiências são fundamentais (ver Apêndice D e U para roteiros de oficinas e multiplicadores que podem ser adaptados).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Pilar 3 – Políticas Simplificadas <br><span class="text-xs font-normal">(Foco: Regras Mínimas e Segurança Básica)</span></td>
-                            <td>Fichário de Regras com folhas plastificadas ou um "Manual Básico de Procedimentos" impresso; Rotina de cópia manual de segurança para documentos mais críticos (ex: fotocópias guardadas em local diferente).</td>
-                            <td>Documentar de forma extremamente simples 3 ou 4 regras básicas sobre quem pode acessar certos documentos, como fazer cópias de segurança de cadernos importantes (ex: livro caixa), ou como descartar papéis com informações sensíveis; Discutir e obter um acordo verbal (registrado em ata simples) sobre essas regras.</td>
-                            <td>Mesmo em ambientes não digitalizados, definir quem pode fazer o quê com a informação e como protegê-la minimamente é crucial. O "Termo de Boas Práticas" (Apêndice G/AA/AY) pode ser adaptado para um acordo verbal e registrado.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-tools mr-3 text-green-300"></i>Quadro AE.1 – Ferramentas e Práticas Analógicas</h2>
+            <div class="space-y-6">
+
+                <div class="pillar-card pillar-1">
+                    <h3 class="title-pillar-1"><i class="fas fa-database"></i>Pilar 1 – Dados e Sistemas</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block">
+                            <label>Ferramentas Sugeridas</label>
+                            <p>Pastas físicas com divisórias e etiquetas claras; Cadernos ou livros de registro por processo (ex: Livro Caixa, Caderno de Pedidos); Planilhas simples em papel milimetrado ou impressas.</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Aplicação Prática</label>
+                            <p>Separar e organizar documentos importantes (contratos, notas fiscais, cadastros de clientes) por setor, processo ou data em pastas físicas identificadas; Registrar manualmente as transações ou dados chave de forma padronizada em cadernos específicos.</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Observações e Conexão</label>
+                            <p>Mesmo sem sistemas digitais, o princípio da separação e organização dos dados pode ser aplicado para melhorar a rastreabilidade e reduzir perdas de informação (ver Apêndice AL para modelo de inventário que pode ser adaptado).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar-card pillar-2">
+                    <h3 class="title-pillar-2"><i class="fas fa-users-cog"></i>Pilar 2 – Capacitação Contínua</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block">
+                            <label>Ferramentas Sugeridas</label>
+                            <p>Cartazes explicativos em murais internos; Reuniões curtas e periódicas de equipe ("bate-papos sobre dados"); Criação de um "Caderno de Boas Práticas" físico e colaborativo.</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Aplicação Prática</label>
+                            <p>Exibir em local visível um cartaz com 2 ou 3 boas práticas de dados (ex: "Verifique o dado antes de anotar", "Guarde os documentos no lugar certo") usando linguagem simples (Apêndice AR); Dedicar 15 minutos em reuniões de equipe para discutir um problema informacional e como resolvê-lo.</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Observações e Conexão</label>
+                            <p>A capacitação não depende exclusivamente de tecnologia. O diálogo, a visualização de regras simples e o compartilhamento de experiências são fundamentais (ver Apêndice D e U para roteiros de oficinas e multiplicadores que podem ser adaptados).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar-card pillar-3">
+                    <h3 class="title-pillar-3"><i class="fas fa-shield-alt"></i>Pilar 3 – Políticas Simplificadas</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block">
+                            <label>Ferramentas Sugeridas</label>
+                            <p>Fichário de Regras com folhas plastificadas ou um "Manual Básico de Procedimentos" impresso; Rotina de cópia manual de segurança para documentos mais críticos (ex: fotocópias guardadas em local diferente).</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Aplicação Prática</label>
+                            <p>Documentar de forma extremamente simples 3 ou 4 regras básicas sobre quem pode acessar certos documentos, como fazer cópias de segurança de cadernos importantes (ex: livro caixa), ou como descartar papéis com informações sensíveis; Discutir e obter um acordo verbal (registrado em ata simples) sobre essas regras.</p>
+                        </div>
+                        <div class="info-block">
+                            <label>Observações e Conexão</label>
+                            <p>Mesmo em ambientes não digitalizados, definir quem pode fazer o quê com a informação e como protegê-la minimamente é crucial. O "Termo de Boas Práticas" (Apêndice G/AA/AY) pode ser adaptado para um acordo verbal e registrado.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Important Observation Section (AE.1) -->
-        <section class="card observacao-card-bd fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AE.1 Observação Importante:</h3>
-            <p>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-exclamation-circle mr-3 text-green-300"></i>AE.1 Observação Importante</h2>
+            <p class="text-gray-300 leading-relaxed">
                 Em contextos de baixíssima digitalização, como em algumas PMEs rurais, comunidades tradicionais ou negócios muito incipientes, este miniguia visual e as práticas analógicas sugeridas podem representar o primeiro passo essencial para introduzir uma cultura mínima de organização e valorização da informação. O objetivo é iniciar a jornada de governança de dados com os recursos disponíveis, estabelecendo fundamentos que poderão, futuramente, evoluir para formatos e ferramentas digitais conforme a empresa amadurece. A lógica incremental e adaptativa do modelo GD-PME 3 Pilares é particularmente relevante nesses cenários.
             </p>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-baixa-digitalizacao fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), e com adaptação dos princípios do modelo GD-PME 3 Pilares às realidades de PMEs com baixa ou nenhuma digitalização.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este miniguia apresenta adaptações analógicas para a aplicação dos três pilares do modelo GD-PME em PMEs com baixa digitalização, demonstrando como os fundamentos dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) podem ser implementados com práticas manuais, focando na organização informacional e cultural inicial.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Bento (2021), Mahanti (2021a), e com adaptação dos princípios do modelo GD-PME 3 Pilares às realidades de PMEs com baixa ou nenhuma digitalização.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Este miniguia apresenta adaptações analógicas para a aplicação dos três pilares do modelo GD-PME em PMEs com baixa digitalização, demonstrando como os fundamentos dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) podem ser implementados com práticas manuais, focando na organização informacional e cultural inicial.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>
+
+Fontes

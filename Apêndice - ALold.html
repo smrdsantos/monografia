@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Modelo de Planilha para Inventário de Dados Essenciais - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* Light Stone background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title-inventario-al {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #44403c; /* Dark Stone for titles */
+        }
+        .header-title-inventario-al {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #44403c; /* Dark Stone */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-inventario-al {
+            font-size: 1.15rem;
+            color: #57534e; /* Medium Stone */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-inventario-al {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #292524; /* Darkest Stone for footer */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .highlight-inventario-al {
+            color: #78716c; /* Stone highlight */
+            font-weight: 600;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Icon styling */
+        .header-icon-inventario-al {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #e7e5e4; /* Light Stone background for icon */
+        }
+        .header-icon-inventario-al svg {
+            width: 32px;
+            height: 32px;
+            color: #44403c; /* Dark Stone */
+        }
+
+        .table-inventario-al {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .table-inventario-al th, .table-inventario-al td {
+            text-align: left;
+            padding: 8px 10px; 
+            border: 1px solid #d6d3d1; /* Lighter Stone border */
+            font-size: 0.7rem; /* Even smaller font for very dense table */
+            vertical-align: top;
+        }
+        .table-inventario-al th {
+            background-color: #f5f5f4; /* Very Light Stone for table headers */
+            font-weight: 600;
+            color: #57534e; /* Medium Stone */
+        }
+        .table-inventario-al td {
+            color: #292524; /* Darkest Stone for table text */
+        }
+        /* Specific column widths - adjust as needed */
+        .area-col-al { width: 12%; }
+        .tipo-col-al { width: 15%; }
+        .desc-col-al { width: 15%; }
+        .formato-col-al { width: 12%; }
+        .local-col-al { width: 12%; }
+        .resp-col-al { width: 10%; }
+        .freq-col-al { width: 8%; }
+        .crit-col-al { width: 8%; }
+        .obs-col-al { width: 18%; }
+        
+        .instrucoes-card-al {
+            background-color: #e7e5e4; /* Light Stone for instructions */
+            border-left: 4px solid #78716c; /* Stone border */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .instrucoes-card-al h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #44403c;
+            margin-bottom: 8px;
+        }
+        .instrucoes-card-al ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #292524;
+        }
+        .instrucoes-card-al li {
+            margin-bottom: 5px;
+        }
+        .criticidade-alta { color: #dc2626; font-weight: bold; } /* Red */
+        .criticidade-media { color: #f59e0b; font-weight: bold; } /* Amber */
+        .criticidade-baixa { color: #16a34a; font-weight: bold; } /* Green */
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
+        <!-- Header -->
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-inventario-al">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                </svg>
+            </div>
+            <h1 class="header-title-inventario-al">Modelo de Planilha para Inventário de Dados Essenciais</h1>
+            <p class="header-subtitle-inventario-al">APÊNDICE AL: Ferramenta fundamental para o Pilar 1, permitindo identificar, organizar e avaliar a relevância dos dados operacionais e estratégicos da PME.</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed text-center">
+                Este inventário permite identificar quais dados existem, onde estão armazenados, quem são seus responsáveis e qual sua relevância para o negócio, servindo como base para a <span class="highlight-inventario-al">padronização e melhoria da qualidade da informação</span>.
+            </p>
+        </section>
+
+        <!-- Data Inventory Table Section (Quadro AL.1) -->
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-inventario-al text-center">Quadro AL.1 – Modelo de Planilha para Inventário de Dados Essenciais</h2>
+            <div class="overflow-x-auto">
+                <table class="table-inventario-al">
+                    <thead>
+                        <tr>
+                            <th class="area-col-al">Área de Negócio / Processo Principal</th>
+                            <th class="tipo-col-al">Tipo de Dado / Informação Essencial</th>
+                            <th class="desc-col-al">Breve Descrição / Finalidade do Dado</th>
+                            <th class="formato-col-al">Formato de Armazenamento Atual</th>
+                            <th class="local-col-al">Localização do Dado / Nome do Arquivo ou Sistema</th>
+                            <th class="resp-col-al">Responsável Principal pelo Dado (Setor/Colaborador)</th>
+                            <th class="freq-col-al">Frequência de Atualização Ideal</th>
+                            <th class="crit-col-al">Nível de Criticidade para o Negócio (Alto/Médio/Baixo)</th>
+                            <th class="obs-col-al">Observações / Desafios Identificados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Vendas e Comercial</td>
+                            <td>Cadastro de Clientes (Nome, Contato, Histórico de Compras)</td>
+                            <td>Gerenciar relacionamento, identificar oportunidades, realizar pós-venda.</td>
+                            <td>Planilha Excel "Clientes_2024.xlsx"; Caderno de Pedidos.</td>
+                            <td>Pasta "Vendas" no Servidor; Arquivo físico.</td>
+                            <td>Assistente de Vendas; Gerente Comercial.</td>
+                            <td>Diária / A cada novo contato.</td>
+                            <td class="criticidade-alta">Alto</td>
+                            <td>Dados desatualizados; Falta padronização no preenchimento de endereço.</td>
+                        </tr>
+                        <tr>
+                            <td>Tabela de Preços de Produtos/Serviços</td>
+                            <td>Precificar corretamente as vendas, aplicar descontos, gerar orçamentos.</td>
+                            <td>Planilha Excel "Precos_Maio25.xlsx".</td>
+                            <td>Pasta "Comercial" no Google Drive.</td>
+                            <td>Gerente Comercial.</td>
+                            <td>Semanal / A cada mudança.</td>
+                            <td class="criticidade-alta">Alto</td>
+                            <td>Versões diferentes da tabela circulam por e-mail.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Financeiro e Contábil</td>
+                            <td>Fluxo de Caixa (Entradas e Saídas Diárias/Semanais)</td>
+                            <td>Acompanhar saúde financeira, prever necessidades de capital, tomar decisões de investimento/corte.</td>
+                            <td>Sistema de Gestão "Conta Azul"; Planilha de Controle Manual.</td>
+                            <td>Acesso online ao sistema; Pasta "Financeiro".</td>
+                            <td>Setor Financeiro; Contador Externo.</td>
+                            <td>Diária / Semanal.</td>
+                            <td class="criticidade-alta">Alto</td>
+                            <td>Lançamentos manuais propensos a erros; Conciliação bancária demorada.</td>
+                        </tr>
+                        <tr>
+                            <td>Contas a Pagar e Receber</td>
+                            <td>Gerenciar pagamentos a fornecedores e recebimentos de clientes, evitar inadimplência.</td>
+                            <td>Sistema de Gestão "Conta Azul".</td>
+                            <td>Acesso online ao sistema.</td>
+                            <td>Setor Financeiro.</td>
+                            <td>Diária.</td>
+                            <td class="criticidade-alta">Alto</td>
+                            <td>Alguns pagamentos são controlados fora do sistema.</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Recursos Humanos (RH)</td>
+                            <td>Cadastro de Colaboradores (Dados Pessoais, Contratuais, Folha)</td>
+                            <td>Cumprir obrigações legais, gerenciar pagamentos, benefícios, férias.</td>
+                            <td>Arquivos físicos em pastas individuais; Planilha Excel "Folha_RH.xlsx".</td>
+                            <td>Armário do RH; Pasta "RH" no servidor.</td>
+                            <td>Setor Administrativo/RH.</td>
+                            <td>Mensal / A cada alteração.</td>
+                            <td class="criticidade-alta">Alto (Dados sensíveis - LGPD)</td>
+                            <td>Risco de acesso indevido a arquivos físicos; Dificuldade em gerar relatórios consolidados.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold align-top pt-2">Operações / Produção / Estoque</td>
+                            <td>Controle de Estoque (Entradas, Saídas, Saldo)</td>
+                            <td>Evitar falta ou excesso de produtos/matéria-prima, otimizar compras.</td>
+                            <td>Planilha Excel "Estoque_Atual.xlsx"; Fichas de prateleira manuais.</td>
+                            <td>Pasta "Estoque" no servidor; Local físico.</td>
+                            <td>Responsável pelo Estoque.</td>
+                            <td>Diária / A cada movimentação.</td>
+                            <td class="criticidade-media">Médio a Alto</td>
+                            <td>Discrepâncias frequentes entre estoque físico e registrado.</td>
+                        </tr>
+                        <tr>
+                            <td>Registros de Produção ou Prestação de Serviço</td>
+                            <td>Acompanhar produtividade, identificar gargalos, controlar qualidade.</td>
+                            <td>Ordens de Serviço em papel; Planilha de Apontamento de Horas.</td>
+                            <td>Arquivo do setor; Pasta "Produção".</td>
+                            <td>Líder de Produção/Serviços.</td>
+                            <td>Diária.</td>
+                            <td class="criticidade-media">Médio</td>
+                            <td>Registros incompletos ou preenchidos de forma inconsistente.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Instructions Section (AL.1) -->
+        <section class="card instrucoes-card-al fade-in-section" style="animation-delay: 0.5s;">
+            <h3>AL.1 Instruções para Preenchimento e Uso do Inventário de Dados:</h3>
+            <ul>
+                <li><strong>Mapeamento Inicial:</strong> Este inventário deve ser preenchido inicialmente de forma colaborativa, envolvendo representantes de todas as áreas/processos chave da PME. Pode ser uma atividade conduzida em uma oficina (ver Apêndice D);</li>
+                <li><strong>Detalhamento Progressivo:</strong> Comece listando os dados mais óbvios e críticos. O inventário é um documento vivo e pode ser detalhado e expandido ao longo dos ciclos de implementação da GD;</li>
+                <li><strong>Foco na Essência:</strong> O objetivo não é listar absolutamente todos os dados, mas os "dados essenciais" para a operação e estratégia da empresa, especialmente aqueles com maior impacto ou risco;</li>
+                <li><strong>Identificação de Problemas:</strong> A coluna "Observações / Desafios Identificados" é crucial para registrar problemas de qualidade, acesso, segurança, duplicidade, etc., que servirão de insumo para o plano de ação da GD;</li>
+                <li><strong>Base para Outras Ações:</strong> Este inventário é a base para a padronização de nomenclaturas (Pilar 1), para a definição de políticas de acesso e segurança (Pilar 3) e para identificar necessidades de capacitação (Pilar 2);</li>
+                <li><strong>Revisão Periódica:</strong> Recomenda-se que o inventário seja revisado e atualizado pelo menos semestralmente ou sempre que houver mudanças significativas nos processos ou sistemas da empresa.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-inventario-al fade-in-section" style="animation-delay: 0.6s;">
+            <p><strong>Fonte:</strong> Adaptado do Pilar 1 (Separação entre Dados e Sistemas) do modelo GD-PME 3 Pilares (Capítulo 3 e Apêndice B) e em boas práticas de inventário de dados (DAMA INTERNATIONAL, 2017).</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Primordial para o Pilar 1 (Dados e Sistemas) do modelo GD-PME, esta planilha de inventário permite o mapeamento dos ativos informacionais da PME (conforme Apêndice B), alicerçando a padronização (Pilar 1), a identificação de necessidades de treinamento (Pilar 2) e a formulação de políticas (Pilar 3).</p>
+        </footer>
+    </div>
+</body>
+</html>

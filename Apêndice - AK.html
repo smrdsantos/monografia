@@ -3,285 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Modelo de Relatório Trimestral de Maturidade em Governança de Dados - GD-PME</title>
+    <title>Modelo de Relatório Trimestral de Maturidade em GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fff1f2; /* Light Rose background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-relatorio-ak {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #be185d; /* Dark Rose for titles */
-        }
-        .header-title-relatorio-ak {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #be185d; /* Dark Rose */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-relatorio-ak {
-            font-size: 1.15rem;
-            color: #9d174d; /* Medium Rose */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-relatorio-ak {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #831843; /* Darkest Rose for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-relatorio-ak {
-            color: #db2777; /* Rose highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-relatorio-ak {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #fce7f3; /* Light Rose background for icon */
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .header-icon-relatorio-ak svg {
-            width: 32px;
-            height: 32px;
-            color: #be185d; /* Dark Rose */
+        
+        .gradient-title {
+            background: linear-gradient(to right, #f9a8d4, #f472b6); /* Rosa */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .report-document-ak {
-            border: 1px solid #f9a8d4; /* Rose border for the document */
+        /* Estilo para o documento/formulário dentro do card */
+        .report-document {
+            background-color: #fff1f2; /* Fundo rosa bem claro */
+            color: #500724; /* Texto escuro para legibilidade */
             border-radius: 8px;
-            padding: 24px; 
-            background-color: #fff1f2; /* Very light Rose background */
+            padding: 32px;
+            border: 1px solid #fbcfe8;
         }
-        .report-document-ak h2 {
-            font-size: 1.3rem; 
-            font-weight: 600;
-            color: #9d174d; 
+        .report-document h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #9d174d;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-transform: uppercase;
         }
-         .report-document-ak h3 {
-            font-size: 1.1rem; 
+        .report-document h3 {
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #831843; 
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #fbcfe8;
-            padding-bottom: 4px;
+            color: #831843;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f9a8d4;
+            padding-bottom: 6px;
         }
-        .report-document-ak .input-group {
-            margin-bottom:12px;
+        .input-group {
+            margin-bottom: 16px;
         }
-        .report-document-ak .label-text-ak {
-            font-weight: 500;
-            color: #9d174d;
+        .label-text {
             display: block;
-            margin-bottom: 4px;
+            font-weight: 600;
+            color: #9d174d;
+            margin-bottom: 6px;
             font-size: 0.9rem;
         }
-        .report-document-ak .input-field-ak, .report-document-ak .textarea-field-ak {
+        .input-field, .textarea-field {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #f9a8d4;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: #831843;
+            background-color: #fce7f3;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-         .report-document-ak .textarea-field-ak {
-            min-height: 60px;
+        .input-field:focus, .textarea-field:focus {
+            outline: none;
+            border-color: #be185d;
+            box-shadow: 0 0 0 2px rgba(219, 39, 119, 0.3);
+        }
+        .textarea-field {
+            min-height: 80px;
             resize: vertical;
-         }
+        }
 
-        .table-maturidade-ak {
+        /* Tabela de Maturidade */
+        .maturity-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 12px;
-            margin-bottom: 20px;
         }
-        .table-maturidade-ak th, .table-maturidade-ak td {
+        .maturity-table th, .maturity-table td {
             text-align: left;
-            padding: 8px 10px; 
-            border: 1px solid #fbcfe8; /* Lighter Rose border */
-            font-size: 0.8rem; 
+            padding: 10px;
+            border: 1px solid #fbcfe8;
+            font-size: 0.85rem;
             vertical-align: top;
         }
-        .table-maturidade-ak th {
-            background-color: #fce7f3; /* Very Light Rose for table headers */
+        .maturity-table th {
+            background-color: #fce7f3;
             font-weight: 600;
-            color: #9d174d; 
+            color: #9d174d;
         }
-        .table-maturidade-ak td {
-            color: #831843; 
-        }
-        .table-maturidade-ak .nota-input-ak {
-            width: 60px;
+        .maturity-table .nota-input {
+            width: 70px;
             text-align: center;
         }
-        .signature-section-ak {
-            margin-top: 30px;
-            padding-top:20px;
-            border-top: 1px dashed #f9a8d4;
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #db2777; /* Rosa */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .signature-line-ak {
-            border-bottom: 1px solid #be185d;
-            width: 100%;
-            max-width:300px;
-            display:block;
-            margin-top: 2px;
-            margin-bottom: 4px;
+        #backToTopBtn:hover {
+            background-color: #be185d;
         }
-
-
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-relatorio-ak">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-5xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-pink-400">
+                <i class="fas fa-file-alt fa-2x text-pink-300"></i>
             </div>
-            <h1 class="header-title-relatorio-ak">Modelo de Relatório Trimestral de Maturidade em Governança de Dados</h1>
-            <p class="header-subtitle-relatorio-ak">APÊNDICE AK: Modelo-padrão para PMEs registrarem, analisarem e comunicarem os avanços obtidos com a aplicação do modelo GD-PME 3 Pilares.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Relatório Trimestral de Maturidade em GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AK: Modelo-padrão para PMEs registrarem, analisarem e comunicarem os avanços obtidos com a aplicação do modelo GD-PME 3 Pilares.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este documento visa ser <span class="highlight-relatorio-ak">sucinto, didático e útil</span> para reuniões de gestão, prestação de contas a parceiros e para o acompanhamento interno da evolução da maturidade em Governança de Dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este documento visa ser <strong class="text-pink-300">sucinto, didático e útil</strong> para reuniões de gestão, prestação de contas e para o acompanhamento interno da evolução da maturidade em Governança de Dados.
             </p>
         </section>
 
-        <!-- Report Template Section (AK.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-relatorio-ak text-center">AK.1 Estrutura Sugerida para o Relatório Trimestral de Maturidade</h2>
-            <div class="report-document-ak">
-                <h2>MODELO DE RELATÓRIO TRIMESTRAL DE MATURIDADE EM GOVERNANÇA DE DADOS (GD-PME 3 Pilares)</h2>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-edit mr-3 text-pink-300"></i>AK.1 Estrutura do Relatório Trimestral</h2>
+            <div class="report-document">
+                <h2>RELATÓRIO DE MATURIDADE EM GOVERNANÇA DE DADOS</h2>
 
-                <div class="input-group">
-                    <label class="label-text-ak" for="empresa_ak">Empresa:</label>
-                    <input type="text" id="empresa_ak" name="empresa_ak" class="input-field-ak">
-                </div>
-                <div class="input-group">
-                    <label class="label-text-ak" for="responsavel_ak">Responsável pelo Preenchimento:</label>
-                    <input type="text" id="responsavel_ak" name="responsavel_ak" class="input-field-ak">
-                </div>
-                <div class="input-group">
-                    <label class="label-text-ak" for="periodo_ak">Período Avaliado (Trimestre/Ano):</label>
-                    <input type="text" id="periodo_ak" name="periodo_ak" class="input-field-ak" placeholder="Ex: Q1/2025 ou ______ / ______ a ______ / ______">
-                </div>
-                <div class="input-group">
-                    <label class="label-text-ak" for="data_elaboracao_ak">Data de Elaboração do Relatório:</label>
-                    <input type="date" id="data_elaboracao_ak" name="data_elaboracao_ak" class="input-field-ak">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="input-group">
+                        <label class="label-text" for="empresa_ak">Empresa:</label>
+                        <input type="text" id="empresa_ak" name="empresa_ak" class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label class="label-text" for="responsavel_ak">Responsável pelo Preenchimento:</label>
+                        <input type="text" id="responsavel_ak" name="responsavel_ak" class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label class="label-text" for="periodo_ak">Período Avaliado (Trimestre/Ano):</label>
+                        <input type="text" id="periodo_ak" name="periodo_ak" class="input-field" placeholder="Ex: Q1/2025 ou de __/__ a __/__">
+                    </div>
+                    <div class="input-group">
+                        <label class="label-text" for="data_elaboracao_ak">Data de Elaboração:</label>
+                        <input type="date" id="data_elaboracao_ak" name="data_elaboracao_ak" class="input-field">
+                    </div>
                 </div>
 
                 <h3>1. Avaliação de Maturidade por Pilar (Escala de 0 a 4)</h3>
-                <p class="text-xs text-rose-700 mb-2">Conforme preconizado pelo modelo. O Quadro AK.1 detalha a estrutura sugerida para este relatório.</p>
+                <p class="text-xs text-rose-800 -mt-2 mb-4">Conforme detalhado no Quadro AK.1 da monografia.</p>
                 
                 <div class="overflow-x-auto">
-                    <table class="table-maturidade-ak">
+                    <table class="maturity-table">
                         <thead>
                             <tr>
-                                <th>Pilar do Modelo GD-PME 3 Pilares</th>
-                                <th>Nota Atribuída no Ciclo Atual (0 a 4)</th>
-                                <th>Breve Justificativa da Nota / Principais Avanços no Pilar</th>
-                                <th>Comparativo com Ciclo Anterior (Nota Anterior, se aplicável)</th>
+                                <th>Pilar do Modelo</th>
+                                <th>Nota Atual (0-4)</th>
+                                <th>Justificativa / Principais Avanços</th>
+                                <th>Nota do Ciclo Anterior</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="font-semibold">Pilar 1 – Dados e Sistemas</td>
-                                <td><input type="number" min="0" max="4" class="input-field-ak nota-input-ak" name="nota_p1_ak"></td>
-                                <td><textarea class="textarea-field-ak" name="just_p1_ak" placeholder="Ex: Inventário de dados de clientes concluído..."></textarea></td>
-                                <td><input type="text" class="input-field-ak" name="comp_p1_ak" placeholder="Nota Anterior: _____"></td>
+                                <td><input type="number" min="0" max="4" class="input-field nota-input" name="nota_p1_ak"></td>
+                                <td><textarea class="textarea-field" name="just_p1_ak" placeholder="Ex: Inventário de dados de clientes concluído..."></textarea></td>
+                                <td><input type="text" class="input-field" name="comp_p1_ak" placeholder="Ex: 1.5"></td>
                             </tr>
                             <tr>
                                 <td class="font-semibold">Pilar 2 – Capacitação Contínua</td>
-                                <td><input type="number" min="0" max="4" class="input-field-ak nota-input-ak" name="nota_p2_ak"></td>
-                                <td><textarea class="textarea-field-ak" name="just_p2_ak" placeholder="Ex: Realizadas 2 oficinas sobre GD..."></textarea></td>
-                                <td><input type="text" class="input-field-ak" name="comp_p2_ak" placeholder="Nota Anterior: _____"></td>
+                                <td><input type="number" min="0" max="4" class="input-field nota-input" name="nota_p2_ak"></td>
+                                <td><textarea class="textarea-field" name="just_p2_ak" placeholder="Ex: Realizadas 2 oficinas sobre GD..."></textarea></td>
+                                <td><input type="text" class="input-field" name="comp_p2_ak" placeholder="Ex: 1.0"></td>
                             </tr>
                             <tr>
                                 <td class="font-semibold">Pilar 3 – Políticas Simplificadas</td>
-                                <td><input type="number" min="0" max="4" class="input-field-ak nota-input-ak" name="nota_p3_ak"></td>
-                                <td><textarea class="textarea-field-ak" name="just_p3_ak" placeholder="Ex: Termo de Boas Práticas assinado..."></textarea></td>
-                                <td><input type="text" class="input-field-ak" name="comp_p3_ak" placeholder="Nota Anterior: _____"></td>
+                                <td><input type="number" min="0" max="4" class="input-field nota-input" name="nota_p3_ak"></td>
+                                <td><textarea class="textarea-field" name="just_p3_ak" placeholder="Ex: Termo de Boas Práticas assinado..."></textarea></td>
+                                <td><input type="text" class="input-field" name="comp_p3_ak" placeholder="Ex: 0.5"></td>
                             </tr>
                             <tr>
-                                <td class="font-semibold">Maturidade Global GD-PME 3 Pilares (Média ou Consolidada)</td>
-                                <td><input type="number" min="0" max="4" step="0.1" class="input-field-ak nota-input-ak" name="nota_global_ak"></td>
-                                <td><textarea class="textarea-field-ak" name="just_global_ak" placeholder="Ex: Avanço geral percebido..."></textarea></td>
-                                <td><input type="text" class="input-field-ak" name="comp_global_ak" placeholder="Nota Anterior: _____"></td>
+                                <td class="font-semibold">Maturidade Global (Média)</td>
+                                <td><input type="number" min="0" max="4" step="0.1" class="input-field nota-input" name="nota_global_ak"></td>
+                                <td><textarea class="textarea-field" name="just_global_ak" placeholder="Ex: Avanço geral percebido..."></textarea></td>
+                                <td><input type="text" class="input-field" name="comp_global_ak" placeholder="Ex: 1.0"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                 <p class="text-xs text-rose-700 mt-1">Fonte: Elaborado pelo Autor (2025)</p>
-
-
-                <h3>2. Principais Evidências de Avanço no Ciclo (Exemplos)</h3>
-                <textarea class="textarea-field-ak" name="evidencias_ak" placeholder="Listar evidências como: Inventário de dados de [...] atualizado; Realização de [N] oficinas sobre [...]; Termo de Boas Práticas revisado; Redução percebida de [X%] em retrabalho..."></textarea>
-
-                <h3>3. Principais Dificuldades e Desafios Enfrentados no Ciclo</h3>
-                <textarea class="textarea-field-ak" name="dificuldades_ak" placeholder="Listar dificuldades como: Baixa adesão inicial do setor [...]; Dificuldade em encontrar tempo para capacitações; Necessidade de melhoria na ferramenta de [...]..."></textarea>
-
-                <h3>4. Ações Planejadas para o Próximo Ciclo (Com base na avaliação e nos desafios)</h3>
-                <textarea class="textarea-field-ak" name="acoes_proximo_ciclo_ak" placeholder="Listar ações como: Realizar treinamento específico para [...]; Revisar e simplificar a política de [...]; Implementar [ação específica] para tratar o risco de [...]..."></textarea>
                 
-                <div class="signature-section-ak">
-                    <label class="label-text-ak">Assinatura do Responsável pela Governança de Dados na PME (ou da Liderança):</label>
-                    <div class="signature-line-ak"></div>
-                    <label class="label-text-ak mt-2" for="data_assinatura_ak">Data:</label>
-                    <input type="date" id="data_assinatura_ak" name="data_assinatura_ak" class="input-field-ak w-auto">
-                </div>
-                <p class="text-xs text-rose-700 mt-4">(Este modelo de relatório foca mais na apresentação tabular da avaliação por pilar e em seções textuais para as demais informações...)</p>
+                <h3>2. Principais Evidências de Avanço no Ciclo</h3>
+                <textarea class="textarea-field" name="evidencias_ak" placeholder="Listar evidências como: Inventário de dados de [...] atualizado; Realização de [N] oficinas sobre [...]; Termo de Boas Práticas revisado; Redução percebida de [X%] em retrabalho..."></textarea>
+
+                <h3>3. Principais Dificuldades e Desafios Enfrentados</h3>
+                <textarea class="textarea-field" name="dificuldades_ak" placeholder="Listar dificuldades como: Baixa adesão inicial do setor [...]; Dificuldade em encontrar tempo para capacitações; Necessidade de melhoria na ferramenta de [...]..."></textarea>
+
+                <h3>4. Ações Planejadas para o Próximo Ciclo</h3>
+                <textarea class="textarea-field" name="acoes_proximo_ciclo_ak" placeholder="Listar ações como: Realizar treinamento específico para [...]; Revisar e simplificar a política de [...]; Implementar [ação específica] para tratar o risco de [...]..."></textarea>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-relatorio-ak fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este modelo de relatório trimestral de maturidade, focado em PMEs, consolida avanços na aplicação do modelo GD-PME 3 Pilares, permitindo o registro e análise da evolução nos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), com referências aos Apêndices C, G/AA/AY e N/AB, e servindo à melhoria contínua.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Nota [1]:</strong> Este modelo de relatório consolida avanços na aplicação do modelo GD-PME 3 Pilares, permitindo o registro e análise da evolução nos Pilares 1, 2 e 3, e servindo à melhoria contínua.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

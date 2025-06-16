@@ -3,230 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro Estratégico para Implementação Territorial do Modelo GD-PME 3 Pilares</title>
+    <title>Roteiro para Implementação Territorial - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdf4; /* Light Green background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-territorial-ai {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #166534; /* Dark Green for titles */
-        }
-        .header-title-territorial-ai {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #166534; /* Dark Green */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-territorial-ai {
-            font-size: 1.15rem;
-            color: #15803d; /* Medium Green */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-territorial-ai {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #14532d; /* Darkest Green for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-territorial-ai {
-            color: #22c55e; /* Green highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-territorial-ai {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #4ade80, #34d399); /* Verde */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #166534; /* Dark Green */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #dcfce7; /* Light Green background for icon */
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #dcfce7;
+            font-size: 1.2rem;
         }
-        .header-icon-territorial-ai svg {
-            width: 32px;
-            height: 32px;
-            color: #166534; /* Dark Green */
+        .timeline-container:nth-child(1)::before { content: '1'; }
+        .timeline-container:nth-child(2)::before { content: '2'; }
+        .timeline-container:nth-child(3)::before { content: '3'; }
+        .timeline-container:nth-child(4)::before { content: '4'; }
+        .timeline-container:nth-child(5)::before { content: '5'; }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .table-territorial-ai {
-            width: 100%;
-            border-collapse: collapse;
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #6ee7b7; /* Light Green */
+        }
+        .info-block {
             margin-top: 16px;
         }
-        .table-territorial-ai th, .table-territorial-ai td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #bbf7d0; /* Lighter Green border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-territorial-ai th {
-            background-color: #f0fdf4; /* Very Light Green for table headers */
+        .info-block h4 {
             font-weight: 600;
-            color: #15803d; /* Medium Green */
-        }
-        .table-territorial-ai td {
-            color: #14532d; /* Darkest Green for table text */
-        }
-        /* Specific column widths */
-        .etapa-col-ai { width: 5%; text-align: center; }
-        .acao-col-ai { width: 30%; }
-        .ator-col-ai { width: 25%; }
-        .produto-col-ai { width: 25%; }
-        .instrumentos-col-ai { width: 15%; }
-        
-        .consideracoes-card-ai {
-            background-color: #dcfce7; /* Light Green for considerations */
-            border-left: 4px solid #22c55e; /* Green border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .consideracoes-card-ai h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #166534;
+            color: #a7f3d0; /* Lighter Green */
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
         }
-        .consideracoes-card-ai ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #14532d;
+        .info-block i {
+            margin-right: 8px;
         }
-        .consideracoes-card-ai li {
-            margin-bottom: 5px;
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-bottom: 4px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #16a34a; /* Verde */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #15803d;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-territorial-ai">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-green-400">
+                <i class="fas fa-map-marked-alt fa-2x text-green-300"></i>
             </div>
-            <h1 class="header-title-territorial-ai">Roteiro Estratégico para Implementação Territorial do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-territorial-ai">APÊNDICE AI: Etapas sugeridas para aplicação e disseminação do modelo GD-PME 3 Pilares em escala territorial, visando o fortalecimento da maturidade informacional de PMEs.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Implementação Territorial do Modelo GD-PME</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AI: Roteiro estratégico para aplicação e disseminação do modelo em escala, visando o fortalecimento da maturidade informacional de PMEs.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A proposta destina-se a ser utilizada por atores como secretarias municipais, agências de fomento, associações comerciais, cooperativas, ou consórcios intermunicipais, para <span class="highlight-territorial-ai">fortalecer o ecossistema local</span> de Pequenas e Médias Empresas.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A proposta destina-se a ser utilizada por atores como secretarias municipais, agências de fomento, associações comerciais, cooperativas, ou consórcios intermunicipais, para <strong class="text-green-300">fortalecer o ecossistema local</strong> de Pequenas e Médias Empresas.
             </p>
         </section>
 
-        <!-- Territorial Implementation Steps Table Section (Quadro AI.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-territorial-ai text-center">Quadro AI.1 – Etapas Sugeridas para Implementação Territorial</h2>
-            <div class="overflow-x-auto">
-                <table class="table-territorial-ai">
-                    <thead>
-                        <tr>
-                            <th class="etapa-col-ai">Etapa</th>
-                            <th class="acao-col-ai">Ação Coordenada Principal</th>
-                            <th class="ator-col-ai">Ator(es) Principal(is) Sugerido(s) para Coordenação/Execução (Local/Regional)</th>
-                            <th class="produto-col-ai">Produto(s) Esperado(s) / Resultado(s) Chave</th>
-                            <th class="instrumentos-col-ai">Instrumentos de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold text-center">1</td>
-                            <td><strong>Diagnóstico Territorial e Mapeamento de PMEs:</strong> Identificar o perfil das PMEs locais, seu nível geral de maturidade digital/informacional e o interesse em participar de um programa de GD.</td>
-                            <td>Secretaria de Desenvolvimento Econômico; Associações Comerciais; SEBRAE Local.</td>
-                            <td>Lista de PMEs elegíveis e interessadas; Diagnóstico preliminar da maturidade informacional do território; Definição de setores prioritários (se houver).</td>
-                            <td>A (adaptado), AF</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-center">2</td>
-                            <td><strong>Sensibilização e Mobilização:</strong> Realizar eventos, workshops ou rodadas de apresentação do modelo GD-PME 3 Pilares, seus benefícios e o plano de implementação territorial para as PMEs mapeadas.</td>
-                            <td>SEBRAE Local; Associações Comerciais; Universidades (Projetos de Extensão).</td>
-                            <td>PMEs sensibilizadas e engajadas; Termos de Compromisso Institucional (Apêndice AH) assinados; Definição de um cronograma geral.</td>
-                            <td>D, M, AH; Material de divulgação</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-center">3</td>
-                            <td><strong>Capacitação de Facilitadores e Primeiros Diagnósticos Individuais:</strong> Formar equipe de facilitadores locais; Realizar o Diagnóstico Inicial em cada PME participante.</td>
-                            <td>Universidades (Capacitação); Facilitadores Regionais; SEBRAE.</td>
-                            <td>Facilitadores capacitados (Apêndice U/AQ); Diagnóstico de maturidade (Apêndice A) concluído para cada PME; Plano de ação inicial individualizado (baseado no Apêndice B).</td>
-                            <td>U/AQ, A, B, D</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-center">4</td>
-                            <td><strong>Implementação Assistida e Formação de Núcleos de GD:</strong> Apoiar as PMEs na execução dos primeiros ciclos do GD-PME; Incentivar núcleos setoriais/regionais de GD.</td>
-                            <td>Facilitadores Regionais; Lideranças Empresariais Locais; Multiplicadores internos nas PMEs.</td>
-                            <td>PMEs iniciando a implementação; Primeiros resultados documentados (Apêndice P/Y/AK); Núcleos de GD formados e ativos.</td>
-                            <td>B, L/AM, F, Q, S, T, AT; Fóruns</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-center">5</td>
-                            <td><strong>Monitoramento Territorial e Disseminação de Resultados:</strong> Coletar e consolidar indicadores de impacto territorial (Apêndice V); Divulgar resultados e casos de sucesso.</td>
-                            <td>Coordenação Municipal/Regional do Programa (ex: Secretaria, Agência de Fomento); Observatório de GD (se criado).</td>
-                            <td>Relatórios de impacto territorial consolidados; Base de dados sobre maturidade das PMEs; Casos de sucesso documentados.</td>
-                            <td>V; P/Y/AK (consolidados); W/AC, AN</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-stream mr-3 text-green-300"></i>Quadro AI.1 – Etapas Sugeridas para Implementação</h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>1. Diagnóstico Territorial e Mapeamento de PMEs</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ação Principal</h4>
+                            <p>Identificar o perfil das PMEs locais, seu nível geral de maturidade digital/informacional e o interesse em participar de um programa de GD.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-users"></i>Ator(es) Principal(is)</h4>
+                            <p>Secretaria de Desenvolvimento Econômico; Associações Comerciais; SEBRAE Local.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-check-circle"></i>Resultado(s) Chave</h4>
+                            <p>Lista de PMEs elegíveis e interessadas; Diagnóstico preliminar da maturidade informacional do território; Definição de setores prioritários.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Instrumentos de Apoio</h4>
+                            <p><span class="ref-tag">A (adaptado)</span> <span class="ref-tag">AF</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>2. Sensibilização e Mobilização</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ação Principal</h4>
+                            <p>Realizar eventos, workshops ou rodadas de apresentação do modelo GD-PME 3 Pilares, seus benefícios e o plano de implementação para as PMEs mapeadas.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-users"></i>Ator(es) Principal(is)</h4>
+                            <p>SEBRAE Local; Associações Comerciais; Universidades (Projetos de Extensão).</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-check-circle"></i>Resultado(s) Chave</h4>
+                            <p>PMEs sensibilizadas e engajadas; Termos de Compromisso Institucional (Apêndice AH) assinados; Definição de um cronograma geral.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Instrumentos de Apoio</h4>
+                            <p><span class="ref-tag">D</span> <span class="ref-tag">M</span> <span class="ref-tag">AH</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>3. Capacitação e Diagnósticos Individuais</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ação Principal</h4>
+                            <p>Formar equipe de facilitadores locais; Realizar o Diagnóstico Inicial em cada PME participante.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-users"></i>Ator(es) Principal(is)</h4>
+                            <p>Universidades (Capacitação); Facilitadores Regionais; SEBRAE.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-check-circle"></i>Resultado(s) Chave</h4>
+                            <p>Facilitadores capacitados; Diagnóstico de maturidade (Apêndice A) concluído para cada PME; Plano de ação inicial individualizado.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Instrumentos de Apoio</h4>
+                            <p><span class="ref-tag">U/AQ</span> <span class="ref-tag">A</span> <span class="ref-tag">B</span> <span class="ref-tag">D</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>4. Implementação Assistida e Núcleos de GD</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ação Principal</h4>
+                            <p>Apoiar as PMEs na execução dos primeiros ciclos do GD-PME; Incentivar núcleos setoriais/regionais de GD.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-users"></i>Ator(es) Principal(is)</h4>
+                            <p>Facilitadores Regionais; Lideranças Empresariais Locais; Multiplicadores internos nas PMEs.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-check-circle"></i>Resultado(s) Chave</h4>
+                            <p>PMEs iniciando a implementação; Primeiros resultados documentados; Núcleos de GD formados e ativos.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Instrumentos de Apoio</h4>
+                            <p><span class="ref-tag">B</span> <span class="ref-tag">L/AM</span> <span class="ref-tag">F</span> <span class="ref-tag">Q</span> <span class="ref-tag">S</span> <span class="ref-tag">T</span> <span class="ref-tag">AT</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-container fade-in">
+                    <div class="timeline-content">
+                        <h3>5. Monitoramento e Disseminação</h3>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tasks"></i>Ação Principal</h4>
+                            <p>Coletar e consolidar indicadores de impacto territorial (Apêndice V); Divulgar resultados e casos de sucesso.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-users"></i>Ator(es) Principal(is)</h4>
+                            <p>Coordenação Municipal/Regional do Programa (ex: Secretaria, Agência de Fomento); Observatório de GD (se criado).</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-check-circle"></i>Resultado(s) Chave</h4>
+                            <p>Relatórios de impacto territorial consolidados; Base de dados sobre maturidade das PMEs; Casos de sucesso documentados.</p>
+                        </div>
+                        <div class="info-block">
+                            <h4><i class="fas fa-tools"></i>Instrumentos de Apoio</h4>
+                            <p><span class="ref-tag">V</span> <span class="ref-tag">P/Y/AK</span> <span class="ref-tag">W/AC</span> <span class="ref-tag">AN</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Strategic Considerations Section (AI.1) -->
-        <section class="card consideracoes-card-ai fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AI.1 Considerações Estratégicas para a Implementação Territorial:</h3>
-            <ul>
-                <li><strong>Parcerias Multissetoriais:</strong> O sucesso depende de parcerias sólidas entre poder público local, entidades de fomento (SEBRAE), associações empresariais, instituições de ensino e as PMEs;</li>
-                <li><strong>Adaptação ao Contexto Local:</strong> O roteiro deve ser adaptado às especificidades econômicas, culturais e institucionais de cada município ou região;</li>
-                <li><strong>Foco na Sustentabilidade:</strong> Prever mecanismos para a sustentabilidade das ações de GD, como formação contínua de facilitadores, redes de apoio entre PMEs e integração da GD às políticas de desenvolvimento local;</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-green-300"></i>AI.1 Considerações Estratégicas</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Parcerias Multissetoriais:</strong> O sucesso depende de parcerias sólidas entre poder público local, entidades de fomento (SEBRAE), associações empresariais, instituições de ensino e as PMEs.</li>
+                <li><strong>Adaptação ao Contexto Local:</strong> O roteiro deve ser adaptado às especificidades econômicas, culturais e institucionais de cada município ou região.</li>
+                <li><strong>Foco na Sustentabilidade:</strong> Prever mecanismos para a sustentabilidade das ações de GD, como formação contínua de facilitadores, redes de apoio entre PMEs e integração da GD às políticas de desenvolvimento local.</li>
                 <li><strong>Comunicação e Visibilidade:</strong> Divulgar objetivos, etapas, resultados e casos de sucesso é fundamental para atrair mais PMEs, engajar a comunidade e demonstrar o valor da Governança de Dados.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-territorial-ai fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Bento (2021), proposições do Capítulo 5 desta monografia e em modelos de desenvolvimento local e arranjos produtivos.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este roteiro estratégico orienta a aplicação e disseminação territorial do modelo GD-PME 3 Pilares em PMEs de uma região. As etapas buscam fomentar a adoção dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) em escala, promovendo a maturidade informacional e o fortalecimento do ecossistema local, com apoio dos demais apêndices.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Bento (2021), proposições do Capítulo 5 desta monografia e em modelos de desenvolvimento local e arranjos produtivos.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Este roteiro estratégico orienta a aplicação e disseminação territorial do modelo GD-PME 3 Pilares em PMEs de uma região, promovendo a maturidade informacional e o fortalecimento do ecossistema local.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

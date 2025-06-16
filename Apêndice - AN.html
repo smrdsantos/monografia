@@ -3,196 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Modelo de Comunicado Interno sobre a Implantação da Governança de Dados - GD-PME</title>
+    <title>Modelo de Comunicado Interno sobre GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ecfeff; /* Light Cyan background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-comunicado-an {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0891b2; /* Dark Cyan for titles */
-        }
-        .header-title-comunicado-an {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0891b2; /* Dark Cyan */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-comunicado-an {
-            font-size: 1.15rem;
-            color: #0e7490; /* Medium Cyan */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-comunicado-an {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #155e75; /* Darkest Cyan for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-comunicado-an {
-            color: #06b6d4; /* Cyan highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-comunicado-an {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #cffafe; /* Light Cyan background for icon */
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .header-icon-comunicado-an svg {
-            width: 32px;
-            height: 32px;
-            color: #0891b2; /* Dark Cyan */
+        
+        .gradient-title {
+            background: linear-gradient(to right, #22d3ee, #06b6d4); /* Ciano */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .comunicado-document-an {
-            border: 1px solid #67e8f9; /* Cyan border for the document */
+        /* Estilo para o documento dentro do card */
+        .comunicado-document {
+            background-color: #f0f9ff; /* Fundo ciano bem claro */
+            color: #164e63; /* Texto escuro para legibilidade */
             border-radius: 8px;
-            padding: 24px; 
-            background-color: #ecfeff; /* Very light Cyan background */
+            padding: 32px;
+            border: 1px solid #a5f3fc;
         }
-        .comunicado-document-an h2 {
-            font-size: 1.3rem; 
-            font-weight: 600;
-            color: #0e7490; 
+        .comunicado-document h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0e7490;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-transform: uppercase;
         }
-        .comunicado-document-an p, .comunicado-document-an ul {
-            font-size: 0.9rem;
-            color: #164e63; /* Darker Cyan for text */
-            line-height: 1.7; 
-            margin-bottom: 12px;
-            text-align: justify;
+        .comunicado-document p, .comunicado-document li {
+            font-size: 1rem;
+            color: #155e75;
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
-        .comunicado-document-an ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        .comunicado-document ul {
+            list-style-type: none;
+            padding-left: 0;
         }
-        .comunicado-document-an li {
-            margin-bottom: 8px;
+        .comunicado-document li {
+            padding-left: 1.5rem;
+            position: relative;
         }
-        .comunicado-document-an .label-text-an {
-            font-weight: 600; 
+        .comunicado-document li::before {
+            content: '\f058'; /* Ícone de check do Font Awesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #0891b2;
+        }
+        .comunicado-document .label-text {
+            font-weight: 600;
             color: #0e7490;
-         }
-        .comunicado-document-an .placeholder-text {
-            color: #0e7490;
+        }
+        .comunicado-document .placeholder-text {
             font-style: italic;
+            color: #0e7490;
         }
-        .signature-section-an {
-            margin-top: 30px;
-            color: #164e63;
-        }
-        .signature-block-an {
+        .signature-block {
             margin-top: 8px;
+            font-weight: 600;
         }
-
-
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #0891b2; /* Ciano */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        #backToTopBtn:hover {
+            background-color: #0e7490;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-comunicado-an">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 0 1-.9-8.915M10.34 15.84l.66 1.891a2.25 2.25 0 0 0 1.993 1.491h2.091A2.25 2.25 0 0 0 19.5 17.152M10.34 15.84A2.251 2.251 0 0 0 12.591 14.6H15M10.34 15.84l-1.285-3.675a2.25 2.25 0 0 1 1.993-2.829h2.091A2.25 2.25 0 0 1 15 11.491M10.34 15.84l-2.09-6.001a2.251 2.251 0 0 0-2.25-1.732H5.25a2.25 2.25 0 0 0-2.25 2.25c0 1.152.783 2.125 1.852 2.225l1.004.1M7.5 4.5H5.25A2.25 2.25 0 0 0 3 6.75v10.5A2.25 2.25 0 0 0 5.25 19.5h13.5A2.25 2.25 0 0 0 21 17.25V6.75A2.25 2.25 0 0 0 18.75 4.5H16.5" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-5xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-cyan-400">
+                <i class="fas fa-bullhorn fa-2x text-cyan-300"></i>
             </div>
-            <h1 class="header-title-comunicado-an">Modelo de Comunicado Interno sobre a Implantação da Governança de Dados</h1>
-            <p class="header-subtitle-comunicado-an">APÊNDICE AN: Modelo de mensagem institucional simples e eficaz para divulgação da implantação do modelo GD-PME 3 Pilares dentro da PME.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Modelo de Comunicado Interno sobre GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AN: Modelo de mensagem institucional simples e eficaz para divulgação da implantação do modelo GD-PME 3 Pilares.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A <span class="highlight-comunicado-an">comunicação clara, transparente e recorrente</span> é essencial para o engajamento dos colaboradores, alinhamento de expectativas e construção de uma cultura organizacional orientada por dados.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A <strong class="text-cyan-300">comunicação clara, transparente e recorrente</strong> é essencial para o engajamento dos colaboradores, alinhamento de expectativas e construção de uma cultura organizacional orientada por dados.
             </p>
         </section>
 
-        <!-- Internal Communication Model Section (AN.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-comunicado-an text-center">AN.1 Modelo de Comunicado Interno</h2>
-            <div class="comunicado-document-an">
-                <h2>COMUNICADO INTERNO – IMPLANTAÇÃO DA GOVERNANÇA DE DADOS EM NOSSA EMPRESA</h2>
-
-                <p><span class="label-text-an">Para:</span> Todos os Colaboradores</p>
-                <p><span class="label-text-an">De:</span> <span class="placeholder-text">[Nome da Liderança ou Setor Responsável, ex: Diretoria, Comitê de GD]</span></p>
-                <p><span class="label-text-an">Assunto:</span> Início da Jornada de Governança de Dados com o Modelo GD-PME 3 Pilares</p>
-                <p><span class="label-text-an">Data:</span> <span class="placeholder-text">___/___/_____</span></p>
-                <br>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-envelope-open-text mr-3 text-cyan-300"></i>AN.1 Modelo de Comunicado Interno</h2>
+            <div class="comunicado-document">
+                <h2>COMUNICADO INTERNO – IMPLANTAÇÃO DA GOVERNANÇA DE DADOS</h2>
+                
+                <div class="space-y-2 mb-8 border-b border-cyan-200 pb-4">
+                    <p><span class="label-text">Para:</span> Todos os Colaboradores</p>
+                    <p><span class="label-text">De:</span> <span class="placeholder-text">[Nome da Liderança ou Setor Responsável]</span></p>
+                    <p><span class="label-text">Assunto:</span> Início da Jornada de Governança de Dados com o Modelo GD-PME 3 Pilares</p>
+                    <p><span class="label-text">Data:</span> <span class="placeholder-text">[Data de Envio]</span></p>
+                </div>
+                
                 <p>Prezadas e Prezados Colegas,</p>
                 <p>Temos a satisfação de informar que, a partir deste mês, nossa empresa, <span class="placeholder-text">[Nome da Empresa]</span>, dará um passo importante para fortalecer a maneira como gerenciamos e utilizamos nossas informações. Iniciaremos a implantação do modelo GD-PME 3 Pilares, uma abordagem de Governança de Dados (GD) especialmente desenhada para a realidade de organizações como a nossa.</p>
-                <p>O modelo GD-PME 3 Pilares se baseia em três fundamentos principais, que trabalharemos juntos para desenvolver:</p>
+                <p>O modelo se baseia em três fundamentos que trabalharemos juntos para desenvolver:</p>
+                
                 <ul>
-                    <li><strong>Pilar 1 – Separação entre Dados e Sistemas:</strong> Buscaremos organizar nossas informações de forma mais clara e rastreável, garantindo que nossos dados sejam tratados como ativos valiosos, independentemente dos sistemas que utilizamos (detalhes no Apêndice AL e B);</li>
-                    <li><strong>Pilar 2 – Capacitação Contínua:</strong> Realizaremos oficinas, desenvolveremos glossários (Apêndice C) e materiais práticos (Apêndice AR) para que todos possamos aprender mais sobre o uso correto e estratégico dos dados em nosso dia a dia (conforme Apêndice D e U/AQ);</li>
-                    <li><strong>Pilar 3 – Políticas Graduais e Simplificadas:</strong> Estabeleceremos regras mínimas e acessíveis para garantir o acesso seguro, a qualidade das informações, o uso ético dos dados e a conformidade com a Lei Geral de Proteção de Dados (LGPD) (ver Apêndices G/AA/AY e AB).</li>
+                    <li><strong>Pilar 1 – Dados e Sistemas:</strong> Buscaremos organizar nossas informações de forma mais clara e rastreável, tratando-as como ativos valiosos.</li>
+                    <li><strong>Pilar 2 – Capacitação Contínua:</strong> Realizaremos oficinas e desenvolveremos materiais para que todos possamos aprender mais sobre o uso correto e estratégico dos dados.</li>
+                    <li><strong>Pilar 3 – Políticas Simplificadas:</strong> Estabeleceremos regras mínimas para garantir o acesso seguro, a qualidade das informações e a conformidade com a LGPD.</li>
                 </ul>
-                <p>Acreditamos que esta jornada em direção a uma melhor Governança de Dados trará benefícios significativos para todos e para a empresa, como:</p>
+
+                <p>Acreditamos que esta jornada trará benefícios significativos para todos, como:</p>
+                
                 <ul>
-                    <li>Melhoria na qualidade das informações para a tomada de decisões mais assertivas;</li>
-                    <li>Aumento da eficiência em nossos processos e redução de erros e retrabalhos;</li>
-                    <li>Maior segurança jurídica, especialmente em relação à LGPD (BRASIL, 2018);</li>
-                    <li>Fortalecimento da nossa cultura organizacional, valorizando os dados como um ativo estratégico.</li>
+                    <li>Melhoria na qualidade das informações para decisões mais assertivas;</li>
+                    <li>Aumento da eficiência e redução de erros e retrabalhos;</li>
+                    <li>Maior segurança jurídica, especialmente em relação à LGPD;</li>
+                    <li>Fortalecimento da nossa cultura, valorizando os dados como um ativo estratégico.</li>
                 </ul>
-                <p>Contamos com o apoio, a participação e o engajamento de todos e todas para que esta iniciativa seja bem-sucedida e represente um passo estratégico em nossa evolução como uma empresa cada vez mais orientada por dados e preparada para os desafios do mercado. Em breve, compartilharemos mais detalhes sobre as primeiras ações e como cada um poderá contribuir.</p>
-                <br>
-                <p>Atenciosamente,</p>
-                <div class="signature-section-an">
-                    <p class="signature-block-an"><span class="placeholder-text">[Nome do(a) Gestor(a) Responsável pela Iniciativa de GD / Representante da Direção]</span></p>
-                    <p class="signature-block-an"><span class="placeholder-text">[Cargo]</span></p>
-                    <p class="signature-block-an"><span class="placeholder-text">[Nome da Empresa]</span></p>
+                
+                <p>Contamos com o apoio e o engajamento de todos para que esta iniciativa seja bem-sucedida. Em breve, compartilharemos mais detalhes sobre as primeiras ações e como cada um poderá contribuir.</p>
+                
+                <p class="mt-8">Atenciosamente,</p>
+                <div class="mt-4">
+                    <p class="signature-block"><span class="placeholder-text">[Nome do(a) Gestor(a) Responsável]</span></p>
+                    <p class="signature-block"><span class="placeholder-text">[Cargo]</span></p>
+                    <p class="signature-block"><span class="placeholder-text">[Nome da Empresa]</span></p>
                 </div>
-                 <p class="text-xs text-cyan-700 mt-4 text-center">(Corpo do comunicado: Times New Roman 12, espaçamento 1,5, justificado. Listas com marcadores e pontuação conforme solicitado - adaptado para web).</p>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-comunicado-an fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Ferramenta de comunicação estratégica para as fases iniciais e para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este comunicado visa informar, sensibilizar e engajar colaboradores sobre a governança de dados, promovendo um ambiente receptivo às práticas dos Pilares 1 (Dados e Sistemas) e 3 (Políticas), conforme Apêndice W.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-4xl">
+                <p><strong>Nota [1]:</strong> Ferramenta de comunicação para as fases iniciais e para o Pilar 2, este comunicado visa informar e engajar colaboradores sobre a governança de dados, promovendo um ambiente receptivo às práticas dos Pilares 1 e 3.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

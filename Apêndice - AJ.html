@@ -3,228 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Checklist de Evidências para Adesão ao Modelo GD-PME 3 Pilares em Editais Públicos</title>
+    <title>Checklist de Evidências para Editais Públicos - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ecfeff; /* Light Cyan background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-checklist-aj {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0891b2; /* Dark Cyan for titles */
-        }
-        .header-title-checklist-aj {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0891b2; /* Dark Cyan */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-checklist-aj {
-            font-size: 1.15rem;
-            color: #0e7490; /* Medium Cyan */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-checklist-aj {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #155e75; /* Darkest Cyan for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-checklist-aj {
-            color: #06b6d4; /* Cyan highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-checklist-aj {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #22d3ee, #06b6d4); /* Ciano */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Checklist */
+        .checklist-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            border-color: #06b6d4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .checklist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .checklist-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #67e8f9; /* Ciano claro */
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #cffafe; /* Light Cyan background for icon */
         }
-        .header-icon-checklist-aj svg {
-            width: 32px;
-            height: 32px;
-            color: #0891b2; /* Dark Cyan */
+        .checklist-card h3 i {
+            margin-right: 12px;
         }
-
-        .table-checklist-aj {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .table-checklist-aj th, .table-checklist-aj td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #a5f3fc; /* Lighter Cyan border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-checklist-aj th {
-            background-color: #ecfeff; /* Very Light Cyan for table headers */
-            font-weight: 600;
-            color: #0e7490; /* Medium Cyan */
-        }
-        .table-checklist-aj td {
-            color: #155e75; /* Darkest Cyan for table text */
-        }
-        /* Specific column widths */
-        .criterio-col-aj { width: 25%; }
-        .evidencia-col-aj { width: 25%; }
-        .documento-col-aj { width: 25%; }
-        .obs-col-aj { width: 25%; }
         
-        .recomendacoes-card-aj {
-            background-color: #cffafe; /* Light Cyan for recommendations */
-            border-left: 4px solid #06b6d4; /* Cyan border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        .info-block {
+            margin-bottom: 16px;
         }
-        .recomendacoes-card-aj h3 {
-            font-size: 1.1rem;
+        .info-block label {
+            display: block;
             font-weight: 600;
-            color: #0891b2;
+            color: #9ca3af;
             margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .recomendacoes-card-aj ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            font-size: 0.85rem;
-            color: #155e75;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
         }
-        .recomendacoes-card-aj li {
-            margin-bottom: 5px;
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-bottom: 4px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #0891b2; /* Ciano */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        #backToTopBtn:hover {
+            background-color: #0e7490;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-checklist-aj">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-cyan-400">
+                <i class="fas fa-clipboard-list fa-2x text-cyan-300"></i>
             </div>
-            <h1 class="header-title-checklist-aj">Checklist de Evidências para Adesão ao Modelo GD-PME 3 Pilares em Editais Públicos e Programas de Fomento</h1>
-            <p class="header-subtitle-checklist-aj">APÊNDICE AJ: Guia técnico para PMEs utilizarem a adoção do modelo GD-PME como diferencial competitivo em candidaturas a programas de fomento.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Checklist de Evidências para Editais e Fomento</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AJ: Guia técnico para PMEs utilizarem a adoção do modelo GD-PME como diferencial competitivo em candidaturas a programas de fomento.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este checklist orienta PMEs a demonstrarem seu compromisso com a boa gestão informacional e conformidade com a LGPD, utilizando o <span class="highlight-checklist-aj">modelo GD-PME 3 Pilares</span> como base para evidências em editais e programas de fomento.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este checklist orienta PMEs a demonstrarem seu compromisso com a boa gestão informacional e conformidade com a LGPD, utilizando o <strong class="text-cyan-300">modelo GD-PME 3 Pilares</strong> como base para evidências.
             </p>
         </section>
 
-        <!-- Checklist Table Section (Quadro AJ.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-checklist-aj text-center">Quadro AJ.1 – Itens de Verificação e Evidências de Adesão</h2>
-            <div class="overflow-x-auto">
-                <table class="table-checklist-aj">
-                    <thead>
-                        <tr>
-                            <th class="criterio-col-aj">Critério Comum em Editais / Programas de Fomento Relacionado à Gestão de Dados</th>
-                            <th class="evidencia-col-aj">Evidência Solicitada ou Valorizada</th>
-                            <th class="documento-col-aj">Documento(s) / Apêndice(s) do Modelo GD-PME 3 Pilares Recomendado(s) como Evidência</th>
-                            <th class="obs-col-aj">Observações para a PME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Diagnóstico da Maturidade Informacional e Identificação de Necessidades</td>
-                            <td>Apresentação de um diagnóstico do estágio atual da empresa em relação à gestão e governança de dados; Identificação de lacunas.</td>
-                            <td>Apêndice A (Checklist de Diagnóstico Inicial); Apêndice AF (Roteiro de Diagnóstico Rápido).</td>
-                            <td>Anexar o checklist preenchido e, se possível, um breve resumo das principais lacunas identificadas e como o programa de fomento ajudará a superá-las.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Plano de Implantação de Melhorias na Gestão/Governança de Dados</td>
-                            <td>Apresentação de um plano de ação claro, com etapas, responsáveis e metas para aprimorar a gestão de dados.</td>
-                            <td>Apêndice B (Manual Operacional do GD-PME 3 Pilares); Apêndice L ou AM (Cronograma de Implementação).</td>
-                            <td>Adaptar o cronograma à realidade da PME e ao prazo do edital, destacando as primeiras ações e os resultados esperados com o apoio do fomento.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Existência (ou Compromisso de Criação) de Políticas de Dados Ativas</td>
-                            <td>Demonstração de que a empresa possui ou se compromete a criar políticas internas para uso, segurança e tratamento de dados (incluindo LGPD).</td>
-                            <td>Apêndice G/AA/AY (Modelos de Termo de Boas Práticas); Apêndice AH (Termo de Compromisso Institucional com a GD).</td>
-                            <td>Apresentar o Termo de Compromisso assinado pela liderança e, se já houver, o Termo de Boas Práticas adaptado à empresa. Destacar o alinhamento com a LGPD.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mecanismo de Acompanhamento da Evolução da Maturidade Informacional</td>
-                            <td>Descrição de como a empresa pretende monitorar e avaliar seu progresso na gestão e governança de dados.</td>
-                            <td>Apêndice F (Ficha de Autoavaliação Trimestral); Apêndice Q (Comparativo de Evolução); Apêndice P/Y/AK/AW (Template de Relatório Trimestral); Apêndice AT (Avaliação Pós-Ciclo).</td>
-                            <td>Explicar a lógica dos ciclos trimestrais de avaliação e como os relatórios serão utilizados para a melhoria contínua. Anexar um formulário do Apêndice F.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Plano de Capacitação da Equipe em Dados e Governança</td>
-                            <td>Indicação de como a equipe será capacitada para lidar com dados e seguir as novas políticas.</td>
-                            <td>Apêndice D (Guia de Oficina); Apêndice U/AQ (Formação de Multiplicadores); Apêndice R (Capacitação Setorial); Apêndice Z (Instrumentos Pedagógicos); Apêndice C (Glossário).</td>
-                            <td>Apresentar o plano de capacitação baseado no Pilar 2 do GD-PME 3 Pilares, destacando o uso de multiplicadores internos e materiais acessíveis.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Gestão de Riscos Informacionais</td>
-                            <td>Demonstração de consciência sobre os riscos associados aos dados e planos para mitigá-los.</td>
-                            <td>Apêndice N ou AB (Matriz de Riscos Informacionais).</td>
-                            <td>Anexar uma versão preliminar da Matriz de Riscos preenchida para os principais processos da PME.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-tasks mr-3 text-cyan-300"></i>Quadro AJ.1 – Itens de Verificação e Evidências</h2>
+            <div class="space-y-6">
+
+                <div class="checklist-card">
+                    <h3><i class="fas fa-search"></i>Critério: Diagnóstico da Maturidade Informacional</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Apresentação de um diagnóstico do estágio atual da empresa em relação à gestão de dados; Identificação de lacunas.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">A</span> <span class="ref-tag">AF</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Anexar o checklist preenchido e um breve resumo das lacunas e como o programa de fomento ajudará a superá-las.</p></div>
+                    </div>
+                </div>
+
+                <div class="checklist-card">
+                    <h3><i class="fas fa-map-signs"></i>Critério: Plano de Implantação de Melhorias</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Apresentação de um plano de ação claro, com etapas, responsáveis e metas para aprimorar a gestão de dados.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">B</span> <span class="ref-tag">L/AM</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Adaptar o cronograma à realidade da PME e ao prazo do edital, destacando as ações iniciais e resultados esperados.</p></div>
+                    </div>
+                </div>
+                
+                <div class="checklist-card">
+                    <h3><i class="fas fa-gavel"></i>Critério: Existência de Políticas de Dados</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Demonstração de que a empresa possui ou se compromete a criar políticas internas para uso, segurança e tratamento de dados.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">G/AA/AY</span> <span class="ref-tag">AH</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Apresentar o Termo de Compromisso assinado pela liderança. Destacar o alinhamento com a LGPD.</p></div>
+                    </div>
+                </div>
+
+                <div class="checklist-card">
+                    <h3><i class="fas fa-chart-line"></i>Critério: Mecanismo de Acompanhamento</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Descrição de como a empresa pretende monitorar e avaliar seu progresso na gestão e governança de dados.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">F</span> <span class="ref-tag">Q</span> <span class="ref-tag">P/Y/AK/AW</span> <span class="ref-tag">AT</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Explicar a lógica dos ciclos trimestrais de avaliação e como os relatórios serão utilizados para a melhoria contínua.</p></div>
+                    </div>
+                </div>
+
+                <div class="checklist-card">
+                    <h3><i class="fas fa-users"></i>Critério: Plano de Capacitação da Equipe</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Indicação de como a equipe será capacitada para lidar com dados e seguir as novas políticas.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">D</span> <span class="ref-tag">U/AQ</span> <span class="ref-tag">R</span> <span class="ref-tag">Z</span> <span class="ref-tag">C</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Apresentar o plano de capacitação baseado no Pilar 2, destacando o uso de multiplicadores internos e materiais acessíveis.</p></div>
+                    </div>
+                </div>
+                
+                <div class="checklist-card">
+                    <h3><i class="fas fa-shield-alt"></i>Critério: Gestão de Riscos Informacionais</h3>
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="info-block"><label>Evidência Solicitada</label><p>Demonstração de consciência sobre os riscos associados aos dados e planos para mitigá-los.</p></div>
+                        <div class="info-block"><label>Documentos de Apoio (Apêndices)</label><p><span class="ref-tag">N</span> <span class="ref-tag">AB</span></p></div>
+                        <div class="info-block"><label>Observações para a PME</label><p>Anexar uma versão preliminar da Matriz de Riscos preenchida para os principais processos da PME.</p></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Additional Recommendations Section (AJ.1) -->
-        <section class="card recomendacoes-card-aj fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AJ.1 Recomendações Adicionais para PMEs:</h3>
-            <ul>
-                <li><strong>Adaptação ao Edital:</strong> Cada edital ou programa de fomento possui critérios específicos. Este checklist é um guia geral; a PME deve sempre ler atentamente os requisitos do edital e adaptar as evidências do GD-PME 3 Pilares para responder da forma mais completa e direcionada possível;</li>
-                <li><strong>Destaque aos Diferenciais do GD-PME 3 Pilares:</strong> Ao preparar a documentação, enfatizar os aspectos do GD-PME 3 Pilares que são particularmente valorizados em contextos de inovação e impacto social, como o foco na simplicidade, baixo custo, engajamento da equipe, sustentabilidade e a promoção da "justiça informacional";</li>
-                <li><strong>Evidências Claras e Concisas:</strong> Os documentos anexados (baseados nos apêndices) devem ser preenchidos de forma clara, objetiva e concisa, demonstrando o compromisso e a capacidade da PME em implementar a Governança de Dados.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-cyan-300"></i>AJ.1 Recomendações Adicionais para PMEs</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Adaptação ao Edital:</strong> Cada edital ou programa de fomento possui critérios específicos. Este checklist é um guia geral; a PME deve sempre ler atentamente os requisitos do edital e adaptar as evidências.</li>
+                <li><strong>Destaque aos Diferenciais:</strong> Ao preparar a documentação, enfatizar os aspectos do GD-PME 3 Pilares que são valorizados em contextos de inovação, como o foco na simplicidade, baixo custo, engajamento e sustentabilidade.</li>
+                <li><strong>Evidências Claras e Concisas:</strong> Os documentos anexados (baseados nos apêndices) devem ser preenchidos de forma clara, objetiva e concisa, demonstrando o compromisso e a capacidade da PME.</li>
             </ul>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-checklist-aj fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base na análise de editais públicos de fomento à inovação e transformação digital de instituições como FINEP, SEBRAE, Desenvolve SP, Banco do Brasil e Banco do Nordeste (período 2022–2024), e nos instrumentos do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este checklist auxilia PMEs a demonstrarem seu progresso em Governança de Dados para editais e programas de fomento, conectando critérios de avaliação com instrumentos e práticas dos três pilares do modelo GD-PME – Pilar 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) – e evidenciando o fortalecimento da gestão informacional.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Fonte:</strong> Elaborado pelo Autor com base na análise de editais públicos de fomento (período 2022–2024) e nos instrumentos do modelo GD-PME 3 Pilares.</p>
+                <p class="mt-2"><strong>Nota [1]:</strong> Este checklist auxilia PMEs a demonstrarem seu progresso em Governança de Dados para editais, conectando critérios de avaliação com instrumentos e práticas dos três pilares do modelo GD-PME.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>
