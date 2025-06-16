@@ -3,213 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Exemplo de Caso Aplicado - Simulação do Ciclo Inicial (GD-PME)</title>
+    <title>Exemplo de Caso Aplicado - Simulação do Ciclo Inicial (GD-PME)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f4f4f5; /* Light Zinc background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-caso {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #3f3f46; /* Dark Zinc for titles */
-        }
-        .header-title-caso {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #3f3f46; /* Dark Zinc */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-caso {
-            font-size: 1.15rem;
-            color: #52525b; /* Medium Zinc */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-caso {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #27272a; /* Darkest Zinc for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-caso {
-            color: #71717a; /* Zinc highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-caso {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #a1a1aa, #e5e7eb); /* Zinco/Cinza */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilos dos Cards de Caso */
+        .case-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+            flex-direction: column;
+        }
+        .case-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 16px;
-            background-color: #e4e4e7; /* Light Zinc background for icon */
-        }
-        .header-icon-caso svg {
-            width: 32px;
-            height: 32px;
-            color: #3f3f46; /* Dark Zinc */
-        }
-
-        .list-item-caso {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            color: #52525b; /* Medium Zinc for list text */
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .list-item-caso svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            flex-shrink: 0;
-            margin-top: 4px;
-            color: #a1a1aa; /* Lighter Zinc for icons */
-        }
-        .list-item-caso .pillar-name {
-            font-weight: 600;
-            color: #3f3f46; /* Dark Zinc for pillar names */
-        }
-        .content-block {
-            background-color: #fafafa; /* Very light gray for content blocks */
-            padding: 16px;
-            border-radius: 8px;
-            border: 1px solid #e4e4e7; /* Light Zinc border */
-        }
-        .content-block h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #3f3f46;
-            margin-bottom: 12px;
+            color: #d4d4d8;
             display: flex;
             align-items: center;
         }
-         .content-block h3 svg {
-            margin-right: 8px;
-         }
+        .case-card h3 i {
+            margin-right: 12px;
+        }
+        
+        .case-card ul {
+            list-style: none;
+            padding-left: 0;
+            flex-grow: 1;
+        }
+        .case-card li {
+            padding-left: 1rem;
+            border-left: 3px solid;
+            margin-bottom: 16px;
+        }
+        .case-card .pillar-1 { border-color: #60a5fa; }
+        .case-card .pillar-2 { border-color: #34d399; }
+        .case-card .pillar-3 { border-color: #facc15; }
 
+        .case-card .pillar-title {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .title-p1 { color: #60a5fa; }
+        .title-p2 { color: #34d399; }
+        .title-p3 { color: #facc15; }
+        
+        .result-item {
+            display: flex; align-items: flex-start; margin-bottom: 16px;
+        }
+        .result-item i {
+            color: #a7f3d0; margin-right: 12px; margin-top: 5px;
+        }
+
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #71717a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #52525b; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-5xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-caso">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-zinc-600 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-zinc-400">
+                <i class="fas fa-microscope fa-2x text-zinc-300"></i>
             </div>
-            <h1 class="header-title-caso">Exemplo de Caso Aplicado: Simulação do Ciclo Inicial</h1>
-            <p class="header-subtitle-caso">APÊNDICE H: Aplicação fictícia do primeiro ciclo do modelo GD-PME 3 Pilares na empresa "Varejo Inteligente Ltda.", baseada nos Apêndices A e B.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Exemplo de Caso Aplicado: Ciclo Inicial</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE H: Aplicação fictícia do primeiro ciclo do modelo GD-PME na empresa "Varejo Inteligente Ltda."</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este apêndice ilustra, por meio de um <span class="highlight-caso">caso simulado</span>, a aplicação articulada do modelo GD-PME 3 Pilares em seu ciclo inaugural. Demonstra-se a sinergia entre as ações dos três pilares como ponto de partida para a transformação da governança de dados na PME.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                Este apêndice ilustra, por meio de um <strong class="text-zinc-300">caso simulado</strong>, a aplicação articulada do modelo GD-PME 3 Pilares em seu ciclo inaugural. Demonstra-se a sinergia entre as ações dos três pilares como ponto de partida para a transformação da governança de dados.
             </p>
         </section>
 
-        <!-- Application Summary and Results Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-caso text-center mb-10">Simulação na "Varejo Inteligente Ltda."</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- H.1 Resumo da Aplicação (Ciclo 1 – 90 dias) -->
-                <div class="content-block">
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-zinc-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-                        H.1 Resumo da Aplicação (Ciclo 1 – 90 dias)
-                    </h3>
-                    <ul class="mt-2 space-y-3">
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            <div>
-                                <span class="pillar-name">Pilar 1 – Separação entre Dados e Sistemas:</span> Realizado o inventário de dados utilizando planilha sugerida (similar ao Apêndice AL), com identificação dos principais campos padrão para clientes e produtos.
-                            </div>
-                        </li>
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.084-1.283-.24-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.084-1.283.24-1.857m10.514-2.873A5 5 0 0018 10V7M3.486 15.27A5 5 0 012 10V7m8 4c0-1.105.895-2 2-2s2 .895 2 2-2 4-2 4-1.121-1.65-2-2.512zM12 10V7M4.5 4.5L3 6m18-1.5L19.5 6"></path></svg>
-                            <div>
-                                <span class="pillar-name">Pilar 2 – Capacitação Contínua:</span> Aplicada oficina interna introdutória (guia do Apêndice D) com seis participantes (Vendas, Estoque, Administrativo), resultando em glossário básico (Apêndice C) e discussão de falhas informacionais.
-                            </div>
-                        </li>
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                             <div>
-                                <span class="pillar-name">Pilar 3 – Políticas Graduais e Simplificadas:</span> Elaborado e discutido com a liderança o Termo de Boas Práticas em Dados (modelo do Apêndice G), com posterior assinatura.
-                            </div>
-                        </li>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+             <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-building mr-3 text-zinc-300"></i>Simulação na "Varejo Inteligente Ltda."</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="case-card">
+                    <h3><i class="fas fa-play-circle text-gray-400"></i>H.1 Resumo da Aplicação (Ciclo 1 – 90 dias)</h3>
+                    <ul>
+                        <li class="pillar-1"><strong class="pillar-title title-p1">Pilar 1 – Dados e Sistemas:</strong><p>Realizado o inventário de dados utilizando planilha (Apêndice AL), com identificação dos campos padrão para clientes e produtos.</p></li>
+                        <li class="pillar-2"><strong class="pillar-title title-p2">Pilar 2 – Capacitação Contínua:</strong><p>Aplicada oficina interna introdutória (Apêndice D) com seis participantes, resultando em glossário básico (Apêndice C) e discussão de falhas.</p></li>
+                        <li class="pillar-3"><strong class="pillar-title title-p3">Pilar 3 – Políticas Simplificadas:</strong><p>Elaborado e discutido com a liderança o Termo de Boas Práticas em Dados (Apêndice G), com posterior assinatura.</p></li>
+                    </ul>
+                </div>
+                
+                <div class="case-card">
+                    <h3><i class="fas fa-chart-line text-gray-400"></i>H.2 Resultados Observados (Projeção)</h3>
+                    <ul>
+                        <li class="result-item"><i class="fas fa-check"></i><span>Redução de ~15% nos retrabalhos (inconsistências em cadastros/pedidos) após inventário e padronizações.</span></li>
+                        <li class="result-item"><i class="fas fa-check"></i><span>Aumento no engajamento com relatórios gerenciais (de ~25% para 52% de uso em reuniões) após capacitação.</span></li>
+                        <li class="result-item"><i class="fas fa-check"></i><span>Maior clareza sobre responsabilidades pela atualização e veracidade dos dados após discussão e assinatura do Termo.</span></li>
                     </ul>
                 </div>
 
-                <!-- H.2 Resultados Observados (Projeção Simulada) -->
-                <div class="content-block">
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-zinc-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
-                        </svg>
-                        H.2 Resultados Observados (Projeção Simulada)
-                    </h3>
-                    <ul class="mt-2 space-y-3">
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
-                            <span>Redução de ~15% nos retrabalhos (inconsistências em cadastros/pedidos) após inventário e padronizações mínimas.</span>
-                        </li>
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
-                            <span>Aumento no engajamento com relatórios gerenciais (de ~25% para 52% de uso em reuniões) após capacitação e clareza dos dados.</span>
-                        </li>
-                        <li class="list-item-caso">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
-                            <span>Maior clareza sobre responsabilidades pela atualização e veracidade dos dados (Vendas, RH) após discussão e assinatura do Termo de Boas Práticas.</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="footer-caso fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice ilustra, por meio de um caso simulado, a aplicação articulada do modelo GD-PME 3 Pilares em seu ciclo inaugural. Demonstra-se a sinergia entre as ações do Pilar 1 (Dados e Sistemas), Pilar 2 (Capacitação) e Pilar 3 (Políticas), conforme detalhado nos Apêndices A, B, C, D, G e AL, como ponto de partida para a transformação da governança de dados na PME.</p>
+        
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este apêndice ilustra a aplicação articulada do modelo GD-PME, demonstrando a sinergia entre as ações dos Pilares 1, 2 e 3 como ponto de partida para a transformação da governança.</p>
+            </div>
         </footer>
 
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

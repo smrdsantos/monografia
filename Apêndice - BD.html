@@ -1,140 +1,227 @@
-HTML
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Definição de Papéis e Responsabilidades em Governança de Dados - GD-PME</title>
+    <title>Definição de Papéis e Responsabilidades em GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f3ff; /* Light Violet background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
+
+        /* Animação */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .card {
-            background-color: white;
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 24px;
             margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #a78bfa, #8b5cf6); /* Roxo/Violeta */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Papéis */
+        .role-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover {
+        .role-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
         }
-        .footer-roles {
-            font-size: 0.875rem;
-            color: #5b21b6; /* Violet 700 */
-            padding-top: 1rem;
-            border-top: 1px solid #ddd6fe; /* Violet 200 */
+        
+        .role-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
         }
+        .role-card h3 i {
+            margin-right: 12px;
+        }
+        .role-card .role-subtitle {
+            font-style: italic;
+            color: #a5b4fc;
+            margin-bottom: 16px;
+        }
+        
+        .info-block {
+            margin-bottom: 16px;
+        }
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+        .info-block ul {
+            list-style-position: inside;
+            list-style-type: disc;
+            space-y: 2;
+        }
+
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #6d28d9; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #5b21b6; }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
 
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
-            <div class="flex justify-center items-center gap-4">
-                <svg class="w-10 h-10 text-violet-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.952a4.5 4.5 0 0 1-9 0M13.5 6a4.5 4.5 0 0 1 9 0m-9 0a4.5 4.5 0 0 0-9 0" />
-                </svg>
-                <h1 class="text-3xl md:text-4xl font-bold text-violet-800">Definição de Papéis e Responsabilidades em Governança de Dados</h1>
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-violet-400">
+                <i class="fas fa-users-cog fa-2x text-violet-300"></i>
             </div>
-            <h2 class="text-xl md:text-2xl text-violet-600 mt-2">APÊNDICE - BD</h2>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Definição de Papéis e Responsabilidades em GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE BD: Detalhamento dos principais papéis para uma estrutura de Governança de Dados mais formalizada em uma PME.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p>Este apêndice detalha os principais papéis e responsabilidades para uma estrutura de Governança de Dados (GD) mais formalizada em uma PME, conforme o Módulo de Evolução Organizacional. A clareza destes papéis é fundamental para o sucesso e a escalabilidade da governança.</p>
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Alinhado ao <strong class="text-violet-300">Módulo de Evolução Organizacional</strong>, a clareza destes papéis é fundamental para o sucesso e a escalabilidade da governança.
+            </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.3s;">
-            <h3 class="text-2xl font-semibold mb-4 text-violet-700">Quadro BD.1 – Papéis e Responsabilidades em Governança de Dados</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="border-b-2 border-violet-200">
-                        <tr>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-violet-600">Papel</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-violet-600">Quem é (Perfil Sugerido na PME)</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-violet-600">Principais Responsabilidades</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-violet-100">
-                            <td class="p-2 md:p-4 font-semibold">Data Owner<br><span class="text-sm font-normal italic">(Dono do Dado)</span></td>
-                            <td class="p-2 md:p-4">Líder de Negócio (Sócio, Diretor, Gerente de área como Comercial, Financeiro, etc.).</td>
-                            <td class="p-2 md:p-4">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Ser o responsável final pela qualidade e uso de um domínio de dados (ex: Dados de Clientes).</li>
-                                    <li>Aprovar políticas e regras de negócio para seus dados.</li>
-                                    <li>Resolver conflitos e tomar decisões estratégicas sobre o ativo de dados.</li>
-                                    <li>Participar do Conselho de Dados.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-violet-100">
-                            <td class="p-2 md:p-4 font-semibold">Data Steward<br><span class="text-sm font-normal italic">(Curador do Dado)</span></td>
-                            <td class="p-2 md:p-4">Especialista da área de negócio que entende profundamente os dados (ex: analista sênior, usuário-chave de um sistema).</td>
-                            <td class="p-2 md:p-4">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Manter a qualidade, consistência e documentação dos dados no dia a dia.</li>
-                                    <li>Definir e aplicar regras de negócio e padrões de qualidade.</li>
-                                    <li>Ser o ponto de contato para dúvidas sobre os dados de seu domínio.</li>
-                                    <li>Investigar e ajudar a resolver problemas de dados.</li>
-                                    <li>Participar do Grupo de Trabalho de Dados.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-violet-100">
-                            <td class="p-2 md:p-4 font-semibold">Data Governance Lead<br><span class="text-sm font-normal italic">(Facilitador da GD)</span></td>
-                            <td class="p-2 md:p-4">Pode ser um gestor com bom trânsito entre áreas ou um analista sênior com perfil de organização.</td>
-                             <td class="p-2 md:p-4">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Coordenar as atividades do programa de GD.</li>
-                                    <li>Facilitar as reuniões do Conselho e do Grupo de Trabalho.</li>
-                                    <li>Manter o "Backlog de Governança" e os demais artefatos.</li>
-                                    <li>Comunicar os avanços do programa para a empresa.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                         <tr class="border-b border-violet-100">
-                            <td class="p-2 md:p-4 font-semibold">Data User<br><span class="text-sm font-normal italic">(Usuário de Dados)</span></td>
-                            <td class="p-2 md:p-4">Qualquer colaborador que utiliza dados para executar seu trabalho ou tomar decisões.</td>
-                             <td class="p-2 md:p-4">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Utilizar os dados de forma ética e conforme as políticas estabelecidas.</li>
-                                    <li>Reportar problemas de qualidade ou inconsistências que encontrar.</li>
-                                    <li>Sugerir melhorias nos dados e relatórios.</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-user-tag mr-3 text-violet-300"></i>Quadro BD.1 – Papéis e Responsabilidades</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="role-card" style="border-color: #8b5cf6;">
+                    <h3><i class="fas fa-crown"></i>Data Owner</h3>
+                    <p class="role-subtitle">(Dono do Dado)</p>
+                    <div class="info-block"><label>Perfil Sugerido na PME</label><p>Líder de Negócio (Sócio, Diretor, Gerente de área como Comercial, Financeiro, etc.).</p></div>
+                    <div class="info-block"><label>Principais Responsabilidades</label>
+                        <ul>
+                            <li>Ser o responsável final pela qualidade e uso de um domínio de dados (ex: Dados de Clientes).</li>
+                            <li>Aprovar políticas e regras de negócio para seus dados.</li>
+                            <li>Resolver conflitos e tomar decisões estratégicas sobre o ativo de dados.</li>
+                            <li>Participar do Conselho de Dados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card" style="border-color: #7c3aed;">
+                    <h3><i class="fas fa-user-shield"></i>Data Steward</h3>
+                    <p class="role-subtitle">(Curador do Dado)</p>
+                     <div class="info-block"><label>Perfil Sugerido na PME</label><p>Especialista da área de negócio que entende profundamente os dados (ex: analista sênior, usuário-chave).</p></div>
+                     <div class="info-block"><label>Principais Responsabilidades</label>
+                        <ul>
+                            <li>Manter a qualidade, consistência e documentação dos dados no dia a dia.</li>
+                            <li>Definir e aplicar regras de negócio e padrões de qualidade.</li>
+                            <li>Ser o ponto de contato para dúvidas sobre os dados de seu domínio.</li>
+                            <li>Investigar e ajudar a resolver problemas de dados.</li>
+                            <li>Participar do Grupo de Trabalho de Dados.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="role-card" style="border-color: #6d28d9;">
+                    <h3><i class="fas fa-user-tie"></i>Data Governance Lead</h3>
+                    <p class="role-subtitle">(Facilitador da GD)</p>
+                    <div class="info-block"><label>Perfil Sugerido na PME</label><p>Pode ser um gestor com bom trânsito entre áreas ou um analista sênior com perfil de organização.</p></div>
+                     <div class="info-block"><label>Principais Responsabilidades</label>
+                        <ul>
+                            <li>Coordenar as atividades do programa de GD.</li>
+                            <li>Facilitar as reuniões do Conselho e do Grupo de Trabalho.</li>
+                            <li>Manter o "Backlog de Governança" e os demais artefatos.</li>
+                            <li>Comunicar os avanços do programa para a empresa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card" style="border-color: #5b21b6;">
+                    <h3><i class="fas fa-user"></i>Data User</h3>
+                    <p class="role-subtitle">(Usuário de Dados)</p>
+                    <div class="info-block"><label>Perfil Sugerido na PME</label><p>Qualquer colaborador que utiliza dados para executar seu trabalho ou tomar decisões.</p></div>
+                     <div class="info-block"><label>Principais Responsabilidades</label>
+                        <ul>
+                            <li>Utilizar os dados de forma ética e conforme as políticas.</li>
+                            <li>Reportar problemas de qualidade ou inconsistências que encontrar.</li>
+                            <li>Sugerir melhorias nos dados e relatórios.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h3 class="text-xl font-semibold mb-3 text-violet-700">BD.1 Recomendações de Implementação:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li><strong>Comece Pequeno:</strong> Uma PME não precisa preencher todos os papéis para todos os dados de uma vez. Comece nomeando um Data Owner e um Data Steward para o domínio de dados mais crítico da empresa (ex: Clientes).</li>
-                <li><strong>Capacite, Não Contrate:</strong> Os Data Stewards são tipicamente colaboradores internos que recebem capacitação e tempo para exercer a função. Utilize o Pilar 2 (Capacitação Contínua) para formá-los.</li>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-violet-300"></i>BD.1 Recomendações de Implementação</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Comece Pequeno:</strong> Uma PME não precisa preencher todos os papéis para todos os dados de uma vez. Comece nomeando um Data Owner e um Data Steward para o domínio de dados mais crítico.</li>
+                <li><strong>Capacite, Não Contrate:</strong> Os Data Stewards são tipicamente colaboradores internos que recebem capacitação e tempo para exercer a função. Utilize o Pilar 2 para formá-los.</li>
                 <li><strong>Formalize com o Charter:</strong> Use o Termo de Abertura (Apêndice BE) para dar autoridade e clareza a estes papéis perante toda a organização.</li>
             </ul>
         </section>
 
-        <footer class="footer-roles fade-in-section" style="animation-delay: 0.5s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor (2025), com base em práticas recomendadas por Eckerson Group (2020), DGI (Thomas, 2006) e Mahanti (2021a), adaptadas para PMEs.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Como detalhamento do Módulo de Evolução Organizacional, este apêndice avança sobre a matriz RACI (Quadro 3.3), formalizando papéis padrão da indústria como Data Owner e Data Steward. A proposta visa aumentar a accountability e a clareza, alinhando-se às melhores práticas de frameworks como os de Ladley (2020) e DAMA (2017), mas mantendo a adaptabilidade ao contexto de uma PME.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Como detalhamento do Módulo de Evolução Organizacional, este apêndice avança sobre a matriz RACI, formalizando papéis como Data Owner e Data Steward, alinhando-se às melhores práticas de mercado.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

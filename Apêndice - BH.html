@@ -3,114 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Template de SLA de Qualidade de Dados - GD-PME</title>
+    <title>Template de SLA de Qualidade de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ecfeff; /* Light Cyan background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
+
+        /* Animação */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .card {
-            background-color: white;
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 24px;
             margin-bottom: 24px;
         }
-        .footer-sla {
-            font-size: 0.875rem;
-            color: #155e75; /* Cyan 800 */
-            padding-top: 1rem;
-            border-top: 1px solid #a5f3fc; /* Cyan 200 */
+        
+        .gradient-title {
+            background: linear-gradient(to right, #22d3ee, #06b6d4); /* Ciano */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+        
+        /* Estilo dos Cards de Regra de SLA */
+        .sla-rule-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .sla-rule-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #67e8f9; /* Ciano claro */
+            padding-bottom: 12px;
+            border-bottom: 1px solid #4b5563;
+        }
+        .info-block {
+            flex: 1;
+        }
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+        .meta-block {
+            background-color: #1f2937;
+            border: 1px solid #0891b2;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .meta-block label {
+            color: #22d3ee;
+        }
+        .meta-block p {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #67e8f9;
+        }
+
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0891b2; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0e7490; }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
 
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
-            <div class="flex justify-center items-center gap-4">
-                 <svg class="w-10 h-10 text-cyan-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12Z" />
-                </svg>
-                <h1 class="text-3xl md:text-4xl font-bold text-cyan-800">Template de Acordo de Nível de Serviço de Qualidade de Dados (Data Quality SLA)</h1>
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-cyan-400">
+                <i class="fas fa-award fa-2x text-cyan-300"></i>
             </div>
-            <h2 class="text-xl md:text-2xl text-cyan-600 mt-2">APÊNDICE - BH</h2>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Template de SLA de Qualidade de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE BH: Modelo de Data Quality Service Level Agreement para formalizar metas de qualidade para dados críticos.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p>Este apêndice oferece um modelo para criar um Acordo de Nível de Serviço (SLA) focado em Qualidade de Dados. Este documento formaliza as metas de qualidade para um domínio de dados crítico, estabelecendo um compromisso entre o <strong>Data Owner</strong> (que define a necessidade de negócio) e o <strong>Data Steward</strong> (que executa a curadoria).</p>
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este documento formaliza as metas de qualidade para um domínio de dados, estabelecendo um compromisso entre o <strong class="text-cyan-300">Data Owner</strong> (que define a necessidade) e o <strong class="text-cyan-300">Data Steward</strong> (que executa a curadoria).
+            </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.3s;">
-            <div class="text-center mb-6 border-b-2 border-cyan-200 pb-4">
-                <h3 class="text-2xl font-bold text-cyan-800">ACORDO DE NÍVEL DE SERVIÇO (SLA) DE QUALIDADE DE DADOS</h3>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <div class="text-center mb-8 border-b-2 border-gray-700 pb-4">
+                <h2 class="text-2xl font-bold text-white">ACORDO DE NÍVEL DE SERVIÇO (SLA)</h2>
+                <p class="text-gray-400">Qualidade de Dados - Cadastro de Produtos</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-6">
-                <p><strong>Domínio de Dado:</strong> Cadastro de Produtos</p>
-                <p><strong>Data Owner:</strong> [Nome do Gerente de Compras/Comercial]</p>
-                <p><strong>Data Steward:</strong> [Nome do Analista de Estoque]</p>
-                <p><strong>Data de Vigência:</strong> [Data]</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-8">
+                <p><strong>Data Owner:</strong> <span class="text-white">[Nome do Gerente de Compras]</span></p>
+                <p><strong>Data Steward:</strong> <span class="text-white">[Nome do Analista de Estoque]</span></p>
+                <p><strong>Vigência:</strong> <span class="text-white">[Data]</span></p>
             </div>
-            
-            <h3 class="text-2xl font-semibold mb-4 text-cyan-700">Quadro BH.1 – SLA de Qualidade de Dados</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="border-b-2 border-cyan-200">
-                        <tr>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Elemento de Dado Crítico</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Dimensão da Qualidade</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Métrica de Qualidade</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Meta Acordada (SLA)</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Forma de Medição</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-cyan-100">
-                            <td class="p-2 md:p-4 font-semibold">Código de Barras do Produto</td>
-                            <td class="p-2 md:p-4">Completude</td>
-                            <td class="p-2 md:p-4">% de produtos com código de barras preenchido.</td>
-                            <td class="p-2 md:p-4 font-bold text-cyan-700">&gt; 99.8%</td>
-                            <td class="p-2 md:p-4">Relatório semanal de validação.</td>
-                        </tr>
-                        <tr class="border-b border-cyan-100">
-                            <td class="p-2 md:p-4 font-semibold">Descrição do Produto</td>
-                            <td class="p-2 md:p-4">Conformidade</td>
-                            <td class="p-2 md:p-4">% de descrições que seguem o padrão "Nome - Marca - Cor".</td>
-                            <td class="p-2 md:p-4 font-bold text-cyan-700">&gt; 95%</td>
-                            <td class="p-2 md:p-4">Auditoria amostral mensal.</td>
-                        </tr>
-                        <tr class="border-b border-cyan-100">
-                            <td class="p-2 md:p-4 font-semibold">Preço de Venda</td>
-                            <td class="p-2 md:p-4">Precisão</td>
-                            <td class="p-2 md:p-4">% de preços alinhados com a tabela oficial.</td>
-                            <td class="p-2 md:p-4 font-bold text-cyan-700">100%</td>
-                            <td class="p-2 md:p-4">Conferência diária dos novos cadastros.</td>
-                        </tr>
-                        <tr class="border-b border-cyan-100">
-                            <td class="p-2 md:p-4 font-semibold">Status do Produto (Ativo/Inativo)</td>
-                            <td class="p-2 md:p-4">Atualidade</td>
-                            <td class="p-2 md:p-4">Tempo máximo para atualização do status após descontinuação.</td>
-                            <td class="p-2 md:p-4 font-bold text-cyan-700">&lt; 48 horas</td>
-                            <td class="p-2 md:p-4">Relatório de produtos sem venda há mais de 90 dias.</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="space-y-6">
+                <div class="sla-rule-card">
+                    <h3><i class="fas fa-barcode mr-2"></i>Elemento: Código de Barras do Produto</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+                        <div class="info-block"><label>Dimensão da Qualidade</label><p>Completude</p></div>
+                        <div class="info-block"><label>Métrica</label><p>% de produtos com código de barras preenchido.</p></div>
+                        <div class="info-block"><label>Forma de Medição</label><p>Relatório semanal de validação.</p></div>
+                        <div class="meta-block"><label>Meta Acordada</label><p>&gt; 99.8%</p></div>
+                    </div>
+                </div>
+
+                <div class="sla-rule-card">
+                    <h3><i class="fas fa-pen-alt mr-2"></i>Elemento: Descrição do Produto</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+                        <div class="info-block"><label>Dimensão da Qualidade</label><p>Conformidade</p></div>
+                        <div class="info-block"><label>Métrica</label><p>% de descrições que seguem o padrão "Nome - Marca - Cor".</p></div>
+                        <div class="info-block"><label>Forma de Medição</label><p>Auditoria amostral mensal.</p></div>
+                        <div class="meta-block"><label>Meta Acordada</label><p>&gt; 95%</p></div>
+                    </div>
+                </div>
+
+                <div class="sla-rule-card">
+                    <h3><i class="fas fa-dollar-sign mr-2"></i>Elemento: Preço de Venda</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+                        <div class="info-block"><label>Dimensão da Qualidade</label><p>Precisão</p></div>
+                        <div class="info-block"><label>Métrica</label><p>% de preços alinhados com a tabela oficial.</p></div>
+                        <div class="info-block"><label>Forma de Medição</label><p>Conferência diária dos novos cadastros.</p></div>
+                        <div class="meta-block"><label>Meta Acordada</label><p>100%</p></div>
+                    </div>
+                </div>
+
+                <div class="sla-rule-card">
+                    <h3><i class="fas fa-toggle-on mr-2"></i>Elemento: Status do Produto (Ativo/Inativo)</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+                        <div class="info-block"><label>Dimensão da Qualidade</label><p>Atualidade</p></div>
+                        <div class="info-block"><label>Métrica</label><p>Tempo máximo para atualização do status após descontinuação.</p></div>
+                        <div class="info-block"><label>Forma de Medição</label><p>Relatório de produtos sem venda há mais de 90 dias.</p></div>
+                        <div class="meta-block"><label>Meta Acordada</label><p>&lt; 48 horas</p></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <footer class="footer-sla fade-in-section" style="animation-delay: 0.4s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor (2025), com base em práticas de gestão de qualidade de dados (DAMA, 2017) e adaptado para o contexto de PMEs.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este template é uma ferramenta avançada alinhada ao Módulo 3. Ele eleva a gestão da qualidade de dados, transformando boas práticas em compromissos mensuráveis entre o Data Owner (que define a meta de negócio) e o Data Steward (que executa a curadoria). O SLA é o instrumento que formaliza as metas que serão monitoradas pelos Scorecards de Qualidade (descritos no Apêndice BI).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este template é uma ferramenta avançada alinhada ao Módulo 3. Ele eleva a gestão da qualidade de dados, transformando boas práticas em compromissos mensuráveis que serão monitorados pelos Scorecards de Qualidade (descritos no Apêndice BI).</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

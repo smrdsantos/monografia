@@ -3,280 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Template de Roteiro para Formação de Multiplicadores Internos - GD-PME</title>
+    <title>Roteiro para Formação de Multiplicadores Internos - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eef2ff; /* Light Indigo background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-formacao-aq {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #4338ca; /* Indigo for titles */
-        }
-        .header-title-formacao-aq {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #4338ca; /* Indigo */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-formacao-aq {
-            font-size: 1.15rem;
-            color: #4f46e5; /* Medium Indigo */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-formacao-aq {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #3730a3; /* Darkest Indigo for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-formacao-aq {
-            color: #6366f1; /* Indigo highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-formacao-aq {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #818cf8, #a78bfa); /* Indigo/Roxo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #4338ca; /* Indigo */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #e0e7ff; /* Light Indigo background for icon */
+            color: #c7d2fe;
+            font-size: 1.2rem;
         }
-        .header-icon-formacao-aq svg {
-            width: 32px;
-            height: 32px;
-            color: #4338ca; /* Indigo */
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .table-formacao-aq {
-            width: 100%;
-            border-collapse: collapse;
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #a5b4fc; /* Light Indigo */
+        }
+        .info-block {
             margin-top: 16px;
         }
-        .table-formacao-aq th, .table-formacao-aq td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #c7d2fe; /* Lighter Indigo border */
-            font-size: 0.75rem; 
-            vertical-align: top;
-        }
-        .table-formacao-aq th {
-            background-color: #eef2ff; /* Very Light Indigo for table headers */
+        .info-block h4 {
             font-weight: 600;
-            color: #4f46e5; /* Medium Indigo */
-        }
-        .table-formacao-aq td {
-            color: #3730a3; /* Darkest Indigo for table text */
-        }
-        /* Specific column widths */
-        .etapa-col-aq { width: 15%; }
-        .conteudo-col-aq { width: 30%; }
-        .metodologia-col-aq { width: 20%; }
-        .tempo-col-aq { width: 10%; }
-        .apendice-col-aq { width: 25%; }
-        
-        .info-block-aq {
-            background-color: #e0e7ff; 
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
-        .info-block-aq h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #4338ca;
+            color: #818cf8; /* Lighter Indigo */
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
         }
-        .info-block-aq p, .info-block-aq ul {
-            font-size: 0.9rem;
-            color: #3730a3;
+        .info-block i {
+            margin-right: 8px;
         }
-        .info-block-aq ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-         .info-block-aq li {
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 4px;
             margin-bottom: 4px;
-         }
-
-        .recomendacoes-card-aq {
-            background-color: #e0e7ff; /* Light Indigo for recommendations */
-            border-left: 4px solid #6366f1; /* Indigo border */
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .recomendacoes-card-aq h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #4338ca;
-            margin-bottom: 8px;
-        }
-        .recomendacoes-card-aq p {
-            font-size: 0.9rem;
-            color: #3730a3;
-            line-height: 1.6;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        #backToTopBtn:hover {
+            background-color: #4338ca;
+        }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl"> <!-- Adjusted for potentially very wide table -->
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-formacao-aq">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25M12 12V9.75M12 12H9.75M12 12l3-3m-3 3-3-3" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-indigo-400">
+                <i class="fas fa-chalkboard-teacher fa-2x text-indigo-300"></i>
             </div>
-            <h1 class="header-title-formacao-aq">Template de Roteiro para Formação de Multiplicadores Internos do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-formacao-aq">APÊNDICE AQ: Roteiro didático básico para preparar lideranças e colaboradores-chave de PMEs para atuarem como multiplicadores internos do modelo GD-PME.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro para Formação de Multiplicadores</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AQ: Roteiro didático para preparar lideranças e colaboradores-chave para atuarem como multiplicadores internos do modelo GD-PME.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                A formação de multiplicadores é um elemento essencial do <span class="highlight-formacao-aq">Pilar 2 (Capacitação Contínua)</span> e visa garantir a disseminação, apropriação e sustentabilidade das práticas de Governança de Dados (GD) na organização.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                A formação de multiplicadores é um elemento essencial do <strong class="text-indigo-300">Pilar 2 (Capacitação Contínua)</strong> e visa garantir a disseminação, apropriação e sustentabilidade das práticas de Governança de Dados.
             </p>
         </section>
 
-        <!-- Workshop Structure Section (AQ.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-formacao-aq text-center">AQ.1 Estrutura Sugerida para Oficina de Formação de Multiplicadores</h2>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-clipboard-list mr-3 text-indigo-300"></i>AQ.1 Estrutura Sugerida para Oficina de Formação</h2>
             
-            <div class="info-block-aq">
-                <p><strong>ROTEIRO DE OFICINA: FORMAÇÃO DE MULTIPLICADORES GD-PME 3 PILARES</strong></p>
-                <p><strong>Carga Horária Recomendada:</strong> 2 horas e 30 minutos a 3 horas</p>
-                <p><strong>Formato:</strong> Oficina prática e interativa (presencial ou virtual adaptada)</p>
-                <p><strong>Público-Alvo:</strong> 5 a 15 colaboradores por turma, selecionados com base no perfil de engajamento e influência (conforme Apêndice AD – Plano de Multiplicadores).</p>
-                <h3>Objetivos da Formação:</h3>
-                <ul>
-                    <li>Compreender os fundamentos conceituais e práticos do modelo GD-PME 3 Pilares e sua relevância para a PME;</li>
-                    <li>Estimular a apropriação crítica do modelo e de seus instrumentos de apoio (apêndices) pelos futuros multiplicadores;</li>
-                    <li>Capacitar os participantes para atuarem como facilitadores, orientadores e replicadores das práticas de GD em seus respectivos setores ou equipes.</li>
-                </ul>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-10">
+                <h3 class="text-lg font-bold text-white text-center mb-4">ROTEIRO DE OFICINA: FORMAÇÃO DE MULTIPLICADORES GD-PME</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-sm text-center">
+                    <div><strong class="text-gray-400 block">Carga Horária</strong><span class="text-white">2.5 a 3 horas</span></div>
+                    <div><strong class="text-gray-400 block">Formato</strong><span class="text-white">Oficina prática e interativa</span></div>
+                    <div><strong class="text-gray-400 block">Público-Alvo</strong><span class="text-white">5 a 15 colaboradores-chave</span></div>
+                </div>
+                <div class="mt-6 border-t border-gray-700 pt-4">
+                    <h4 class="font-semibold text-white mb-2 text-center">Objetivos da Formação:</h4>
+                    <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+                        <li>Compreender os fundamentos do modelo GD-PME 3 Pilares e sua relevância.</li>
+                        <li>Estimular a apropriação crítica do modelo e de seus instrumentos de apoio (apêndices).</li>
+                        <li>Capacitar os participantes para atuarem como facilitadores e replicadores das práticas de GD.</li>
+                    </ul>
+                </div>
             </div>
 
-            <h3 class="section-title-formacao-aq text-lg mt-6">Programação Sugerida:</h3>
-            <div class="overflow-x-auto">
-                <table class="table-formacao-aq">
-                    <thead>
-                        <tr>
-                            <th class="etapa-col-aq">Etapa da Oficina</th>
-                            <th class="conteudo-col-aq">Conteúdo Principal e Atividades</th>
-                            <th class="metodologia-col-aq">Metodologia Predominante</th>
-                            <th class="tempo-col-aq">Tempo Estimado</th>
-                            <th class="apendice-col-aq">Apêndice(s) de Referência/Apoio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Abertura e Boas-vindas</td>
-                            <td>Apresentação dos participantes e do facilitador; Objetivos da oficina; Dinâmica de quebra-gelo e alinhamento de expectativas sobre o papel do multiplicador.</td>
-                            <td>Dinâmica de grupo; Apresentação dialogada.</td>
-                            <td>15 - 20 min</td>
-                            <td>Apêndice AD.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Bloco 1 – Fundamentos da Governança de Dados e o Modelo GD-PME 3 Pilares</td>
-                            <td>O que é Governança de Dados e por que ela é crucial para PMEs?; Desafios comuns (SME Quandary); Apresentação detalhada dos 3 Pilares do GD-PME 3 Pilares (Dados/Sistemas, Capacitação, Políticas) e seus objetivos.</td>
-                            <td>Apresentação interativa com exemplos práticos; Perguntas guiadas; Uso do Miniguia Visual.</td>
-                            <td>40 - 50 min</td>
-                            <td>Apêndice M; Apêndice C.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Bloco 2 – Conhecendo e Utilizando as Ferramentas do GD-PME 3 Pilares</td>
-                            <td>Apresentação e discussão dos principais instrumentos práticos do GD-PME 3 Pilares: Diagnóstico (A), Manual Operacional (B), Ficha de Autoavaliação (F), Glossário (C), Modelos de Termos (G/AA/AH/AY), etc.</td>
-                            <td>Demonstração e análise em grupo dos apêndices; Discussão sobre como adaptá-los à realidade da PME.</td>
-                            <td>50 - 60 min</td>
-                            <td>Apêndices A, B, C, F, G/AA/AH/AY, etc. (selecionar os mais relevantes).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Bloco 3 – O Papel do Multiplicador GD-PME 3 Pilares na Prática</td>
-                            <td>Responsabilidades, habilidades e desafios do multiplicador; Como conduzir minioficinas setoriais (Apêndice R); Como usar os instrumentos pedagógicos (Apêndice Z); Como facilitar a comunicação (Apêndice W/AC/AN) e coletar feedback (Apêndice J/T).</td>
-                            <td>Discussão orientada; Role-playing de situações comuns; Troca de experiências.</td>
-                            <td>40 - 50 min</td>
-                            <td>Apêndices R, Z, W/AC/AN, J/T.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Atividade Final e Próximos Passos</td>
-                            <td>Simulação da aplicação de um instrumento (ex: parte do Diagnóstico A ou da Ficha F) em um estudo de caso simplificado (Apêndice H); Elaboração de um esboço de plano de ação inicial para o multiplicador em seu setor.</td>
-                            <td>Estudo de caso em pequenos grupos; Planejamento individual/grupo.</td>
-                            <td>30 - 40 min</td>
-                            <td>Apêndice H; Apêndice R.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Encerramento e Avaliação</td>
-                            <td>Roda de conversa sobre aprendizados e próximos passos; Avaliação da oficina pelos participantes; Entrega de materiais complementares e certificados (simbólicos).</td>
-                            <td>Roda de conversa; Formulário de avaliação da oficina.</td>
-                            <td>15 - 20 min</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-                 <p class="text-xs text-indigo-700 mt-1 text-center">Fonte: Elaborado pelo autor (2025)</p>
+            <div class="timeline">
+                <div class="timeline-container fade-in">
+                    <div class="timeline-icon"><i class="fas fa-play"></i></div>
+                    <div class="timeline-content">
+                        <h3>Abertura e Boas-vindas</h3>
+                        <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>Apresentação; Objetivos da oficina; Dinâmica de quebra-gelo e alinhamento de expectativas sobre o papel do multiplicador.</p></div>
+                        <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Dinâmica de grupo; Apresentação dialogada.</p></div>
+                        <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>15 - 20 min</p></div>
+                        <div class="info-block"><h4><i class="fas fa-tools"></i>Apoio</h4><p><span class="ref-tag">Ap. AD</span></p></div>
+                    </div>
+                </div>
+                <div class="timeline-container fade-in">
+                    <div class="timeline-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="timeline-content">
+                        <h3>Bloco 1: Fundamentos da GD e do Modelo</h3>
+                        <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>O que é GD e por que é crucial para PMEs? Apresentação detalhada dos 3 Pilares e seus objetivos.</p></div>
+                        <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Apresentação interativa com exemplos; Perguntas guiadas; Uso do Miniguia Visual.</p></div>
+                        <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>40 - 50 min</p></div>
+                        <div class="info-block"><h4><i class="fas fa-tools"></i>Apoio</h4><p><span class="ref-tag">Ap. M</span> <span class="ref-tag">Ap. C</span></p></div>
+                    </div>
+                </div>
+                <div class="timeline-container fade-in">
+                     <div class="timeline-icon"><i class="fas fa-wrench"></i></div>
+                    <div class="timeline-content">
+                        <h3>Bloco 2: Conhecendo as Ferramentas</h3>
+                        <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>Apresentação e discussão dos principais instrumentos práticos: Diagnóstico (A), Manual (B), Ficha de Autoavaliação (F), Termos (G/AA), etc.</p></div>
+                        <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Demonstração e análise em grupo dos apêndices; Discussão sobre como adaptá-los à realidade da PME.</p></div>
+                        <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>50 - 60 min</p></div>
+                        <div class="info-block"><h4><i class="fas fa-tools"></i>Apoio</h4><p><span class="ref-tag">Ap. A, B, C, F, G...</span></p></div>
+                    </div>
+                </div>
+                <div class="timeline-container fade-in">
+                     <div class="timeline-icon"><i class="fas fa-user-cog"></i></div>
+                    <div class="timeline-content">
+                        <h3>Bloco 3: O Papel do Multiplicador na Prática</h3>
+                        <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>Responsabilidades e desafios; Como conduzir minioficinas (R), usar instrumentos pedagógicos (Z), facilitar a comunicação (W/AC) e coletar feedback (J/T).</p></div>
+                        <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Discussão orientada; Role-playing; Troca de experiências.</p></div>
+                        <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>40 - 50 min</p></div>
+                        <div class="info-block"><h4><i class="fas fa-tools"></i>Apoio</h4><p><span class="ref-tag">Ap. R, Z, W, J...</span></p></div>
+                    </div>
+                </div>
+                <div class="timeline-container fade-in">
+                     <div class="timeline-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="timeline-content">
+                        <h3>Atividade Final e Próximos Passos</h3>
+                        <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>Simulação da aplicação de um instrumento em um estudo de caso simplificado (H); Elaboração de um esboço de plano de ação para o multiplicador em seu setor.</p></div>
+                        <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Estudo de caso em pequenos grupos; Planejamento individual/grupo.</p></div>
+                        <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>30 - 40 min</p></div>
+                        <div class="info-block"><h4><i class="fas fa-tools"></i>Apoio</h4><p><span class="ref-tag">Ap. H</span> <span class="ref-tag">Ap. R</span></p></div>
+                    </div>
+                </div>
+                 <div class="timeline-container fade-in">
+                    <div class="timeline-icon"><i class="fas fa-flag-checkered"></i></div>
+                   <div class="timeline-content">
+                       <h3>Encerramento e Avaliação</h3>
+                       <div class="info-block"><h4><i class="far fa-comments"></i>Conteúdo e Atividades</h4><p>Roda de conversa sobre aprendizados; Avaliação da oficina pelos participantes; Entrega de materiais e certificados (simbólicos).</p></div>
+                       <div class="info-block"><h4><i class="fas fa-users"></i>Metodologia</h4><p>Roda de conversa; Formulário de avaliação.</p></div>
+                       <div class="info-block"><h4><i class="far fa-clock"></i>Tempo Estimado</h4><p>15 - 20 min</p></div>
+                   </div>
+               </div>
             </div>
 
-            <div class="info-block-aq mt-6">
-                <h3>Materiais Necessários (Sugestões):</h3>
-                <ul>
-                    <li>Cópias impressas ou digitais dos principais apêndices a serem trabalhados (ex: A, B, M, e os que serão usados nas simulações);</li>
-                    <li>Quadro branco ou flip-chart e canetas;</li>
-                    <li>Projetor (se for usar slides);</li>
-                    <li>Modelos dos Termos de Adesão (Apêndice AP) para discussão do compromisso do multiplicador;</li>
-                    <li>Formulário de avaliação da oficina.</li>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mt-10">
+                <h4 class="font-semibold text-white mb-2 text-center">Materiais Necessários (Sugestões):</h4>
+                <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 text-center">
+                    <li>Cópias dos principais apêndices a serem trabalhados.</li>
+                    <li>Quadro branco ou flip-chart e canetas.</li>
+                    <li>Projetor e slides (se aplicável).</li>
+                    <li>Modelos dos Termos de Adesão (Apêndice AP).</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Recommendations Section (AQ.2) -->
-        <section class="card recomendacoes-card-aq fade-in-section" style="animation-delay: 0.5s;">
-            <h3>AQ.2 Recomendações para Estrutura Sugerida para Oficina de Formação de Multiplicadores:</h3>
-            <p>
-                Recomenda-se que o(a) multiplicador(a) formado(a) seja formalmente reconhecido(a) pela liderança da PME e inserido(a) em um processo contínuo de acompanhamento, com encontros periódicos para troca de experiências, atualização e planejamento conjunto das ações de capacitação e disseminação da GD. O sucesso do programa de multiplicadores é vital para a internalização da cultura de dados e para a sustentabilidade do modelo GD-PME 3 Pilares na organização, conforme previsto no Apêndice B (Mini Framework GD-PME 3 Pilares) e no Apêndice AD (Plano de Multiplicadores).
-            </p>
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-indigo-300"></i>AQ.2 Recomendações Adicionais</h2>
+             <p class="text-gray-300 leading-relaxed">
+                 Recomenda-se que o(a) multiplicador(a) formado(a) seja formalmente reconhecido(a) pela liderança da PME e inserido(a) em um processo contínuo de acompanhamento, com encontros periódicos para troca de experiências, atualização e planejamento. O sucesso do programa de multiplicadores é vital para a internalização da cultura de dados e para a sustentabilidade do modelo GD-PME 3 Pilares na organização.
+             </p>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-formacao-aq fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Fundamental para o Pilar 2 (Capacitação Contínua) do modelo GD-PME, este template de roteiro visa preparar multiplicadores para disseminar a cultura de dados e apoiar a aplicação prática das diretrizes dos Pilares 1 (Dados e Sistemas) e 3 (Políticas) nos setores, utilizando e adaptando os instrumentos dos Apêndices A, B, C, D, G/AA, H, M, R, Z, entre outros.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Fundamental para o Pilar 2 (Capacitação Contínua), este roteiro visa preparar multiplicadores para disseminar a cultura de dados e apoiar a aplicação prática das diretrizes dos Pilares 1 e 3.</p>
+            </div>
         </footer>
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

@@ -3,121 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Modelo de Business Case para Projetos de Governança - GD-PME</title>
+    <title>Modelo de Business Case para Projetos de Governança - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eef2ff; /* Light Indigo background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
+
+        /* Animação */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .card {
-            background-color: white;
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 24px;
             margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        
+        .gradient-title {
+            background: linear-gradient(to right, #818cf8, #a78bfa); /* Indigo/Roxo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .footer-business-case {
-            font-size: 0.875rem;
-            color: #4338ca; /* Indigo 700 */
-            padding-top: 1rem;
-            border-top: 1px solid #c7d2fe; /* Indigo 200 */
+        
+        /* Estilo dos Cards de Seção do Business Case */
+        .bc-section-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            border-color: #6366f1;
         }
+        .bc-section-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #a5b4fc; /* Indigo claro */
+            margin-bottom: 16px;
+        }
+        .info-block {
+            margin-bottom: 16px;
+        }
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            font-style: italic;
+            background-color: #1f2937;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+        }
+        .info-block .description {
+             font-style: normal; background: none; padding: 0; border: none;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #4338ca; }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
 
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
-            <div class="flex justify-center items-center gap-4">
-                <svg class="w-10 h-10 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.07a2.25 2.25 0 0 1-2.25 2.25H5.92a2.25 2.25 0 0 1-2.25-2.25v-4.07a2.25 2.25 0 0 1 .928-1.764L11.5 8.281a2.25 2.25 0 0 1 1.056 0l6.82 4.105a2.25 2.25 0 0 1 .928 1.764Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V11.25m0 0 4.28 2.568M12 11.25l-4.28 2.568" />
-                </svg>
-                <h1 class="text-3xl md:text-4xl font-bold text-indigo-800">Modelo de Business Case para Projetos de Governança</h1>
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-indigo-400">
+                <i class="fas fa-briefcase fa-2x text-indigo-300"></i>
             </div>
-            <h2 class="text-xl md:text-2xl text-indigo-600 mt-2">APÊNDICE - BC</h2>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Modelo de Business Case para Projetos de GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE BC: Um template prático para justificar e alinhar iniciativas de Governança de Dados com os objetivos de negócio da PME.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="mb-4">Este apêndice oferece um template prático para a elaboração de um <strong>Business Case (Justificativa de Negócio)</strong> para projetos específicos de Governança de Dados dentro de uma PME. Alinhado ao módulo de evolução estratégica do modelo GD-PME 3 Pilares, este instrumento visa formalizar a conexão entre uma ação de governança e seus impactos esperados no negócio.</p>
-            <p>O preenchimento deste documento deve ser liderado pelo <strong>Grupo de Trabalho de Dados</strong> e apresentado ao <strong>Conselho de Dados</strong> (ou à liderança da empresa) para aprovação antes do início de um "sprint de governança". Sua função é garantir que os recursos (tempo e esforço) sejam direcionados para as iniciativas que gerem maior valor.</p>
+        <section class="content-card fade-in" style="animation-delay: 0.2s;">
+            <p class="mb-4">Este apêndice oferece um template para a elaboração de um <strong>Business Case (Justificativa de Negócio)</strong>. Alinhado ao módulo de evolução estratégica, visa formalizar a conexão entre uma ação de governança e seus impactos esperados.</p>
+            <p>O preenchimento deve ser liderado pelo <strong>Grupo de Trabalho de Dados</strong> e apresentado ao <strong>Conselho de Dados</strong> (ou à liderança) para garantir que os recursos sejam direcionados para as iniciativas que gerem maior valor.</p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.3s;">
-            <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Quadro BC.1 – Template de Business Case para Projetos de Governança de Dados</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="border-b-2 border-indigo-200">
-                        <tr>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-indigo-600">Seção do Business Case</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-indigo-600">Descrição e Perguntas-Chave</th>
-                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-indigo-600">Exemplo Prático (PME do Varejo)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">1. Título do Projeto de GD</td>
-                            <td class="p-2 md:p-4">Dê um nome claro e objetivo para a iniciativa.</td>
-                            <td class="p-2 md:p-4 italic">Sprint de Melhoria do Cadastro de Clientes</td>
-                        </tr>
-                        <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">2. O Problema de Negócio (A "Dor")</td>
-                            <td class="p-2 md:p-4">Qual problema específico estamos tentando resolver? Como ele afeta o negócio hoje?</td>
-                            <td class="p-2 md:p-4 italic">"A equipe de vendas perde muito tempo corrigindo informações de contato (telefone, e-mail) dos clientes, o que atrasa o pós-venda e causa falhas na comunicação de promoções."</td>
-                        </tr>
-                        <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">3. Custo da 'Dor' (Quantificação)</td>
-                            <td class="p-2 md:p-4">Como podemos medir o impacto negativo deste problema? (Horas perdidas, custo de retrabalho, perda de vendas, etc.).</td>
-                            <td class="p-2 md:p-4 italic">"Estimamos uma perda de 10 horas de trabalho por semana da equipe de vendas para corrigir cadastros (10h x R$ 25/hora = R$ 250/semana). Além disso, a falha no envio de promoções pode representar uma perda estimada de R$ 1.000 em vendas por mês."</td>
-                        </tr>
-                         <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">4. Solução Proposta via GD-PME 3 Pilares</td>
-                            <td class="p-2 md:p-4">Quais ações dos 3 Pilares serão aplicadas para resolver este problema?</td>
-                            <td class="p-2 md:p-4 italic"><strong>Pilar 1:</strong> Realizar o inventário e padronizar os campos do cadastro de clientes.<br><strong>Pilar 2:</strong> Realizar uma oficina de 1 hora com a equipe de vendas sobre a importância e o padrão de preenchimento.<br><strong>Pilar 3:</strong> Criar uma política de 1 página com as regras para o cadastro e um checklist de verificação.</td>
-                        </tr>
-                        <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">5. Benefícios Esperados e ROI Preliminar</td>
-                            <td class="p-2 md:p-4">O que esperamos alcançar? Qual o retorno esperado sobre o tempo/esforço investido?</td>
-                            <td class="p-2 md:p-4 italic">"Esperamos reduzir o tempo de retrabalho em 80% (economia de R$ 200/semana), melhorar a taxa de sucesso do contato com clientes em 50% e aumentar as vendas via promoções em 10%. O esforço estimado para o projeto é de 20 horas no total."</td>
-                        </tr>
-                        <tr class="border-b border-indigo-100">
-                            <td class="p-2 md:p-4 font-semibold">6. Responsáveis e Prazo</td>
-                            <td class="p-2 md:p-4">Quem são os responsáveis pela execução (Grupo de Trabalho) e pela aprovação (Conselho)? Qual o prazo do sprint?</td>
-                            <td class="p-2 md:p-4 italic"><strong>Responsáveis:</strong> [Nome do Data Steward de Vendas], [Nome do Analista].<br><strong>Aprovação:</strong> [Nome do Diretor/Sócio].<br><strong>Prazo:</strong> 4 semanas.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-file-alt mr-3 text-indigo-300"></i>Quadro BC.1 – Template de Business Case</h2>
+            <div class="space-y-6">
+                
+                <div class="bc-section-card"><h3>1. Título do Projeto de GD</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">Dê um nome claro e objetivo para a iniciativa.</p></div><div class="info-block"><label>Exemplo Prático</label><p>Sprint de Melhoria do Cadastro de Clientes</p></div></div>
+                <div class="bc-section-card"><h3>2. O Problema de Negócio (A "Dor")</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">Qual problema específico estamos tentando resolver? Como ele afeta o negócio hoje?</p></div><div class="info-block"><label>Exemplo Prático</label><p>"A equipe de vendas perde muito tempo corrigindo informações de contato dos clientes, o que atrasa o pós-venda e causa falhas na comunicação de promoções."</p></div></div>
+                <div class="bc-section-card"><h3>3. Custo da 'Dor' (Quantificação)</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">Como podemos medir o impacto negativo deste problema? (Horas perdidas, custo de retrabalho, perda de vendas, etc.).</p></div><div class="info-block"><label>Exemplo Prático</label><p>"Estimamos uma perda de 10 horas de trabalho por semana da equipe de vendas (10h x R$ 25/hora = R$ 250/semana). Além disso, a falha no envio de promoções pode representar uma perda de R$ 1.000 em vendas por mês."</p></div></div>
+                <div class="bc-section-card"><h3>4. Solução Proposta via GD-PME</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">Quais ações dos 3 Pilares serão aplicadas para resolver este problema?</p></div><div class="info-block"><label>Exemplo Prático</label><p><strong>Pilar 1:</strong> Realizar o inventário e padronizar os campos do cadastro de clientes.<br><strong>Pilar 2:</strong> Realizar uma oficina de 1 hora com a equipe de vendas.<br><strong>Pilar 3:</strong> Criar uma política de 1 página com as regras para o cadastro.</p></div></div>
+                <div class="bc-section-card"><h3>5. Benefícios Esperados e ROI Preliminar</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">O que esperamos alcançar? Qual o retorno esperado sobre o tempo/esforço investido?</p></div><div class="info-block"><label>Exemplo Prático</label><p>"Esperamos reduzir o tempo de retrabalho em 80% (economia de R$ 200/semana), melhorar a taxa de sucesso do contato em 50% e aumentar as vendas via promoções em 10%. Esforço estimado: 20 horas no total."</p></div></div>
+                <div class="bc-section-card"><h3>6. Responsáveis e Prazo</h3><div class="info-block"><label>Descrição e Perguntas-Chave</label><p class="description">Quem são os responsáveis pela execução (Grupo de Trabalho) e pela aprovação (Conselho)? Qual o prazo do sprint?</p></div><div class="info-block"><label>Exemplo Prático</label><p><strong>Responsáveis:</strong> [Nome do Data Steward de Vendas], [Nome do Analista].<br><strong>Aprovação:</strong> [Nome do Diretor/Sócio].<br><strong>Prazo:</strong> 4 semanas.</p></div></div>
+
             </div>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h3 class="text-xl font-semibold mb-3 text-indigo-700">BC.1 Recomendações de Implementação:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li><strong>Preenchimento Colaborativo:</strong> O Business Case deve ser construído pelo Grupo de Trabalho de Dados, com a participação de membros da área de negócio afetada pelo problema.</li>
-                <li><strong>Foco na Simplicidade e Objetividade:</strong> O documento deve ser conciso (idealmente uma página), com linguagem clara e dados realistas para facilitar a análise e aprovação pela liderança.</li>
-                <li><strong>Base para Aprovação:</strong> A apresentação deste documento ao Conselho de Dados (ou à liderança) é o passo formal que autoriza o início de um "sprint de governança".</li>
-                <li><strong>Instrumento de Medição:</strong> Ao final do sprint, os "Benefícios Esperados" devem ser comparados com os resultados efetivamente alcançados, servindo como base para o relatório de avaliação do ciclo (conforme Apêndice AT).</li>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-info-circle mr-3 text-indigo-300"></i>BC.1 Recomendações de Implementação</h2>
+             <ul class="list-disc list-inside text-gray-300 space-y-3">
+                <li><strong>Preenchimento Colaborativo:</strong> O Business Case deve ser construído pelo Grupo de Trabalho de Dados, com a participação da área de negócio afetada.</li>
+                <li><strong>Foco na Simplicidade:</strong> O documento deve ser conciso (idealmente uma página), com linguagem clara e dados realistas para facilitar a análise.</li>
+                <li><strong>Base para Aprovação:</strong> A apresentação deste documento à liderança é o passo formal que autoriza o início de um "sprint de governança".</li>
+                <li><strong>Instrumento de Medição:</strong> Ao final do sprint, os "Benefícios Esperados" devem ser comparados com os resultados alcançados.</li>
             </ul>
         </section>
 
-        <footer class="footer-business-case fade-in-section" style="animation-delay: 0.5s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor (2025), com base nos princípios do Minimal Viable Data Governance (Eckerson Group, 2020) e adaptado para o modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice operacionaliza o Módulo de Evolução Estratégica, oferecendo um instrumento prático para que a PME alinhe as ações de governança de dados (derivadas dos 3 Pilares) a problemas de negócio específicos. O Business Case serve como ferramenta de priorização para o Conselho de Dados e de justificativa de valor, conectando a governança ao ROI, conforme preconizado por Eckerson (2020) e Mahanti (2021a).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este apêndice operacionaliza o Módulo de Evolução Estratégica, oferecendo um instrumento para alinhar as ações de governança a problemas de negócio específicos e justificar seu valor.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

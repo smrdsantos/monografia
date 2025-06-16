@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infográfico: Roteiro de Avaliação Pós-Ciclo - Modelo GD-PME 3 Pilares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos gerais do corpo do documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffbeb; /* PADRÃO CORRETO: Fundo Amarelo claro */
+        }
+        /* Estilos para cartões */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Estilos para a tabela */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .data-table th, .data-table td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #fde68a; /* PADRÃO CORRETO: Borda Amarela */
+            font-size: 0.85rem;
+            vertical-align: top;
+        }
+        .data-table th {
+            background-color: #fef9c3; /* PADRÃO CORRETO: Fundo de cabeçalho Amarelo */
+            font-weight: 600;
+            color: #92400e;
+        }
+        .data-table td {
+            color: #78350f;
+        }
+        
+        /* ================================================= */
+        /* ===== ESTILOS TEMÁTICOS (AVALIAÇÃO - ÂMBAR) ===== */
+        /* ================================================= */
+        .section-title-avaliacao {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #b45309; /* Cor Âmbar Escura para Títulos */
+        }
+        .header-title-avaliacao {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #b45309; /* Cor Âmbar Escura */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-avaliacao {
+            font-size: 1.15rem;
+            color: #92400e; /* Cor Âmbar mais Escura */
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header-icon-avaliacao {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 16px;
+            background-color: #fef3c7; /* Fundo Amarelo claro para o ícone */
+        }
+        .header-icon-avaliacao svg {
+            width: 32px;
+            height: 32px;
+            color: #b45309; /* Cor Âmbar Escura */
+        }
+        .highlight-avaliacao {
+            color: #d97706; /* Cor Âmbar para destaque */
+            font-weight: 600;
+        }
+        .footer-avaliacao {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #78350f; /* Cor Âmbar mais Escura para o rodapé */
+            margin-top: 32px;
+            padding-bottom: 24px;
+        }
+        .note-card {
+            background-color: #fef9c3; /* Fundo do card de nota Amarelo */
+            border-left: 4px solid #f59e0b; /* Borda Âmbar */
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .note-card p {
+            font-size: 0.85rem;
+            color: #78350f;
+        }
+        .note-card sup {
+            font-size: 0.7em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl">
+        <header class="my-8 md:my-12 fade-in-section">
+            <div class="header-icon-avaliacao">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3.03.527A9.004 9.004 0 0 0 1.5 12c0 1.052.18 2.062.527 3.03A9.004 9.004 0 0 0 12 22.5a9.004 9.004 0 0 0 9.973-5.473A8.967 8.967 0 0 0 22.5 12c0-1.052-.18-2.062-.527-3.03A9.004 9.004 0 0 0 12 1.5Z" />
+                </svg>
+            </div>
+            <h1 class="header-title-avaliacao">Roteiro de Avaliação Pós-Ciclo do Modelo GD-PME 3 Pilares</h1>
+            <p class="header-subtitle-avaliacao">APÊNDICE AT: Guia para reflexão, análise de métricas e promoção do aprendizado contínuo.</p>
+        </header>
+
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p class="text-gray-700 leading-relaxed">
+                Este apêndice apresenta um roteiro prático para conduzir a avaliação reflexiva e participativa ao final de cada ciclo de implementação (sugestivamente trimestral) do modelo GD-PME 3 Pilares em Pequenas e Médias Empresas (PMEs). A proposta está alinhada à lógica da melhoria contínua (PDCA - Planejar, Fazer, Checar, Agir), fundamental para a sustentabilidade da Governança de Dados. Baseia-se em processos simples de observação crítica dos resultados, coleta de feedback institucional (conforme <span class="highlight-avaliacao">Apêndice J ou T</span>), análise de métricas (<span class="highlight-avaliacao">Apêndice AS</span>) e definição de ajustes incrementais para o próximo ciclo.
+            </p>
+        </section>
+
+        <section class="card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-avaliacao">AT.1 Estrutura Sugerida para a Reunião de Avaliação Pós-Ciclo</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Recomenda-se realizar uma reunião específica ao final de cada ciclo (ex: 3 a 4 reuniões por ano, conforme <span class="highlight-avaliacao">Apêndice L ou AM</span>) com os principais envolvidos na implementação da GD. O quadro abaixo sugere um roteiro de discussão.
+            </p>
+
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">Quadro AT.1 – Roteiro para Condução da Reunião de Avaliação Pós-Ciclo GD-PME</h3>
+            <div class="overflow-x-auto">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Etapa da Reunião / Foco da Discussão</th>
+                            <th>Perguntas Orientadoras Chave para a Reflexão Coletiva</th>
+                            <th>Responsável(eis) pela Condução / Participantes Chave</th>
+                            <th>Documentos / Apêndices de Apoio para a Discussão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Avaliação Geral do Ciclo Concluído</td>
+                            <td>O que funcionou bem neste ciclo de implementação da GD? Quais foram os principais avanços e conquistas?; Quais foram os maiores desafios ou o que precisa melhorar significativamente?; As metas estabelecidas para o ciclo foram atingidas?</td>
+                            <td>Toda a equipe envolvida na GD; Liderança da PME; Facilitador interno/externo (se houver).</td>
+                            <td>Relatório Trimestral (<span class="highlight-avaliacao">Apêndice P/Y/AK/AW</span>); Painel Visual (<span class="highlight-avaliacao">Apêndice AO</span>).</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="font-semibold align-middle">2. Análise Específica por Pilar do GD-PME 3 Pilares:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pilar 1 – Dados e Sistemas<br>Os dados estão mais organizados, padronizados e acessíveis? O inventário de dados (<span class="highlight-avaliacao">Apêndice AL</span>) está sendo útil e atualizado? Algum sistema ou processo ainda gera muito "ruído" ou inconsistência de dados?;</td>
+                            <td>Responsável(eis) pelo Pilar 1; Usuários chave dos dados.</td>
+                            <td>Inventário de Dados (<span class="highlight-avaliacao">Apêndice AL</span>); Feedback dos usuários.</td>
+                        </tr>
+                        <tr>
+                            <td>Pilar 2 – Capacitação Contínua<br>As oficinas e os materiais de capacitação (<span class="highlight-avaliacao">Apêndices D, C, AR, Z</span>) foram úteis e bem recebidos? Houve adesão e engajamento? Alguma demanda de capacitação não foi atendida ou surgiu como necessidade?;</td>
+                            <td>Responsável(eis) pelo Pilar 2; Multiplicadores Internos (<span class="highlight-avaliacao">Apêndice AD/AQ</span>); Participantes das oficinas.</td>
+                            <td>Listas de presença; Avaliações das oficinas; Feedback (<span class="highlight-avaliacao">Apêndice J/T</span>).</td>
+                        </tr>
+                        <tr>
+                            <td>Pilar 3 – Políticas Simplificadas<br>As regras e políticas definidas (<span class="highlight-avaliacao">Apêndices G/AA/AY, AB</span>) foram aplicadas na prática? Elas são claras e exequíveis? Há alguma política que precisa ser revisada, criada ou melhor comunicada?;</td>
+                            <td>Responsável(eis) pelo Pilar 3; Gestores de áreas.</td>
+                            <td>Cópias das políticas; Termos de adesão; Matriz de Riscos (<span class="highlight-avaliacao">Apêndice N/AB</span>).</td>
+                        </tr>
+                        <tr>
+                            <td>3. Avaliação do Impacto e Resultados</td>
+                            <td>Foi possível observar algum ganho visível em agilidade, clareza, segurança da informação, eficiência ou na tomada de decisões? Quais indicadores (<span class="highlight-avaliacao">Apêndice AS</span>) mostraram evolução positiva? Onde não houve o impacto esperado?;</td>
+                            <td>Direção e Liderança Geral; Responsáveis pelos indicadores.</td>
+                            <td>Indicadores de Impacto (<span class="highlight-avaliacao">Apêndice AS</span>); Ficha de Autoavaliação (<span class="highlight-avaliacao">Apêndice F</span>).</td>
+                        </tr>
+                        <tr>
+                            <td>4. Lições Aprendidas como Equipe</td>
+                            <td>O que aprendemos como equipe sobre como governar nossos dados de forma mais eficaz? Quais foram os principais aprendizados (positivos e negativos) deste ciclo que podem nos ajudar no futuro?;</td>
+                            <td>Todos os participantes da reunião.</td>
+                            <td>Registros de feedback (<span class="highlight-avaliacao">Apêndice J/T</span>).</td>
+                        </tr>
+                        <tr>
+                            <td>5. Definição de Ações e Prioridades para o Próximo Ciclo</td>
+                            <td>Com base na avaliação e nas lições aprendidas, o que será priorizado no próximo ciclo? Quais ações corretivas ou de melhoria são necessárias? Quais são as novas metas e quem serão os responsáveis?;</td>
+                            <td>Facilitador Interno da GD; Liderança da PME; Responsáveis pelos Pilares.</td>
+                            <td>Planejamento do próximo ciclo (conforme <span class="highlight-avaliacao">Apêndice L ou AM</span>).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="note mt-4">Fonte: Elaborado pelo Autor com base em princípios de melhoria contínua (PDCA), gestão participativa e nas obras de Mahanti (2021a) e Ladley (2020) sobre a importância da reflexão e adaptação na governança de dados.</p>
+        </section>
+
+        <section class="card fade-in-section" style="animation-delay: 0.5s;">
+            <h2 class="section-title-avaliacao">AT.2 Recomendações para a Condução da Reunião de Avaliação</h2>
+            <ul class="list-disc ml-6 text-gray-700 leading-relaxed">
+                <li class="mb-2">Recomenda-se realizar uma reunião específica ao final de cada ciclo (ex: 3 a 4 reuniões por ano, conforme <span class="highlight-avaliacao">Apêndice L ou AM</span>) com os principais envolvidos na implementação da GD. O quadro abaixo sugere um roteiro de discussão.</li>
+                <li class="mb-2">Utilizar um formulário estruturado (pode ser baseado no Google Forms ou similar, inspirado no <span class="highlight-avaliacao">Apêndice J ou T</span>) para coletar percepções individuais antes da reunião de avaliação, garantindo que todos tenham a chance de contribuir;</li>
+                <li class="mb-2">Durante a reunião, utilizar um quadro físico (flip-chart, lousa) ou digital (Miro, Jamboard) do tipo "Kanban" ou "SWOT simplificado" para registrar visualmente os pontos positivos, desafios, aprendizados e sugestões;</li>
+                <li>Elaborar uma ata simples ou um breve relatório da reunião de avaliação, destacando as principais decisões e o plano de ação para o próximo ciclo. Este registro deve alimentar o Relatório Trimestral de Governança (<span class="highlight-avaliacao">Apêndice P/Y/AK/AW</span>).</li>
+            </ul>
+        </section>
+
+        <section class="card fade-in-section" style="animation-delay: 0.6s;">
+            <h2 class="section-title-avaliacao">AT.3 Importância da Avaliação e Melhoria Contínua</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Como defendem Mahanti (2021a) e Ladley (2020), a capacidade de uma organização refletir sobre suas práticas, adaptar-se às mudanças e evoluir com base em experiências reais é o núcleo de uma governança de dados "viva" e efetivamente sustentável. Este roteiro de avaliação pós-ciclo busca transformar a avaliação em uma prática cultural da PME, promovendo a apropriação coletiva do modelo GD-PME 3 Pilares, o aprendizado organizacional genuíno e a melhoria contínua dos processos de governança.
+            </p>
+        </section>
+
+        <footer class="footer-avaliacao fade-in-section" style="animation-delay: 0.7s;">
+            <div class="note-card">
+                <p><sup>1</sup> Nota: Central para a melhoria contínua do modelo GD-PME, este roteiro de avaliação pós-ciclo estrutura a reflexão participativa e análise de resultados das ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas). Com apoio dos Apêndices J, T, AS, F, AL, D, C, AR, Z, G/AA/AY, AB, N/AB, L e AM, visa o aprendizado organizacional e o planejamento eficaz dos próximos ciclos.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

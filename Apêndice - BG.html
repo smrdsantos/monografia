@@ -3,134 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Template de Acordo de Compartilhamento de Dados - GD-PME</title>
+    <title>Template de Acordo de Compartilhamento de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fefce8; /* Light Yellow background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
+
+        /* Animação */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .card {
-            background-color: white;
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 24px;
             margin-bottom: 24px;
         }
-        .agreement-section h3 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 600; /* semibold */
-            color: #854d0e; /* Amber 800 */
-            border-bottom: 2px solid #fef08a; /* Yellow 200 */
-            padding-bottom: 8px;
+        
+        .gradient-title {
+            background: linear-gradient(to right, #facc15, #ca8a04); /* Amarelo/Ouro */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Acordo */
+        .agreement-card {
+            background-color: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #4b5563;
+        }
+        .agreement-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fcd34d; /* Amarelo claro */
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
         }
-        .footer-agreement {
-            font-size: 0.875rem;
-            color: #713f12; /* Amber 900 */
-            padding-top: 1rem;
-            border-top: 1px solid #fde047; /* Yellow 400 */
+        .agreement-card h3 i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
         }
+        
+        .agreement-card p, .agreement-card li {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+        .agreement-card ul {
+            list-style-position: inside;
+            padding-left: 8px;
+            margin-top: 8px;
+        }
+        .agreement-card ul.no-style {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .placeholder-text {
+            font-style: italic;
+            color: #fde047;
+            font-weight: 600;
+        }
+        .signature-block {
+            margin-top: 16px;
+            border-top: 1px solid #4b5563;
+            padding-top: 16px;
+        }
+
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #ca8a04; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #a16207; }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
 
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
-            <div class="flex justify-center items-center gap-4">
-                 <svg class="w-10 h-10 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.5h-8.01a1.5 1.5 0 0 1-1.5-1.5v-2.1a1.5 1.5 0 0 1 1.5-1.5H6.5" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 14.25a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-                <h1 class="text-3xl md:text-4xl font-bold text-amber-900">Template de Acordo de Compartilhamento de Dados (Data Sharing Agreement)</h1>
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-amber-500">
+                <i class="fas fa-handshake fa-2x text-amber-400"></i>
             </div>
-            <h2 class="text-xl md:text-2xl text-amber-700 mt-2">APÊNDICE - BG</h2>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Acordo de Compartilhamento de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE BG: Template de Data Sharing Agreement para formalizar o compartilhamento de dados entre áreas de uma PME.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p>Este template serve como um modelo de acordo interno para formalizar o compartilhamento de dados entre diferentes áreas ou departamentos de uma PME, garantindo clareza, segurança e responsabilidade.</p>
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este template serve como um modelo de acordo interno para formalizar o compartilhamento de dados entre diferentes áreas, garantindo <strong class="text-amber-300">clareza, segurança e responsabilidade</strong>.
+            </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.3s;">
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-amber-800">ACORDO DE COMPARTILHAMENTO DE DADOS INTERNO</h3>
-                <p class="text-sm text-gray-500">Versão: 1.0 | Data: [Data]</p>
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-file-signature mr-3 text-amber-300"></i>Estrutura do Acordo</h2>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 class="text-lg font-bold text-center text-white mb-2">ACORDO DE COMPARTILHAMENTO DE DADOS INTERNO</h3>
+                <div class="text-center text-sm text-gray-400">
+                    <span><strong>Empresa:</strong> <span class="placeholder-text">[Nome da Empresa]</span></span> |
+                    <span class="ml-2"><strong>Data:</strong> <span class="placeholder-text">[Data]</span></span> |
+                    <span class="ml-2"><strong>Versão:</strong> 1.0</span>
+                </div>
             </div>
-            
-            <div class="space-y-6 agreement-section">
-                <div>
-                    <h3>1. Partes Envolvidas</h3>
-                    <ul class="list-none space-y-1">
-                        <li><strong>Departamento Fornecedor do Dado:</strong> [Ex: Financeiro]</li>
-                        <li><strong>Departamento Consumidor do Dado:</strong> [Ex: Marketing]</li>
-                    </ul>
-                </div>
 
-                <div>
-                    <h3>2. Domínio de Dados e Finalidade</h3>
-                    <ul class="list-none space-y-1">
-                       <li><strong>Domínio de Dados a ser Compartilhado:</strong> [Ex: Dados de Faturamento por Cliente]</li>
-                       <li><strong>Finalidade do Compartilhamento:</strong> [Ex: Para realizar análises de perfil de consumo e segmentar campanhas de comunicação, visando aumentar a taxa de recompra.]</li>
-                    </ul>
-                </div>
+            <div class="space-y-6">
                 
-                <div>
-                    <h3>3. Dados Específicos e Nível de Acesso</h3>
-                    <ul class="list-none space-y-1">
-                       <li><strong>Dados Compartilhados:</strong> [Listar os campos exatos. Ex: ID do Cliente, Valor Total da Compra, Data da Última Compra, Categoria de Produto Comprado.]</li>
-                       <li><strong>Nível de Acesso Concedido:</strong> [Ex: Apenas Leitura (Read-only)]</li>
-                    </ul>
-                </div>
+                <div class="agreement-card"><h3><i class="fas fa-users"></i>1. Partes Envolvidas</h3><ul class="no-style space-y-2"><li><strong>Departamento Fornecedor:</strong> <span class="placeholder-text">[Ex: Financeiro]</span></li><li><strong>Departamento Consumidor:</strong> <span class="placeholder-text">[Ex: Marketing]</span></li></ul></div>
+                <div class="agreement-card"><h3><i class="fas fa-bullseye"></i>2. Domínio de Dados e Finalidade</h3><ul class="no-style space-y-2"><li><strong>Domínio de Dados:</strong> <span class="placeholder-text">[Ex: Dados de Faturamento por Cliente]</span></li><li><strong>Finalidade:</strong> <span class="placeholder-text">[Ex: Realizar análises de perfil de consumo e segmentar campanhas de comunicação.]</span></li></ul></div>
+                <div class="agreement-card"><h3><i class="fas fa-key"></i>3. Dados Específicos e Nível de Acesso</h3><ul class="no-style space-y-2"><li><strong>Dados Compartilhados:</strong> <span class="placeholder-text">[Ex: ID do Cliente, Valor Total da Compra, Data da Última Compra.]</span></li><li><strong>Nível de Acesso Concedido:</strong> <span class="placeholder-text">[Ex: Apenas Leitura (Read-only)]</span></li></ul></div>
+                <div class="agreement-card"><h3><i class="fas fa-tasks"></i>4. Regras de Uso e Restrições</h3><ul class="space-y-2"><li>Os dados devem ser utilizados estritamente para a finalidade descrita.</li><li>É proibido o compartilhamento destes dados com pessoas ou sistemas fora do Departamento Consumidor sem nova autorização.</li><li>Os dados devem ser armazenados em local seguro, definido pela política de segurança da empresa.</li><li>Para relatórios externos, os dados devem ser agregados e anonimizados.</li></ul></div>
+                <div class="agreement-card"><h3><i class="fas fa-calendar-alt"></i>5. Vigência e Revisão</h3><ul class="no-style space-y-2"><li><strong>Válido de:</strong> <span class="placeholder-text">[Data de Início]</span> a <span class="placeholder-text">[Data de Fim]</span></li><li><strong>Próxima Revisão:</strong> <span class="placeholder-text">[Data da Revisão]</span> ou se houver mudanças na finalidade.</li></ul></div>
+                <div class="agreement-card"><h3><i class="fas fa-check-circle"></i>6. Responsáveis e Aprovação</h3><div class="grid md:grid-cols-2 gap-8 pt-4"><div><div class="signature-block"><p class="text-sm">[Nome do Data Owner do Depto. Fornecedor]</p><p class="text-xs text-gray-400">Data Owner - [Nome do Depto.]</p></div></div><div><div class="signature-block"><p class="text-sm">[Nome do Gestor do Depto. Consumidor]</p><p class="text-xs text-gray-400">Gestor - [Nome do Depto.]</p></div></div></div></div>
 
-                <div>
-                    <h3>4. Regras de Uso e Restrições</h3>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li>Os dados devem ser utilizados estritamente para a finalidade descrita na Seção 2.</li>
-                        <li>É proibido o compartilhamento destes dados com pessoas ou sistemas fora do Departamento Consumidor sem nova autorização formal.</li>
-                        <li>Os dados devem ser armazenados em local seguro, definido pela política de segurança da empresa.</li>
-                        <li>Para relatórios externos, os dados devem ser agregados e anonimizados.</li>
-                    </ul>
-                </div>
-
-                 <div>
-                    <h3>5. Vigência e Revisão</h3>
-                     <ul class="list-disc list-inside space-y-1">
-                        <li>Este acordo é válido de [Data de Início] a [Data de Fim].</li>
-                        <li>Este acordo será revisado em [Data da Revisão] ou caso haja mudanças na finalidade do uso.</li>
-                    </ul>
-                </div>
-
-                <div class="pt-6 grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                    <div>
-                        <h3 class="text-lg">6. Responsáveis e Aprovação</h3>
-                        <div class="mt-8 w-2/3 mx-auto">
-                            <p class="border-t border-gray-400 pt-2">[Nome do Data Owner do Departamento Fornecedor]</p>
-                            <p class="text-sm font-semibold">Data Owner - [Nome do Departamento]</p>
-                        </div>
-                    </div>
-                     <div>
-                        <h3 class="text-lg invisible md:visible">&nbsp;</h3>
-                        <div class="mt-8 w-2/3 mx-auto">
-                           <p class="border-t border-gray-400 pt-2">[Nome do Gestor do Departamento Consumidor]</p>
-                           <p class="text-sm font-semibold">Gestor - [Nome do Departamento]</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <footer class="footer-agreement fade-in-section" style="animation-delay: 0.4s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este instrumento de formalização é uma ferramenta do Módulo de Evolução 3 (Processo Operacional Ágil). Destina-se a PMEs em um estágio de maturidade mais avançado, onde a necessidade de compartilhar dados entre departamentos de forma controlada e segura se torna mais crítica. O acordo ajuda a mitigar riscos e a garantir que o uso dos dados esteja alinhado às políticas de acesso e à LGPD (Pilar 3).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este instrumento do Módulo de Evolução 3 (Processo Ágil) é destinado a PMEs em estágio de maturidade mais avançado, onde o compartilhamento de dados entre departamentos de forma controlada se torna mais crítico, ajudando a mitigar riscos e garantir a conformidade.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

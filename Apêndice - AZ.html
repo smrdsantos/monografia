@@ -1,222 +1,229 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Infográfico: Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Estilos gerais do corpo do documento */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f4f4f5; /* PADRÃO NOVO: Fundo Zinco claro */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        /* Estilos para cartões */
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        /* Animação de fade-in */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Estilos para a tabela */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .data-table th, .data-table td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #e4e4e7; /* PADRÃO NOVO: Borda Zinco */
-            font-size: 0.85rem;
-            vertical-align: top;
-        }
-        .data-table th {
-            background-color: #fafafa; /* PADRÃO NOVO: Fundo de cabeçalho Zinco */
-            font-weight: 600;
-            color: #3f3f46;
-        }
-        .data-table td {
-            color: #27272a;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
         
-        /* ======================================================= */
-        /* === NOVOS ESTILOS TEMÁTICOS (DISSEMINAÇÃO - ZINCO) ==== */
-        /* ======================================================= */
-        .section-title-disseminacao {
-            font-size: 1.8rem;
+        .gradient-title {
+            background: linear-gradient(to right, #a1a1aa, #e5e7eb); /* Zinco/Cinza */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilo dos Cards de Eixo Estratégico */
+        .axis-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .axis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .axis-card h3 {
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #3f3f46; /* Cor Zinco Escura para Títulos */
-        }
-        .header-title-disseminacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #3f3f46; /* Cor Zinco Escura */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-disseminacao {
-            font-size: 1.15rem;
-            color: #52525b; /* Cor Zinco mais Escura */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .header-icon-disseminacao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+            color: #d4d4d8;
+        }
+        .axis-card h3 i {
+            margin-right: 12px;
+            color: #a1a1aa;
+        }
+        
+        .info-block {
             margin-bottom: 16px;
-            background-color: #e4e4e7; /* Fundo Zinco claro para o ícone */
         }
-        .header-icon-disseminacao svg {
-            width: 32px;
-            height: 32px;
-            color: #3f3f46; /* Cor Zinco Escura */
-        }
-        .highlight-disseminacao {
-            color: #71717a; /* Cor Zinco para destaque */
+        .info-block label {
+            display: block;
             font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .footer-disseminacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #27272a; /* Cor Zinco mais Escura para o rodapé */
-            margin-top: 32px;
-            padding-bottom: 24px;
+        .info-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .note-card {
-            background-color: #e4e4e7;
-            border-left: 4px solid #a1a1aa;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .note-card p, .note-card sup {
-            font-size: 0.85rem;
-            color: #27272a;
-        }
-        .note-card .highlight-disseminacao {
-             color: #3f3f46;
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #71717a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #52525b; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl">
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-disseminacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186A.75.75 0 0 1 7.5 12c0 .542-.18.994-.483 1.383m0-2.766A.75.75 0 0 0 7.5 12c0-.542.18-.994.483-1.383m0 2.766C8.55 14.854 10.403 16.5 12 16.5c2.484 0 4.5-2.016 4.5-4.5S14.484 7.5 12 7.5c-1.597 0-3.45.92-4.483 2.186m-2.435 4.686a2.25 2.25 0 1 0 0 2.186m0-2.186A.75.75 0 0 1 4.5 12c0 .542-.18.994-.483 1.383m0-2.766A.75.75 0 0 0 4.5 12c0-.542.18-.994.483-1.383m0 2.766C5.55 14.854 7.403 16.5 9 16.5c2.484 0 4.5-2.016 4.5-4.5S11.484 7.5 9 7.5c-1.597 0-3.45.92-4.483 2.186m12.435 4.686a2.25 2.25 0 1 0 0 2.186m0-2.186A.75.75 0 0 1 19.5 12c0 .542-.18.994-.483 1.383m0-2.766A.75.75 0 0 0 19.5 12c0-.542.18-.994.483-1.383m0 2.766C20.55 14.854 22.403 16.5 24 16.5c2.484 0 4.5-2.016 4.5-4.5S26.484 7.5 24 7.5c-1.597 0-3.45.92-4.483 2.186" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-zinc-600 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-zinc-400">
+                <i class="fas fa-satellite-dish fa-2x text-zinc-300"></i>
             </div>
-            <h1 class="header-title-disseminacao">Plano de Disseminação Expandido do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-disseminacao">APÊNDICE AZ: Estratégias para Apropriação e Aplicação por Múltiplas Instituições.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Plano de Disseminação Expandido do Modelo</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AZ: Estratégias para Apropriação e Aplicação por Múltiplas Instituições.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed">
-                Este apêndice apresenta uma proposta de plano de disseminação expandido para o modelo GD-PME 3 Pilares, visando sua apropriação e aplicação por múltiplas instituições, incluindo esferas públicas, entidades de fomento, instituições de ensino e organizações de apoio ao desenvolvimento econômico e à transformação digital de Pequenas e Médias Empresas (PMEs). A proposta aqui delineada estrutura-se em eixos estratégicos e táticos de ação, com o objetivo de promover uma efetiva integração entre o conhecimento acadêmico gerado por esta monografia, o desenvolvimento de políticas públicas de inclusão informacional e as necessárias articulações institucionais para sua implementação. O plano contempla ações de curto, médio e longo prazo, com ênfase na viabilidade, replicabilidade e no valor público da Governança de Dados (GD) quando concebida como uma tecnologia social acessível, conforme discutido no Capítulo 5 (especialmente nas seções sobre políticas públicas, desenvolvimento regional e o GD-PME 3 Pilares como paradigma alternativo). O Quadro AZ.1 detalha a estratégia de disseminação por eixo de atuação.
+        <section class="content-card fade-in" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed">
+                Este apêndice apresenta um plano de disseminação para o modelo GD-PME 3 Pilares, visando sua apropriação e aplicação por <strong class="text-zinc-300">esferas públicas, entidades de fomento, instituições de ensino e organizações de apoio</strong> ao desenvolvimento de PMEs. A proposta estrutura-se em eixos de ação de curto, médio e longo prazo, com ênfase na viabilidade e no valor público da Governança de Dados como uma tecnologia social acessível.
             </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-disseminacao text-center">Quadro AZ.1 – Estratégia de Disseminação Ampliada do Modelo GD-PME</h2>
-            <div class="overflow-x-auto">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Eixo Estratégico de Disseminação</th>
-                            <th>Ação Recomendada Principal</th>
-                            <th>Público-Alvo Principal</th>
-                            <th>Potenciais Instituições Parceiras</th>
-                            <th>Produto/Resultado Final Esperado Principal</th>
-                            <th>Apêndice(s) GD-PME 3 Pilares de Suporte Chave</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">1. Ensino Formal e Acadêmico</td>
-                            <td>Introdução do modelo GD-PME 3 Pilares e seus instrumentos (apêndices) como conteúdo didático em cursos técnicos, tecnológicos, de graduação e pós-graduação (especialmente MBAs) nas áreas de Gestão, TI, Administração e Empreendedorismo.</td>
-                            <td>Estudantes de graduação e pós-graduação; Docentes e pesquisadores; Gestores de Instituições de Ensino Superior (IES) e Técnico.</td>
-                            <td>UFRJ (Escola Politécnica, COPPEAD); Outras Universidades Federais e Estaduais (ex: UFABC, UNIVESP); Instituições Privadas de Ensino (ex: FGV); SENAI; SENAC; Institutos Federais.</td>
-                            <td>Desenvolvimento de disciplinas, módulos ou cursos de extensão sobre "Governança de Dados para PMEs" utilizando os roteiros e materiais práticos do GD-PME 3 Pilares.</td>
-                            <td>Todos, especialmente <span class="highlight-disseminacao">B, C, D, M, Z</span>.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">2. Extensão Universitária e Ação Comunitária</td>
-                            <td>Desenvolvimento de projetos de extensão universitária que envolvam a aplicação assistida do modelo GD-PME 3 Pilares em PMEs de comunidades locais ou arranjos produtivos específicos, com participação de alunos e professores.</td>
-                            <td>Professores extensionistas; Alunos de graduação e pós-graduação (especialmente de áreas de gestão e tecnologia); Micro e pequenos empresários locais.</td>
-                            <td>Pró-Reitorias de Extensão das Universidades; SEBRAE (programas de apoio universitário e comunitário); ONGs de fomento ao empreendedorismo.</td>
-                            <td>Oficinas práticas de GD para PMEs da comunidade; Eventos locais de divulgação; Estudos de caso documentados sobre a aplicação do modelo; Formação de agentes de transformação local.</td>
-                            <td><span class="highlight-disseminacao">A, B, D, H, M, AI</span>.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">3. Inovação Pública e Fomento Governamental</td>
-                            <td>Inserção dos princípios e instrumentos do modelo GD-PME 3 Pilares em programas governamentais de aceleração de startups, de transformação digital para PMEs e em editais públicos de inovação e desenvolvimento.</td>
-                            <td>Secretarias Municipais e Estaduais de Desenvolvimento Econômico, Ciência e Tecnologia; Agentes de fomento; Núcleos de inovação tecnológica.</td>
-                            <td>FINEP; CNPq; EMBRAPII; BNDES; Bancos de desenvolvimento regionais; Ministérios (ex: MDIC, MCTI); BID; ONU Habitat.</td>
-                            <td>Criação de linhas de financiamento ou programas de apoio que incentivem/exijam práticas de GD em PMEs, utilizando o GD-PME 3 Pilares como referência; Implementação de projetos-piloto financiados.</td>
-                            <td><span class="highlight-disseminacao">AJ, AH, AI, V</span>.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">4. Desenvolvimento Regional e Setorial</td>
-                            <td>Apoio à criação e fortalecimento de redes locais de inovação, clusters produtivos e arranjos produtivos locais (APLs) que adotem o GD-PME 3 Pilares como ferramenta para inclusão digital e aumento da competitividade e da economia de dados.</td>
-                            <td>Cooperativas; Associações comerciais e industriais; Gestores de APLs e clusters regionais; Empreendedores.</td>
-                            <td>CIESP/FIESP; Associações Brasileiras de diversos setores (ex: ABES); Redes de fomento locais; Câmaras de Dirigentes Lojistas (CDL).</td>
-                            <td>Manuais de GD adaptados por setor ou região (baseados no GD-PME 3 Pilares); Observatórios regionais de maturidade em GD; Fortalecimento da economia de dados local.</td>
-                            <td><span class="highlight-disseminacao">S, U/AQ, AD/AQ, AI</span>.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">5. Publicação Científica, Técnica e Reconhecimento</td>
-                            <td>Produção e divulgação de artigos científicos, estudos de caso, relatos técnicos e materiais didáticos baseados na aplicação e evolução do modelo GD-PME 3 Pilares, visando sua validação acadêmica, visibilidade e reconhecimento como boa prática.</td>
-                            <td>Comunidade científica nacional e internacional; Avaliadores de programas e políticas públicas; Gestores de PMEs e consultores.</td>
-                            <td>Periódicos científicos e técnicos (ex: IEEE, Elsevier, SciELO, Revistas Nacionais de Administração/Gestão); Congressos; Editoras; Prêmios de inovação social ou gestão.</td>
-                            <td>Publicação de artigos técnicos e científicos sobre o GD-PME 3 Pilares e seus impactos; Participação em eventos; Potencial para premiações de inovação social ou acadêmica.</td>
-                            <td>Todos os apêndices e o corpo da monografia.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-sitemap mr-3 text-zinc-300"></i>Quadro AZ.1 – Estratégia de Disseminação por Eixo</h2>
+            <div class="space-y-8">
+                
+                <div class="axis-card" style="border-color: #8b5cf6;">
+                    <h3><i class="fas fa-graduation-cap"></i>1. Eixo: Ensino Formal e Acadêmico</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block"><label>Ação Recomendada</label><p>Introduzir o modelo GD-PME e seus apêndices como conteúdo didático em cursos de Gestão, TI, Administração e Empreendedorismo.</p></div>
+                        <div class="info-block"><label>Público-Alvo</label><p>Estudantes, Docentes, Pesquisadores e Gestores de Instituições de Ensino.</p></div>
+                        <div class="info-block"><label>Parceiros Potenciais</label><p>UFRJ, Outras Universidades, FGV, SENAI, SENAC, Institutos Federais.</p></div>
+                        <div class="info-block"><label>Resultado Esperado</label><p>Desenvolvimento de disciplinas e cursos de extensão sobre "Governança de Dados para PMEs".</p></div>
+                    </div>
+                    <div class="info-block mt-4"><label>Apêndices de Suporte</label><p><span class="ref-tag">B</span> <span class="ref-tag">C</span> <span class="ref-tag">D</span> <span class="ref-tag">M</span> <span class="ref-tag">Z</span></p></div>
+                </div>
+
+                <div class="axis-card" style="border-color: #3b82f6;">
+                    <h3><i class="fas fa-university"></i>2. Eixo: Extensão Universitária</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block"><label>Ação Recomendada</label><p>Desenvolver projetos de extensão com aplicação assistida do modelo em PMEs locais, com participação de alunos e professores.</p></div>
+                        <div class="info-block"><label>Público-Alvo</label><p>Professores extensionistas, Alunos de graduação/pós, Micro e pequenos empresários.</p></div>
+                        <div class="info-block"><label>Parceiros Potenciais</label><p>Pró-Reitorias de Extensão, SEBRAE, ONGs de fomento ao empreendedorismo.</p></div>
+                        <div class="info-block"><label>Resultado Esperado</label><p>Oficinas práticas, eventos locais, estudos de caso documentados e formação de agentes de transformação.</p></div>
+                    </div>
+                     <div class="info-block mt-4"><label>Apêndices de Suporte</label><p><span class="ref-tag">A</span> <span class="ref-tag">B</span> <span class="ref-tag">D</span> <span class="ref-tag">H</span> <span class="ref-tag">M</span> <span class="ref-tag">AI</span></p></div>
+                </div>
+
+                <div class="axis-card" style="border-color: #10b981;">
+                    <h3><i class="fas fa-landmark"></i>3. Eixo: Inovação Pública e Fomento</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block"><label>Ação Recomendada</label><p>Inserir os princípios e instrumentos do modelo em programas de aceleração de startups, transformação digital e em editais públicos de inovação.</p></div>
+                        <div class="info-block"><label>Público-Alvo</label><p>Secretarias de Desenvolvimento, Agentes de fomento, Núcleos de inovação.</p></div>
+                        <div class="info-block"><label>Parceiros Potenciais</label><p>FINEP, CNPq, EMBRAPII, BNDES, Bancos de desenvolvimento, Ministérios, BID, ONU Habitat.</p></div>
+                        <div class="info-block"><label>Resultado Esperado</label><p>Criação de linhas de financiamento que incentivem práticas de GD; Implementação de projetos-piloto financiados.</p></div>
+                    </div>
+                     <div class="info-block mt-4"><label>Apêndices de Suporte</label><p><span class="ref-tag">AJ</span> <span class="ref-tag">AH</span> <span class="ref-tag">AI</span> <span class="ref-tag">V</span></p></div>
+                </div>
+
+                 <div class="axis-card" style="border-color: #f59e0b;">
+                    <h3><i class="fas fa-industry"></i>4. Eixo: Desenvolvimento Regional e Setorial</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block"><label>Ação Recomendada</label><p>Apoiar a criação de redes locais, clusters e arranjos produtivos (APLs) que adotem o GD-PME como ferramenta para inclusão digital e competitividade.</p></div>
+                        <div class="info-block"><label>Público-Alvo</label><p>Cooperativas, Associações comerciais e industriais, Gestores de APLs, Empreendedores.</p></div>
+                        <div class="info-block"><label>Parceiros Potenciais</label><p>CIESP/FIESP, Associações setoriais (ex: ABES), Redes de fomento, CDL.</p></div>
+                        <div class="info-block"><label>Resultado Esperado</label><p>Manuais de GD adaptados por setor; Observatórios de maturidade; Fortalecimento da economia de dados local.</p></div>
+                    </div>
+                     <div class="info-block mt-4"><label>Apêndices de Suporte</label><p><span class="ref-tag">S</span> <span class="ref-tag">U/AQ</span> <span class="ref-tag">AD/AQ</span> <span class="ref-tag">AI</span></p></div>
+                </div>
+
+                <div class="axis-card" style="border-color: #ef4444;">
+                    <h3><i class="fas fa-book"></i>5. Eixo: Publicação e Reconhecimento</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="info-block"><label>Ação Recomendada</label><p>Produzir e divulgar artigos, estudos de caso e materiais didáticos baseados na aplicação e evolução do modelo, visando validação e visibilidade.</p></div>
+                        <div class="info-block"><label>Público-Alvo</label><p>Comunidade científica, Avaliadores de políticas públicas, Gestores e consultores.</p></div>
+                        <div class="info-block"><label>Parceiros Potenciais</label><p>Periódicos científicos e técnicos, Congressos, Editoras, Prêmios de inovação.</p></div>
+                        <div class="info-block"><label>Resultado Esperado</label><p>Publicação de artigos sobre o GD-PME; Participação em eventos; Potencial para premiações de inovação social ou acadêmica.</p></div>
+                    </div>
+                     <div class="info-block mt-4"><label>Apêndices de Suporte</label><p>Todos os apêndices e o corpo da monografia.</p></div>
+                </div>
+
             </div>
-            <p class="note mt-4 text-xs">Fonte: Elaborado pelo Autor com base nas proposições do Capítulo 5 desta monografia (especialmente Seções 5.2, 5.6, 5.13, 5.25) e em estratégias de disseminação de tecnologias sociais e inovações em políticas públicas.</p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.5s;">
-            <h2 class="section-title-disseminacao">Considerações Finais sobre a Disseminação do Modelo</h2>
-            <p class="text-gray-700 leading-relaxed">
-                O plano de disseminação aqui delineado visa transformar o modelo GD-PME 3 Pilares de uma contribuição acadêmica em uma infraestrutura cognitiva, metodológica e política que seja acessível, replicável e efetivamente situada nas diversas realidades das PMEs brasileiras. Ao combinar a articulação interinstitucional com a produção técnica contínua e o envolvimento territorial ativo, promove-se a reinvenção da Governança de Dados como um campo prático de cidadania informacional e desenvolvimento inclusivo. Este plano é, antes de tudo, um convite à ação colaborativa para a transformação da relação das PMEs com seus dados: de um passivo ou recurso subutilizado a um ativo estratégico fundamental para sua autonomia, competitividade e sustentabilidade. Ao mobilizar saberes diversos, construir redes de apoio e reforçar compromissos éticos com a informação, o modelo GD-PME 3 Pilares transcende sua origem e se posiciona como um vetor legítimo e potente de inovação social e inclusão digital no Sul Global.
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-flag-checkered mr-3 text-zinc-300"></i>Considerações Finais sobre a Disseminação</h2>
+            <p class="text-gray-300 leading-relaxed">
+                O plano de disseminação aqui delineado visa transformar o modelo GD-PME 3 Pilares de uma contribuição acadêmica em uma infraestrutura cognitiva e política acessível e replicável. Ao combinar a articulação interinstitucional com a produção técnica e o envolvimento territorial, promove-se a reinvenção da Governança de Dados como um campo prático de cidadania informacional e desenvolvimento inclusivo. Este plano é um convite à ação colaborativa para transformar a relação das PMEs com seus dados, posicionando o modelo como um vetor de inovação social no Sul Global.
             </p>
         </section>
 
-        <footer class="footer-disseminacao fade-in-section" style="animation-delay: 0.6s;">
-            <div class="note-card">
-                <p><sup>1</sup> Nota: Este Plano de Disseminação propõe uma estratégia para a aplicação em larga escala do modelo GD-PME 3 Pilares, fomentando a implementação integrada dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas) como tecnologia social para inclusão informacional e desenvolvimento sustentável das PMEs, com base nos instrumentos dos Apêndices A a AY, BA e BB.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este Plano de Disseminação propõe uma estratégia para a aplicação em larga escala do modelo GD-PME 3 Pilares, fomentando a implementação integrada dos Pilares 1, 2 e 3 como tecnologia social.</p>
             </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

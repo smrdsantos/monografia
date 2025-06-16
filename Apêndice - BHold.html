@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Template de SLA de Qualidade de Dados - GD-PME</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ecfeff; /* Light Cyan background */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .footer-sla {
+            font-size: 0.875rem;
+            color: #155e75; /* Cyan 800 */
+            padding-top: 1rem;
+            border-top: 1px solid #a5f3fc; /* Cyan 200 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
+            <div class="flex justify-center items-center gap-4">
+                 <svg class="w-10 h-10 text-cyan-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12Z" />
+                </svg>
+                <h1 class="text-3xl md:text-4xl font-bold text-cyan-800">Template de Acordo de Nível de Serviço de Qualidade de Dados (Data Quality SLA)</h1>
+            </div>
+            <h2 class="text-xl md:text-2xl text-cyan-600 mt-2">APÊNDICE - BH</h2>
+        </header>
+
+        <section class="card fade-in-section" style="animation-delay: 0.2s;">
+            <p>Este apêndice oferece um modelo para criar um Acordo de Nível de Serviço (SLA) focado em Qualidade de Dados. Este documento formaliza as metas de qualidade para um domínio de dados crítico, estabelecendo um compromisso entre o <strong>Data Owner</strong> (que define a necessidade de negócio) e o <strong>Data Steward</strong> (que executa a curadoria).</p>
+        </section>
+
+        <section class="card fade-in-section" style="animation-delay: 0.3s;">
+            <div class="text-center mb-6 border-b-2 border-cyan-200 pb-4">
+                <h3 class="text-2xl font-bold text-cyan-800">ACORDO DE NÍVEL DE SERVIÇO (SLA) DE QUALIDADE DE DADOS</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-6">
+                <p><strong>Domínio de Dado:</strong> Cadastro de Produtos</p>
+                <p><strong>Data Owner:</strong> [Nome do Gerente de Compras/Comercial]</p>
+                <p><strong>Data Steward:</strong> [Nome do Analista de Estoque]</p>
+                <p><strong>Data de Vigência:</strong> [Data]</p>
+            </div>
+            
+            <h3 class="text-2xl font-semibold mb-4 text-cyan-700">Quadro BH.1 – SLA de Qualidade de Dados</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="border-b-2 border-cyan-200">
+                        <tr>
+                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Elemento de Dado Crítico</th>
+                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Dimensão da Qualidade</th>
+                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Métrica de Qualidade</th>
+                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Meta Acordada (SLA)</th>
+                            <th class="p-2 md:p-4 text-sm font-semibold uppercase text-cyan-600">Forma de Medição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-cyan-100">
+                            <td class="p-2 md:p-4 font-semibold">Código de Barras do Produto</td>
+                            <td class="p-2 md:p-4">Completude</td>
+                            <td class="p-2 md:p-4">% de produtos com código de barras preenchido.</td>
+                            <td class="p-2 md:p-4 font-bold text-cyan-700">&gt; 99.8%</td>
+                            <td class="p-2 md:p-4">Relatório semanal de validação.</td>
+                        </tr>
+                        <tr class="border-b border-cyan-100">
+                            <td class="p-2 md:p-4 font-semibold">Descrição do Produto</td>
+                            <td class="p-2 md:p-4">Conformidade</td>
+                            <td class="p-2 md:p-4">% de descrições que seguem o padrão "Nome - Marca - Cor".</td>
+                            <td class="p-2 md:p-4 font-bold text-cyan-700">&gt; 95%</td>
+                            <td class="p-2 md:p-4">Auditoria amostral mensal.</td>
+                        </tr>
+                        <tr class="border-b border-cyan-100">
+                            <td class="p-2 md:p-4 font-semibold">Preço de Venda</td>
+                            <td class="p-2 md:p-4">Precisão</td>
+                            <td class="p-2 md:p-4">% de preços alinhados com a tabela oficial.</td>
+                            <td class="p-2 md:p-4 font-bold text-cyan-700">100%</td>
+                            <td class="p-2 md:p-4">Conferência diária dos novos cadastros.</td>
+                        </tr>
+                        <tr class="border-b border-cyan-100">
+                            <td class="p-2 md:p-4 font-semibold">Status do Produto (Ativo/Inativo)</td>
+                            <td class="p-2 md:p-4">Atualidade</td>
+                            <td class="p-2 md:p-4">Tempo máximo para atualização do status após descontinuação.</td>
+                            <td class="p-2 md:p-4 font-bold text-cyan-700">&lt; 48 horas</td>
+                            <td class="p-2 md:p-4">Relatório de produtos sem venda há mais de 90 dias.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer-sla fade-in-section" style="animation-delay: 0.4s;">
+            <p><strong>Fonte:</strong> Elaborado pelo Autor (2025), com base em práticas de gestão de qualidade de dados (DAMA, 2017) e adaptado para o contexto de PMEs.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este template é uma ferramenta avançada alinhada ao Módulo 3. Ele eleva a gestão da qualidade de dados, transformando boas práticas em compromissos mensuráveis entre o Data Owner (que define a meta de negócio) e o Data Steward (que executa a curadoria). O SLA é o instrumento que formaliza as metas que serão monitoradas pelos Scorecards de Qualidade (descritos no Apêndice BI).</p>
+        </footer>
+    </div>
+</body>
+</html>

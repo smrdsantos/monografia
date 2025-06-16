@@ -1,153 +1,182 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Infográfico: Matriz de Planejamento da Comunicação Interna - GD-PME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Planejamento da Comunicação Interna - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Estilos gerais do corpo do documento */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* PADRÃO NOVO: Fundo Verde-azulado claro */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        /* Estilos para cartões (Mantidos) */
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        /* Animação de fade-in (Mantida) */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* ================================================= */
-        /* === NOVOS ESTILOS TEMÁTICOS (COMUNICAÇÃO - TEAL) === */
-        /* ================================================= */
-        .section-title-comunicacao {
-            font-size: 1.8rem;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #2dd4bf, #34d399); /* Verde-azulado */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo dos Cards de Recomendação */
+        .recommendation-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .recommendation-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 16px;
-            color: #0f766e; /* Cor Verde-azulada Escura para Títulos */
-        }
-        .header-title-comunicacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0f766e; /* Cor Verde-azulada Escura */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-comunicacao {
-            font-size: 1.15rem;
-            color: #115e59; /* Cor Verde-azulada mais Escura */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .header-icon-comunicacao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+            margin-bottom: 12px;
+            color: #5eead4; /* Verde-azulado claro */
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ccfbf1; /* Fundo Verde-azulado claro para o ícone */
         }
-        .header-icon-comunicacao svg {
-            width: 32px;
-            height: 32px;
-            color: #0f766e; /* Cor Verde-azulada Escura */
+        .recommendation-card h3 i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
         }
-        .highlight-comunicacao {
-            color: #0d9488; /* Cor Verde-azulada para destaque */
+        .recommendation-card p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+        .highlight-text {
+            color: #a7f3d0;
             font-weight: 600;
         }
-        .footer-comunicacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #134e4a; /* Cor Verde-azulada mais Escura para o rodapé */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .note-card {
-            background-color: #ccfbf1;
-            border-left: 4px solid #14b8a6;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        .note-card p {
-            font-size: 0.85rem;
-            color: #134e4a;
-        }
-        .note-card sup {
-            font-size: 0.7em;
-        }
-         .note-card .highlight-comunicacao {
-             color: #0f766e;
-        }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0d9488; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0f766e; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl">
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-comunicacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.455 3.633 2.875 7.5 2.875s7.5-1.42 7.5-2.875V6.75c0-1.455-3.633-2.875-7.5-2.875S3.75 5.295 3.75 6.75v6.006ZM12 19.5l-2.25-2.25m2.25 2.25 2.25-2.25m-2.25 2.25V4.5" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-teal-400">
+                <i class="fas fa-comments fa-2x text-teal-300"></i>
             </div>
-            <h1 class="header-title-comunicacao">Matriz de Planejamento da Comunicação Interna sobre Governança de Dados</h1>
-            <p class="header-subtitle-comunicacao">APÊNDICE AV: Estratégias para Sensibilização, Engajamento e Consolidação da Cultura de Dados em PMEs.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Planejamento da Comunicação Interna sobre GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AV: Estratégias para Sensibilização, Engajamento e Consolidação da Cultura de Dados em PMEs.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed">
-                A comunicação eficaz e contínua é uma das variáveis críticas para a sensibilização, o engajamento e a consolidação da Governança de Dados (GD) como uma prática organizacional internalizada, especialmente no contexto das Pequenas e Médias Empresas (PMEs). Este apêndice oferece uma matriz de planejamento de comunicação interna, alinhada aos três pilares do modelo GD-PME 3 Pilares. A proposta visa garantir que os conceitos fundamentais, as novas responsabilidades e as boas práticas da GD sejam disseminados de forma clara, compreensível e acionável por todos os níveis da organização, reforçando a cultura de dados (Seção 2.12).
+        <section class="content-card fade-in" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed">
+                A comunicação eficaz e contínua é uma das variáveis críticas para a sensibilização, o engajamento e a consolidação da Governança de Dados (GD) como uma prática organizacional internalizada. Este apêndice oferece uma matriz de planejamento de comunicação interna, alinhada aos três pilares do modelo GD-PME, para garantir que os conceitos, responsabilidades e boas práticas sejam disseminados de forma clara, compreensível e acionável.
             </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-comunicacao">AV.1 Recomendações Estratégicas para a Comunicação da GD</h2>
-            <ul class="list-disc ml-6 text-gray-700 leading-relaxed">
-                <li class="mb-2"><span class="highlight-comunicacao">Adaptação e Linguagem:</span> Evite jargões técnicos excessivos. Prefira uma linguagem clara, acessível e com exemplos práticos do cotidiano da PME. Adapte as mensagens para os diferentes públicos internos;</li>
-                <li class="mb-2"><span class="highlight-comunicacao">Visualização e Repetição:</span> Utilize recursos visuais como cartazes, infográficos simples e os painéis de indicadores (<span class="highlight-comunicacao">Apêndice AR e AO</span>) para reforçar os aprendizados e as mensagens chave. A repetição espaçada ajuda na internalização;</li>
-                <li class="mb-2"><span class="highlight-comunicacao">Envolvimento da Liderança:</span> É crucial que a liderança da PME participe ativamente da comunicação, endossando as mensagens e demonstrando, pelo exemplo, a importância da Governança de Dados. Isso aumenta a credibilidade e a adesão;</li>
-                <li class="mb-2"><span class="highlight-comunicacao">Celebração de Conquistas:</span> Comunique os avanços e as pequenas vitórias alcançadas em cada ciclo de implementação da GD (conforme registrado no <span class="highlight-comunicacao">Apêndice AT</span> ou nos relatórios trimestrais). O reconhecimento motiva e reforça o valor da iniciativa;</li>
-                <li><span class="highlight-comunicacao">Feedback Contínuo:</span> Mantenha canais abertos para que os colaboradores possam tirar dúvidas, dar sugestões e reportar dificuldades (<span class="highlight-comunicacao">Apêndice J ou T</span>). A comunicação deve ser uma via de mão dupla.</li>
-            </ul>
-        </section>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-star mr-3 text-teal-300"></i>AV.1 Recomendações Estratégicas para a Comunicação</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="recommendation-card" style="border-color: #2dd4bf;">
+                    <h3><i class="fas fa-language"></i>Adaptação e Linguagem</h3>
+                    <p>Evite jargões técnicos excessivos. Prefira uma <span class="highlight-text">linguagem clara, acessível</span> e com exemplos práticos do cotidiano da PME. Adapte as mensagens para os diferentes públicos internos.</p>
+                </div>
+                
+                <div class="recommendation-card" style="border-color: #2dd4bf;">
+                    <h3><i class="fas fa-eye"></i>Visualização e Repetição</h3>
+                    <p>Utilize recursos visuais como cartazes e infográficos (<span class="highlight-text">Apêndices AR e AO</span>) para reforçar os aprendizados. A repetição espaçada ajuda na internalização das mensagens chave.</p>
+                </div>
 
-        <section class="card fade-in-section" style="animation-delay: 0.5s;">
-            <h2 class="section-title-comunicacao">AV.2 Fatores Determinantes para a Comunicação Efetiva</h2>
-            <p class="text-gray-700 leading-relaxed">
-                A comunicação interna eficaz é um fator determinante para a sustentabilidade de qualquer programa de Governança de Dados. Como destaca Mahanti (2021a), a maturidade informacional e a consolidação de uma cultura de dados não dependem apenas de ferramentas ou processos formais, mas, fundamentalmente, da circulação contínua de significados compartilhados, da clareza de propósito e do engajamento coletivo. O plano de comunicação proposto neste apêndice visa ser um instrumento para fomentar esses elementos na PME.
+                <div class="recommendation-card" style="border-color: #2dd4bf;">
+                    <h3><i class="fas fa-user-tie"></i>Envolvimento da Liderança</h3>
+                    <p>É crucial que a liderança participe ativamente da comunicação, endossando as mensagens e <span class="highlight-text">demonstrando, pelo exemplo</span>, a importância da Governança de Dados para aumentar a credibilidade.</p>
+                </div>
+
+                <div class="recommendation-card" style="border-color: #2dd4bf;">
+                    <h3><i class="fas fa-trophy"></i>Celebração de Conquistas</h3>
+                    <p>Comunique os avanços e as <span class="highlight-text">pequenas vitórias</span> alcançadas em cada ciclo (conforme registrado no Apêndice AT). O reconhecimento motiva e reforça o valor da iniciativa.</p>
+                </div>
+
+                <div class="recommendation-card col-span-1 lg:col-span-2" style="border-color: #2dd4bf;">
+                    <h3><i class="fas fa-comments"></i>Feedback Contínuo</h3>
+                    <p>Mantenha canais abertos para que os colaboradores possam tirar dúvidas, dar sugestões e reportar dificuldades (<span class="highlight-text">Apêndice J ou T</span>). A comunicação deve ser uma <span class="highlight-text">via de mão dupla</span>.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-card fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold text-white mb-6"><i class="fas fa-cogs mr-3 text-teal-300"></i>AV.2 Fatores Determinantes para a Comunicação Efetiva</h2>
+            <p class="text-gray-300 leading-relaxed">
+                A comunicação interna eficaz é um fator determinante para a sustentabilidade de qualquer programa de Governança de Dados. Como destaca Mahanti (2021a), a maturidade informacional não depende apenas de ferramentas, mas da circulação contínua de <strong class="text-teal-300">significados compartilhados, clareza de propósito e engajamento coletivo</strong>. O plano de comunicação proposto neste apêndice visa ser um instrumento para fomentar esses elementos na PME.
             </p>
         </section>
 
-        <footer class="footer-comunicacao fade-in-section" style="animation-delay: 0.6s;">
-            <div class="note-card">
-                <p><sup>1</sup> Nota: Com uma matriz de planejamento e recomendações estratégicas, este apêndice guia a operacionalização de aspectos do Pilar 2 (Capacitação Contínua) do modelo GD-PME. A comunicação eficaz, detalhada com apoio dos Apêndices <span class="highlight-comunicacao">AR, AO, AT, J ou T</span>, é vital para o engajamento, a cultura de dados e a internalização das práticas dos Pilares 1 (Dados e Sistemas) e 3 (Políticas).</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Com uma matriz de planejamento e recomendações, este apêndice guia a operacionalização do Pilar 2 (Capacitação Contínua). A comunicação eficaz é vital para o engajamento e a internalização das práticas dos Pilares 1 e 3.</p>
             </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

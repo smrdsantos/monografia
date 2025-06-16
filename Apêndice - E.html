@@ -3,223 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares</title>
+    <title>Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f3ff; /* Light Purple background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-validacao {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #6d28d9; /* Purple for titles */
-        }
-        .header-title-validacao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #6d28d9; /* Purple */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-validacao {
-            font-size: 1.15rem;
-            color: #5b21b6; /* Darker Purple */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-validacao {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #4c1d95; /* Darkest Purple for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-validacao {
-            color: #7c3aed; /* Lighter Purple highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-validacao {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #a78bfa, #8b5cf6); /* Roxo/Violeta */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #5b21b6; /* Roxo */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ddd6fe; /* Light purple background for icon */
+            color: #ddd6fe;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
-        .header-icon-validacao svg {
-            width: 32px;
-            height: 32px;
-            color: #6d28d9; /* Purple */
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .list-item-validacao {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px; /* Increased margin */
-            color: #5b21b6; /* Darker Purple for list text */
-            font-size: 1rem; /* Slightly larger font for list items */
+        .timeline-content p { font-size: 1rem; color: #d1d5db; }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #6d28d9; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
         }
-        .list-item-validacao svg {
-            width: 22px; /* Slightly larger icon */
-            height: 22px;
-            margin-right: 10px; /* Increased margin */
-            flex-shrink: 0;
-            margin-top: 3px; /* Adjusted for better alignment */
-            color: #8b5cf6; /* Lighter Purple for icons */
-        }
-        .list-item-validacao span {
-            color: #4c1d95; /* Darkest Purple for list item text content */
-        }
-        .list-heading {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #6d28d9;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-         .list-heading svg {
-            margin-right: 8px;
-         }
-
+        #backToTopBtn:hover { background-color: #5b21b6; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-5xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-validacao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-violet-400">
+                <i class="fas fa-vial fa-2x text-violet-300"></i>
             </div>
-            <h1 class="header-title-validacao">Roteiro de Validação Piloto do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-validacao">APÊNDICE E: Guia para condução de projetos-piloto em PMEs reais, conforme proposta na seção 5.20 da monografia.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Roteiro de Validação Piloto do Modelo</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE E: Guia para condução de projetos-piloto em PMEs reais, conforme proposta na seção 5.20 da monografia.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este roteiro é uma <span class="highlight-validacao">ferramenta metodológica transversal</span> para aplicar e verificar a eficácia dos três pilares do modelo GD-PME em cenários organizacionais concretos. Ele se baseia nos Apêndices A e D para um processo de experimentação e coleta de evidências.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este roteiro é uma <strong class="text-violet-300">ferramenta metodológica transversal</strong> para aplicar e verificar a eficácia dos três pilares do modelo GD-PME em cenários concretos, baseando-se nos Apêndices A e D para um processo de experimentação e coleta de evidências.
             </p>
         </section>
 
-        <!-- Validation Steps and Indicators Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-validacao text-center mb-10">Processo de Validação e Indicadores</h2>
-            <div class="grid md:grid-cols-2 gap-10"> <!-- Increased gap -->
-                <!-- E.1 Etapas de Validação -->
-                <div>
-                    <h3 class="list-heading">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
-                        </svg>
-                        E.1 Etapas de Validação
-                    </h3>
-                    <ul class="mt-2 space-y-2">
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Seleção da empresa-piloto.</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Aplicação do Diagnóstico Inicial (Apêndice A).</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Oficina introdutória (Apêndice D).</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Definição do plano trimestral de ações por pilar.</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Execução assistida (com acompanhamento técnico).</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Autoavaliação com matriz (Apêndice B, Quadros B.2 e B.4).</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Coleta de feedback qualitativo (entrevistas e formulário).</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
-                            <span>Relatório de validação com ajustes e boas práticas.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- E.2 Indicadores Sugeridos -->
-                <div>
-                    <h3 class="list-heading">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                        </svg>
-                        E.2 Indicadores Sugeridos
-                    </h3>
-                    <ul class="mt-2 space-y-2">
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.306 3 12s4.03 8.25 9 8.25Z" /></svg>
-                            <span>Grau de adesão ao modelo.</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.306 3 12s4.03 8.25 9 8.25Z" /></svg>
-                            <span>Clareza nas responsabilidades atribuídas.</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.306 3 12s4.03 8.25 9 8.25Z" /></svg>
-                            <span>Melhoria nos fluxos informacionais.</span>
-                        </li>
-                        <li class="list-item-validacao">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.306 3 12s4.03 8.25 9 8.25Z" /></svg>
-                            <span>Aumento do uso de dados na tomada de decisão.</span>
-                        </li>
-                    </ul>
-                </div>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-stream mr-3 text-violet-300"></i>E.1 Etapas de Validação</h2>
+            <div class="timeline">
+                <div class="timeline-container"><div class="timeline-icon">1</div><div class="timeline-content"><p>Seleção da empresa-piloto.</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">2</div><div class="timeline-content"><p>Aplicação do Diagnóstico Inicial (Apêndice A).</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">3</div><div class="timeline-content"><p>Oficina introdutória (Apêndice D).</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">4</div><div class="timeline-content"><p>Definição do plano trimestral de ações por pilar.</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">5</div><div class="timeline-content"><p>Execução assistida (com acompanhamento técnico).</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">6</div><div class="timeline-content"><p>Autoavaliação com matriz de maturidade (Apêndice B).</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">7</div><div class="timeline-content"><p>Coleta de feedback qualitativo (entrevistas e formulário).</p></div></div>
+                <div class="timeline-container"><div class="timeline-icon">8</div><div class="timeline-content"><p>Relatório de validação com ajustes e boas práticas.</p></div></div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-validacao fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Como ferramenta metodológica transversal, este roteiro de validação piloto estrutura a aplicação e verificação da eficácia dos três pilares do modelo GD-PME – Pilar 1 (Separação entre Dados e Sistemas), Pilar 2 (Capacitação Contínua) e Pilar 3 (Políticas Graduais e Simplificadas) – em cenários organizacionais concretos. Fundamenta-se em instrumentos como os Apêndices A e D para delinear um processo de experimentação e coleta de evidências sobre a aplicabilidade do modelo.</p>
+        <section class="content-card fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-chart-pie mr-3 text-violet-300"></i>E.2 Indicadores Sugeridos</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center"><i class="fas fa-check-circle fa-2x text-violet-400 mr-4"></i><span>Grau de adesão ao modelo.</span></div>
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center"><i class="fas fa-check-circle fa-2x text-violet-400 mr-4"></i><span>Clareza nas responsabilidades atribuídas.</span></div>
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center"><i class="fas fa-check-circle fa-2x text-violet-400 mr-4"></i><span>Melhoria nos fluxos informacionais.</span></div>
+                <div class="bg-gray-800 p-4 rounded-lg flex items-center"><i class="fas fa-check-circle fa-2x text-violet-400 mr-4"></i><span>Aumento do uso de dados na tomada de decisão.</span></div>
+            </div>
+        </section>
+        
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este roteiro metodológico estrutura a aplicação e verificação da eficácia dos três pilares do modelo GD-PME, delineando um processo de experimentação e coleta de evidências.</p>
+            </div>
         </footer>
 
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

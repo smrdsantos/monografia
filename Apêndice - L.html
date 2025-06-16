@@ -3,204 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Cronograma Sugerido para Implantação Inicial do GD-PME 3 Pilares (6 Meses)</title>
+    <title>Cronograma Sugerido para Implantação Inicial (6 Meses) - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ecfeff; /* Light Cyan background */
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-cronograma {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0891b2; /* Dark Cyan for titles */
-        }
-        .header-title-cronograma {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0891b2; /* Dark Cyan */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-cronograma {
-            font-size: 1.15rem;
-            color: #0e7490; /* Medium Cyan */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-cronograma {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #155e75; /* Darkest Cyan for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-cronograma {
-            color: #06b6d4; /* Cyan highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Icon styling */
-        .header-icon-cronograma {
-            width: 64px;
-            height: 64px;
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #22d3ee, #06b6d4); /* Ciano */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #0891b2; /* Ciano */
             border-radius: 50%;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #cffafe; /* Light Cyan background for icon */
+            color: #cffafe;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
-        .header-icon-cronograma svg {
-            width: 32px;
-            height: 32px;
-            color: #0891b2; /* Dark Cyan */
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
         }
-
-        .table-cronograma {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #67e8f9; /* Ciano claro */
+            margin-bottom: 12px;
         }
-        .table-cronograma th, .table-cronograma td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #a5f3fc; /* Lighter Cyan border */
-            font-size: 0.85rem;
-            vertical-align: top;
-        }
-        .table-cronograma th {
-            background-color: #ecfeff; /* Very Light Cyan for table headers */
-            font-weight: 600;
-            color: #0e7490; /* Medium Cyan */
-        }
-        .table-cronograma td {
-            color: #155e75; /* Darkest Cyan for table text */
-        }
-        .table-cronograma .mes-col { width: 10%; }
-        .table-cronograma .atividade-col { width: 30%; }
-        .table-cronograma .pilar-col { width: 15%; }
-        .table-cronograma .acoes-col { width: 45%; }
-        .ciclo-break td {
-            background-color: #e0f2fe !important; /* Light blue for cycle break */
-            font-weight: bold;
+        .info-block { margin-bottom: 12px; }
+        .info-block label { display: block; font-weight: 600; color: #9ca3af; margin-bottom: 4px; font-size: 0.85rem; }
+        .info-block p { font-size: 0.95rem; color: #d1d5db; }
+        
+        .cycle-break {
+            padding-left: 80px;
+            margin: 20px 0;
             text-align: center;
-            color: #0284c7; /* Blue text */
-            padding: 8px !important;
         }
-
+        .cycle-break span {
+            background-color: #0e7490;
+            color: #ecfeff;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0891b2; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0e7490; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-7xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-cronograma">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12v-.008ZM12 18h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75v-.008ZM9.75 18h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5v-.008ZM7.5 18h.008v.008H7.5v-.008ZM14.25 15h.008v.008H14.25v-.008ZM14.25 18h.008v.008H14.25v-.008ZM16.5 15h.008v.008H16.5v-.008ZM16.5 18h.008v.008H16.5v-.008Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-cyan-400">
+                <i class="fas fa-calendar-alt fa-2x text-cyan-300"></i>
             </div>
-            <h1 class="header-title-cronograma">Cronograma Sugerido para Implantação Inicial do GD-PME 3 Pilares (6 Meses)</h1>
-            <p class="header-subtitle-cronograma">APÊNDICE L: Organização temporal das ações principais para o primeiro semestre, dividida em ciclos trimestrais para implementação progressiva.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Cronograma de Implantação Inicial (6 Meses)</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE L: Organização temporal das ações principais para o primeiro semestre, dividida em ciclos trimestrais.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Este cronograma propõe uma sequência para a implementação inicial do modelo GD-PME, permitindo que cada pilar seja trabalhado de forma <span class="highlight-cronograma">progressiva e adaptada</span> à realidade da PME.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este cronograma propõe uma sequência para a implementação do modelo, permitindo que cada pilar seja trabalhado de forma <strong class="text-cyan-300">progressiva e adaptada</strong> à realidade da PME.
             </p>
         </section>
 
-        <!-- Schedule Table Section (Quadro L.1) -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-cronograma text-center">Quadro L.1 – Cronograma Sugerido para Implantação Inicial (6 Meses)</h2>
-            <div class="overflow-x-auto">
-                <table class="table-cronograma">
-                    <thead>
-                        <tr>
-                            <th class="mes-col">Mês</th>
-                            <th class="atividade-col">Atividade Principal</th>
-                            <th class="pilar-col">Pilar(es) Foco</th>
-                            <th class="acoes-col">Ações Complementares / Instrumentos de Apoio (Apêndices)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Mês 1</td>
-                            <td>Sensibilização da equipe e apresentação do modelo GD-PME 3 Pilares;</td>
-                            <td>Geral</td>
-                            <td>Definição de responsáveis informais por pilar; Coleta de expectativas iniciais (ver Apêndice D); Aplicação do Diagnóstico Inicial (Apêndice A).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mês 2</td>
-                            <td>Aplicação do inventário de dados; Mapeamento de fluxos críticos.</td>
-                            <td>Pilar 1</td>
-                            <td>Treinamento técnico básico sobre o inventário (Apêndice AL); Início da organização do repositório de dados.</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mês 3</td>
-                            <td>Elaboração colaborativa do glossário de termos (Apêndice C); Aplicação da primeira oficina de capacitação (Apêndice D).</td>
-                            <td>Pilar 2</td>
-                            <td>Criação de canal de dúvidas (ex: grupo WhatsApp, mural); Preparação do Termo de Boas Práticas (Apêndice G ou AA).</td>
-                        </tr>
-                        <tr class="ciclo-break">
-                            <td colspan="4">Fim do 1º Ciclo Trimestral: Avaliação e Planejamento (conforme Apêndice AT e F)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mês 4</td>
-                            <td>Definição e assinatura das primeiras políticas de dados (Pilar 3), como acesso e backup; Simulação de uso real dos dados em um processo.</td>
-                            <td>Pilar 3</td>
-                            <td>Comunicação interna das novas políticas (Apêndice I ou AN); Uso do Termo de Adesão (Apêndice AP).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mês 5</td>
-                            <td>Revisão e atualização do inventário de dados (Pilar 1); Segunda oficina de capacitação com foco em qualidade de dados ou LGPD (Pilar 2).</td>
-                            <td>Pilar 1; Pilar 2</td>
-                            <td>Aplicação de formulário de feedback sobre o primeiro ciclo (Apêndice J ou T); Identificação de multiplicadores (Apêndice AD ou AQ).</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Mês 6</td>
-                            <td>Autoavaliação completa do semestre (Apêndice F e Q); Elaboração do Relatório de Maturidade (Apêndice P ou Y/AK); Planejamento detalhado para o próximo ciclo semestral.</td>
-                            <td>Todos</td>
-                            <td>Reunião de balanço com a equipe; Reconhecimento dos participantes e dos avanços.</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-stream mr-3 text-cyan-300"></i>Quadro L.1 – Cronograma Sugerido</h2>
+            <div class="timeline">
+
+                <div class="timeline-container"><div class="timeline-icon">Mês 1</div><div class="timeline-content"><h3>Sensibilização e Diagnóstico</h3><div class="info-block"><label>Pilar Foco: Geral</label><p>Apresentação do modelo, definição de responsáveis e aplicação do Diagnóstico Inicial (Ap. A, D).</p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon">Mês 2</div><div class="timeline-content"><h3>Organização dos Dados</h3><div class="info-block"><label>Pilar Foco: 1</label><p>Aplicação do inventário de dados, mapeamento de fluxos e organização do repositório (Ap. AL).</p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon">Mês 3</div><div class="timeline-content"><h3>Primeiras Capacitações</h3><div class="info-block"><label>Pilar Foco: 2</label><p>Elaboração do glossário (Ap. C) e aplicação da primeira oficina de capacitação (Ap. D).</p></div></div></div>
+                
+                <div class="cycle-break"><span><i class="fas fa-check-double mr-2"></i>Fim do 1º Ciclo: Avaliação e Planejamento</span></div>
+
+                <div class="timeline-container"><div class="timeline-icon">Mês 4</div><div class="timeline-content"><h3>Definição de Políticas</h3><div class="info-block"><label>Pilar Foco: 3</label><p>Definição e assinatura das primeiras políticas (acesso, backup) e Termo de Adesão (Ap. G, AP).</p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon">Mês 5</div><div class="timeline-content"><h3>Aprofundamento</h3><div class="info-block"><label>Pilares Foco: 1 e 2</label><p>Revisão do inventário de dados e segunda oficina de capacitação com foco em qualidade ou LGPD (Ap. R).</p></div></div></div>
+                <div class="timeline-container"><div class="timeline-icon">Mês 6</div><div class="timeline-content"><h3>Avaliação Semestral</h3><div class="info-block"><label>Pilar Foco: Todos</label><p>Autoavaliação completa (Ap. F, Q), elaboração do Relatório de Maturidade (Ap. P/AK) e planejamento do próximo semestre.</p></div></div></div>
+
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-cronograma fade-in-section" style="animation-delay: 0.6s;">
-            <p><strong>Fonte:</strong> Elaborado pelo Autor com base nos Apêndices A, B, C, D, F, G, H, I, J, AL, AN, AP, AQ, AT e na lógica cíclica do modelo GD-PME 3 Pilares.</p>
-            <p class="mt-1"><strong>Nota [1]:</strong> Este cronograma semestral propõe uma sequência para a implementação inicial do modelo GD-PME 3 Pilares, organizando temporalmente as ações dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), em consonância com a lógica de ciclos trimestrais do Apêndice B e com o suporte dos demais instrumentos práticos.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este cronograma semestral organiza temporalmente as ações dos Pilares 1, 2 e 3, em consonância com a lógica de ciclos trimestrais e com o suporte dos demais instrumentos práticos.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

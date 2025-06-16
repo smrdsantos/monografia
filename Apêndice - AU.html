@@ -1,225 +1,227 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Infográfico: Guia para Integração do Modelo GD-PME 3 Pilares</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia para Integração do Modelo GD-PME com Programas de Fomento</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Estilos gerais do corpo do documento */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* PADRÃO NOVO: Fundo Verde-azulado claro */
-        }
-        /* Estilos para cartões (Mantidos) */
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
 
-        /* Animação de fade-in (Mantida) */
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Estilos para a tabela */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .data-table th, .data-table td {
-            text-align: left;
-            padding: 10px 12px;
-            border: 1px solid #99f6e4; /* PADRÃO NOVO: Borda Verde-azulada */
-            font-size: 0.85rem;
-            vertical-align: top;
+        
+        .gradient-title {
+            background: linear-gradient(to right, #2dd4bf, #34d399); /* Verde-azulado */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .data-table th {
-            background-color: #ccfbf1; /* PADRÃO NOVO: Fundo de cabeçalho Verde-azulado */
-            font-weight: 600;
-            color: #115e59;
+        
+        /* Estilo dos Cards de Integração */
+        .integration-card {
+            background-color: #374151;
+            border-radius: 12px;
+            padding: 24px;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .data-table td {
-            color: #134e4a;
+        .integration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
         }
-
-        /* ================================================= */
-        /* ===== NOVOS ESTILOS TEMÁTICOS (INTEGRAÇÃO - TEAL) ===== */
-        /* ================================================= */
-        .section-title-integracao {
-            font-size: 1.8rem;
+        
+        .integration-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #0f766e; /* Cor Verde-azulada Escura para Títulos */
-        }
-        .header-title-integracao {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0f766e; /* Cor Verde-azulada Escura */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-integracao {
-            font-size: 1.15rem;
-            color: #115e59; /* Cor Verde-azulada mais Escura */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .header-icon-integracao {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #ccfbf1; /* Fundo Verde-azulado claro para o ícone */
         }
-        .header-icon-integracao svg {
-            width: 32px;
-            height: 32px;
-            color: #0f766e; /* Cor Verde-azulada Escura */
-        }
-        .highlight-integracao {
-            color: #0d9488; /* Cor Verde-azulada para destaque */
-            font-weight: 600;
-        }
-        .footer-integracao {
+        .integration-card h3 i {
+            margin-right: 12px;
+            width: 24px;
             text-align: center;
-            font-size: 0.8rem;
-            color: #134e4a; /* Cor Verde-azulada mais Escura para o rodapé */
-            margin-top: 32px;
-            padding-bottom: 24px;
         }
-        .note-card {
-            background-color: #ccfbf1;
-            border-left: 4px solid #14b8a6;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 8px;
+        
+        .info-block {
+            margin-bottom: 16px;
         }
-        .note-card p {
-            font-size: 0.85rem;
-            color: #134e4a;
+        .info-block label {
+            display: block;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
-        .note-card sup {
-            font-size: 0.7em;
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #d1d5db;
         }
-        .note-card .highlight-integracao {
-             color: #0f766e;
+        .info-block ul {
+            list-style-position: inside;
+            list-style-type: disc;
+        }
+        .ref-tag {
+            display: inline-block;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            color: #9ca3af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-bottom: 4px;
         }
 
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0d9488; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0f766e; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-full xl:max-w-7xl">
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-integracao">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-teal-400">
+                <i class="fas fa-network-wired fa-2x text-teal-300"></i>
             </div>
-            <h1 class="header-title-integracao">Guia para Integração do Modelo GD-PME 3 Pilares</h1>
-            <p class="header-subtitle-integracao">APÊNDICE AU: Estratégias de apoio a Programas de Fomento e Iniciativas Públicas.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Guia para Integração com Programas de Fomento</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AU: Estratégias de apoio para integrar o Modelo GD-PME 3 Pilares a iniciativas públicas e programas de desenvolvimento.</p>
         </header>
 
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed">
-                Este apêndice propõe caminhos estratégicos para que o modelo GD-PME 3 Pilares seja integrado de forma prática e sinérgica a programas de fomento, capacitação e transformação digital já existentes ou a serem criados, que sejam promovidos por entidades públicas (municipais, estaduais, federais) e paraestatais, como SEBRAE, SENAI, Institutos Federais (IFs), cooperativas de crédito e agências de desenvolvimento regional. O objetivo é potencializar o alcance e o impacto do modelo GD-PME 3 Pilares, utilizando estruturas e redes já consolidadas para promover a maturidade informacional das Pequenas e Médias Empresas (PMEs).
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                Este guia propõe caminhos para que o modelo GD-PME seja integrado de forma prática e sinérgica a programas existentes (ou a serem criados) por entidades como <strong class="text-teal-300">SEBRAE, agências de fomento, secretarias municipais e instituições de ensino</strong>, potencializando o alcance e o impacto na maturidade informacional das PMEs.
             </p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-integracao">AU.1 Exemplos de Programas Compatíveis e Formas de Integração</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                O modelo GD-PME 3 Pilares, por sua natureza modular, acessível e focada em resultados práticos, apresenta alta compatibilidade com diversos programas voltados ao desenvolvimento de PMEs. O Quadro AU.1 ilustra algumas possibilidades de integração:
-            </p>
+        <section class="fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-10"><i class="fas fa-handshake-angle mr-3 text-teal-300"></i>AU.1 Exemplos de Programas e Formas de Integração</h2>
+            <div class="space-y-6">
+                
+                <div class="integration-card" style="border-color: #14b8a6;">
+                    <h3 style="color: #2dd4bf;"><i class="fas fa-building"></i>Programas do SEBRAE</h3>
+                    <div class="info-block"><label>Programas</label><p>SEBRAETEC, Agentes Locais de Inovação (ALI), SEBRAE Delas, Educação Empreendedora.</p></div>
+                    <div class="info-block"><label>Possibilidade de Integração</label><p>Utilizar o Diagnóstico Inicial (Ap. A) e Rápido (Ap. AF) como ferramentas para Agentes e Consultores; Inserir módulos de GD baseados nos 3 Pilares em programas de produtividade; Aplicar o Pilar 2 (Capacitação) e seus instrumentos (Ap. D, M, R, Z, AR) em programas de educação.</p></div>
+                    <div class="info-block"><label>Apêndices de Apoio</label><p><span class="ref-tag">A</span> <span class="ref-tag">AF</span> <span class="ref-tag">B</span> <span class="ref-tag">D</span> <span class="ref-tag">M</span> <span class="ref-tag">R</span> <span class="ref-tag">Z</span> <span class="ref-tag">AR</span> <span class="ref-tag">U/AQ</span></p></div>
+                </div>
 
-            <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">Quadro AU.1 – Exemplos de Integração do Modelo GD-PME com Programas de Fomento e Desenvolvimento.</h3>
-            <div class="overflow-x-auto">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Tipo de Programa / Instituição Potencial</th>
-                            <th>Possibilidade de Integração do Modelo GD-PME 3 Pilares (Exemplos)</th>
-                            <th>Apêndice(s) GD-PME 3 Pilares de Apoio Principal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold">Programas do SEBRAE:<br>- SEBRAETEC (Serviços Tecnológicos)<br>- Agentes Locais de Inovação (ALI)<br>- SEBRAE Delas / Educação Empreendedora</td>
-                            <td>Utilizar o Diagnóstico Inicial (<span class="highlight-integracao">Apêndice A</span>) e o Roteiro de Diagnóstico Rápido (<span class="highlight-integracao">Apêndice AF</span>) como ferramentas para Agentes e Consultores SEBRAE avaliarem a maturidade em GD das PMEs atendidas; Inserir módulos de GD baseados nos Pilares do GD-PME 3 Pilares nos programas de produtividade e inovação; Aplicar o Pilar 2 (Capacitação Contínua) e seus instrumentos (<span class="highlight-integracao">Apêndices D, M, R, Z, AR</span>) em programas de educação empreendedora, adaptando a linguagem.</td>
-                            <td><span class="highlight-integracao">A, AF, B, D, M, R, Z, AR, U/AQ</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Programas de Microcrédito e Fomento Financeiro:<br>(BNDES, Desenvolve SP, Bancos Regionais, Cooperativas de Crédito)</td>
-                            <td>Utilizar o Checklist de Adesão (<span class="highlight-integracao">Apêndice AJ</span>) ou o Termo de Compromisso Institucional (<span class="highlight-integracao">Apêndice AH</span>) como critério de elegibilidade ou diferencial para PMEs que buscam crédito, demonstrando boa gestão informacional e menor risco; Condicionar parte do financiamento à implementação de etapas do GD-PME 3 Pilares.</td>
-                            <td><span class="highlight-integracao">AJ, AH, A, B</span></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Instituições de Ensino Técnico e Tecnológico:<br>(Institutos Federais, SENAI, ETECs, Universidades com cursos de gestão/tecnologia)</td>
-                            <td>Incorporar o modelo GD-PME 3 Pilares e seus apêndices como conteúdo didático em disciplinas de gestão, empreendedorismo, sistemas de informação ou transformação digital; Utilizar o GD-PME 3 Pilares em projetos de extensão universitária, com alunos atuando como facilitadores em PMEs locais (conforme <span class="highlight-integracao">Apêndice AI e U/AQ</span>).</td>
-                            <td>Todos os Apêndices (especialmente <span class="highlight-integracao">B, C, D, M</span>, e os de ferramentas práticas)</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Governos Municipais e Consórcios Intermunicipais:<br>(Secretarias de Desenvolvimento Econômico, Agências de Desenvolvimento Local)</td>
-                            <td>Adotar o Roteiro de Implementação Territorial (<span class="highlight-integracao">Apêndice AI</span>) para programas municipais de apoio à competitividade das PMEs; Criar e apoiar "Núcleos Setoriais de Governança de Dados" para PMEs, utilizando o GD-PME 3 Pilares como metodologia base.</td>
-                            <td><span class="highlight-integracao">AI, A, B, D, V</span>, e demais apêndices operacionais</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Editais de Inovação e Transformação Digital:<br>(FINEP, Fundações de Amparo à Pesquisa Estaduais - FAPs)</td>
-                            <td>Utilizar o Checklist de Adesão (<span class="highlight-integracao">Apêndice AJ</span>) para PMEs demonstrarem que possuem um plano estruturado de Governança de Dados como parte de seus projetos de inovação.</td>
-                            <td><span class="highlight-integracao">AJ, B, L/AM, AH</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="integration-card" style="border-color: #f59e0b;">
+                    <h3 style="color: #facc15;"><i class="fas fa-hand-holding-usd"></i>Programas de Microcrédito e Fomento Financeiro</h3>
+                     <div class="info-block"><label>Instituições</label><p>BNDES, Desenvolve SP, Bancos Regionais, Cooperativas de Crédito.</p></div>
+                    <div class="info-block"><label>Possibilidade de Integração</label><p>Utilizar o Checklist de Adesão (Ap. AJ) ou o Termo de Compromisso (Ap. AH) como critério de elegibilidade ou diferencial para PMEs que buscam crédito, demonstrando boa gestão e menor risco; Condicionar parte do financiamento à implementação de etapas do GD-PME.</p></div>
+                    <div class="info-block"><label>Apêndices de Apoio</label><p><span class="ref-tag">AJ</span> <span class="ref-tag">AH</span> <span class="ref-tag">A</span> <span class="ref-tag">B</span></p></div>
+                </div>
+                
+                <div class="integration-card" style="border-color: #6366f1;">
+                    <h3 style="color: #a5b4fc;"><i class="fas fa-graduation-cap"></i>Instituições de Ensino Técnico e Tecnológico</h3>
+                    <div class="info-block"><label>Instituições</label><p>Institutos Federais, SENAI, ETECs, Universidades com cursos de gestão/tecnologia.</p></div>
+                    <div class="info-block"><label>Possibilidade de Integração</label><p>Incorporar o modelo GD-PME como conteúdo didático em disciplinas de gestão, empreendedorismo ou TI; Utilizar o modelo em projetos de extensão, com alunos atuando como facilitadores em PMEs locais (conforme Ap. AI e U/AQ).</p></div>
+                    <div class="info-block"><label>Apêndices de Apoio</label><p>Todos (especialmente <span class="ref-tag">B</span> <span class="ref-tag">C</span> <span class="ref-tag">D</span> <span class="ref-tag">M</span>)</p></div>
+                </div>
+                
+                <div class="integration-card" style="border-color: #ef4444;">
+                    <h3 style="color: #f87171;"><i class="fas fa-city"></i>Governos Municipais e Consórcios</h3>
+                    <div class="info-block"><label>Atores</label><p>Secretarias de Desenvolvimento Econômico, Agências de Desenvolvimento Local.</p></div>
+                    <div class="info-block"><label>Possibilidade de Integração</label><p>Adotar o Roteiro de Implementação Territorial (Ap. AI) para programas de apoio à competitividade; Criar e apoiar "Núcleos Setoriais de Governança de Dados" para PMEs, utilizando o GD-PME como metodologia base.</p></div>
+                    <div class="info-block"><label>Apêndices de Apoio</label><p><span class="ref-tag">AI</span> <span class="ref-tag">A</span> <span class="ref-tag">B</span> <span class="ref-tag">D</span> <span class="ref-tag">V</span></p></div>
+                </div>
+
+                <div class="integration-card" style="border-color: #64748b;">
+                    <h3 style="color: #cbd5e1;"><i class="fas fa-file-alt"></i>Editais de Inovação e Transformação Digital</h3>
+                    <div class="info-block"><label>Instituições</label><p>FINEP, Fundações de Amparo à Pesquisa Estaduais (FAPs).</p></div>
+                    <div class="info-block"><label>Possibilidade de Integração</label><p>Utilizar o Checklist de Adesão (Ap. AJ) para PMEs demonstrarem que possuem um plano estruturado de Governança de Dados como parte de seus projetos de inovação.</p></div>
+                    <div class="info-block"><label>Apêndices de Apoio</label><p><span class="ref-tag">AJ</span> <span class="ref-tag">B</span> <span class="ref-tag">L/AM</span> <span class="ref-tag">AH</span></p></div>
+                </div>
+
             </div>
-            <p class="note mt-4 text-xs">Fonte: Elaborado pelo Autor com base nas proposições do Capítulo 5 (especialmente Seções 5.6, 5.13, 5.25) e na análise de programas de fomento existentes.</p>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.5s;">
-            <h2 class="section-title-integracao">AU.2 Sugestões Operacionais para Gestores Públicos e Entidades de Fomento</h2>
-            <ul class="list-disc ml-6 text-gray-700 leading-relaxed">
-                <li class="mb-2">Adotar o <span class="highlight-integracao">Apêndice A</span> (Checklist de Diagnóstico Inicial) como formulário padrão para avaliação da maturidade informacional de PMEs em projetos públicos ou programas de fomento;</li>
-                <li class="mb-2">Utilizar o <span class="highlight-integracao">Apêndice B</span> (Manual Operacional do Modelo GD-PME 3 Pilares) e os roteiros de capacitação (<span class="highlight-integracao">Apêndices D, R, U/AQ, Z</span>) como base para o desenvolvimento de oficinas regionais ou setoriais de capacitação em Governança de Dados para PMEs;</li>
-                <li>Traduzir os Cenários Prospectivos de impacto do modelo GD-PME 3 Pilares (conforme Quadro 5.3 e Seção 5.14 da monografia) em metas e indicadores para planos-piloto de desenvolvimento regional baseados na melhoria da gestão informacional das PMEs.</li>
-            </ul>
+        <section class="grid md:grid-cols-2 gap-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="content-card">
+                <h2 class="text-xl font-bold text-white mb-4"><i class="fas fa-cogs mr-2 text-teal-300"></i>AU.2 Sugestões Operacionais</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Adotar o <span class="font-bold">Apêndice A</span> como formulário padrão para avaliação da maturidade informacional.</li>
+                    <li>Utilizar o <span class="font-bold">Apêndice B</span> e os roteiros de capacitação como base para o desenvolvimento de oficinas regionais.</li>
+                    <li>Traduzir os cenários de impacto do modelo em metas e indicadores para planos-piloto de desenvolvimento regional.</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h2 class="text-xl font-bold text-white mb-4"><i class="fas fa-chart-pie mr-2 text-teal-300"></i>AU.3 Benefícios da Integração</h2>
+                 <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Reforço à conformidade das PMEs com a LGPD, mitigando riscos.</li>
+                    <li>Aumento da maturidade informacional e da capacidade de decisão nos territórios.</li>
+                    <li>Criação de evidências e casos de sucesso para subsidiar novos editais.</li>
+                    <li>Contribuição para os Objetivos de Desenvolvimento Sustentável (ODS 8, 9 e 10).</li>
+                </ul>
+            </div>
         </section>
 
-        <section class="card fade-in-section" style="animation-delay: 0.6s;">
-            <h2 class="section-title-integracao">AU.3 Benefícios Institucionais e Territoriais da Integração</h2>
-            <ul class="list-disc ml-6 text-gray-700 leading-relaxed">
-                <li class="mb-2">Reforço à conformidade das PMEs com a Lei Geral de Proteção de Dados (LGPD – BRASIL, 2018), mitigando riscos para as empresas e para o ecossistema;</li>
-                <li class="mb-2">Aumento da maturidade informacional e da capacidade de tomada de decisão baseada em dados nos territórios, elevando a competitividade e a resiliência das PMEs;</li>
-                <li class="mb-2">Criação de evidências e casos de sucesso que podem subsidiar a formulação de novos editais de inovação, transformação digital e inclusão produtiva;</li>
-                <li>Contribuição direta para o alcance de Objetivos de Desenvolvimento Sustentável (ODS) da Agenda 2030, como o ODS 8 (Trabalho Decente e Crescimento Econômico), ODS 9 (Indústria, Inovação e Infraestrutura) e ODS 10 (Redução das Desigualdades), ao capacitar e fortalecer um segmento vital da economia.</li>
-            </ul>
-        </section>
-
-        <footer class="footer-integracao fade-in-section" style="animation-delay: 0.7s;">
-            <div class="note-card">
-                <p><sup>1</sup> Nota: Este guia orienta a integração estratégica do modelo GD-PME 3 Pilares com programas de fomento e iniciativas públicas, visando sua disseminação e impacto na maturidade informacional das PMEs. Demonstra como as ferramentas dos Pilares 1 (Dados e Sistemas), 2 (Capacitação) e 3 (Políticas), detalhadas nos Apêndices A, AF, B, D, M, R, Z, AR, U/AQ, AJ, AH, AI, V, L/AM e outros, podem ser incorporadas para fortalecer o ecossistema de PMEs.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este guia orienta a integração estratégica do modelo GD-PME com programas de fomento, visando sua disseminação e impacto na maturidade informacional das PMEs.</p>
             </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

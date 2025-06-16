@@ -3,312 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Kit Visual de Boas Práticas em Governança de Dados - GD-PME</title>
+    <title>Kit Visual de Boas Práticas em GD - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdf4; /* Light Green background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-title-kit-ar {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #166534; /* Dark Green for titles */
-        }
-        .header-title-kit-ar {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #166534; /* Dark Green */
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-subtitle-kit-ar {
-            font-size: 1.15rem;
-            color: #15803d; /* Medium Green */
-            text-align: center;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-kit-ar {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #14532d; /* Darkest Green for footer */
-            margin-top: 32px;
-            padding-bottom: 24px;
-        }
-        .highlight-kit-ar {
-            color: #22c55e; /* Green highlight */
-            font-weight: 600;
-        }
-        /* Custom animations */
+
+        /* Animação */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Icon styling */
-        .header-icon-kit-ar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 16px;
-            background-color: #dcfce7; /* Light Green background for icon */
-        }
-        .header-icon-kit-ar svg {
-            width: 32px;
-            height: 32px;
-            color: #166534; /* Dark Green */
-        }
-
-        .visual-item-card {
-            background-color: #ecfdf5; /* Very light green for item cards */
-            border-left: 4px solid #22c55e; /* Green border */
-            padding: 20px;
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 24px;
             margin-bottom: 24px;
-            border-radius: 8px;
+        }
+        
+        .gradient-title {
+            background: linear-gradient(to right, #4ade80, #34d399); /* Verde */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo dos Cards de Itens Visuais */
+        .visual-item-card {
+            background-color: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #374151;
         }
         .visual-item-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #15803d; /* Medium Green */
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 12px;
+            color: #6ee7b7; /* Verde claro */
             display: flex;
             align-items: center;
         }
-         .visual-item-card h3 svg {
-            margin-right: 10px;
-            color: #16a34a; /* Lighter Green */
-         }
-        .visual-item-card p, .visual-item-card ul {
-            font-size: 0.9rem;
-            color: #14532d; /* Darkest Green */
-            line-height: 1.6;
+        .visual-item-card h3 i {
+            margin-right: 12px;
         }
-        .visual-item-card ul {
-            list-style-type: none; /* Removing default bullets for custom styling */
-            padding-left: 0;
+        .visual-item-card > p {
+            color: #d1d5db;
+            margin-bottom: 24px;
         }
-        .visual-item-card li {
-            margin-bottom: 10px;
-            padding-left: 25px; /* Space for custom icon */
-            position: relative;
-        }
-        .visual-item-card li::before {
-            content: '✓'; /* Custom bullet */
-            color: #22c55e;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 1px;
-        }
+        
+        /* Estilos para o exemplo de Cartaz */
         .cartaz-content {
-            border: 2px dashed #6ee7b7; /* Dashed border for poster example */
-            padding: 16px;
+            border: 2px dashed #374151;
+            padding: 20px;
             border-radius: 8px;
-            background-color: #f0fdf4;
+            background-color: #111827;
         }
-        .cartaz-content .cartaz-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-            color: #166534;
-            margin-bottom: 8px;
+        .cartaz-title {
+            font-size: 1.25rem; font-weight: bold; text-align: center; color: #a7f3d0; margin-bottom: 8px;
         }
-         .cartaz-content .cartaz-subtitle {
-            font-size: 0.9rem;
-            text-align: center;
-            color: #15803d;
-            margin-bottom: 12px;
+        .cartaz-subtitle {
+            font-size: 1rem; text-align: center; color: #d1d5db; margin-bottom: 16px;
         }
         .cartaz-pillar {
-            margin-bottom: 12px;
-            padding: 10px;
-            border: 1px solid #a7f3d0;
-            border-radius: 6px;
+            margin-bottom: 12px; padding: 12px; border: 1px solid #374151; border-radius: 6px; background-color: #1f2937;
         }
-        .cartaz-pillar svg {
-            width: 24px; height: 24px; display: inline-block; margin-right: 6px; vertical-align: middle;
-        }
-        .cartaz-pillar strong { color: #047857; }
+        .cartaz-pillar strong { font-size: 0.9rem; }
+        .cartaz-pillar i { width: 20px; height: 20px; display: inline-block; margin-right: 8px; vertical-align: middle;}
         .cartaz-footer {
-            font-size: 0.8rem;
-            text-align: center;
-            color: #065f46;
-            margin-top: 12px;
-            border-top: 1px solid #a7f3d0;
-            padding-top: 8px;
-        }
-        .etiqueta-example {
-            background-color: #dcfce7;
-            color: #166534;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-            display: inline-block;
-            border: 1px solid #86efac;
-        }
-        .cartilha-item {
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        .canal-duvidas-content {
-            border: 2px solid #6ee7b7;
-            padding: 16px;
-            border-radius: 8px;
-            background-color: #f0fdf4;
-        }
-        .canal-duvidas-content .canal-title {
-             font-size: 1.1rem;
-            font-weight: bold;
-            color: #166534;
-            margin-bottom: 8px;
+            font-size: 0.85rem; text-align: center; color: #9ca3af; margin-top: 16px; border-top: 1px solid #374151; padding-top: 12px;
         }
 
+        /* Estilos para Etiquetas */
+        .etiqueta-example {
+            background-color: #374151; color: #d1d5db; padding: 6px 12px; border-radius: 6px;
+            font-size: 0.85rem; margin: 4px; display: inline-block; border: 1px solid #4b5563;
+        }
+        .etiqueta-confidencial { background-color: #991b1b; color: #fecaca; border-color: #ef4444; }
+        .etiqueta-pessoal { background-color: #9a3412; color: #fed7aa; border-color: #fb923c; }
+
+        /* Estilos para Cartilha */
+        .cartilha-item {
+            display: flex; align-items: flex-start; margin-bottom: 12px;
+        }
+        .cartilha-item i { color: #34d399; margin-right: 12px; margin-top: 5px; }
+
+        /* Estilos para Canal de Dúvidas */
+        .canal-duvidas-content {
+            border: 2px solid #374151; padding: 20px; border-radius: 8px; background-color: #111827;
+        }
+        .canal-title { font-size: 1.2rem; font-weight: bold; color: #a7f3d0; margin-bottom: 12px; }
+
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #16a34a; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #15803d; }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4 md:p-6 max-w-4xl">
-        <!-- Header -->
-        <header class="my-8 md:my-12 fade-in-section">
-            <div class="header-icon-kit-ar">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 0 0 0-1.06l-1.5-1.5a.75.75 0 0 0-1.06 0l-4.72 4.72m4.72 4.72 1.06-1.06A.75.75 0 0 0 21 12.25v-1.5a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75v1.5c0 .195.073.37.195.505l1.06 1.06Zm-9.75-3.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-                </svg>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
+        </div>
+
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-green-400">
+                <i class="fas fa-palette fa-2x text-green-300"></i>
             </div>
-            <h1 class="header-title-kit-ar">Kit Visual de Boas Práticas em Governança de Dados</h1>
-            <p class="header-subtitle-kit-ar">APÊNDICE AR: Sugestões para elementos gráficos e materiais visuais de apoio, para reforçar a comunicação, engajamento e consolidação da cultura de dados em PMEs.</p>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Kit Visual de Boas Práticas em GD</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE AR: Sugestões de elementos gráficos para reforçar a comunicação, o engajamento e a consolidação da cultura de dados.</p>
         </header>
 
-        <!-- Introduction Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p class="text-gray-700 leading-relaxed text-center">
-                Os recursos apresentados são de <span class="highlight-kit-ar">fácil personalização</span> e podem ser replicados com ferramentas de design acessíveis (como Canva, Google Docs/Slides ou PowerPoint), conforme sugerido no Apêndice K.
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Os recursos apresentados são de <strong class="text-green-300">fácil personalização</strong> e podem ser replicados com ferramentas de design acessíveis (Canva, Google Docs, etc.), conforme sugerido no Apêndice K.
             </p>
         </section>
 
-        <!-- Visual Kit Items Section -->
-        <section class="card fade-in-section" style="animation-delay: 0.4s;">
-            <h2 class="section-title-kit-ar text-center">Sugestões de Elementos Visuais</h2>
-
-            <!-- AR.1 Cartaz Institucional -->
+        <section class="fade-in space-y-8" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-tools mr-3 text-green-300"></i>Sugestões de Elementos Visuais</h2>
+            
             <div class="visual-item-card">
-                <h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h12A2.25 2.25 0 0 0 20.25 14.25V3M3.75 14.25m-1.5 0h3m15 0h-3M3.75 14.25V21m18-6.75V21M12 10.5h.008v.008H12V10.5Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm3.75.375a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.008v.008h.008v-.008Zm-7.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.008v.008h.008v-.008Z" /></svg>
-                    AR.1 Cartaz Institucional: “Os 3 Pilares da Nossa Governança de Dados GD-PME 3 Pilares”
-                </h3>
-                <p>Um cartaz visualmente atraente e com linguagem simples pode ser afixado em locais de grande circulação para lembrar a todos sobre os fundamentos do modelo GD-PME 3 Pilares.</p>
+                <h3><i class="fas fa-chalkboard"></i>AR.1 Cartaz: “Os 3 Pilares da Nossa Governança de Dados”</h3>
+                <p>Um cartaz visualmente atraente para locais de grande circulação, lembrando a todos sobre os fundamentos do modelo GD-PME 3 Pilares.</p>
                 <div class="cartaz-content mt-4">
                     <p class="cartaz-title">NÓS VALORIZAMOS E GOVERNAMOS NOSSOS DADOS!</p>
-                    <p class="cartaz-subtitle">Conheça o Modelo GD-PME 3 Pilares: Simples, Prático e Estratégico para Nossa Empresa.</p>
+                    <p class="cartaz-subtitle">Conheça o Modelo GD-PME 3 Pilares: Simples, Prático e Estratégico.</p>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="cartaz-pillar">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-blue-600"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            <strong>Pilar 1: DADOS E SISTEMAS ORGANIZADOS</strong><br>
-                            “Nossos dados são ativos importantes! Vamos mantê-los separados, organizados, padronizados e fáceis de encontrar.”<br>
-                            <em>Ação Chave: Mantenha o inventário de dados (Apêndice AL) atualizado.</em>
-                        </div>
-                        <div class="cartaz-pillar">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
-                            <strong>Pilar 2: CAPACITAÇÃO CONTÍNUA PARA TODOS</strong><br>
-                            “Aprender sobre dados melhora nosso trabalho! Participe das oficinas e use o glossário.”<br>
-                            <em>Ação Chave: Consulte o glossário (Apêndice C) e participe das oficinas (Apêndice D).</em>
-                        </div>
-                        <div class="cartaz-pillar">
-                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                            <strong>Pilar 3: POLÍTICAS SIMPLES E CLARAS</strong><br>
-                            “Regras claras e simples para um uso seguro e ético dos nossos dados. Conheça e pratique!”<br>
-                            <em>Ação Chave: Conheça e siga o Termo de Boas Práticas (Apêndice G/AA/AY).</em>
-                        </div>
+                        <div class="cartaz-pillar"><i class="fas fa-database text-blue-400"></i><strong>Pilar 1: DADOS ORGANIZADOS</strong><br>“Nossos dados são ativos! Vamos mantê-los organizados, padronizados e fáceis de encontrar.”</div>
+                        <div class="cartaz-pillar"><i class="fas fa-graduation-cap text-green-400"></i><strong>Pilar 2: CAPACITAÇÃO PARA TODOS</strong><br>“Aprender sobre dados melhora nosso trabalho! Participe das oficinas e use o glossário.”</div>
+                        <div class="cartaz-pillar"><i class="fas fa-shield-alt text-yellow-400"></i><strong>Pilar 3: POLÍTICAS CLARAS</strong><br>“Regras simples para um uso seguro e ético dos nossos dados. Conheça e pratique!”</div>
                     </div>
-                    <p class="cartaz-footer">A Governança de Dados é um compromisso de todos! Dúvidas? Procure [Nome do Responsável pela GD ou Multiplicador do Setor].<br>Saiba mais sobre nosso modelo GD-PME 3 Pilares na [Intranet/Mural/Pasta Compartilhada].</p>
+                    <p class="cartaz-footer">Dúvidas? Procure <span class="text-green-300">[Responsável pela GD]</span>.</p>
                 </div>
             </div>
 
-            <!-- AR.2 Etiquetas Adesivas -->
             <div class="visual-item-card">
-                <h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" /></svg>
-                    AR.2 Sugestões de Etiquetas Adesivas para Repositórios e Documentos Físicos
-                </h3>
-                <p>Etiquetas visuais podem ajudar na identificação rápida e no manuseio correto de informações críticas.</p>
-                <div class="mt-3 space-x-2">
-                    <span class="etiqueta-example">DADO CRÍTICO – ACESSO RESTRITO (CONFIDENCIAL)</span>
-                    <span class="etiqueta-example">VERSÃO OFICIAL – DOCUMENTO CONTROLADO</span>
-                    <span class="etiqueta-example">DADO TEMPORÁRIO – REVISAR VALIDADE EM: ___/___/____</span>
+                <h3><i class="fas fa-tags"></i>AR.2 Etiquetas Adesivas para Repositórios</h3>
+                <p>Etiquetas visuais para ajudar na identificação rápida e no manuseio correto de informações críticas, físicas ou digitais.</p>
+                <div class="mt-3 flex flex-wrap gap-3">
+                    <span class="etiqueta-example etiqueta-confidencial">DADO CRÍTICO – ACESSO RESTRITO</span>
+                    <span class="etiqueta-example etiqueta-pessoal">CONTÉM DADOS PESSOAIS (LGPD)</span>
+                    <span class="etiqueta-example">VERSÃO OFICIAL – CONTROLADO</span>
                     <span class="etiqueta-example">BACKUP REALIZADO EM: ___/___/____</span>
-                    <span class="etiqueta-example">CONTÉM DADOS PESSOAIS – ATENÇÃO À LGPD</span>
                 </div>
-                <p class="text-xs mt-2"><strong>Observação:</strong> As etiquetas podem ser produzidas com papel adesivo comum ou impressas. A simbologia (cores, ícones simples) deve ser de fácil entendimento e padronizada.</p>
             </div>
 
-            <!-- AR.3 Cartilha de Bolso -->
             <div class="visual-item-card">
-                <h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
-                    AR.3 Modelo para Cartilha de Bolso ou Lembrete Rápido: “Minhas Boas Práticas com Dados”
-                </h3>
-                <p>Um material pequeno e de fácil consulta para reforçar comportamentos chave (Formato: folha A4 dobrada ou cartão).</p>
-                <ul class="mt-3">
-                    <li class="cartilha-item"><strong>1. Organize Seus Dados:</strong> Mantenha arquivos e planilhas nomeados de forma clara e guardados no local correto (Pilar 1, Ap. AL).</li>
-                    <li class="cartilha-item"><strong>2. Capacite-se Sempre:</strong> Participe das oficinas (Ap. D) e tire dúvidas sobre dados (Pilar 2). Consulte o glossário (Ap. C).</li>
-                    <li class="cartilha-item"><strong>3. Siga as Regras:</strong> Conheça e aplique as políticas de uso, segurança e backup (Pilar 3, Ap. G/AA/AY). Proteja senhas!</li>
-                    <li class="cartilha-item"><strong>4. Qualidade é Compromisso:</strong> Verifique os dados antes de usá-los. Se encontrar erros, avise o responsável.</li>
-                    <li class="cartilha-item"><strong>5. LGPD Importa:</strong> Tenha cuidado extra com dados pessoais de clientes e colegas.</li>
+                <h3><i class="fas fa-book-open"></i>AR.3 Cartilha de Bolso: “Minhas Boas Práticas com Dados”</h3>
+                <p>Um material pequeno e de fácil consulta para reforçar comportamentos chave (pode ser um cartão ou folha A4 dobrada).</p>
+                <ul class="mt-4 space-y-3">
+                    <li class="cartilha-item"><i class="fas fa-check"></i><strong>Organize Seus Dados:</strong> Mantenha arquivos nomeados de forma clara e no local correto (Pilar 1).</li>
+                    <li class="cartilha-item"><i class="fas fa-check"></i><strong>Capacite-se Sempre:</strong> Participe das oficinas e tire dúvidas sobre dados (Pilar 2).</li>
+                    <li class="cartilha-item"><i class="fas fa-check"></i><strong>Siga as Regras:</strong> Conheça e aplique as políticas de uso, segurança e backup (Pilar 3). Proteja senhas!</li>
+                    <li class="cartilha-item"><i class="fas fa-check"></i><strong>Qualidade é Compromisso:</strong> Verifique os dados antes de usá-los. Se encontrar erros, avise o responsável.</li>
+                    <li class="cartilha-item"><i class="fas fa-check"></i><strong>LGPD Importa:</strong> Tenha cuidado extra com dados pessoais de clientes e colegas.</li>
                 </ul>
             </div>
             
-            <!-- AR.4 Canal de Dúvidas -->
             <div class="visual-item-card">
-                <h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
-                    AR.4 Modelo para Canal de Dúvidas Interno sobre GD
-                </h3>
+                <h3><i class="fas fa-question-circle"></i>AR.4 Canal de Dúvidas Interno sobre GD</h3>
                 <p>Criar um ponto focal para dúvidas ajuda a manter o engajamento e a esclarecer questões rapidamente.</p>
                 <div class="canal-duvidas-content mt-3">
-                    <p class="canal-title">CAIXINHA DE DÚVIDAS E SUGESTÕES – GOVERNANÇA DE DADOS GD-PME 3 Pilares</p>
-                    <p><strong>Como funciona:</strong></p>
-                    <ul>
-                        <li>“Tem alguma dúvida sobre como organizar seus dados, sobre uma política ou sobre os termos que usamos?”</li>
-                        <li>“Quer dar uma sugestão para melhorarmos nossa Governança de Dados?”</li>
-                        <li>“Escreva sua pergunta ou sugestão (pode ser anônimo!) e deposite aqui / envie para [e-mail específico] / preencha nosso formulário online (link para Apêndice J ou T).”</li>
-                        <li>“As respostas e os encaminhamentos serão discutidos nas reuniões de equipe ou respondidos individualmente.”</li>
+                    <p class="canal-title"><i class="fas fa-box-open"></i> CAIXINHA DE DÚVIDAS E SUGESTÕES</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Tem alguma dúvida sobre como organizar dados, uma política ou um termo que usamos?</li>
+                        <li>Quer dar uma sugestão para melhorarmos nossa Governança de Dados?</li>
+                        <li>Escreva sua pergunta (pode ser anônimo!) e deposite aqui / envie para <strong class="text-green-300">[e-mail]</strong> / preencha o formulário <strong class="text-green-300">[link]</strong>.</li>
                     </ul>
-                    <p class="mt-2"><strong>Responsável por coletar e direcionar:</strong> [Nome do Multiplicador ou Responsável pela GD].</p>
+                    <p class="mt-4"><strong>Responsável por Coletar:</strong> <span class="text-green-300">[Nome do Multiplicador ou Responsável pela GD]</span>.</p>
                 </div>
             </div>
 
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-kit-ar fade-in-section" style="animation-delay: 0.6s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Recurso de comunicação e engajamento alinhado ao Pilar 2 (Capacitação Contínua) do modelo GD-PME, este Kit Visual serve para reforçar e tornar tangíveis as diretrizes dos três pilares. Com modelos para cartazes, etiquetas e cartilhas (conectados aos Apêndices AL, C, D, G/AA/AY, J ou T), visa consolidar a cultura de dados.</p>
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.6s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Recurso de comunicação alinhado ao Pilar 2, este Kit Visual serve para reforçar e tornar tangíveis as diretrizes dos três pilares, contribuindo para consolidar a cultura de dados.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

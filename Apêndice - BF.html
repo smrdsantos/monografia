@@ -3,144 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Manual de Processo Ágil para Governança de Dados (Sprints de GD) - GD-PME</title>
+    <title>Manual de Processo Ágil para Governança de Dados - GD-PME</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* Light Teal background */
+            background-color: #111827; /* Fundo escuro padrão */
+            color: #d1d5db;
         }
+
+        /* Animação */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        .card {
-            background-color: white;
+
+        /* Card Principal */
+        .content-card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             padding: 24px;
             margin-bottom: 24px;
         }
-        .process-step h3 {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600; /* semibold */
-            color: #0f766e; /* Teal 700 */
-            margin-bottom: 1rem;
+        
+        .gradient-title {
+            background: linear-gradient(to right, #2dd4bf, #34d399); /* Verde-azulado */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .footer-agil {
-            font-size: 0.875rem;
-            color: #115e59; /* Teal 800 */
-            padding-top: 1rem;
-            border-top: 1px solid #ccfbf1; /* Teal 200 */
+
+        /* Estilo da Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem auto;
         }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #374151;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: -2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            padding-left: 80px;
+        }
+        .timeline-container .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 6px;
+            background-color: #1f2937;
+            border: 4px solid #0f766e; /* Teal */
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccfbf1;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #374151;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+        }
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5eead4; /* Light Teal */
+            margin-bottom: 16px;
+        }
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .timeline-content li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        .timeline-content li::before {
+            content: '\f105'; /* Chevron Right */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #5eead4;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: #0d9488; color: white; cursor: pointer;
+            padding: 12px; border-radius: 50%; width: 50px; height: 50px;
+        }
+        #backToTopBtn:hover { background-color: #0f766e; }
     </style>
 </head>
-<body class="text-gray-800">
-
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-10 fade-in-section" style="animation-delay: 0.1s;">
-            <div class="flex justify-center items-center gap-4">
-                <svg class="w-10 h-10 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.697v4.992h-4.992v-4.992z" />
-                </svg>
-                <h1 class="text-3xl md:text-4xl font-bold text-teal-800">Manual de Processo Ágil para Governança de Dados (Sprints de GD)</h1>
-            </div>
-            <h2 class="text-xl md:text-2xl text-teal-600 mt-2">APÊNDICE - BF</h2>
-        </header>
-
-        <section class="card fade-in-section" style="animation-delay: 0.2s;">
-            <p>Este manual detalha o funcionamento de um processo ágil para gerenciar as iniciativas de Governança de Dados (GD) em uma PME. Ele descreve as cinco cerimônias essenciais que estruturam os "Sprints de Governança".</p>
-        </section>
-
-        <div class="space-y-6">
-            <section class="card fade-in-section process-step" style="animation-delay: 0.3s;">
-                <h3>1. O Backlog de Governança de Dados</h3>
-                <ul class="list-disc list-inside space-y-2">
-                    <li><strong>O que é?</strong> Uma lista mestra e viva de todos os problemas, oportunidades, solicitações e riscos relacionados a dados identificados na empresa. É a única fonte de trabalho para a governança.</li>
-                    <li><strong>Como Manter?</strong> Pode ser uma planilha compartilhada ou um quadro no Trello/Planner. Qualquer colaborador pode sugerir um novo item para o backlog, preenchendo um formulário simples (baseado no Apêndice J/T).</li>
-                    <li><strong>Estrutura de um item do Backlog:</strong>
-                        <ul class="list-['-_'] list-inside ml-4 mt-1">
-                            <li><strong>ID:</strong> Identificador único.</li>
-                            <li><strong>Descrição do Problema/Oportunidade:</strong> Descrição clara da "dor" ou ideia.</li>
-                            <li><strong>Área(s) Afetada(s):</strong> Ex: Vendas, Financeiro.</li>
-                            <li><strong>Impacto no Negócio (Estimativa):</strong> Qual o prejuízo ou ganho potencial.</li>
-                            <li><strong>Data da Sugestão:</strong> Data de inclusão no backlog.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-            
-            <section class="card fade-in-section process-step" style="animation-delay: 0.4s;">
-                <h3>2. A Reunião de Priorização (Grooming)</h3>
-                 <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Propósito:</strong> Analisar e priorizar o Backlog de Governança.</li>
-                    <li><strong>Participantes:</strong> Conselho de Dados (Data Owners, Liderança).</li>
-                    <li><strong>Frequência:</strong> Mensal (ou conforme a necessidade).</li>
-                    <li><strong>Processo:</strong>
-                        <ol class="list-decimal list-inside ml-4 mt-1">
-                            <li>O Conselho revisa os novos itens do backlog.</li>
-                            <li>Para cada item, discute-se o valor de negócio vs. o esforço estimado para a solução.</li>
-                            <li>Os itens são reordenados na lista, com os de maior valor e menor esforço posicionados no topo. O item nº 1 do backlog é o candidato para o próximo sprint.</li>
-                        </ol>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="card fade-in-section process-step" style="animation-delay: 0.5s;">
-                <h3>3. O Planejamento do Sprint (Sprint Planning)</h3>
-                 <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Propósito:</strong> Planejar o trabalho do próximo sprint (ciclo de 2-4 semanas).</li>
-                    <li><strong>Participantes:</strong> Grupo de Trabalho de Dados (Data Stewards, Facilitador).</li>
-                     <li><strong>Processo:</strong>
-                        <ol class="list-decimal list-inside ml-4 mt-1">
-                            <li>A equipe pega o item nº 1 do backlog priorizado pelo Conselho.</li>
-                            <li>Discute e define um objetivo claro para o sprint (ex: "Reduzir em 50% os erros de cadastro de novos produtos").</li>
-                            <li>Quebra o trabalho em tarefas específicas (ex: "Mapear campos do cadastro", "Criar regra de validação", "Treinar equipe do estoque").</li>
-                            <li>As tarefas são atribuídas aos membros do Grupo de Trabalho e estimadas.</li>
-                        </ol>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="card fade-in-section process-step" style="animation-delay: 0.6s;">
-                <h3>4. A Revisão do Sprint (Sprint Review)</h3>
-                 <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Propósito:</strong> Apresentar os resultados do sprint e demonstrar o valor gerado.</li>
-                    <li><strong>Participantes:</strong> O Grupo de Trabalho apresenta para o Conselho de Dados e outros stakeholders interessados.</li>
-                     <li><strong>Processo:</strong>
-                        <ol class="list-decimal list-inside ml-4 mt-1">
-                            <li>A equipe demonstra o que foi concluído ("demo").</li>
-                            <li>Apresenta as métricas de sucesso, comparando o "antes" e o "depois".</li>
-                            <li>Formaliza o valor gerado (ROI), conforme o Business Case (Apêndice BC).</li>
-                            <li>O Conselho de Dados valida a entrega e fornece feedback.</li>
-                        </ol>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="card fade-in-section process-step" style="animation-delay: 0.7s;">
-                <h3>5. A Retrospectiva</h3>
-                 <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Propósito:</strong> Refletir sobre o processo do sprint para melhorar o próximo. É sobre o "como trabalhamos", não "o que fizemos".</li>
-                    <li><strong>Participantes:</strong> Apenas o Grupo de Trabalho de Dados, para um ambiente seguro e honesto.</li>
-                     <li><strong>Processo:</strong> A equipe discute três pontos:
-                        <ol class="list-decimal list-inside ml-4 mt-1">
-                            <li>O que foi bom neste sprint e devemos manter?</li>
-                            <li>O que não foi bom e devemos parar de fazer?</li>
-                            <li>O que podemos tentar de novo para melhorar no próximo sprint?</li>
-                        </ol>
-                    </li>
-                </ul>
-            </section>
+<body>
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 max-w-6xl">
+        
+        <div class="mb-8">
+            <a href="Apêndice - Menu.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar ao Menu Principal
+            </a>
         </div>
 
-        <footer class="footer-agil mt-8 fade-in-section" style="animation-delay: 0.8s;">
-            <p class="mt-1"><strong>Nota [1]:</strong> Este manual operacionaliza o Módulo de Evolução Metodológica, detalhando a aplicação de cerimônias ágeis para a gestão dos ciclos de governança. A abordagem por sprints, com backlog e retrospectivas, substitui o modelo de ciclos trimestrais mais simples (Apêndice B e AM), oferecendo um método de trabalho mais dinâmico, transparente e focado na melhoria contínua, em alinhamento com a governança moderna defendida pela Eckerson Group.</p>
+        <header class="text-center my-8 md:my-12 fade-in">
+             <div class="inline-block p-4 bg-gray-700 rounded-full mb-4 border-2 border-teal-400">
+                <i class="fas fa-sync-alt fa-2x text-teal-300"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold gradient-title">Manual de Processo Ágil para Governança de Dados</h1>
+            <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">APÊNDICE BF: Descrição das cinco cerimônias essenciais que estruturam os "Sprints de Governança".</p>
+        </header>
+
+        <section class="content-card fade-in text-center" style="animation-delay: 0.2s;">
+            <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Este manual detalha o funcionamento de um processo ágil para gerenciar as iniciativas de Governança de Dados (GD), descrevendo as cerimônias que estruturam os <strong class="text-teal-300">Sprints de Governança</strong>.
+            </p>
+        </section>
+
+        <section class="content-card fade-in" style="animation-delay: 0.3s;">
+             <h2 class="text-2xl font-bold text-white text-center mb-6"><i class="fas fa-stream mr-3 text-teal-300"></i>As 5 Cerimônias do Processo Ágil</h2>
+            <div class="timeline">
+                
+                <div class="timeline-container">
+                    <div class="timeline-icon"><i class="fas fa-list-alt"></i></div>
+                    <div class="timeline-content"><h3>1. O Backlog de Governança de Dados</h3><ul><li><strong>O que é?</strong> Uma lista mestra de todos os problemas, oportunidades e riscos relacionados a dados.</li><li><strong>Como Manter?</strong> Em uma planilha ou Trello. Qualquer colaborador pode sugerir um item.</li><li><strong>Estrutura:</strong> ID, Descrição do Problema, Área Afetada, Impacto e Data.</li></ul></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-icon"><i class="fas fa-filter"></i></div>
+                    <div class="timeline-content"><h3>2. A Reunião de Priorização (Grooming)</h3><ul><li><strong>Propósito:</strong> Analisar e priorizar o Backlog.</li><li><strong>Participantes:</strong> Conselho de Dados (Data Owners, Liderança).</li><li><strong>Frequência:</strong> Mensal.</li><li><strong>Processo:</strong> O Conselho revisa os itens, discute o valor vs. esforço e reordena a lista.</li></ul></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="timeline-content"><h3>3. O Planejamento do Sprint</h3><ul><li><strong>Propósito:</strong> Planejar o trabalho do próximo ciclo (2-4 semanas).</li><li><strong>Participantes:</strong> Grupo de Trabalho de Dados (Data Stewards, Facilitador).</li><li><strong>Processo:</strong> A equipe pega o item nº 1 do backlog, define um objetivo claro para o sprint e quebra o trabalho em tarefas específicas.</li></ul></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-icon"><i class="fas fa-eye"></i></div>
+                    <div class="timeline-content"><h3>4. A Revisão do Sprint</h3><ul><li><strong>Propósito:</strong> Apresentar os resultados do sprint e o valor gerado.</li><li><strong>Participantes:</strong> Grupo de Trabalho apresenta para o Conselho de Dados e stakeholders.</li><li><strong>Processo:</strong> A equipe demonstra o que foi concluído, apresenta métricas de sucesso e valida a entrega.</li></ul></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-icon"><i class="fas fa-history"></i></div>
+                    <div class="timeline-content"><h3>5. A Retrospectiva</h3><ul><li><strong>Propósito:</strong> Refletir sobre o processo para melhorar o próximo sprint.</li><li><strong>Participantes:</strong> Apenas o Grupo de Trabalho, para um ambiente seguro e honesto.</li><li><strong>Processo:</strong> A equipe discute o que foi bom (manter), o que não foi (parar) e o que tentar de novo.</li></ul></div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="text-center mt-8 pb-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-gray-800 border-t-2 border-gray-700 px-6 py-4 rounded-lg inline-block text-sm text-gray-400 max-w-5xl">
+                <p><strong>Nota [1]:</strong> Este manual operacionaliza o Módulo de Evolução Metodológica, detalhando a aplicação de cerimônias ágeis. A abordagem por sprints oferece um método mais dinâmico e focado na melhoria contínua.</p>
+            </div>
         </footer>
+
     </div>
+
+    <button id="backToTopBtn" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para botão "Voltar ao Topo"
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
 </body>
 </html>

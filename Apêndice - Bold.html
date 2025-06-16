@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Manual Operacional do Modelo GD-PME 3 Pilares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Lighter gray background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .pillar-card-manual {
+            border-top-width: 6px; /* Top border for manual pillars */
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+        .pillar-1-manual { border-color: #3b82f6; /* Blue */ }
+        .pillar-2-manual { border-color: #10b981; /* Green */ }
+        .pillar-3-manual { border-color: #f59e0b; /* Amber */ }
+
+        .icon-bg-manual {
+            width: 56px; /* Slightly smaller icon background */
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .icon-bg-manual svg {
+            width: 28px; /* Slightly smaller icon */
+            height: 28px;
+        }
+        .section-title-manual {
+            font-size: 1.6rem; /* Slightly smaller section title */
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1e40af; /* Darker blue for titles */
+        }
+        .header-title-manual {
+            font-size: 2.2rem; /* Slightly smaller header title */
+            font-weight: 700;
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-subtitle-manual {
+            font-size: 1.1rem; /* Slightly smaller subtitle */
+            color: #4b5563; /* Medium gray */
+            text-align: center;
+            margin-bottom: 28px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table-card {
+            overflow-x: auto; /* Allow horizontal scrolling for tables if needed */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px; /* Increased padding */
+            border-bottom: 1px solid #e5e7eb; /* Light gray border */
+            font-size: 0.9rem;
+            vertical-align: top; /* Align content to the top for better readability in complex tables */
+        }
+        th {
+            background-color: #f9fafb; /* Very light gray for table headers */
+            font-weight: 600;
+            color: #374151;
+        }
+        .footer-manual {
+            text-align: center;
+            font-size: 0.75rem; /* Smaller footer font */
+            color: #6b7280;
+            margin-top: 28px;
+            padding-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.2rem; /* Slightly smaller h3 */
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            margin-top:12px;
+            color: #2563eb; /* Blue for sub-sub-titles */
+        }
+        ul.actions-list li, ul.checkpoints-list li {
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+            margin-bottom: 6px;
+        }
+        ul.actions-list li::before {
+            content: "✓"; /* Checkmark */
+            color: #10b981; /* Green */
+            margin-right: 0.5em;
+            font-weight: bold;
+        }
+         ul.checkpoints-list li::before {
+            content: "☐"; /* Checkbox */
+            color: #60a5fa; /* Lighter Blue */
+            margin-right: 0.5em;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #1d4ed8; /* Blue highlight */
+            font-weight: 600;
+        }
+        .etapa-card {
+            background-color: #eef2ff; /* Light indigo background for etapas */
+            border-left-width: 4px;
+            border-color: #6366f1; /* Indigo */
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+        }
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-6 max-w-7xl"> <!-- Increased max-width -->
+        <!-- Header -->
+        <header class="my-6 md:my-10 fade-in-section">
+            <h1 class="header-title-manual">Manual Operacional do Modelo GD-PME 3 Pilares</h1>
+            <p class="header-subtitle-manual">APÊNDICE B: Um guia prático para PMEs implementarem a governança de dados de forma acessível, modular e incremental, baseado nas recomendações de Mahanti (2021a), Otto (2011) e Ladley (2020).</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="card fade-in-section" style="animation-delay: 0.1s;">
+            <h2 class="section-title-manual text-center text-blue-800">B.1 Estrutura do Modelo GD-PME 3 Pilares</h2>
+            <p class="text-gray-700 leading-relaxed text-center mb-4">
+                O modelo se baseia em três fundamentos interdependentes, operando em <span class="highlight">ciclos trimestrais</span> e aplicados gradualmente conforme os recursos da empresa:
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 md:space-x-8 space-y-4 sm:space-y-0">
+                <div class="text-center">
+                    <div class="icon-bg-manual bg-blue-100 mx-auto">
+                        <svg class="text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <p class="font-semibold text-blue-700 mt-1">Pilar 1: Separação Dados/Sistemas</p>
+                </div>
+                <div class="text-center">
+                    <div class="icon-bg-manual bg-green-100 mx-auto">
+                         <svg class="text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.084-1.283-.24-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.084-1.283.24-1.857m10.514-2.873A5 5 0 0018 10V7M3.486 15.27A5 5 0 012 10V7m8 4c0-1.105.895-2 2-2s2 .895 2 2-2 4-2 4-1.121-1.65-2-2.512zM12 10V7M4.5 4.5L3 6m18-1.5L19.5 6"></path></svg>
+                    </div>
+                    <p class="font-semibold text-green-700 mt-1">Pilar 2: Capacitação Contínua</p>
+                </div>
+                <div class="text-center">
+                     <div class="icon-bg-manual bg-amber-100 mx-auto">
+                        <svg class="text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <p class="font-semibold text-amber-700 mt-1">Pilar 3: Políticas Simplificadas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Cycle Section -->
+        <section class="my-6 md:my-10 fade-in-section" style="animation-delay: 0.2s;">
+            <h2 class="section-title-manual text-center mb-8">B.2 Ciclo de Implantação por Pilar</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Pillar 1 Manual -->
+                <div class="card pillar-card-manual pillar-1-manual">
+                    <h3 class="text-blue-700 font-bold">Pilar 1: Separação entre Dados e Sistemas</h3>
+                    <p class="text-sm text-gray-600 mb-3"><strong>Objetivo:</strong> Tratar dados como ativos independentes dos sistemas.</p>
+                    <h4 class="font-semibold text-gray-800 text-sm mb-1">Ações Sugeridas:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-3 flex-grow">
+                        <li>Elaborar inventário de dados por processo-chave.</li>
+                        <li>Identificar entradas, transformações e saídas de dados.</li>
+                        <li>Criar repositório padronizado (ex.: planilha centralizada).</li>
+                        <li>Aplicar nomenclaturas consistentes.</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Ferramentas:</span> Google Planilhas, Excel, Notion.</p>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Responsável:</span> Supervisor operacional com apoio da TI.</p>
+                </div>
+
+                <!-- Pillar 2 Manual -->
+                <div class="card pillar-card-manual pillar-2-manual">
+                    <h3 class="text-green-700 font-bold">Pilar 2: Capacitação Contínua</h3>
+                    <p class="text-sm text-gray-600 mb-3"><strong>Objetivo:</strong> Estimular a cultura de uso consciente de dados.</p>
+                    <h4 class="font-semibold text-gray-800 text-sm mb-1">Ações Sugeridas:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-3 flex-grow">
+                        <li>Aplicar minioficinas quinzenais (ex.: "como validar dados?").</li>
+                        <li>Criar cartilhas e pôsteres com boas práticas.</li>
+                        <li>Formar multiplicadores internos.</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Ferramentas:</span> Canva, Kahoot, YouTube.</p>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Responsável:</span> RH ou liderança operacional.</p>
+                </div>
+
+                <!-- Pillar 3 Manual -->
+                <div class="card pillar-card-manual pillar-3-manual">
+                    <h3 class="text-amber-700 font-bold">Pilar 3: Políticas Simplificadas</h3>
+                    <p class="text-sm text-gray-600 mb-3"><strong>Objetivo:</strong> Instituir regras mínimas sem burocratização excessiva.</p>
+                    <h4 class="font-semibold text-gray-800 text-sm mb-1">Ações Sugeridas:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-3 flex-grow">
+                        <li>Criar termo de boas práticas com dados.</li>
+                        <li>Definir regras básicas de acesso, retenção e exclusão.</li>
+                        <li>Estabelecer rotina de backups simples.</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Ferramentas:</span> Google Drive, Dropbox, arquivos físicos.</p>
+                    <p class="text-sm text-gray-600"><span class="font-semibold">Responsável:</span> Gestor administrativo ou geral.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- B.2.4 Suggested Real Tools Table (Quadro B.1) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.3s;">
+            <h2 class="section-title-manual mb-4">B.2.4 Ferramentas Reais Sugeridas por Pilar (Quadro B.1)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pilar</th>
+                        <th>Objetivo Operacional</th>
+                        <th>Ferramentas Sugeridas</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-semibold text-blue-700 align-top">Pilar 1 – Separação entre dados e sistemas</td>
+                        <td class="align-top">Mapeamento, organização e rastreabilidade básica dos dados</td>
+                        <td class="align-top">Google Planilhas, Microsoft Excel, Notion, Coda, Obsidian</td>
+                        <td class="align-top">Utilizar planilhas compartilhadas com abas por processo (vendas, financeiro) e nomeação padronizada</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-green-700 align-top">Pilar 2 – Capacitação contínua</td>
+                        <td class="align-top">Formação interna e circulação de conhecimento acessível</td>
+                        <td class="align-top">Canva (para cartilhas), YouTube (playlists internas), Kahoot (quizzes), WhatsApp (grupos internos), Google Classroom (versão gratuita)</td>
+                        <td class="align-top">Utilizar minioficinas e conteúdos assíncronos para criar trilhas formativas de baixo custo</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-amber-700 align-top">Pilar 3 – Políticas simplificadas</td>
+                        <td class="align-top">Registro de regras básicas, governança leve e backup</td>
+                        <td class="align-top">Google Drive, Dropbox, GitHub (para versionamento simples), OneDrive, Termly (para templates de política), Trello (para rotinas)</td>
+                        <td class="align-top">Uso de pastas públicas com acesso controlado, templates adaptáveis e checklists operacionais</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-purple-700 align-top">Transversal (avaliação e ciclo)</td>
+                        <td class="align-top">Planejamento, revisão de ciclos, autoavaliação</td>
+                        <td class="align-top">Trello, Google Agenda, Notion (quadros Kanban), Microsoft Planner</td>
+                        <td class="align-top">Uso de checklists por ciclo e cronogramas visuais simples para revisão trimestral</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-xs text-gray-500 mt-3">A escolha dessas ferramentas prioriza não apenas a acessibilidade financeira, mas também a facilidade de uso, a adoção incremental e a familiaridade por parte dos colaboradores.</p>
+        </section>
+
+        <!-- B.3 Maturity Evaluation Axes Table (Quadro B.2) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.4s;">
+            <h2 class="section-title-manual mb-4">B.3 Matriz de Maturidade por Pilar (Quadro B.2)<br><span class="text-base font-normal text-gray-600">Eixos de Avaliação de Maturidade Informacional (Autoavaliação Semestral)</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Eixo</th>
+                        <th>Iniciante</th>
+                        <th>Parcial</th>
+                        <th>Consolidado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Dados mapeados</td><td class="text-center">☐</td><td class="text-center">☐</td><td class="text-center">☐</td></tr>
+                    <tr><td>Treinamentos aplicados</td><td class="text-center">☐</td><td class="text-center">☐</td><td class="text-center">☐</td></tr>
+                    <tr><td>Regras de acesso definidas</td><td class="text-center">☐</td><td class="text-center">☐</td><td class="text-center">☐</td></tr>
+                    <tr><td>Políticas de backup ativas</td><td class="text-center">☐</td><td class="text-center">☐</td><td class="text-center">☐</td></tr>
+                    <tr><td>Engajamento dos setores</td><td class="text-center">☐</td><td class="text-center">☐</td><td class="text-center">☐</td></tr>
+                </tbody>
+            </table>
+            <p class="text-xs text-gray-500 mt-3">Comentário: A marcação de níveis para cada eixo possibilita que a organização visualize seus avanços e fragilidades ao longo do tempo. A evolução deve ser usada como referência para definição dos próximos ciclos operacionais.</p>
+        </section>
+
+        <!-- Critical Success Factors Table (Quadro B.3) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.5s;">
+            <h2 class="section-title-manual mb-4">Quadro B.3: Fatores Críticos de Sucesso (Adaptado de Bento, 2021)</h2>
+            <p class="text-sm text-gray-600 mb-4">Esses fatores ampliam a avaliação ao incluir dimensões institucionais, culturais e formativas, muitas vezes negligenciadas em modelos técnicos tradicionais.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fator Crítico</th>
+                        <th>Descrição</th>
+                        <th>Aplicação no GD-PME 3 Pilares</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Sustentabilidade</td><td>Capacidade de manter a governança em ciclos contínuos</td><td>Incluído nos ciclos trimestrais e no uso de ferramentas acessíveis</td></tr>
+                    <tr><td>Comprometimento da liderança</td><td>Apoio informal ou formal das lideranças locais</td><td>Exigência mínima de designação de responsáveis por pilar</td></tr>
+                    <tr><td>Recursos disponíveis</td><td>Acesso a tempo, ferramentas e equipe mínima</td><td>Ferramentas gratuitas, planilhas, formatos impressos</td></tr>
+                    <tr><td>Capacitação</td><td>Treinamentos, trilhas, glossário e suporte prático</td><td>Pilar 2 – Capacitação Contínua</td></tr>
+                    <tr><td>Comunicação</td><td>Clareza nas orientações, repetição dos conceitos, registros</td><td>Cartilhas, oficinas e reuniões internas</td></tr>
+                    <tr><td>Valor percebido</td><td>Reconhecimento dos ganhos com a governança</td><td>Redução de retrabalho, decisões mais rápidas</td></tr>
+                    <tr><td>Política formalizada</td><td>Existência de normas ou guias</td><td>Pilar 3 – Políticas Simplificadas</td></tr>
+                    <tr><td>Padronização</td><td>Procedimentos claros e replicáveis</td><td>Templates, fluxogramas e checklists</td></tr>
+                    <tr><td>Ferramentas operacionais</td><td>Suporte básico a coleta, registro, backup e controle</td><td>Google Planilhas, Forms, Drive</td></tr>
+                    <tr><td>Avaliação sistemática</td><td>Instrumento de medição e ajuste periódico</td><td>Apêndice B – Matriz e autoavaliação</td></tr>
+                    <tr><td>Inclusão organizacional</td><td>Envolvimento de setores diversos, linguagem acessível</td><td>Linguagem clara, formação de multiplicadores internos</td></tr>
+                </tbody>
+            </table>
+             <p class="text-xs text-gray-500 mt-3">Recomenda-se que, a cada ciclo de revisão trimestral, a organização avalie também seu progresso qualitativo nesses critérios.</p>
+        </section>
+
+        <!-- B.4 Simplified Maturity Matrix by Pillar Table (Quadro B.4) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.6s;">
+            <h2 class="section-title-manual mb-4">B.4 Avaliação de Maturidade (Quadro B.4)<br><span class="text-base font-normal text-gray-600">Matriz Simplificada de Maturidade por Pilar</span></h2>
+             <p class="text-sm text-gray-600 mb-4">Permite que a organização avalie sua posição atual em cada um dos três pilares, com base em critérios objetivos e progressivos. Aplicar periodicamente (trimestre/semestre).</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pilar</th>
+                        <th>Nível 1 – Inicial</th>
+                        <th>Nível 2 – Emergente</th>
+                        <th>Nível 3 – Consolidado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-semibold text-blue-700 align-top">Separação Dados-Sistemas</td>
+                        <td class="align-top">Dados misturados aos sistemas; sem inventário.</td>
+                        <td class="align-top">Início da separação e mapeamento manual.</td>
+                        <td class="align-top">Dados separados, padronizados e inventariados.</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-green-700 align-top">Capacitação Contínua</td>
+                        <td class="align-top">Sem treinamentos formais; conhecimento tácito prevalece.</td>
+                        <td class="align-top">Treinamentos pontuais; glossário básico em uso.</td>
+                        <td class="align-top">Trilhas formativas contínuas e institucionalizadas.</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-amber-700 align-top">Políticas Simplificadas</td>
+                        <td class="align-top">Inexistência de normas ou diretrizes.</td>
+                        <td class="align-top">Criação de 2 a 3 políticas básicas documentadas.</td>
+                        <td class="align-top">Políticas revisadas, responsáveis definidos e aplicação ativa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- B.5 Mini Framework GD-PME 3 Pilares (Quadro B.5) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.7s;">
+            <h2 class="section-title-manual mb-4">B.5 Mini Framework GD-PME 3 Pilares (Quadro B.5)<br><span class="text-base font-normal text-gray-600">Roteiro de Implantação por Fase de Maturidade</span></h2>
+            <p class="text-sm text-gray-600 mb-4">Permite iniciar a Governança de Dados em qualquer ponto, evoluindo com autonomia e pragmatismo.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento / Pilar</th>
+                        <th>Fase Mínima (Sobrevivência)</th>
+                        <th>Fase Ideal (Equilíbrio)</th>
+                        <th>Fase Completa (Excelência)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-semibold text-blue-700">Pilar 1 – Separação Dados/Sistemas</td>
+                        <td>Inventário simples de dados em planilha única</td>
+                        <td>Mapeamento de fluxos + planilha centralizada por setor</td>
+                        <td>Repositório digital com nomenclatura padronizada, responsáveis definidos</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-green-700">Pilar 2 – Capacitação Contínua</td>
+                        <td>1 cartilha visual + 1 minioficina inicial</td>
+                        <td>Trilha formativa de 3 encontros + grupo de dúvidas contínuo</td>
+                        <td>Ciclo institucionalizado com multiplicadores internos e avaliação</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-amber-700">Pilar 3 – Políticas Simplificadas</td>
+                        <td>Termo informal de boas práticas em PDF</td>
+                        <td>Política básica com regras de acesso e backup + responsáveis por setor</td>
+                        <td>Normas documentadas, auditadas, revistas trimestralmente com checklist</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">Ferramentas utilizadas</td>
+                        <td>Google Planilhas + WhatsApp</td>
+                        <td>Trello + Google Forms + Canva</td>
+                        <td>Notion + Microsoft 365 + fluxogramas e modelos próprios</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">Tempo estimado (1 ciclo)</td>
+                        <td>4 semanas</td>
+                        <td>8–12 semanas</td>
+                        <td>12–16 semanas</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">Responsável mínimo</td>
+                        <td>Um único gestor informal</td>
+                        <td>Equipe reduzida com liderança e apoio de setores-chave</td>
+                        <td>Comitê interno de dados ou área funcional com rotinas definidas</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">Autoavaliação</td>
+                        <td>1 eixo por ciclo (ver Quadro B.2)</td>
+                        <td>3 a 4 eixos por ciclo</td>
+                        <td>Todos os eixos, com retroalimentação em reunião de gestão</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- B.6 Etapas Detalhadas do Mini Framework GD-PME 3 Pilares -->
+        <section class="card fade-in-section" style="animation-delay: 0.8s;">
+            <h2 class="section-title-manual mb-6 text-center">B.6 Etapas Detalhadas do Mini Framework GD-PME 3 Pilares</h2>
+            <div class="space-y-6">
+                <div class="etapa-card">
+                    <h3 class="text-indigo-700 font-bold">Etapa 1 – Sensibilização e Alinhamento Inicial</h3>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Objetivo:</strong> Criar entendimento comum sobre o modelo.</p>
+                    <h4 class="text-sm font-semibold text-gray-800">Ações:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-2">
+                        <li>Apresentação do modelo GD-PME 3 Pilares;</li>
+                        <li>Levantamento de barreiras;</li>
+                        <li>Definição de responsáveis por pilar.</li>
+                    </ul>
+                    <h4 class="text-sm font-semibold text-gray-800">Checkpoints:</h4>
+                    <ul class="checkpoints-list text-sm text-gray-700 mb-2">
+                        <li>Equipe sensibilizada</li>
+                        <li>Papéis atribuídos</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><strong>Recursos:</strong> slides, formulário, cronograma.</p>
+                </div>
+
+                <div class="etapa-card">
+                    <h3 class="text-indigo-700 font-bold">Etapa 2 – Autoavaliação de Maturidade</h3>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Objetivo:</strong> Diagnosticar estágio atual.</p>
+                    <h4 class="text-sm font-semibold text-gray-800">Ações:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-2">
+                        <li>Aplicar checklist;</li>
+                        <li>Consolidar lacunas;</li>
+                        <li>Priorizar ações.</li>
+                    </ul>
+                    <h4 class="text-sm font-semibold text-gray-800">Checkpoints:</h4>
+                    <ul class="checkpoints-list text-sm text-gray-700 mb-2">
+                        <li>Checklist preenchido</li>
+                        <li>Quadro de gaps validado</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><strong>Recursos:</strong> planilha, formulários.</p>
+                </div>
+
+                <div class="etapa-card">
+                    <h3 class="text-indigo-700 font-bold">Etapa 3 – Execução do Ciclo Inicial</h3>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Objetivo:</strong> Aplicar ações práticas por pilar.</p>
+                    <h4 class="text-sm font-semibold text-gray-800">Ações:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-2">
+                        <li>Inventário de dados (Pilar 1);</li>
+                        <li>Oficina básica (Pilar 2);</li>
+                        <li>Termo de boas práticas (Pilar 3).</li>
+                    </ul>
+                    <h4 class="text-sm font-semibold text-gray-800">Checkpoints:</h4>
+                    <ul class="checkpoints-list text-sm text-gray-700 mb-2">
+                        <li>Inventário entregue</li>
+                        <li>Oficina realizada</li>
+                        <li>Termo assinado</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><strong>Recursos:</strong> modelos, facilitador interno.</p>
+                </div>
+
+                <div class="etapa-card">
+                    <h3 class="text-indigo-700 font-bold">Etapa 4 – Avaliação e Planejamento do Próximo Ciclo</h3>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Objetivo:</strong> Medir avanço e preparar continuidade.</p>
+                    <h4 class="text-sm font-semibold text-gray-800">Ações:</h4>
+                    <ul class="actions-list text-sm text-gray-700 mb-2">
+                        <li>Aplicar matriz de maturidade;</li>
+                        <li>Coletar feedback;</li>
+                        <li>Atualizar plano trimestral.</li>
+                    </ul>
+                    <h4 class="text-sm font-semibold text-gray-800">Checkpoints:</h4>
+                    <ul class="checkpoints-list text-sm text-gray-700 mb-2">
+                        <li>Autoavaliação concluída</li>
+                        <li>Próximo ciclo planejado</li>
+                    </ul>
+                    <p class="text-sm text-gray-600"><strong>Recursos:</strong> matriz, formulário de lições aprendidas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- B.7 Ferramentas Acessíveis (Quadro B.6) -->
+        <section class="card table-card fade-in-section" style="animation-delay: 0.9s;">
+            <h2 class="section-title-manual mb-4">B.7 Ferramentas Acessíveis (Quadro B.6)<br><span class="text-base font-normal text-gray-600">Quadro-Síntese de Ferramentas e Responsáveis</span></h2>
+            <p class="text-sm text-gray-600 mb-4">Facilita a execução prática das ações, promovendo clareza, autonomia e replicabilidade.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pilar</th>
+                        <th>Ferramentas Acessíveis</th>
+                        <th>Responsável Sugerido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-semibold text-blue-700">Dados e Sistemas (Pilar 1)</td>
+                        <td>Excel, Google Planilhas, Notion</td>
+                        <td>Supervisor de operações</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-green-700">Capacitação Contínua (Pilar 2)</td>
+                        <td>Canva, Kahoot, YouTube, Google Docs</td>
+                        <td>RH ou liderança</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold text-amber-700">Políticas Simplificadas (Pilar 3)</td>
+                        <td>Google Drive, Dropbox, arquivos físicos</td>
+                        <td>Gestor geral ou administrativo</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-xs text-gray-500 mt-3">Esta síntese operacional fortalece a clareza durante o planejamento, execução e monitoramento dos ciclos trimestrais.</p>
+        </section>
+
+        <!-- B.8 Conclusões (Gerais do Apêndice B) -->
+        <section class="card fade-in-section" style="animation-delay: 1.0s;">
+            <h2 class="section-title-manual text-center text-blue-800">B.8 Conclusões do Apêndice B</h2>
+            <p class="text-gray-700 leading-relaxed mb-3">
+                O modelo GD-PME 3 Pilares oferece uma alternativa concreta para organizações que buscam implantar governança de dados com <span class="highlight">autonomia e racionalidade</span>. Seus pilares foram desenhados para garantir clareza, acessibilidade e continuidade, elementos fundamentais para a construção da maturidade informacional em ambientes restritivos.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                Mahanti (2021a), Otto (2011) e Ladley (2020) argumentam que a efetividade da governança de dados está mais relacionada à <span class="highlight">consistência das práticas organizacionais</span> do que ao uso de tecnologias avançadas. Sob essa ótica, o GD-PME 3 Pilares demonstra seu valor como ferramenta incremental, pragmática e aderente à realidade institucional das PMEs brasileiras.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-manual fade-in-section" style="animation-delay: 1.1s;">
+            <p><strong>Fonte das Tabelas e Conteúdo:</strong> Elaborado pelo Autor com base em Mahanti (2021a), Ladley (2020), Otto (2011), Barata (2015) e Bento (2021), conforme aplicável e contextualizado para o modelo GD-PME 3 Pilares.</p>
+            <p class="mt-1"><strong>Nota [1]:</strong> Este apêndice oferece o roteiro prático para a implementação do modelo GD-PME 3 Pilares, explicitando os ciclos de implantação e as ações vinculadas aos três pilares, direcionando a PME na construção gradual de sua maturidade em governança de dados.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
