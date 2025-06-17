@@ -102,3 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', adjustLayout);
     adjustLayout();
 });  
+
+window.addEventListener('orientationchange', function() {
+    // Adiciona um pequeno atraso para garantir que o navegador já tenha ajustado a tela
+    setTimeout(function() {
+        window.scrollTo(0, 0); // Rola a página para o topo (posição x=0, y=0)
+    }, 100); 
+});
