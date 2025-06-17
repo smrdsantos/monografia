@@ -221,6 +221,14 @@ position: fixed;
         display: flex; /* Exibe o overlay apenas nessas condições */
     }
 }
+
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+.rotate-suggestion-content {
+    display: block; /* Garante que o conteúdo seja visível */
+    width: 100%;
+    max-width: 400px; /* Limita a largura para melhor leitura */
+}
         
         .card {
             background: rgba(20, 30, 70, 0.6); 
