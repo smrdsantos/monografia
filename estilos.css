@@ -394,3 +394,34 @@ position: fixed;
 .back-to-top-btn:hover {
     background-color: rgba(77, 182, 172, 0.8);
 }
+
+/* ===== ESTILO PARA O ÍCONE DE LETRA DO APÊNDICE ===== */
+
+.appendix-letter-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%; /* Deixa o fundo redondo */
+    background-color: #374151; /* Cor de fundo do círculo */
+    color: #cbd5e1; /* Cor da letra */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem; /* Tamanho da letra */
+    font-weight: 700; /* Letra em negrito */
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* Garante que a letra seja sempre maiúscula */
+}
+
+/* Efeito ao passar o mouse sobre o botão do apêndice */
+.appendix-item:hover .appendix-letter-icon {
+    background-color: #34d399; /* Cor de destaque (verde-azulado) */
+    color: #111827; /* Cor da letra (escura) */
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+}
+
+.appendix-item.evolution:hover .appendix-letter-icon {
+    background-color: #a78bfa; /* Cor de destaque para módulos de evolução (roxo) */
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.5);
+}
