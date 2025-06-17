@@ -186,11 +186,11 @@ position: fixed;
     animation: fadeInUp 0.5s ease-out;
 }
 
-.rotate-suggestion-content .icon-rotate {
-    /* As propriedades aqui dentro continuam as mesmas */
-    width: 40px; /* Ajustei o tamanho para o novo layout */
-    height: 40px;
-    color: #26c6da;
+.rotate-suggestion-content svg {
+    width: 64px;
+    height: 64px;
+    color: #26c6da; /* Cor ciano brilhante */
+    margin: 0 auto 1.5rem;
     animation: spin-and-tilt 2.5s ease-in-out infinite;
 }
 
@@ -220,14 +220,6 @@ position: fixed;
     .rotate-suggestion-overlay {
         display: flex; /* Exibe o overlay apenas nessas condições */
     }
-}
-
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-.rotate-suggestion-content {
-    display: block; /* Garante que o conteúdo seja visível */
-    width: 100%;
-    max-width: 400px; /* Limita a largura para melhor leitura */
 }
         
         .card {
