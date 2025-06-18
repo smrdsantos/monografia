@@ -109,3 +109,32 @@ window.addEventListener('orientationchange', function() {
         window.scrollTo(0, 0); // Rola a página para o topo (posição x=0, y=0)
     }, 100); 
 });
+
+// --- Animação do Favicon (GD) ---
+document.addEventListener('DOMContentLoaded', function() {
+    const faviconElement = document.getElementById('favicon');
+    if (!faviconElement) { // Verifica se o elemento favicon existe
+        console.warn('Elemento favicon não encontrado. A animação não será executada.');
+        return;
+    }
+
+    const originalFavicon = 'logo-icon.svg';
+    const gdFavicon = 'favicon-gd.svg';
+    let isOriginal = true; // Começa com o favicon original
+
+    function toggleFavicon() {
+        if (isOriginal) {
+            faviconElement.href = gdFavicon;
+        } else {
+            faviconElement.href = originalFavicon;
+        }
+        isOriginal = !isOriginal; // Inverte o estado para a próxima vez
+    }
+
+    // Altera o favicon a cada 10 segundos (para ser "bem devagar")
+    // Você pode ajustar este valor: 10000ms = 10 segundos
+    const intervalTime = 10000; 
+
+    // Inicia a alternância do favicon
+    setInterval(toggleFavicon, intervalTime);
+});
