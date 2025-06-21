@@ -110,7 +110,7 @@ window.addEventListener('orientationchange', function() {
     }, 100); 
 });
 
-// --- Animação do Favicon (GD + ITLAB) ---
+// --- Animação do Favicon (GD) ---
 document.addEventListener('DOMContentLoaded', function() {
     const faviconElement = document.getElementById('favicon');
     if (!faviconElement) { // Verifica se o elemento favicon existe
@@ -118,14 +118,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Define um array com os caminhos de todos os favicons a serem alternados
-    const favicons = ['logo-icon.svg', 'favicon-gd.svg', 'itlab1.png']; 
-    let currentFaviconIndex = 0; // Inicia com o primeiro favicon do array (logo-icon.svg)
+    const originalFavicon = 'logo-icon.svg';
+    const gdFavicon = 'favicon-gd.svg';
+    let isOriginal = true; // Começa com o favicon original
 
     function toggleFavicon() {
-        // Incrementa o índice e usa o operador de módulo (%) para ciclar o array
-        currentFaviconIndex = (currentFaviconIndex + 1) % favicons.length; 
-        faviconElement.href = favicons[currentFaviconIndex]; // Atualiza o favicon
+        if (isOriginal) {
+            faviconElement.href = gdFavicon;
+        } else {
+            faviconElement.href = originalFavicon;
+        }
+        isOriginal = !isOriginal; // Inverte o estado para a próxima vez
     }
 
     // Altera o favicon a cada 10 segundos (para ser "bem devagar")
