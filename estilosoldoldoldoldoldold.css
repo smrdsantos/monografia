@@ -8,22 +8,19 @@ html {
             --sidebar-visible-transform: translateX(0);
         }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0a0f1f; /* Cor de fallback caso a imagem não carregue */
-    background-image: url('Fundo HTML.png'); /* Sua imagem de fundo */
-    background-size: cover; /* ESSA É A PROPRIEDADE CHAVE: SEMPRE COBRIRÁ TODO O ESPAÇO */
-    background-repeat: no-repeat; /* Evita repetição */
-    background-attachment: fixed; /* Opcional: faz a imagem ficar fixa ao rolar a página */
-    background-position: center center; /* Centraliza a imagem */
-    min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
-    color: #adb5bd; 
-    padding-bottom: 4rem;
-    transition: padding-left 0.3s ease-in-out; 
-    overflow-wrap: break-word;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0f1f; 
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 70, 70, 0.15), transparent 50%), /* Roxo suavizado para um tom de azul-petróleo escuro e sutil */
+                radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.25), transparent 50%); /* Ciano/azul-petróleo mantido, talvez um pouco mais sutil */
+            min-height: 100vh;
+            color: #adb5bd; 
+            padding-bottom: 4rem;
+            transition: padding-left 0.3s ease-in-out; 
+            overflow-wrap: break-word;
 
-
+        }
 
         .sidebar {
             position: fixed;
@@ -233,18 +230,16 @@ position: fixed;
     max-width: 400px; /* Limita a largura para melhor leitura */
 }
         
-.card {
-    background: rgba(20, 30, 70, 0.2); /* Reduz bastante a opacidade do fundo escuro (de 0.6 para 0.2) */
-    backdrop-filter: blur(5px); /* Reduz o nível de blur para algo mais sutil (ou mantenha 'none' se preferir sem blur) */
-    border-radius: 1rem; 
-    box-shadow: 0 0 20px rgba(0, 128, 128, 0.2); 
-    padding: 2.5rem; 
-    margin-bottom: 2rem;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-    border: 1px solid rgba(173, 216, 230, 0.15); 
-    color: #b0bec5; 
-}
-
+        .card {
+            background: rgba(20, 30, 70, 0.6); 
+            backdrop-filter: blur(10px) saturate(120%);
+            border-radius: 1rem; 
+            box-shadow: 0 0 20px rgba(0, 128, 128, 0.2); /* Sombra Ciano/Azul-petróleo */
+            padding: 2.5rem; margin-bottom: 2rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            border: 1px solid rgba(173, 216, 230, 0.15); 
+            color: #b0bec5; 
+        }
         .card:hover {
             transform: translateY(-8px) scale(1.01); 
             box-shadow: 0 0 35px rgba(0, 128, 128, 0.3); /* Sombra Ciano/Azul-petróleo mais intensa no hover */
